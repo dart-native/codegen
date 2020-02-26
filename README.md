@@ -1,2 +1,2 @@
-# autogen
-Dart code code auto-generation
+# codegen
+Code generator for dart_native.

@@ -1,0 +1,15 @@
+name: codegen
+description: Code generator for dart_native.
+version: 0.0.1
+author: 
+homepage: https://github.com/dart-native/codegen
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  source_gen: ^0.9.4
+
+dev_dependencies:
+  test: ^1.9.4
+  test_coverage: ^0.4.1
