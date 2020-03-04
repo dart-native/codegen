@@ -1,4 +1,4 @@
-var ObjectiveCParserListener = require('../parser/ObjectiveCParserListener').ObjectiveCParserListener
+var ObjectiveCParserListener = require('../../parser/objc/ObjectiveCParserListener').ObjectiveCParserListener
 
 // This class defines a complete listener for a parse tree produced by ObjectiveCParser.
 function DNObjectiveCParserListener(cb) {

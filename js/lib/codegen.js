@@ -1,11 +1,11 @@
 var antlr4 = require('../parser/antlr4/index');
-var ObjectiveCLexer = require('../parser/ObjectiveCLexer').ObjectiveCLexer;
-var ObjectiveCParser = require('../parser/ObjectiveCParser').ObjectiveCParser;
-var DNObjectiveCParserListener = require('./DNObjectiveCParserListener').DNObjectiveCParserListener;
+var ObjectiveCLexer = require('../parser/objc/ObjectiveCLexer').ObjectiveCLexer;
+var ObjectiveCParser = require('../parser/objc/ObjectiveCParser').ObjectiveCParser;
+var DNObjectiveCParserListener = require('./objc/DNObjectiveCParserListener').DNObjectiveCParserListener;
 var ConsoleErrorListener = require('../parser/antlr4/error/ErrorListener').ConsoleErrorListener.INSTANCE
 
 var rf = require("fs");
-var content = rf.readFileSync("../test/RuntimeStub.h", "utf-8");
+var content = rf.readFileSync("../test/objc/RuntimeStub.h", "utf-8");
 
 
 var chars = new antlr4.InputStream(content);
