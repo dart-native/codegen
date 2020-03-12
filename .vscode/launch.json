@@ -11,8 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "cwd": "${workspaceRoot}/lib",
-            "program": "${workspaceFolder}/lib/codegen.js"
+            "program": "${workspaceFolder}/index.js"
         }
     ]
 }

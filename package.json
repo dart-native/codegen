@@ -1,0 +1,27 @@
+{
+  "name": "codegen",
+  "version": "1.0.0",
+  "description": "Code generator for dart_native.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dart-native/codegen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dart-native/codegen/issues"
+  },
+  "homepage": "https://github.com/dart-native/codegen#readme",
+  "dependencies": {
+    "antlr4": "^4.8.0"
+  }
+}
