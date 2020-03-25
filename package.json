@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Code generator for dart_native.",
   "main": "index.js",
+  "bin": {
+    "codegen": "./bin/codegen.js"
+  },
   "directories": {
     "lib": "lib",
     "test": "test"
