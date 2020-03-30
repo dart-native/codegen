@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/dart-native/codegen#readme",
   "dependencies": {
-    "antlr4": "^4.8.0"
+    "antlr4": "^4.8.0",
+    "commander": "^5.0.0"
   }
 }
