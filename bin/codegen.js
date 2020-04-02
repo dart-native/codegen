@@ -35,13 +35,19 @@ function recFindByExt(base, ext, files, result) {
     return result
 }
 
+function callback(tree, error) {
+    if (tree) {
+        // console.log(tree + '\n')
+    }
+}
+
 program.version('0.0.1')
 
 program
     .arguments('<input>', 'Iutput directory')
     .option('-l, --language <language>', 'Input Language')
     .option('-o, --output <output>', 'Output directory')
-    .description('generate dart code ')
+    .description('generate dart code from native api.')
     .action(function (input, options) {
         var ext
         if (options.language == 'objc') {
@@ -49,9 +55,17 @@ program
         }
         const dirs = recFindByExt(input, ext)
         console.log(dirs)
+
         if (options.output) {
             mkdirs(options.output)
         }
+
+        dirs.forEach((dir) => {
+            
+            new DNObjectiveConverter(dir, callback)
+            console.log(dir)
+        })
+        console.log('finished')
     })
 
 program.parse(process.argv)
