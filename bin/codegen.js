@@ -39,7 +39,7 @@ function recFindByExt(base, ext, files, result) {
 function writeOutputToFileByPath(tree, srcPath){
     var srcFile = srcPath.substr(srcPath.lastIndexOf('/') + 1)
     var dartFile = srcFile.substring(0,srcFile.indexOf('.')) + '.dart'
-    var outputFile = path.join(outputDir, dartFile)
+    var outputFile = outputDir ? path.join(outputDir, dartFile) : dartFile
     if (fs.existsSync(outputFile)) {
         fs.appendFileSync(outputFile, '\r\n\r\n' + tree);
     }else{
