@@ -4,6 +4,7 @@ const { program } = require('commander')
 var DNObjectiveConverter = require('../lib/objc/DNObjectiveConverter').DNObjectiveConverter
 var fs = require("fs")
 var path = require("path")
+var outputDir
 
 function mkdirs(dirname) {
     if (fs.existsSync(dirname)) {
@@ -35,9 +36,21 @@ function recFindByExt(base, ext, files, result) {
     return result
 }
 
-function callback(tree, error) {
+function writeOutputToFileByPath(tree, srcPath){
+    var srcFile = srcPath.substr(srcPath.lastIndexOf('/') + 1)
+    var dartFile = srcFile.substring(0,srcFile.indexOf('.')) + '.dart'
+    var outputFile = path.join(outputDir, dartFile)
+    if (fs.existsSync(outputFile)) {
+        fs.appendFileSync(outputFile, '\r\n\r\n' + tree);
+    }else{
+        fs.writeFileSync(outputFile, tree);
+    }
+}
+
+function callback(tree,srcPath, error) {
     if (tree) {
         // console.log(tree + '\n')
+        writeOutputToFileByPath(tree,srcPath);
     }
 }
 
@@ -58,6 +71,7 @@ program
 
         if (options.output) {
             mkdirs(options.output)
+            outputDir = options.output
         }
 
         dirs.forEach((dir) => {
