@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, class) BOOL foo;
 @property (nonatomic) NSObject *bar;
+- (BOOL)fooBOOL;
+- (BOOL)fooBOOL:(BOOL)a;
 - (BOOL)fooBOOL:(BOOL)a bar:(NSObject *)b;
-+ (BOOL)barBOOL:(BOOL)a;
-
 @end
 
 @interface RuntimeStub(Foo)
