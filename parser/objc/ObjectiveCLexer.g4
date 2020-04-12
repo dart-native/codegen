@@ -101,7 +101,7 @@ END:                      '@end';
 FINALLY:                  '@finally';
 IMPLEMENTATION:           '@implementation';
 INTERFACE:                '@interface';
-IMPORT:                   '@import';
+IMPORT:                   '@import' | '#import';
 PACKAGE:                  '@package';
 PROTOCOL:                 '@protocol';
 OPTIONAL:                 '@optional';

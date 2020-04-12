@@ -18,7 +18,7 @@
     "url": "git+https://github.com/dart-native/codegen.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "DartNative team",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dart-native/codegen/issues"
