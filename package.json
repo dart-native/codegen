@@ -1,10 +1,10 @@
 {
-  "name": "codegen",
+  "name": "@dartnative/codegen",
   "version": "1.0.0",
   "description": "Code generator for dart_native.",
   "main": "index.js",
   "bin": {
-    "codegen": "./bin/codegen.js"
+    "codegen": "bin/codegen.js"
   },
   "directories": {
     "lib": "lib",
@@ -19,7 +19,7 @@
   },
   "keywords": [],
   "author": "DartNative team",
-  "license": "ISC",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/dart-native/codegen/issues"
   },
@@ -27,5 +27,6 @@
   "dependencies": {
     "antlr4": "^4.8.0",
     "commander": "^5.0.0"
-  }
+  },
+  "devDependencies": {}
 }

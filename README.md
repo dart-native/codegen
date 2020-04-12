@@ -5,7 +5,7 @@ Code generator for dart_native.
 ## Installation
 
 ```
-$ npm install codegen
+$ npm install @dartnative/codegen
 ```
 
 ## Usage
