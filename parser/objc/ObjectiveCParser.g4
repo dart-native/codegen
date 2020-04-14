@@ -49,7 +49,15 @@ topLevelDeclaration
     ;
 
 importDeclaration
-    : '@import' identifier ';'
+    :
+	IMPORT (
+		(frameworkName=identifier ';')
+		| (
+			LT (frameworkName = identifier)? (DIV)? headerName = identifier DOT
+			IDENTIFIER GT
+            )
+        | stringLiteral
+    )
     ;
 
 classInterface

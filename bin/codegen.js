@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const { program } = require('commander')
+const { exec } = require('child_process')
 var DNObjectiveConverter = require('../lib/objc/DNObjectiveConverter').DNObjectiveConverter
 var fs = require("fs")
 var path = require("path")
@@ -18,6 +19,9 @@ function mkdirs(dirname) {
 }
 
 function recFindByExt(base, ext, files, result) {
+    if (!fs.statSync(base).isDirectory()) {
+        return [base]
+    }
     files = files || fs.readdirSync(base)
     result = result || []
 
@@ -41,17 +45,23 @@ function writeOutputToFileByPath(tree, srcPath){
     var dartFile = srcFile.substring(0,srcFile.indexOf('.')) + '.dart'
     var outputFile = outputDir ? path.join(outputDir, dartFile) : dartFile
     if (fs.existsSync(outputFile)) {
-        fs.appendFileSync(outputFile, '\r\n\r\n' + tree);
+        fs.appendFileSync(outputFile, '\r\n\r\n' + tree)
     }else{
-        fs.writeFileSync(outputFile, tree);
+        fs.writeFileSync(outputFile, tree)
     }
 }
 
-function callback(tree,srcPath, error) {
+function callback(tree, srcPath, error) {
     if (tree) {
-        // console.log(tree + '\n')
-        writeOutputToFileByPath(tree,srcPath);
+        writeOutputToFileByPath(tree, srcPath)
+        formatDartFile(srcPath)
     }
+}
+
+function formatDartFile(dartPath) {
+    exec('flutter format ' + path.dirname(dartPath), (err, stdout, stderr) => {
+        console.log(err + stdout + stderr)
+    })
 }
 
 program.version('0.0.1')
@@ -75,7 +85,6 @@ program
         }
 
         dirs.forEach((dir) => {
-            
             new DNObjectiveConverter(dir, callback)
             console.log(dir)
         })

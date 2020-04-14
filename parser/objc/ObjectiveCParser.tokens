@@ -284,7 +284,6 @@ DIRECTIVE_TEXT=222
 '@finally'=64
 '@implementation'=65
 '@interface'=66
-'@import'=67
 '@package'=68
 '@protocol'=69
 '@optional'=70
