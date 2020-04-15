@@ -9,6 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^RuntimeStubBlock)(BOOL a, NSString *b);
+typedef NSString* (^RuntimeStubBlock2)(void);
+typedef NS_ENUM(NSUInteger, RuntimeStubEnum) {
+    RuntimeStub_One,
+    RuntimeStub_Two,
+    RuntimeStub_Three,
+    RuntimeStub_Four,
+};
+
 @interface RuntimeStub : NSObject<NSCopying, NSObject>
 
 @property (nonatomic, class) BOOL foo;
