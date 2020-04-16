@@ -1,3 +1,5 @@
+package com.dartnative.dart_native_example;
+
 public class HelloWord {
 
   public int getInt(int i){
