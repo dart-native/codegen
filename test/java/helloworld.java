@@ -1,6 +1,6 @@
 package com.dartnative.dart_native_example;
 
-public class HelloWord {
+public class RuntimeStub {
 
   public int getInt(int i){
     return 100;
