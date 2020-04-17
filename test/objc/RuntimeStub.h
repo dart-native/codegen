@@ -9,8 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^RuntimeStubBlock)(BOOL a, NSString *b);
+typedef void (^RuntimeStubBlock)(BOOL a, NSString *b, NSArray<NSString *> * c);
 typedef NSString* (^RuntimeStubBlock2)(void);
+
 typedef NS_ENUM(NSUInteger, RuntimeStubEnum) {
     RuntimeStub_One,
     RuntimeStub_Two,
@@ -30,6 +31,7 @@ typedef NS_ENUM(NSUInteger, RuntimeStubEnum) {
 @interface RuntimeStub(Foo)
 - (NSString *)fooString:(NSString *)a bar:(NSString *)b;
 + (NSString *)stringFoo:(NSString *)a;
++ (NSArray<NSString *> *)stringFooGeneric:(NSArray<NSString *> *)a;
 @end
 
 @protocol RuntimeStubProtocol <NSObject>
