@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, RuntimeStubEnum) {
 - (BOOL)fooBOOL;
 - (BOOL)fooBOOL:(BOOL)a;
 - (BOOL)fooBOOL:(BOOL)a bar:(NSObject *)b;
+- (void)fooBOOLAnonFunc:(BOOL)a block:(int(^)(BOOL a, NSString *b))block;
 @end
 
 @interface RuntimeStub(Foo)
