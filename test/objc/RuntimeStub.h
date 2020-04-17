@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^RuntimeStubBlock)(BOOL a, NSString *b, NSArray<NSString *> * c);
-typedef NSString* (^RuntimeStubBlock2)(void);
+typedef List<String *>* (^RuntimeStubBlock2)(void);
 
 typedef NS_ENUM(NSUInteger, RuntimeStubEnum) {
     RuntimeStub_One,
