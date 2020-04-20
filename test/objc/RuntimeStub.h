@@ -9,8 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^RuntimeStubBlock)(BOOL a, NSString *b, NSArray<NSString *> * c);
-typedef List<String *>* (^RuntimeStubBlock2)(void);
+typedef void (^RuntimeStubBlock)(BOOL a, NSString *b, NSMutableArray<NSArray *> *c);
+typedef NSString* (^RuntimeStubBlock2)(void);
 
 typedef NS_ENUM(NSUInteger, RuntimeStubEnum) {
     RuntimeStub_One,
@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, RuntimeStubEnum) {
 - (BOOL)fooBOOL:(BOOL)a;
 - (BOOL)fooBOOL:(BOOL)a bar:(NSObject *)b;
 - (void)fooBOOLAnonFunc:(BOOL)a block:(int(^)(BOOL a, NSString *b))block;
-- (NSMutableSet<NSString *> *)fooMutable:(BOOL)a bar:(NSMutableArray<NSString *> *)b c:(NSMutableArray *)c;
+- (NSMutableSet<NSString *> *)fooMutable:(BOOL)a bar:(NSMutableArray<NSMutableArray *> *)b c:(NSMutableArray *)c;
 @end
 
 @interface RuntimeStub(Foo)
