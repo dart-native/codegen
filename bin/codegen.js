@@ -40,20 +40,20 @@ function recFindByExt(base, ext, files, result) {
     return result
 }
 
-function writeOutputToFileByPath(tree, srcPath){
+function writeOutputToFileByPath(result, srcPath){
     var srcFile = srcPath.substr(srcPath.lastIndexOf('/') + 1)
     var dartFile = srcFile.substring(0,srcFile.indexOf('.')) + '.dart'
     var outputFile = outputDir ? path.join(outputDir, dartFile) : dartFile
     if (fs.existsSync(outputFile)) {
-        fs.appendFileSync(outputFile, '\r\n\r\n' + tree)
+        fs.appendFileSync(outputFile, '\r\n\r\n' + result)
     }else{
-        fs.writeFileSync(outputFile, tree)
+        fs.writeFileSync(outputFile, result)
     }
 }
 
-function callback(tree, srcPath, error) {
-    if (tree) {
-        writeOutputToFileByPath(tree, srcPath)
+function callback(result, srcPath, error) {
+    if (result) {
+        writeOutputToFileByPath(result, srcPath)
         formatDartFile(srcPath)
     }
 }
