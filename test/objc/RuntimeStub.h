@@ -13,10 +13,21 @@ typedef void (^RuntimeStubBlock)(BOOL a, NSString *b, NSMutableArray<NSArray *> 
 typedef NSString* (^RuntimeStubBlock2)(void);
 
 typedef NS_ENUM(NSUInteger, RuntimeStubEnum) {
-    RuntimeStub_One,
-    RuntimeStub_Two,
-    RuntimeStub_Three,
-    RuntimeStub_Four,
+    RuntimeStubOne = 1,
+    RuntimeStubTwo = RuntimeStubOne + 1,
+    RuntimeStubThree = 3,
+    RuntimeStubFour,
+};
+
+typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
+    UIViewAutoresizingNone                 = 0,
+    UIViewAutoresizingFlexibleLeftMargin   = 1 << 0,
+    UIViewAutoresizingFlexibleWidth        = 1 << 1,
+    UIViewAutoresizingFlexibleRightMargin  = 1 << 2,
+    UIViewAutoresizingFlexibleTopMargin    = 1 << 3,
+    UIViewAutoresizingFlexibleHeight       = 1 << 4,
+    UIViewAutoresizingFlexibleBottomMargin = 1 << 5,
+    UIViewAutoresizingAll = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleWidth
 };
 
 @interface RuntimeStub : NSObject<NSCopying, NSObject>
