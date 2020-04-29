@@ -1,5 +1,9 @@
 # codegen
 
+[![NPM Version][npm-image]][npm-url]
+[![Build Status](https://travis-ci.org/dart-native/codegen.svg?branch=master)](https://travis-ci.org/dart-native/codegen)
+
+
 Generate Dart bindings from native code. It's based on [dart_native](https://pub.dev/packages/dart_native).
 
 It's still under development.
@@ -27,3 +31,7 @@ Options:
 ## License
 
 [BSD 3-Clause License](https://github.com/dart-native/codegen/blob/master/LICENSE).
+
+
+[npm-image]: https://img.shields.io/npm/v/@dartnative/codegen.svg
+[npm-url]: https://npmjs.org/package/@dartnative/codegen

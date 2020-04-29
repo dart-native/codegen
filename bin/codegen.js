@@ -54,17 +54,17 @@ function writeOutputToFileByPath(result, srcPath){
 function callback(result, srcPath, error) {
     if (result) {
         writeOutputToFileByPath(result, srcPath)
-        formatDartFile(srcPath)
     }
 }
 
 function formatDartFile(dartPath) {
-    exec('flutter format ' + path.dirname(dartPath), (err, stdout, stderr) => {
+    var command = 'flutter format ' + path.dirname(dartPath)
+    exec(command, (err, stdout, stderr) => {
         console.log(err + stdout + stderr)
     })
 }
 
-program.version('0.0.1')
+program.version('1.0.0')
 
 program
     .arguments('<input>', 'Iutput directory')
@@ -88,7 +88,8 @@ program
             new DNObjectiveConverter(dir, callback)
             console.log(dir)
         })
-        console.log('finished')
+        formatDartFile(outputDir)
+        console.log('codegen finished')
     })
 
 program.parse(process.argv)
