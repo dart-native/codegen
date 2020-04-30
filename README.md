@@ -6,6 +6,9 @@
 
 Generate Dart bindings from native code. It's based on [dart_native](https://pub.dev/packages/dart_native).
 
+This is the cyan part(DartNative Codegen) in the picture below:
+![](https://github.com/dart-native/dart_native/blob/master/images/dartnative.png?raw=true)
+
 It's still under development.
 
 ## Installation
