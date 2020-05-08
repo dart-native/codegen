@@ -44,11 +44,7 @@ function writeOutputToFileByPath(result, srcPath){
     var srcFile = srcPath.substr(srcPath.lastIndexOf('/') + 1)
     var dartFile = srcFile.substring(0,srcFile.indexOf('.')) + '.dart'
     var outputFile = outputDir ? path.join(outputDir, dartFile) : dartFile
-    if (fs.existsSync(outputFile)) {
-        fs.appendFileSync(outputFile, '\r\n\r\n' + result)
-    }else{
-        fs.writeFileSync(outputFile, result)
-    }
+    fs.writeFileSync(outputFile, result)
 }
 
 function callback(result, srcPath, error) {

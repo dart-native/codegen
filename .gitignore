@@ -116,3 +116,34 @@ dist
 
 # output dart
 *.dart
+
+# Flutter/Dart/Pub related
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+
+# Antlr
+
+**/.DS_Store
+/**/.project
+/**/.classpath
+/**/.settings/
+/**/target
+/**/bin
+
+# Visual Studio Generated
+.antlr
+.fetch_time_cache
+/.vs
+.vscode/
+.gradle/
+
+#IntelliJ Idea project files
+.idea/
+*.iml
+/**/gen
