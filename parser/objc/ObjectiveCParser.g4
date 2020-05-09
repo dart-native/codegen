@@ -175,7 +175,7 @@ instanceMethodDeclaration
     ;
 
 methodDeclaration
-    : methodType? methodSelector macro? ';'
+    : methodType? methodSelector macro* ';'
     ;
 
 implementationDefinitionList

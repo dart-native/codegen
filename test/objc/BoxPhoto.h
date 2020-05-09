@@ -20,7 +20,7 @@ typedef NS_OPTIONS(NSInteger, BoxPermissions)
 @interface BoxPhoto : ProviderFilePhoto
 {
 }
--(instancetype)initWithDictionary:(NSDictionary*)photo index:(NSInteger)index box:(BoxSession*)box ;
+- (instancetype)initWithDictionary:(NSDictionary *)photo index:(NSInteger)index box:(BoxSession *)box NS_SWIFT_NOTHROW NS_DESIGNATED_INITIALIZER;
 -(instancetype)initUserInfoWithDictionary:(NSDictionary*)photo box:(BoxSession*)box ;
 -(NSString*)stringValue:(NSDictionary*)photo name:(NSString*)name;
 @property(nonatomic,assign) BoxPermissions permissions;
