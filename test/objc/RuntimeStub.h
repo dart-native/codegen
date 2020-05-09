@@ -40,6 +40,7 @@ typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
 - (void)fooBOOLAnonFunc:(BOOL)a block:(int(^)(BOOL a, NSString *b))block;
 - (NSMutableSet<NSString *> *)fooMutable:(BOOL)a bar:(NSMutableArray<NSMutableArray *> *)b c:(NSMutableArray *)c;
 - (void)fooEnum:(RuntimeStubEnum)aEnum;
+- (void)foolNullable:(nullable NSString *)a b:(int _Nullable)b c:(NSString * __nullable)c d:(int)d;
 @end
 
 @interface RuntimeStub(Foo)
