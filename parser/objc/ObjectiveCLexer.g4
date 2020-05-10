@@ -251,6 +251,9 @@ FLOATING_POINT_LITERAL
                         | Dec+ (Exponent FloatTypeSuffix? | FloatTypeSuffix)
                         ;
 
+VERSION_SEMATIC:
+	FLOATING_POINT_LITERAL (DOT DECIMAL_LITERAL)?;
+
 // Comments and whitespaces
 
 WS:                       Ws+             -> channel(HIDDEN);

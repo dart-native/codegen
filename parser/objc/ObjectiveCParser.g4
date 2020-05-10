@@ -564,7 +564,12 @@ pointer
     ;
 
 macro
-    : identifier (LP primaryExpression (',' primaryExpression)* RP)?
+    :
+	identifier (
+		LP (primaryExpression | osVersion) (
+			',' (primaryExpression | osVersion)
+		)* RP
+	)?
     ;
 
 arrayInitializer
@@ -771,6 +776,15 @@ argumentExpression
     : expression
     | typeSpecifier
     ;
+
+osVersion
+:
+	(os = identifier) (
+		LP min = (FLOATING_POINT_LITERAL | VERSION_SEMATIC) (
+			',' max = (FLOATING_POINT_LITERAL | VERSION_SEMATIC)
+		)? RP
+	)?;
+
 
 primaryExpression
     : identifier

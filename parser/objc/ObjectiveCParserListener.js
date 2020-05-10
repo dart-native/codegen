@@ -1271,6 +1271,15 @@ ObjectiveCParserListener.prototype.exitArgumentExpression = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ObjectiveCParser#osVersion.
+ObjectiveCParserListener.prototype.enterOsVersion = function(ctx) {
+};
+
+// Exit a parse tree produced by ObjectiveCParser#osVersion.
+ObjectiveCParserListener.prototype.exitOsVersion = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ObjectiveCParser#primaryExpression.
 ObjectiveCParserListener.prototype.enterPrimaryExpression = function(ctx) {
 };
