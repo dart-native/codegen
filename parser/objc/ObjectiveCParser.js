@@ -12754,6 +12754,10 @@ function MacroContext(parser, parent, invokingState) {
 	antlr4.ParserRuleContext.call(this, parent, invokingState);
     this.parser = parser;
     this.ruleIndex = ObjectiveCParser.RULE_macro;
+    this._primaryExpression = null; // PrimaryExpressionContext
+    this.messages = []; // of PrimaryExpressionContexts
+    this._osVersion = null; // OsVersionContext
+    this.osVersions = []; // of OsVersionContexts
     return this;
 }
 
@@ -12844,12 +12848,14 @@ ObjectiveCParser.prototype.macro = function() {
             switch(la_) {
             case 1:
                 this.state = 1227;
-                this.primaryExpression();
+                localctx._primaryExpression = this.primaryExpression();
+                localctx.messages.push(localctx._primaryExpression);
                 break;
 
             case 2:
                 this.state = 1228;
-                this.osVersion();
+                localctx._osVersion = this.osVersion();
+                localctx.osVersions.push(localctx._osVersion);
                 break;
 
             }
@@ -12865,12 +12871,14 @@ ObjectiveCParser.prototype.macro = function() {
                 switch(la_) {
                 case 1:
                     this.state = 1232;
-                    this.primaryExpression();
+                    localctx._primaryExpression = this.primaryExpression();
+                    localctx.messages.push(localctx._primaryExpression);
                     break;
 
                 case 2:
                     this.state = 1233;
-                    this.osVersion();
+                    localctx._osVersion = this.osVersion();
+                    localctx.osVersions.push(localctx._osVersion);
                     break;
 
                 }
@@ -17037,7 +17045,7 @@ function PostfixContext(parser, parent, invokingState) {
     this.ruleIndex = ObjectiveCParser.RULE_postfix;
     this._RP = null; // Token
     this.macroArguments = []; // of Tokens
-    this._tset3171 = null; // Token
+    this._tset3191 = null; // Token
     this.op = null; // Token
     return this;
 }
@@ -17169,16 +17177,16 @@ ObjectiveCParser.prototype.postfix = function() {
 
                 case 2:
                     this.state = 1661;
-                    localctx._tset3171 = this._input.LT(1);
+                    localctx._tset3191 = this._input.LT(1);
                     _la = this._input.LA(1);
                     if(_la<=0 || _la===ObjectiveCParser.RP) {
-                        localctx._tset3171 = this._errHandler.recoverInline(this);
+                        localctx._tset3191 = this._errHandler.recoverInline(this);
                     }
                     else {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    localctx.macroArguments.push(localctx._tset3171);
+                    localctx.macroArguments.push(localctx._tset3191);
                     break;
 
                 }

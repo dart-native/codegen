@@ -566,8 +566,14 @@ pointer
 macro
     :
 	identifier (
-		LP (primaryExpression | osVersion) (
-			',' (primaryExpression | osVersion)
+		LP (
+			messages += primaryExpression
+			| osVersions += osVersion
+		) (
+			',' (
+				messages += primaryExpression
+				| osVersions += osVersion
+			)
 		)* RP
 	)?
     ;
