@@ -17,6 +17,7 @@ typedef NS_OPTIONS(NSInteger, BoxPermissions)
 
 } ;
 
+API_AVAILABLE(ios(6.0))
 @interface BoxPhoto : ProviderFilePhoto
 {
 }

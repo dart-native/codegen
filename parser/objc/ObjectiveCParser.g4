@@ -61,7 +61,7 @@ importDeclaration
     ;
 
 classInterface
-    : IB_DESIGNABLE?
+    : IB_DESIGNABLE? macro*
       '@interface'
        className=genericTypeSpecifier (':' superclassName=identifier)? (LT protocolList GT)? instanceVariables? interfaceDeclarationList?
       '@end'
@@ -434,7 +434,7 @@ structOrUnionSpecifier
     ;
 
 fieldDeclaration
-    : specifierQualifierList fieldDeclaratorList macro? ';'
+    : specifierQualifierList fieldDeclaratorList macro* ';'
     ;
 
 specifierQualifierList
