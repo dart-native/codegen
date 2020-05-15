@@ -534,11 +534,11 @@ enumSpecifier
     ;
 
 enumeratorList
-    : enumerator (',' enumerator)* ','?
+    : list += enumerator (',' list += enumerator)* ','?
     ;
 
 enumerator
-    : enumeratorIdentifier ('=' expression)? macro*
+    : name = enumeratorIdentifier ('=' value = expression)? macro*
     ;
 
 enumeratorIdentifier

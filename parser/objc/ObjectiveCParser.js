@@ -12108,6 +12108,8 @@ function EnumeratorListContext(parser, parent, invokingState) {
 	antlr4.ParserRuleContext.call(this, parent, invokingState);
     this.parser = parser;
     this.ruleIndex = ObjectiveCParser.RULE_enumeratorList;
+    this._enumerator = null; // EnumeratorContext
+    this.list = []; // of EnumeratorContexts
     return this;
 }
 
@@ -12162,7 +12164,8 @@ ObjectiveCParser.prototype.enumeratorList = function() {
     try {
         this.enterOuterAlt(localctx, 1);
         this.state = 1172;
-        this.enumerator();
+        localctx._enumerator = this.enumerator();
+        localctx.list.push(localctx._enumerator);
         this.state = 1177;
         this._errHandler.sync(this);
         var _alt = this._interp.adaptivePredict(this._input,136,this._ctx)
@@ -12171,7 +12174,8 @@ ObjectiveCParser.prototype.enumeratorList = function() {
                 this.state = 1173;
                 this.match(ObjectiveCParser.COMMA);
                 this.state = 1174;
-                this.enumerator(); 
+                localctx._enumerator = this.enumerator();
+                localctx.list.push(localctx._enumerator); 
             }
             this.state = 1179;
             this._errHandler.sync(this);
@@ -12211,6 +12215,8 @@ function EnumeratorContext(parser, parent, invokingState) {
 	antlr4.ParserRuleContext.call(this, parent, invokingState);
     this.parser = parser;
     this.ruleIndex = ObjectiveCParser.RULE_enumerator;
+    this.name = null; // EnumeratorIdentifierContext
+    this.value = null; // ExpressionContext
     return this;
 }
 
@@ -12225,10 +12231,6 @@ EnumeratorContext.prototype.ASSIGNMENT = function() {
     return this.getToken(ObjectiveCParser.ASSIGNMENT, 0);
 };
 
-EnumeratorContext.prototype.expression = function() {
-    return this.getTypedRuleContext(ExpressionContext,0);
-};
-
 EnumeratorContext.prototype.macro = function(i) {
     if(i===undefined) {
         i = null;
@@ -12238,6 +12240,10 @@ EnumeratorContext.prototype.macro = function(i) {
     } else {
         return this.getTypedRuleContext(MacroContext,i);
     }
+};
+
+EnumeratorContext.prototype.expression = function() {
+    return this.getTypedRuleContext(ExpressionContext,0);
 };
 
 EnumeratorContext.prototype.enterRule = function(listener) {
@@ -12265,7 +12271,7 @@ ObjectiveCParser.prototype.enumerator = function() {
     try {
         this.enterOuterAlt(localctx, 1);
         this.state = 1183;
-        this.enumeratorIdentifier();
+        localctx.name = this.enumeratorIdentifier();
         this.state = 1186;
         this._errHandler.sync(this);
         _la = this._input.LA(1);
@@ -12273,7 +12279,7 @@ ObjectiveCParser.prototype.enumerator = function() {
             this.state = 1184;
             this.match(ObjectiveCParser.ASSIGNMENT);
             this.state = 1185;
-            this.expression(0);
+            localctx.value = this.expression(0);
         }
 
         this.state = 1191;
@@ -17171,7 +17177,7 @@ function PostfixContext(parser, parent, invokingState) {
     this.ruleIndex = ObjectiveCParser.RULE_postfix;
     this._RP = null; // Token
     this.macroArguments = []; // of Tokens
-    this._tset3219 = null; // Token
+    this._tset3235 = null; // Token
     this.op = null; // Token
     return this;
 }
@@ -17303,16 +17309,16 @@ ObjectiveCParser.prototype.postfix = function() {
 
                 case 2:
                     this.state = 1677;
-                    localctx._tset3219 = this._input.LT(1);
+                    localctx._tset3235 = this._input.LT(1);
                     _la = this._input.LA(1);
                     if(_la<=0 || _la===ObjectiveCParser.RP) {
-                        localctx._tset3219 = this._errHandler.recoverInline(this);
+                        localctx._tset3235 = this._errHandler.recoverInline(this);
                     }
                     else {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    localctx.macroArguments.push(localctx._tset3219);
+                    localctx.macroArguments.push(localctx._tset3235);
                     break;
 
                 }
