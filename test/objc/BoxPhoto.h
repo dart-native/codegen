@@ -11,11 +11,29 @@
 
 @class BoxSession;
 
+API_UNAVAILABLE(ios)
+enum {
+    aa = 0,
+} API_UNAVAILABLE(ios);
+
+typedef enum aaaa : NSUInteger {
+    a,
+    b,
+    c,
+} MyEnum API_UNAVAILABLE(macos);
+
+API_UNAVAILABLE(ios)
 typedef NS_OPTIONS(NSInteger, BoxPermissions) 
 {
-    BoxPermissionUnknown = 0, BoxPermissionDelete = 1, BoxPermissionDownload = 2,  BoxPermissionInvite = 4, BoxPermissionRename = 8, BoxPermissionShareAccess = 16, BoxPermissionShare = 32, BoxPermissionUpload = 64
-
-} ;
+    BoxPermissionUnknown = 0 API_AVAILABLE(ios(13.0)) API_UNAVAILABLE(tvos), 
+    BoxPermissionDelete = 1, 
+    BoxPermissionDownload = 2,  
+    BoxPermissionInvite = 4, 
+    BoxPermissionRename = 8, 
+    BoxPermissionShareAccess = 16, 
+    BoxPermissionShare = 32, 
+    BoxPermissionUpload = 64
+} API_UNAVAILABLE(tvos);
 
 API_AVAILABLE(ios(6.0))
 @interface BoxPhoto : ProviderFilePhoto

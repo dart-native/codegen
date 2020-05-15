@@ -387,7 +387,7 @@ functionCallExpression
     ;
 
 enumDeclaration
-    : attributeSpecifier? TYPEDEF? enumSpecifier identifier? ';'
+    : (attributeSpecifier | macro)* TYPEDEF? enumSpecifier name = identifier? macro* ';'
     ;
 
 varDeclaration
@@ -529,8 +529,8 @@ fieldDeclarator
     ;
 
 enumSpecifier
-    : 'enum' (identifier? ':' typeName)? (identifier ('{' enumeratorList '}')? | '{' enumeratorList '}')
-    | ('NS_OPTIONS' | 'NS_ENUM') LP typeName ',' identifier RP '{' enumeratorList '}'
+    : 'enum' (name = identifier? ':' typeName)? (identifier ('{' enumeratorList '}')? | '{' enumeratorList '}')
+	| type = ('NS_OPTIONS' | 'NS_ENUM') LP typeName ',' name = identifier RP '{' enumeratorList '}'
     ;
 
 enumeratorList
@@ -538,7 +538,7 @@ enumeratorList
     ;
 
 enumerator
-    : enumeratorIdentifier ('=' expression)?
+    : enumeratorIdentifier ('=' expression)? macro*
     ;
 
 enumeratorIdentifier
