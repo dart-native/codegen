@@ -42,7 +42,7 @@ function recFindByExt(base, ext, files, result) {
 
 function writeOutputToFileByPath(result, srcPath){
     var srcFile = srcPath.substr(srcPath.lastIndexOf('/') + 1)
-    var dartFile = srcFile.substring(0,srcFile.indexOf('.')) + '.dart'
+    var dartFile = srcFile.substring(0, srcFile.indexOf('.')).toLowerCase() + '.dart'
     var outputFile = outputDir ? path.join(outputDir, dartFile) : dartFile
     fs.writeFileSync(outputFile, result)
 }
@@ -63,15 +63,29 @@ function formatDartFile(dartPath) {
     })
 }
 
+function createFlutterPackage(packageName) {
+    var command = 'flutter create --template=package ' + packageName
+    exec(command, (err, stdout, stderr) => {
+        if (err) {
+            console.log(err)
+        }
+        console.log(stdout + stderr)
+    })
+}
+
 program.version('1.0.0')
 
 program
     .arguments('<input>', 'Iutput directory')
-    .option('-l, --language <language>', 'Input Language')
+    .option('-l, --language <language>', '[objc(default), java]')
     .option('-o, --output <output>', 'Output directory')
-    .description('generate dart code from native api.')
+    .option('-p, --package <package>', 'Generate a shareable Flutter project containing modular Dart code.')
+    .description('Generate dart code from native API.')
     .action(function (input, options) {
         var ext
+        if (!options.language) {
+            options.language = 'objc'
+        }
         if (options.language == 'objc') {
             ext = 'h'
         }
@@ -83,6 +97,13 @@ program
             outputDir = options.output
         }
 
+        var package = options.package
+        if (package) {
+            outputDir = path.join(outputDir, package)
+            createFlutterPackage(outputDir)
+            outputDir = path.join(outputDir, 'lib')
+        }
+        console.log('Output Dir: ' + outputDir)
         dirs.forEach((dir) => {
             new DNObjectiveConverter(dir, callback)
             console.log(dir)
