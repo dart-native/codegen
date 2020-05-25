@@ -6,7 +6,14 @@
 
 Generate Dart bindings from native code. It's based on [dart_native](https://pub.dev/packages/dart_native).
 
-This is the cyan part(DartNative Codegen) in the picture below:
+![](images/introduction.png)
+
+You can use codegen to convert native SDK into Flutter SDK. Such as Login SDK:
+
+![](images/login_sample.png)
+
+Codegen is a part of DartNative. It's the cyan part(DartNative Codegen) in the picture below:
+
 ![](https://github.com/dart-native/dart_native/blob/master/images/dartnative.png?raw=true)
 
 It's still under development.
@@ -22,12 +29,13 @@ $ npm install -g @dartnative/codegen
 ```
 Usage: codegen [options] <input>
 
-generate dart code from native api.
+Generate dart code from native API.
 
 Options:
   -V, --version              output the version number
-  -l, --language <language>  Input Language
+  -l, --language <language>  [objc(default), java]
   -o, --output <output>      Output directory
+  -p, --package <package>    Generate a shareable Flutter project containing modular Dart code.
   -h, --help                 display help for command
 ```
 
