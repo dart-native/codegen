@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const { program } = require('commander')
-const { exec } = require('child_process')
+const { execSync } = require('child_process')
 var DNObjectiveConverter = require('../lib/objc/DNObjectiveConverter').DNObjectiveConverter
 const fs = require("fs")
 const path = require("path")
@@ -23,7 +23,10 @@ function mkdirs(dirname) {
 
 function recFindByExt(base, ext, files, result) {
     if (!fs.statSync(base).isDirectory()) {
-        return [base]
+        if (base.substr(-1 * (ext.length + 1)) == '.' + ext) {
+            return [base]
+        }
+        return []
     }
     files = files || fs.readdirSync(base)
     result = result || []
@@ -64,22 +67,12 @@ function callback(result, srcPath, error) {
 
 function formatDartFile(dartPath) {
     var command = 'flutter format ' + path.dirname(dartPath)
-    exec(command, (err, stdout, stderr) => {
-        if (err) {
-            console.log(err)
-        }
-        console.log(stdout + stderr)
-    })
+    execSync(command, { stdio: 'inherit' })
 }
 
 function createFlutterPackage(packageName) {
     var command = 'flutter create --template=package ' + packageName
-    exec(command, (err, stdout, stderr) => {
-        if (err) {
-            console.log(err)
-        }
-        console.log(stdout + stderr)
-    })
+    execSync(command, { stdio: 'inherit' })
 }
 
 function writeDependencyToPubSpec(filePath) {
@@ -93,46 +86,61 @@ function writeDependencyToPubSpec(filePath) {
     fs.writeFileSync(filePath, yaml.safeDump(doc).replace(/null/g,''))
 }
 
-program.version('1.0.0')
+program.version('1.0.2')
 
 program
     .arguments('<input>', 'Iutput directory')
-    .option('-l, --language <language>', '[objc(default), java]')
+    .option('-l, --language <language>', '[objc, java, auto(default)]')
     .option('-o, --output <output>', 'Output directory')
     .option('-p, --package <package>', 'Generate a shareable Flutter project containing modular Dart code.')
     .description('Generate dart code from native API.')
     .action(function (input, options) {
-        var ext
-        if (!options.language) {
-            options.language = 'objc'
-        }
-        if (options.language == 'objc') {
-            ext = 'h'
-        }
-        const dirs = recFindByExt(input, ext)
-        console.log(dirs)
-
-        if (options.output) {
-            mkdirs(options.output)
-            outputDir = options.output
+        language = options.language
+        if (!language) {
+            language = 'auto'
         }
 
-        var package = options.package
-        if (package) {
-            outputDir = path.join(outputDir, package)
+        var extMap = {'objc': ['h'], 'java': ['java'], 'auto': ['h', 'java']}
+        var extArray = extMap[language]
+
+        outputDir = options.output
+        if (outputDir) {
+            mkdirs(outputDir)
+        }
+
+        outputPackage = options.package
+        if (outputPackage) {
+            outputDir = path.join(outputDir, outputPackage)
             createFlutterPackage(outputDir)
             outputDir = path.join(outputDir, 'lib')
-            outputPackage = options.package
         }
+
         console.log('Output Dir: ' + outputDir)
-        dirs.forEach((dir) => {
-            new DNObjectiveConverter(dir, callback)
-            console.log(dir)
+
+        var baseOutputDir = outputDir
+        extArray.forEach((ext) => {
+            var files = recFindByExt(input, ext)
+            if (files.length == 0) {
+                return
+            }
+            var extToLang = {'h': 'objc', 'java': 'java'}
+            outputDir = path.join(baseOutputDir, extToLang[ext])
+            mkdirs(outputDir)
+            
+            files.forEach((file) => {
+                console.log('processing ' + file)
+                if (ext == 'h') {
+                    new DNObjectiveConverter(file, callback)
+                } else if (ext == 'java') {
+                    // TODO: handle java
+                }
+            })
         })
+        outputDir = baseOutputDir
         formatDartFile(outputDir)
 
-        if(package) {
-            var filePath = path.join(path.join(options.output, package),'pubspec.yaml')
+        if (outputPackage) {
+            var filePath = path.join(path.join(options.output, outputPackage), 'pubspec.yaml')
             writeDependencyToPubSpec(filePath)
         }
         console.log('codegen finished')
