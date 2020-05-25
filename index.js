@@ -1,6 +1,6 @@
 var DNObjectiveConverter = require('./lib/objc/DNObjectiveConverter').DNObjectiveConverter
 
-new DNObjectiveConverter("./test/objc/BoxPhoto.h", callback)
+new DNObjectiveConverter("./test/objc/RuntimeStub.h", callback)
 
 function callback(result, path, error) {
     console.log('result:\n' + result + '\n\npath:\n' + path)

@@ -56,7 +56,10 @@ function callback(result, srcPath, error) {
 function formatDartFile(dartPath) {
     var command = 'flutter format ' + path.dirname(dartPath)
     exec(command, (err, stdout, stderr) => {
-        console.log(err + stdout + stderr)
+        if (err) {
+            console.log(err)
+        }
+        console.log(stdout + stderr)
     })
 }
 
