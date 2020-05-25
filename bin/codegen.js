@@ -3,9 +3,12 @@
 const { program } = require('commander')
 const { exec } = require('child_process')
 var DNObjectiveConverter = require('../lib/objc/DNObjectiveConverter').DNObjectiveConverter
-var fs = require("fs")
-var path = require("path")
+const fs = require("fs")
+const path = require("path")
+const yaml = require('js-yaml')
 var outputDir
+var outputPackage
+var packageSet = new Set()
 
 function mkdirs(dirname) {
     if (fs.existsSync(dirname)) {
@@ -48,8 +51,14 @@ function writeOutputToFileByPath(result, srcPath){
 }
 
 function callback(result, srcPath, error) {
-    if (result) {
-        writeOutputToFileByPath(result, srcPath)
+    if (!result) {
+       return
+    }
+
+    writeOutputToFileByPath(result.dartCode, srcPath)
+
+    if(outputPackage) {
+        result.packages.forEach(item => packageSet.add(item))
     }
 }
 
@@ -71,6 +80,17 @@ function createFlutterPackage(packageName) {
         }
         console.log(stdout + stderr)
     })
+}
+
+function writeDependencyToPubSpec(filePath) {
+    var doc = yaml.safeLoad(fs.readFileSync(filePath, 'utf8'));
+    packageSet.forEach(item => {
+        if(typeof(item) == "undefined") {
+            return
+        }
+        doc.dependencies[item] = { path : item}
+    })
+    fs.writeFileSync(filePath, yaml.safeDump(doc))
 }
 
 program.version('1.0.0')
@@ -102,6 +122,7 @@ program
             outputDir = path.join(outputDir, package)
             createFlutterPackage(outputDir)
             outputDir = path.join(outputDir, 'lib')
+            outputPackage = options.package
         }
         console.log('Output Dir: ' + outputDir)
         dirs.forEach((dir) => {
@@ -109,6 +130,11 @@ program
             console.log(dir)
         })
         formatDartFile(outputDir)
+
+        if(package) {
+            var filePath = path.join(path.join(options.output, package),'pubspec.yaml')
+            writeDependencyToPubSpec(filePath)
+        }
         console.log('codegen finished')
     })
 
