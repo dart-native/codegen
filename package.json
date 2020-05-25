@@ -1,6 +1,6 @@
 {
   "name": "@dartnative/codegen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Code generator for dart_native.",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "codegen -l objc test/objc/ -o test/dart/"
+    "test": "codegen test/ -o test/dart/ -p my_package"
   },
   "repository": {
     "type": "git",
