@@ -90,7 +90,7 @@ function writeDependencyToPubSpec(filePath) {
         }
         doc.dependencies[item] = { path : item}
     })
-    fs.writeFileSync(filePath, yaml.safeDump(doc))
+    fs.writeFileSync(filePath, yaml.safeDump(doc).replace(/null/g,''))
 }
 
 program.version('1.0.0')
