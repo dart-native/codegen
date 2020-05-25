@@ -33,7 +33,7 @@ Generate dart code from native API.
 
 Options:
   -V, --version              output the version number
-  -l, --language <language>  [objc(default), java]
+  -l, --language <language>  [objc, java, auto(default)]
   -o, --output <output>      Output directory
   -p, --package <package>    Generate a shareable Flutter project containing modular Dart code.
   -h, --help                 display help for command
