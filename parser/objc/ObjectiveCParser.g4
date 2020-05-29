@@ -90,8 +90,9 @@ genericTypeSpecifier
     ;
 
 protocolDeclaration
-    : '@protocol'
-       protocolName (LT protocolList GT)? protocolDeclarationSection*
+    : macro* 
+      '@protocol'
+       name = protocolName (LT protocolList GT)? protocolDeclarationSection*
       '@end'
     ;
 

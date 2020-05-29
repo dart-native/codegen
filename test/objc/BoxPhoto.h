@@ -45,3 +45,8 @@ API_AVAILABLE(ios(6.0))
 @property(nonatomic,assign) BoxPermissions permissions;
 +(BoxPermissions)boxPermissionFromDictionary:(NSDictionary*)dict;
 @end
+
+API_AVAILABLE(ios(11.0))
+@protocol PhotoProtocol <NSObject>
+
+@end
