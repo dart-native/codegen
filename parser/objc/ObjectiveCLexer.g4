@@ -149,6 +149,11 @@ NULL_RESETTABLE:          'null_resettable';
 NS_INLINE:                'NS_INLINE';
 NS_ENUM:                  'NS_ENUM';
 NS_OPTIONS:               'NS_OPTIONS';
+NS_CLOSED_ENUM:           'NS_CLOSED_ENUM';
+NS_STRING_ENUM:           'NS_STRING_ENUM';
+NS_TYPED_ENUM:            'NS_TYPED_ENUM';
+NS_TYPED_EXTENSIBLE_ENUM: 'NS_TYPED_EXTENSIBLE_ENUM';
+NS_ERROR_ENUM:            'NS_ERROR_ENUM';
 
 // Property attributes
 

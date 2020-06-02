@@ -25,7 +25,7 @@ typedef enum aaaa : NSUInteger {
 API_UNAVAILABLE(ios)
 typedef NS_OPTIONS(NSInteger, BoxPermissions) 
 {
-    BoxPermissionUnknown = 0 API_AVAILABLE(ios(13.0)) API_UNAVAILABLE(tvos), 
+    BoxPermissionUnknown API_AVAILABLE(ios(13.0)) API_UNAVAILABLE(tvos) = 0, 
     BoxPermissionDelete = 1, 
     BoxPermissionDownload = 2,  
     BoxPermissionInvite = 4, 
@@ -34,6 +34,12 @@ typedef NS_OPTIONS(NSInteger, BoxPermissions)
     BoxPermissionShare = 32, 
     BoxPermissionUpload = 64
 } API_UNAVAILABLE(tvos);
+
+NS_ENUM(NSUInteger) {
+    MyEnumValueA API_AVAILABLE(ios(13.0)) API_UNAVAILABLE(tvos) = 0,
+    MyEnumValueB,
+    MyEnumValueC,
+};
 
 API_AVAILABLE(ios(6.0))
 @interface BoxPhoto : ProviderFilePhoto

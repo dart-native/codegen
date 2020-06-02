@@ -529,17 +529,24 @@ fieldDeclarator
     | declarator? ':' constant
     ;
 
-enumSpecifier
-    : 'enum' (name = identifier? ':' typeName)? (identifier ('{' enumeratorList '}')? | '{' enumeratorList '}')
-	| type = ('NS_OPTIONS' | 'NS_ENUM') LP typeName ',' name = identifier RP '{' enumeratorList '}'
-    ;
+enumSpecifier:
+	'enum' (name = identifier? ':' typeName)? (
+		identifier ('{' enumeratorList '}')?
+		| '{' enumeratorList '}'
+	)
+	| type = (
+		NS_OPTIONS
+		| NS_ENUM
+		| NS_ERROR_ENUM
+		| NS_CLOSED_ENUM
+	) LP typeName (',' name = identifier)? RP '{' enumeratorList '}';
 
 enumeratorList
     : list += enumerator (',' list += enumerator)* ','?
     ;
 
 enumerator
-    : name = enumeratorIdentifier ('=' value = expression)? macro*
+    : name = enumeratorIdentifier macro* ('=' value = expression)? 
     ;
 
 enumeratorIdentifier
