@@ -578,6 +578,15 @@ ObjectiveCParserListener.prototype.exitFunctionSignature = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ObjectiveCParser#functionPointer.
+ObjectiveCParserListener.prototype.enterFunctionPointer = function(ctx) {
+};
+
+// Exit a parse tree produced by ObjectiveCParser#functionPointer.
+ObjectiveCParserListener.prototype.exitFunctionPointer = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ObjectiveCParser#attribute.
 ObjectiveCParserListener.prototype.enterAttribute = function(ctx) {
 };

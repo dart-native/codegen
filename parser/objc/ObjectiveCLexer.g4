@@ -182,6 +182,7 @@ EXTERN_SUFFIX:            [_A-Z]+ '_EXTERN'                   -> channel(IGNORED
 IOS_SUFFIX:               [_A-Z]+ '_IOS(' ~')'+ ')'           -> channel(IGNORED_MACROS);
 MAC_SUFFIX:               [_A-Z]+ '_MAC(' ~')'+ ')'           -> channel(IGNORED_MACROS);
 TVOS_PROHIBITED:          '__TVOS_PROHIBITED'                 -> channel(IGNORED_MACROS);
+NS_NOESCAPE:              'NS_NOESCAPE'                       -> channel(IGNORED_MACROS);
 
 // Identifier
 

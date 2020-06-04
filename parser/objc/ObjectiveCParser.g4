@@ -63,13 +63,17 @@ importDeclaration
 classInterface
     : IB_DESIGNABLE? macro*
       '@interface'
-       className=genericTypeSpecifier (':' superclassName=identifier)? (LT protocolList GT)? instanceVariables? interfaceDeclarationList?
+	className = genericTypeSpecifier (
+		':' superclassName = identifier
+	)? (LT protocols = protocolList GT)? instanceVariables? interfaceDeclarationList?
       '@end'
     ;
 
 categoryInterface
-    : '@interface'
-       categoryName=genericTypeSpecifier LP className=identifier? RP (LT protocolList GT)? instanceVariables? interfaceDeclarationList?
+    : macro*
+      '@interface'
+        className = genericTypeSpecifier LP categoryName = identifier? RP (
+		LT protocols = protocolList GT)? instanceVariables? interfaceDeclarationList?
       '@end'
     ;
 
@@ -81,7 +85,7 @@ classImplementation
 
 categoryImplementation
     : '@implementation'
-       categoryName=genericTypeSpecifier LP className=identifier RP implementationDefinitionList?
+	    className=genericTypeSpecifier LP categoryName=identifier RP implementationDefinitionList?
       '@end'
     ;
 
@@ -92,7 +96,7 @@ genericTypeSpecifier
 protocolDeclaration
     : macro* 
       '@protocol'
-       name = protocolName (LT protocolList GT)? protocolDeclarationSection*
+       name = protocolName (LT protocols = protocolList GT)? protocolDeclarationSection*
       '@end'
     ;
 
@@ -110,7 +114,7 @@ classDeclarationList
     ;
 
 protocolList
-    : protocolName (',' protocolName)*
+    : list += protocolName (',' list += protocolName)*
     ;
 
 propertyDeclaration
@@ -140,7 +144,7 @@ propertyAttribute
 
 protocolName
     : LT protocolList GT
-    | ('__covariant' | '__contravariant')?  identifier
+    | ('__covariant' | '__contravariant')? name = identifier
     ;
 
 instanceVariables
@@ -200,12 +204,12 @@ methodDefinition
     ;
 
 methodSelector
-    : selector
+    : sel = selector
     | keywordDeclarator+ (',' '...')?
     ;
 
 keywordDeclarator
-    : selector? ':' methodType* arcBehaviourSpecifier? identifier
+    : sel = selector? ':' types += methodType* arcBehaviourSpecifier? name = identifier
     ;
 
 selector
@@ -348,6 +352,9 @@ functionSignature
     : declarationSpecifiers? identifier (LP parameterList? RP) attributeSpecifier?
     ;
 
+functionPointer:
+	declarationSpecifiers? (LP '*' name = identifier? RP) (LP parameterList? RP) attributeSpecifier?;
+
 attribute
     : attributeName attributeParameters?
     ;
@@ -396,7 +403,7 @@ varDeclaration
     ;
 
 typedefDeclaration
-    : attributeSpecifier? TYPEDEF (declarationSpecifiers typeDeclaratorList | declarationSpecifiers) ';'
+    : attributeSpecifier? TYPEDEF (declarationSpecifiers typeDeclaratorList | declarationSpecifiers | functionPointer) ';'
     ;
 
 typeDeclaratorList
@@ -601,6 +608,7 @@ initializerList
 typeName
     : specifierQualifierList abstractDeclarator?
     | blockType
+	| functionPointer
     ;
 
 abstractDeclarator
@@ -619,7 +627,7 @@ parameterDeclarationList
     ;
 
 parameterDeclaration
-    : declarationSpecifiers declarator
+    : declarationSpecifiers declarator?
     | 'void'
     ;
 
