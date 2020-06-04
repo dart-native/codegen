@@ -147,3 +147,7 @@ build/
 .idea/
 *.iml
 /**/gen
+
+# Custom
+/images
+/test

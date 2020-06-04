@@ -2,7 +2,10 @@ var DNObjectiveConverter = require('./lib/objc/DNObjectiveConverter').DNObjectiv
 
 new DNObjectiveConverter("./test/objc/RuntimeStub.h", callback)
 
-function callback(tree, path, error) {
-    console.log('tree:\n' + tree + '\npath:\n' + path + '\nerror:\n' + error)
+function callback(result, path, error) {
+    console.log('result:\n' + result.dartCode + '\n\npath:\n' + path)
+    if (error) {
+        console.log('\nerror:\n' + error)
+    }
 }
 

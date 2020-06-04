@@ -1,3 +1,7 @@
-## [0.0.1] - TODO: Add release date.
+## [1.0.2] - 2020-05-25
 
-* TODO: Describe initial release.
+* Support generating Flutter package.
+
+## [1.0.1] - 2020-05-23.
+
+* Support Objective-C.

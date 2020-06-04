@@ -1,6 +1,6 @@
 {
   "name": "@dartnative/codegen",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Code generator for dart_native.",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "codegen test/ -o test/dart/ -p my_package"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
   "homepage": "https://github.com/dart-native/codegen#readme",
   "dependencies": {
     "antlr4": "^4.8.0",
-    "commander": "^5.0.0"
+    "commander": "^5.0.0",
+    "js-yaml": "^3.14.0"
   },
   "devDependencies": {}
 }

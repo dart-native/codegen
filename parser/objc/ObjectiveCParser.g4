@@ -61,7 +61,7 @@ importDeclaration
     ;
 
 classInterface
-    : IB_DESIGNABLE?
+    : IB_DESIGNABLE? macro*
       '@interface'
        className=genericTypeSpecifier (':' superclassName=identifier)? (LT protocolList GT)? instanceVariables? interfaceDeclarationList?
       '@end'
@@ -90,8 +90,9 @@ genericTypeSpecifier
     ;
 
 protocolDeclaration
-    : '@protocol'
-       protocolName (LT protocolList GT)? protocolDeclarationSection*
+    : macro* 
+      '@protocol'
+       name = protocolName (LT protocolList GT)? protocolDeclarationSection*
       '@end'
     ;
 
@@ -175,7 +176,7 @@ instanceMethodDeclaration
     ;
 
 methodDeclaration
-    : methodType? methodSelector macro? ';'
+    : methodType? methodSelector macro* ';'
     ;
 
 implementationDefinitionList
@@ -387,7 +388,7 @@ functionCallExpression
     ;
 
 enumDeclaration
-    : attributeSpecifier? TYPEDEF? enumSpecifier identifier? ';'
+    : (attributeSpecifier | macro)* TYPEDEF? enumSpecifier name = identifier? macro* ';'
     ;
 
 varDeclaration
@@ -434,7 +435,7 @@ structOrUnionSpecifier
     ;
 
 fieldDeclaration
-    : specifierQualifierList fieldDeclaratorList macro? ';'
+    : specifierQualifierList fieldDeclaratorList macro* ';'
     ;
 
 specifierQualifierList
@@ -529,16 +530,16 @@ fieldDeclarator
     ;
 
 enumSpecifier
-    : 'enum' (identifier? ':' typeName)? (identifier ('{' enumeratorList '}')? | '{' enumeratorList '}')
-    | ('NS_OPTIONS' | 'NS_ENUM') LP typeName ',' identifier RP '{' enumeratorList '}'
+    : 'enum' (name = identifier? ':' typeName)? (identifier ('{' enumeratorList '}')? | '{' enumeratorList '}')
+	| type = ('NS_OPTIONS' | 'NS_ENUM') LP typeName ',' name = identifier RP '{' enumeratorList '}'
     ;
 
 enumeratorList
-    : enumerator (',' enumerator)* ','?
+    : list += enumerator (',' list += enumerator)* ','?
     ;
 
 enumerator
-    : enumeratorIdentifier ('=' expression)?
+    : name = enumeratorIdentifier ('=' value = expression)? macro*
     ;
 
 enumeratorIdentifier
@@ -564,7 +565,18 @@ pointer
     ;
 
 macro
-    : identifier (LP primaryExpression (',' primaryExpression)* RP)?
+    :
+	identifier (
+		LP (
+			messages += primaryExpression
+			| osVersions += osVersion
+		) (
+			',' (
+				messages += primaryExpression
+				| osVersions += osVersion
+			)
+		)* RP
+	)?
     ;
 
 arrayInitializer
@@ -771,6 +783,15 @@ argumentExpression
     : expression
     | typeSpecifier
     ;
+
+osVersion
+:
+	(os = identifier) (
+		LP min = (FLOATING_POINT_LITERAL | VERSION_SEMATIC) (
+			',' max = (FLOATING_POINT_LITERAL | VERSION_SEMATIC)
+		)? RP
+	)?;
+
 
 primaryExpression
     : identifier
