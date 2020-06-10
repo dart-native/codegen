@@ -802,8 +802,16 @@ argumentExpression
 osVersion
 :
 	(os = identifier) (
-		LP min = (FLOATING_POINT_LITERAL | VERSION_SEMATIC) (
-			',' max = (FLOATING_POINT_LITERAL | VERSION_SEMATIC)
+		LP min = (
+			FLOATING_POINT_LITERAL
+			| VERSION_SEMATIC
+			| IDENTIFIER
+		) (
+			',' max = (
+				FLOATING_POINT_LITERAL
+				| VERSION_SEMATIC
+				| IDENTIFIER
+			)
 		)? RP
 	)?;
 
