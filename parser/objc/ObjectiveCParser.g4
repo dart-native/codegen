@@ -61,7 +61,8 @@ importDeclaration
     ;
 
 classInterface
-    : IB_DESIGNABLE? macro*
+:
+	IB_DESIGNABLE? (macro | attributeSpecifier)*
       '@interface'
 	className = genericTypeSpecifier (
 		':' superclassName = identifier
@@ -70,7 +71,7 @@ classInterface
     ;
 
 categoryInterface
-    : macro*
+    : (macro | attributeSpecifier)*
       '@interface'
         className = genericTypeSpecifier LP categoryName = identifier? RP (
 		LT protocols = protocolList GT)? instanceVariables? interfaceDeclarationList?
@@ -94,7 +95,7 @@ genericTypeSpecifier
     ;
 
 protocolDeclaration
-    : macro* 
+    : (macro | attributeSpecifier)* 
       '@protocol'
        name = protocolName (LT protocols = protocolList GT)? protocolDeclarationSection*
       '@end'
@@ -185,7 +186,7 @@ instanceMethodDeclaration
     ;
 
 methodDeclaration
-    : methodType? methodSelector macro* ';'
+    : methodType? methodSelector (macro | attributeSpecifier)* ';'
     ;
 
 implementationDefinitionList
@@ -400,11 +401,11 @@ functionCallExpression
     ;
 
 enumDeclaration
-    : (attributeSpecifier | macro)* TYPEDEF? enumSpecifier name = identifier? macro* ';'
+    : (attributeSpecifier | macro)* TYPEDEF? enumSpecifier name = identifier? (macro | attributeSpecifier)* ';'
     ;
 
 varDeclaration
-    : (declarationSpecifiers initDeclaratorList | declarationSpecifiers) macro* ';'
+    : (declarationSpecifiers initDeclaratorList | declarationSpecifiers) (macro | attributeSpecifier)* ';'
     ;
 
 typedefDeclaration
@@ -431,7 +432,7 @@ declarationSpecifiers
     ;
 
 attributeSpecifier
-    : '__attribute__' LP LP attribute (',' attribute)* RP RP
+    : ATTRIBUTE LP LP attribute (',' attribute)* RP RP
     ;
 
 initDeclaratorList
@@ -447,7 +448,7 @@ structOrUnionSpecifier
     ;
 
 fieldDeclaration
-    : specifierQualifierList fieldDeclaratorList macro* ';'
+    : specifierQualifierList fieldDeclaratorList (macro | attributeSpecifier)* ';'
     ;
 
 specifierQualifierList
@@ -558,7 +559,7 @@ enumeratorList
     ;
 
 enumerator
-    : name = enumeratorIdentifier macro* ('=' value = expression)? 
+    : name = enumeratorIdentifier (macro | attributeSpecifier)* ('=' value = expression)? 
     ;
 
 enumeratorIdentifier
