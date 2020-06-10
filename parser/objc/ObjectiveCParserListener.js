@@ -110,6 +110,15 @@ ObjectiveCParserListener.prototype.exitProtocolDeclarationList = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ObjectiveCParser#classDeclaration.
+ObjectiveCParserListener.prototype.enterClassDeclaration = function(ctx) {
+};
+
+// Exit a parse tree produced by ObjectiveCParser#classDeclaration.
+ObjectiveCParserListener.prototype.exitClassDeclaration = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ObjectiveCParser#classDeclarationList.
 ObjectiveCParserListener.prototype.enterClassDeclarationList = function(ctx) {
 };

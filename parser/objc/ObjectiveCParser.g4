@@ -109,8 +109,13 @@ protocolDeclarationList
     : '@protocol' protocolList ';'
     ;
 
+classDeclaration
+    :
+	identifier (LT protocolList GT)?
+    ;
+
 classDeclarationList
-    : '@class' identifier (',' identifier)* ';'
+    : '@class' classDeclaration (',' classDeclaration)* ';'
     ;
 
 protocolList
@@ -399,7 +404,7 @@ enumDeclaration
     ;
 
 varDeclaration
-    : (declarationSpecifiers initDeclaratorList | declarationSpecifiers) ';'
+    : (declarationSpecifiers initDeclaratorList | declarationSpecifiers) macro* ';'
     ;
 
 typedefDeclaration
@@ -584,6 +589,7 @@ macro
 		LP (
 			messages += primaryExpression
 			| osVersions += osVersion
+			| identifier (DOT identifier)* (LP (identifier ':')* RP)?
 		) (
 			',' (
 				messages += primaryExpression

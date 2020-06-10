@@ -105,9 +105,10 @@ program
         var extArray = extMap[language]
 
         outputDir = options.output
-        if (outputDir) {
-            mkdirs(outputDir)
+        if (!outputDir) {
+            outputDir = process.cwd()
         }
+        mkdirs(outputDir)
 
         outputPackage = options.package
         if (outputPackage) {
