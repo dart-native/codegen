@@ -149,8 +149,11 @@ propertyAttribute
     ;
 
 protocolName
-    : LT protocolList GT
-    | ('__covariant' | '__contravariant')? name = identifier
+    :
+	LT protocolList GT
+	| ('__covariant' | '__contravariant')? name = identifier (
+		':' typeSpecifier
+	)?
     ;
 
 instanceVariables
