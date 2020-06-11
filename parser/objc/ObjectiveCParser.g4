@@ -359,7 +359,9 @@ functionSignature
     ;
 
 functionPointer:
-	declarationSpecifiers? (LP '*' name = identifier? RP) (LP parameterList? RP) attributeSpecifier?;
+	declarationSpecifiers? (
+		LP '*' nullabilitySpecifier? name = identifier? RP) (LP parameterList? RP) attributeSpecifier?
+    ;
 
 attribute
     : attributeName attributeParameters?
@@ -409,13 +411,14 @@ varDeclaration
     ;
 
 typedefDeclaration
-:
+    :
 	attributeSpecifier? TYPEDEF (
 		declarationSpecifiers typeDeclaratorList
 		| declarationSpecifiers
 		| functionPointer
 		| functionSignature
-	) macro* ';'
+		| structOrUnionSpecifier identifier
+	) (macro | attributeSpecifier)* ';'
     ;
 
 typeDeclaratorList
@@ -446,16 +449,17 @@ initDeclaratorList
     ;
 
 initDeclarator
-    : declarator ('=' initializer)?
+    : declarator (macro | attributeSpecifier)* ('=' initializer)?
     ;
 
 structOrUnionSpecifier
     : ('struct' | 'union') (identifier | identifier? '{' fieldDeclaration+ '}')
     ;
 
-fieldDeclaration
-    : specifierQualifierList fieldDeclaratorList (macro | attributeSpecifier)* ';'
-    ;
+fieldDeclaration: (
+		specifierQualifierList fieldDeclaratorList
+		| functionPointer
+	) (macro | attributeSpecifier)* ';';
 
 specifierQualifierList
     : (arcBehaviourSpecifier
@@ -519,7 +523,7 @@ protocolQualifier
     ;
 
 typeSpecifier
-    : 'void'
+    : ('void'
     | 'char'
     | 'short'
     | 'int'
@@ -532,7 +536,7 @@ typeSpecifier
     | genericTypeSpecifier
     | structOrUnionSpecifier
     | enumSpecifier
-    | identifier pointer?
+    | identifier) pointer?
     ;
 
 typeofExpression
