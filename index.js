@@ -1,6 +1,6 @@
-var DNObjectiveConverter = require('./lib/objc/DNObjectiveConverter').DNObjectiveConverter
+var convertFromObjectiveC = require('./lib/objc/DNObjectiveCConverter').convertFromObjectiveC
 
-new DNObjectiveConverter("./test/objc/DNTest.h", callback)
+convertFromObjectiveC("./test/objc/DNTest.h", callback)
 
 function callback(result, path, error) {
     console.log('result:\n' + result.dartCode + '\n\npath:\n' + path)

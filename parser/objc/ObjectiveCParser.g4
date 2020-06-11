@@ -347,7 +347,7 @@ autoreleaseStatement
     ;
 
 functionDeclaration
-    : functionSignature ';'
+    : functionSignature (macro | attributeSpecifier)* ';'
     ;
 
 functionDefinition
@@ -401,7 +401,7 @@ functionCallExpression
     ;
 
 enumDeclaration
-    : (attributeSpecifier | macro)* TYPEDEF? enumSpecifier name = identifier? (macro | attributeSpecifier)* ';'
+    : (macro | attributeSpecifier)* TYPEDEF? enumSpecifier name = identifier? (macro | attributeSpecifier)* ';'
     ;
 
 varDeclaration
@@ -409,7 +409,13 @@ varDeclaration
     ;
 
 typedefDeclaration
-    : attributeSpecifier? TYPEDEF (declarationSpecifiers typeDeclaratorList | declarationSpecifiers | functionPointer) ';'
+:
+	attributeSpecifier? TYPEDEF (
+		declarationSpecifiers typeDeclaratorList
+		| declarationSpecifiers
+		| functionPointer
+		| functionSignature
+	) macro* ';'
     ;
 
 typeDeclaratorList

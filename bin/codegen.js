@@ -2,7 +2,7 @@
 
 const { program } = require('commander')
 const { execSync } = require('child_process')
-var DNObjectiveConverter = require('../lib/objc/DNObjectiveConverter').DNObjectiveConverter
+var convertFromObjectiveC = require('../lib/objc/DNObjectiveCConverter').convertFromObjectiveC
 const fs = require("fs")
 const path = require("path")
 const yaml = require('js-yaml')
@@ -132,7 +132,7 @@ program
             files.forEach((file) => {
                 console.log('processing ' + file)
                 if (ext == 'h') {
-                    new DNObjectiveConverter(file, callback)
+                    convertFromObjectiveC(file, callback)
                 } else if (ext == 'java') {
                     // TODO: handle java
                 }
