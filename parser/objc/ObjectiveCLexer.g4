@@ -317,6 +317,7 @@ DIRECTIVE_BITAND:              '&'              -> channel(DIRECTIVE_CHANNEL);
 DIRECTIVE_BITOR:               '|'              -> channel(DIRECTIVE_CHANNEL);
 DIRECTIVE_BITXOR:              '^'              -> channel(DIRECTIVE_CHANNEL);
 DIRECTIVE_MOD:                 '%'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_DOT:                 '.'              -> channel(DIRECTIVE_CHANNEL);
 
 DIRECTIVE_WS:                  [ \t]+                           -> channel(HIDDEN), type(WS);
 DIRECTIVE_STRING:              StringStart                      -> channel(DEFAULT_TOKEN_CHANNEL), mode(STRING_MODE);

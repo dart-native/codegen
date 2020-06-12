@@ -151,7 +151,7 @@ propertyAttribute
 protocolName
     :
 	LT protocolList GT
-	| ('__covariant' | '__contravariant')? name = identifier (
+	| ('__covariant' | '__contravariant')? name = typeName (
 		':' typeSpecifier
 	)?
     ;
@@ -618,7 +618,7 @@ arrayInitializer
     ;
 
 structInitializer
-    : '{' ('.' expression (',' '.' expression)* ','?)? '}'
+    : '{' (DOT expression (',' DOT expression)* ','?)? '}'
     ;
 
 initializerList
@@ -649,6 +649,7 @@ parameterDeclarationList
 parameterDeclaration
     : declarationSpecifiers declarator?
     | 'void'
+    | functionPointer
     ;
 
 declarator
