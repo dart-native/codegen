@@ -181,11 +181,11 @@ interfaceDeclarationList
     ;
 
 classMethodDeclaration
-    : '+' methodDeclaration
+    : ADD methodDeclaration
     ;
 
 instanceMethodDeclaration
-    : '-' methodDeclaration
+    : SUB methodDeclaration
     ;
 
 methodDeclaration
@@ -201,11 +201,11 @@ implementationDefinitionList
     )+;
 
 classMethodDefinition
-    : '+' methodDefinition
+    : ADD methodDefinition
     ;
 
 instanceMethodDefinition
-    : '-' methodDefinition
+    : SUB methodDefinition
     ;
 
 methodDefinition
@@ -244,7 +244,7 @@ propertySynthesizeItem
     ;
 
 blockType
-    : nullabilitySpecifier? typeSpecifier nullabilitySpecifier? LP '^' (nullabilitySpecifier | typeSpecifier)? RP blockParameters?
+    : nullabilitySpecifier? typeSpecifier nullabilitySpecifier? LP BITXOR (nullabilitySpecifier | typeSpecifier)? RP blockParameters?
     ;
 
 genericsSpecifier
@@ -282,7 +282,7 @@ typeVariableDeclaratorOrName
     ;
 
 blockExpression
-    : '^' typeSpecifier? nullabilitySpecifier? blockParameters? compoundStatement
+    : BITXOR typeSpecifier? nullabilitySpecifier? blockParameters? compoundStatement
     ;
 
 messageExpression
@@ -363,7 +363,7 @@ functionSignature
 
 functionPointer:
 	declarationSpecifiers? (
-		LP '*' nullabilitySpecifier? name = identifier? RP) (LP parameterList? RP) attributeSpecifier?
+		LP MUL nullabilitySpecifier? name = identifier? RP) (LP parameterList? RP) attributeSpecifier?
     ;
 
 attribute
@@ -582,7 +582,7 @@ enumeratorIdentifier
 
 directDeclarator
     : (identifier | LP declarator RP) declaratorSuffix*
-    | LP '^' nullabilitySpecifier? identifier? RP blockParameters
+    | LP BITXOR nullabilitySpecifier? identifier? RP blockParameters
     ;
 
 declaratorSuffix
@@ -594,7 +594,7 @@ parameterList
     ;
 
 pointer
-    : '*' declarationSpecifiers? pointer?
+    : MUL declarationSpecifiers? pointer?
     ;
 
 macro
@@ -790,11 +790,11 @@ unaryExpression
     ;
 
 unaryOperator
-    : '&'
-    | '*'
-    | '+'
-    | '-'
-    | '~'
+    : BITAND
+    | MUL
+    | ADD
+    | SUB
+	| TILDE
     | BANG
     ;
 
@@ -855,8 +855,8 @@ constant
     : HEX_LITERAL
     | OCTAL_LITERAL
     | BINARY_LITERAL
-    | ('+' | '-')? DECIMAL_LITERAL
-    | ('+' | '-')? FLOATING_POINT_LITERAL
+    | (ADD | SUB)? DECIMAL_LITERAL
+    | (ADD | SUB)? FLOATING_POINT_LITERAL
     | CHARACTER_LITERAL
     | NIL
     | NULL

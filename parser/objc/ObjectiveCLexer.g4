@@ -223,7 +223,7 @@ MUL:                      '*';
 DIV:                      '/';
 BITAND:                   '&';
 BITOR:                    '|';
-BITXOR:                    '^';
+BITXOR:                   '^';
 MOD:                      '%';
 
 // Assignments
@@ -309,6 +309,14 @@ DIRECTIVE_LT:                  '<'              -> channel(DIRECTIVE_CHANNEL);
 DIRECTIVE_GT:                  '>'              -> channel(DIRECTIVE_CHANNEL);
 DIRECTIVE_LE:                  '<='             -> channel(DIRECTIVE_CHANNEL);
 DIRECTIVE_GE:                  '>='             -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_ADD:                 '+'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_SUB:                 '-'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_MUL:                 '*'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_DIV:                 '/'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_BITAND:              '&'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_BITOR:               '|'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_BITXOR:              '^'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_MOD:                 '%'              -> channel(DIRECTIVE_CHANNEL);
 
 DIRECTIVE_WS:                  [ \t]+                           -> channel(HIDDEN), type(WS);
 DIRECTIVE_STRING:              StringStart                      -> channel(DEFAULT_TOKEN_CHANNEL), mode(STRING_MODE);
