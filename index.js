@@ -1,5 +1,5 @@
 let workerScript = './lib/objc/DNObjectiveCConverter'
-let dataPath = "./test/objc/DNTest.h"
+let dataPath = "./test/objc/BoxPhoto.h"
 let main = require(workerScript).main
 
 main(dataPath, callback)

@@ -354,7 +354,8 @@ functionDeclaration
     ;
 
 functionDefinition
-    : functionSignature compoundStatement
+:
+	functionSignature (macro | attributeSpecifier)* compoundStatement
     ;
 
 functionSignature

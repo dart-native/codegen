@@ -47,7 +47,7 @@ function recFindByExt(base, ext, files, result) {
     return result
 }
 
-function writeOutputToFileByPath(result, srcPath){
+function writeOutputToFileByPath(result, srcPath) {
     var srcFile = srcPath.substr(srcPath.lastIndexOf('/') + 1)
     var dartFile = srcFile.substring(0, srcFile.indexOf('.')).toLowerCase() + '.dart'
     var outputFile = outputDir ? path.join(outputDir, dartFile) : dartFile
@@ -67,18 +67,21 @@ function createFlutterPackage(packageName) {
 function writeDependencyToPubSpec(filePath) {
     var doc = yaml.safeLoad(fs.readFileSync(filePath, 'utf8'));
     packageSet.forEach(item => {
-        if(typeof(item) == "undefined") {
+        if (typeof (item) == "undefined") {
             return
         }
         item = item.toLowerCase()
-        doc.dependencies[item] = { path : item}
+        doc.dependencies[item] = { path: item }
     })
-    fs.writeFileSync(filePath, yaml.safeDump(doc).replace(/null/g,''))
+    fs.writeFileSync(filePath, yaml.safeDump(doc).replace(/null/g, ''))
 }
 
 function generateDartWithWorker(path, script) {
     return new Promise((resolve, reject) => {
-        const worker = new Worker(script, { workerData: { path: path } });
+        const worker = new Worker(script, { 
+                workerData: { path: path }, 
+            resourceLimits: { maxOldGenerationSizeMb: 8 * 1024 } 
+        });
         worker.on("message", resolve);
         worker.on("error", reject);
     });
@@ -119,7 +122,7 @@ program
             language = 'auto'
         }
 
-        var extMap = {'objc': ['h'], 'java': ['java'], 'auto': ['h', 'java']}
+        var extMap = { 'objc': ['h'], 'java': ['java'], 'auto': ['h', 'java'] }
         var extArray = extMap[language]
 
         outputDir = options.output
@@ -140,7 +143,7 @@ program
         var baseOutputDir = outputDir
 
         const langForExtension = { 'h': 'objc', 'java': 'java' }
-        const scriptForExtension = { 'h': path.join(__dirname, '../lib/objc/DNObjectiveCConverter.js')}
+        const scriptForExtension = { 'h': path.join(__dirname, '../lib/objc/DNObjectiveCConverter.js') }
 
         var workItems = new Map()
         extArray.forEach((ext) => {
@@ -148,7 +151,7 @@ program
             if (files.length == 0) {
                 return
             }
-            
+
             outputDir = path.join(baseOutputDir, langForExtension[ext])
             mkdirs(outputDir)
 
