@@ -2,10 +2,11 @@
 
 const { program } = require('commander')
 const { execSync } = require('child_process')
-var convertFromObjectiveC = require('../lib/objc/DNObjectiveCConverter').convertFromObjectiveC
 const fs = require("fs")
 const path = require("path")
 const yaml = require('js-yaml')
+const { Worker } = require('worker_threads')
+
 var outputDir
 var outputPackage
 var packageSet = new Set()
@@ -53,18 +54,6 @@ function writeOutputToFileByPath(result, srcPath){
     fs.writeFileSync(outputFile, result)
 }
 
-function callback(result, srcPath, error) {
-    if (!result) {
-       return
-    }
-
-    writeOutputToFileByPath(result.dartCode, srcPath)
-
-    if(outputPackage) {
-        result.packages.forEach(item => packageSet.add(item))
-    }
-}
-
 function formatDartFile(dartPath) {
     var command = 'flutter format ' + path.dirname(dartPath)
     execSync(command, { stdio: 'inherit' })
@@ -87,6 +76,35 @@ function writeDependencyToPubSpec(filePath) {
     fs.writeFileSync(filePath, yaml.safeDump(doc).replace(/null/g,''))
 }
 
+function generateDartWithWorker(path, script) {
+    return new Promise((resolve, reject) => {
+        const worker = new Worker(script, { workerData: { path: path } });
+        worker.on("message", resolve);
+        worker.on("error", reject);
+    });
+};
+
+async function runWorkItems(workItems) {
+    const promises = Object.keys(workItems).map((path) => {
+        let script = workItems[path]
+        return generateDartWithWorker(path, script).then((msg) => {
+            if (msg.error) {
+                console.log('filePath:' + msg.path + '\nerror:' + msg.error)
+            }
+            let result = msg.result
+            if (!result) {
+                return
+            }
+            writeOutputToFileByPath(result.dartCode, msg.path)
+
+            if (outputPackage) {
+                result.packages.forEach(item => packageSet.add(item))
+            }
+        })
+    })
+    await Promise.all(promises)
+}
+
 program.version('1.0.2')
 
 program
@@ -95,7 +113,7 @@ program
     .option('-o, --output <output>', 'Output directory')
     .option('-p, --package <package>', 'Generate a shareable Flutter project containing modular Dart code.')
     .description('Generate dart code from native API.')
-    .action(function (input, options) {
+    .action(async function (input, options) {
         language = options.language
         if (!language) {
             language = 'auto'
@@ -120,24 +138,26 @@ program
         console.log('Output Dir: ' + outputDir)
 
         var baseOutputDir = outputDir
+
+        const langForExtension = { 'h': 'objc', 'java': 'java' }
+        const scriptForExtension = { 'h': path.join(__dirname, '../lib/objc/DNObjectiveCConverter.js')}
+
+        var workItems = new Map()
         extArray.forEach((ext) => {
-            var files = recFindByExt(input, ext)
+            let files = recFindByExt(input, ext)
             if (files.length == 0) {
                 return
             }
-            var extToLang = {'h': 'objc', 'java': 'java'}
-            outputDir = path.join(baseOutputDir, extToLang[ext])
-            mkdirs(outputDir)
             
+            outputDir = path.join(baseOutputDir, langForExtension[ext])
+            mkdirs(outputDir)
+
             files.forEach((file) => {
-                console.log('processing ' + file)
-                if (ext == 'h') {
-                    convertFromObjectiveC(file, callback)
-                } else if (ext == 'java') {
-                    // TODO: handle java
-                }
+                workItems[file] = scriptForExtension[ext];
             })
         })
+        await runWorkItems(workItems)
+
         outputDir = baseOutputDir
         formatDartFile(outputDir)
 

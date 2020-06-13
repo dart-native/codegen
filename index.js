@@ -1,11 +1,26 @@
-var convertFromObjectiveC = require('./lib/objc/DNObjectiveCConverter').convertFromObjectiveC
+let workerScript = './lib/objc/DNObjectiveCConverter.js'
+let dataPath = "./test/objc/BoxPhoto.h"
+const { Worker } = require("worker_threads");
 
-convertFromObjectiveC("./test/objc/DNTest.h", callback)
+const generateDartWithWorker = path => {
+    return new Promise((resolve, reject) => {
+        const worker = new Worker(workerScript, { workerData: { path: path } });
+        worker.on("message", resolve);
+        worker.on("error", reject);
+    });
+};
 
-function callback(result, path, error) {
-    console.log('result:\n' + result.dartCode + '\n\npath:\n' + path)
-    if (error) {
-        console.log('\nerror:\n' + error)
-    }
+async function run() {
+    const promise = generateDartWithWorker(dataPath).then((msg) => {
+        console.log('result:\n' + msg.result.dartCode + '\n\npath:\n' + msg.path)
+        if (msg.error) {
+            console.log('\nerror:\n' + msg.error)
+        }
+    })
+
+    const results = await Promise.all([promise])
+    console.log(results)
 }
+
+run()
 
