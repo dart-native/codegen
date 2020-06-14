@@ -143,20 +143,24 @@ program
         var baseOutputDir = outputDir
 
         const langForExtension = { 'h': 'objc', 'java': 'java' }
+        // TODO: handle java here
         const scriptForExtension = { 'h': path.join(__dirname, '../lib/objc/DNObjectiveCConverter.js') }
 
         var workItems = new Map()
         extArray.forEach((ext) => {
             let files = recFindByExt(input, ext)
-            if (files.length == 0) {
+            let script = scriptForExtension[ext]
+            if (files.length == 0 || !script) {
                 return
             }
 
             outputDir = path.join(baseOutputDir, langForExtension[ext])
             mkdirs(outputDir)
-
+            
             files.forEach((file) => {
-                workItems[file] = scriptForExtension[ext];
+                if (condition) {
+                    workItems[file] = script;
+                }
             })
         })
         await runWorkItems(workItems)
