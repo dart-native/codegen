@@ -273,7 +273,10 @@ boxExpression
     ;
 
 blockParameters
-    : LP ((typeVariableDeclaratorOrName | 'void') (',' typeVariableDeclaratorOrName)*)? RP
+:
+	LP (
+		(types += typeVariableDeclaratorOrName | 'void') (
+			',' types += typeVariableDeclaratorOrName)*)? RP
     ;
 
 typeVariableDeclaratorOrName
@@ -595,7 +598,7 @@ parameterList
     ;
 
 pointer
-    : MUL declarationSpecifiers? pointer?
+    : MUL declarationSpecifiers? nextPointer = pointer?
     ;
 
 macro

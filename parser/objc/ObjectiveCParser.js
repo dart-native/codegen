@@ -7229,6 +7229,8 @@ function BlockParametersContext(parser, parent, invokingState) {
 	antlr4.ParserRuleContext.call(this, parent, invokingState);
     this.parser = parser;
     this.ruleIndex = ObjectiveCParser.RULE_blockParameters;
+    this._typeVariableDeclaratorOrName = null; // TypeVariableDeclaratorOrNameContext
+    this.types = []; // of TypeVariableDeclaratorOrNameContexts
     return this;
 }
 
@@ -7243,6 +7245,10 @@ BlockParametersContext.prototype.RP = function() {
     return this.getToken(ObjectiveCParser.RP, 0);
 };
 
+BlockParametersContext.prototype.VOID = function() {
+    return this.getToken(ObjectiveCParser.VOID, 0);
+};
+
 BlockParametersContext.prototype.typeVariableDeclaratorOrName = function(i) {
     if(i===undefined) {
         i = null;
@@ -7252,10 +7258,6 @@ BlockParametersContext.prototype.typeVariableDeclaratorOrName = function(i) {
     } else {
         return this.getTypedRuleContext(TypeVariableDeclaratorOrNameContext,i);
     }
-};
-
-BlockParametersContext.prototype.VOID = function() {
-    return this.getToken(ObjectiveCParser.VOID, 0);
 };
 
 BlockParametersContext.prototype.COMMA = function(i) {
@@ -7306,7 +7308,8 @@ ObjectiveCParser.prototype.blockParameters = function() {
             switch(la_) {
             case 1:
                 this.state = 770;
-                this.typeVariableDeclaratorOrName();
+                localctx._typeVariableDeclaratorOrName = this.typeVariableDeclaratorOrName();
+                localctx.types.push(localctx._typeVariableDeclaratorOrName);
                 break;
 
             case 2:
@@ -7322,7 +7325,8 @@ ObjectiveCParser.prototype.blockParameters = function() {
                 this.state = 774;
                 this.match(ObjectiveCParser.COMMA);
                 this.state = 775;
-                this.typeVariableDeclaratorOrName();
+                localctx._typeVariableDeclaratorOrName = this.typeVariableDeclaratorOrName();
+                localctx.types.push(localctx._typeVariableDeclaratorOrName);
                 this.state = 780;
                 this._errHandler.sync(this);
                 _la = this._input.LA(1);
@@ -14252,6 +14256,7 @@ function PointerContext(parser, parent, invokingState) {
 	antlr4.ParserRuleContext.call(this, parent, invokingState);
     this.parser = parser;
     this.ruleIndex = ObjectiveCParser.RULE_pointer;
+    this.nextPointer = null; // PointerContext
     return this;
 }
 
@@ -14308,7 +14313,7 @@ ObjectiveCParser.prototype.pointer = function() {
         var la_ = this._interp.adaptivePredict(this._input,177,this._ctx);
         if(la_===1) {
             this.state = 1340;
-            this.pointer();
+            localctx.nextPointer = this.pointer();
 
         }
     } catch (re) {
@@ -18740,7 +18745,7 @@ function PostfixContext(parser, parent, invokingState) {
     this.ruleIndex = ObjectiveCParser.RULE_postfix;
     this._RP = null; // Token
     this.macroArguments = []; // of Tokens
-    this._tset3519 = null; // Token
+    this._tset3533 = null; // Token
     this.op = null; // Token
     return this;
 }
@@ -18872,16 +18877,16 @@ ObjectiveCParser.prototype.postfix = function() {
 
                 case 2:
                     this.state = 1802;
-                    localctx._tset3519 = this._input.LT(1);
+                    localctx._tset3533 = this._input.LT(1);
                     _la = this._input.LA(1);
                     if(_la<=0 || _la===ObjectiveCParser.RP) {
-                        localctx._tset3519 = this._errHandler.recoverInline(this);
+                        localctx._tset3533 = this._errHandler.recoverInline(this);
                     }
                     else {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    localctx.macroArguments.push(localctx._tset3519);
+                    localctx.macroArguments.push(localctx._tset3533);
                     break;
 
                 }
