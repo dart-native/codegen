@@ -158,9 +158,7 @@ program
             mkdirs(outputDir)
             
             files.forEach((file) => {
-                if (condition) {
-                    workItems[file] = script;
-                }
+                workItems[file] = script;
             })
         })
         await runWorkItems(workItems)
