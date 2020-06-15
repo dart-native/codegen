@@ -1,9 +1,13 @@
-var DNObjectiveConverter = require('./lib/objc/DNObjectiveConverter').DNObjectiveConverter
+let workerScript = './lib/objc/DNObjectiveCConverter'
+let dataPath = "./test/objc/RuntimeStub.h"
+let main = require(workerScript).main
 
-new DNObjectiveConverter("./test/objc/RuntimeStub.h", callback)
+main(dataPath, callback)
 
 function callback(result, path, error) {
-    console.log('result:\n' + result.dartCode + '\n\npath:\n' + path)
+    if (result) {
+        console.log('result:\n' + result.dartCode + '\n\npath:\n' + path)
+    }
     if (error) {
         console.log('\nerror:\n' + error)
     }

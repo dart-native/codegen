@@ -6,6 +6,9 @@
   "bin": {
     "codegen": "bin/codegen.js"
   },
+  "engines": {
+    "node": ">=12.16"
+  },
   "directories": {
     "lib": "lib",
     "test": "test"
