@@ -71,7 +71,7 @@ function writeDependencyToPubSpec(filePath) {
             return
         }
         item = item.toLowerCase()
-        doc.dependencies[item] = { path: item }
+        doc.dependencies[item] = 'any'
     })
     fs.writeFileSync(filePath, yaml.safeDump(doc).replace(/null/g, ''))
 }
