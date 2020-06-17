@@ -1,15 +1,6 @@
-let workerScript = './lib/objc/DNObjectiveCConverter'
-let dataPath = "./test/objc/RuntimeStub.h"
-let main = require(workerScript).main
+const main = require('./lib/main').main
 
-main(dataPath, callback)
+let dataPath = "test/objc/RuntimeStub.h"
+let option = {output: 'test/dart'}
 
-function callback(result, path, error) {
-    if (result) {
-        console.log('result:\n' + result.dartCode + '\n\npath:\n' + path)
-    }
-    if (error) {
-        console.log('\nerror:\n' + error)
-    }
-}
-
+main(dataPath, option)
