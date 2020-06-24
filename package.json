@@ -14,7 +14,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "codegen test/ -o test/dart/ -p my_package"
+    "test": "codegen test/ -o test/dart/ -p my_package && node test/test.js test/target/runtimestub.dart test/dart/my_package/lib/objc/runtimestub.dart"
   },
   "repository": {
     "type": "git",
