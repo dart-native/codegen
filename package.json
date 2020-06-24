@@ -14,7 +14,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "codegen test/ -o test/dart/ -p my_package && node test/test.js test/target/runtimestub.dart test/dart/my_package/lib/objc/runtimestub.dart"
+    "pretest": "git clone https://github.com/dart-native/dart_native.git",
+    "test": "codegen dart_native/dart_native/example/ios/Runner/RuntimeStub.h -o test/dart/ -p my_package",
+    "posttest": "node test/test.js dart_native/dart_native/example/lib/ios/runtimestub.dart test/dart/my_package/lib/objc/runtimestub.dart"
   },
   "repository": {
     "type": "git",
