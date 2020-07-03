@@ -357,7 +357,7 @@ functionDeclaration
     ;
 
 functionDefinition
-:
+    :
 	functionSignature (macro | attributeSpecifier)* compoundStatement
     ;
 
@@ -414,7 +414,8 @@ enumDeclaration
     ;
 
 varDeclaration
-    : (declarationSpecifiers initDeclaratorList | declarationSpecifiers) (macro | attributeSpecifier)* ';'
+    :
+	macro? (declarationSpecifiers initDeclaratorList | declarationSpecifiers) (macro | attributeSpecifier)* ';'
     ;
 
 typedefDeclaration
@@ -436,15 +437,40 @@ typeDeclarator
     : pointer? directDeclarator
     ;
 
-declarationSpecifiers
-    : (storageClassSpecifier
-    | attributeSpecifier
-    | arcBehaviourSpecifier
+commonSpecifiers
+    :
+	(arcBehaviourSpecifier
     | nullabilitySpecifier
     | ibOutletQualifier
     | typePrefix
-    | typeQualifier
-    | typeSpecifier)+
+    | typeQualifier)+
+    ;
+
+declarationSpecifiers
+    : 
+	(
+		storageClassSpecifier
+		| attributeSpecifier
+		| commonSpecifiers
+	)+
+	| (
+		storageClassSpecifier
+		| attributeSpecifier
+		| commonSpecifiers
+	)* typeSpecifier (
+		storageClassSpecifier
+		| attributeSpecifier
+		| commonSpecifiers
+	)*
+    ;
+
+pointerQualifier
+    : 
+    (
+    storageClassSpecifier
+    | attributeSpecifier
+    | commonSpecifiers
+	)+
     ;
 
 attributeSpecifier
@@ -469,12 +495,8 @@ fieldDeclaration: (
 	) (macro | attributeSpecifier)* ';';
 
 specifierQualifierList
-    : (arcBehaviourSpecifier
-    | nullabilitySpecifier
-    | ibOutletQualifier
-    | typePrefix
-    | typeQualifier
-    | typeSpecifier)+
+    : commonSpecifiers+
+	| commonSpecifiers* typeSpecifier commonSpecifiers*
     ;
 
 ibOutletQualifier
@@ -511,6 +533,9 @@ typePrefix
     | INLINE
     | NS_INLINE
     | KINDOF
+	| NS_RETURNS_RETAINED
+	| CF_RETURNS_RETAINED
+	| CF_CONSUMED
     ;
 
 typeQualifier
@@ -530,7 +555,7 @@ protocolQualifier
     ;
 
 typeSpecifier
-    : ('void'
+    : (('void'
     | 'char'
     | 'short'
     | 'int'
@@ -538,7 +563,7 @@ typeSpecifier
     | 'float'
     | 'double'
     | 'signed'
-    | 'unsigned'
+    | 'unsigned')+
     | typeofExpression
     | genericTypeSpecifier
     | structOrUnionSpecifier
@@ -598,7 +623,7 @@ parameterList
     ;
 
 pointer
-    : MUL declarationSpecifiers? nextPointer = pointer?
+    : MUL pointerQualifier? nextPointer = pointer?
     ;
 
 macro
@@ -907,6 +932,7 @@ identifier
     | UNUSED
 
     | NS_INLINE
+    | NS_RETURNS_RETAINED
     | NS_ENUM
     | NS_OPTIONS
 

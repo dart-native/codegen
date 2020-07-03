@@ -152,6 +152,11 @@ NS_OPTIONS:               'NS_OPTIONS';
 NS_CLOSED_ENUM:           'NS_CLOSED_ENUM';
 NS_TYPED_EXTENSIBLE_ENUM: 'NS_TYPED_EXTENSIBLE_ENUM';
 NS_ERROR_ENUM:            'NS_ERROR_ENUM';
+NS_RETURNS_RETAINED:      'NS_RETURNS_RETAINED';
+
+// CF prefix
+CF_RETURNS_RETAINED:      'CF_RETURNS_RETAINED';
+CF_CONSUMED:              'CF_CONSUMED';
 
 // Property attributes
 
@@ -181,6 +186,7 @@ IOS_SUFFIX:               [_A-Z]+ '_IOS(' ~')'+ ')'           -> channel(IGNORED
 MAC_SUFFIX:               [_A-Z]+ '_MAC(' ~')'+ ')'           -> channel(IGNORED_MACROS);
 TVOS_PROHIBITED:          '__TVOS_PROHIBITED'                 -> channel(IGNORED_MACROS);
 NS_NOESCAPE:              'NS_NOESCAPE'                       -> channel(IGNORED_MACROS);
+EXPORT_SUFFIX:            [_A-Z]+ '_EXPORT'                   -> channel(IGNORED_MACROS);
 
 // Identifier
 
