@@ -1,4 +1,4 @@
-// Generated from ObjectiveCParser.g4 by ANTLR 4.8
+// Generated from parser/objc/ObjectiveCParser.g4 by ANTLR 4.8
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -713,12 +713,30 @@ ObjectiveCParserListener.prototype.exitTypeDeclarator = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ObjectiveCParser#commonSpecifiers.
+ObjectiveCParserListener.prototype.enterCommonSpecifiers = function(ctx) {
+};
+
+// Exit a parse tree produced by ObjectiveCParser#commonSpecifiers.
+ObjectiveCParserListener.prototype.exitCommonSpecifiers = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ObjectiveCParser#declarationSpecifiers.
 ObjectiveCParserListener.prototype.enterDeclarationSpecifiers = function(ctx) {
 };
 
 // Exit a parse tree produced by ObjectiveCParser#declarationSpecifiers.
 ObjectiveCParserListener.prototype.exitDeclarationSpecifiers = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ObjectiveCParser#pointerQualifier.
+ObjectiveCParserListener.prototype.enterPointerQualifier = function(ctx) {
+};
+
+// Exit a parse tree produced by ObjectiveCParser#pointerQualifier.
+ObjectiveCParserListener.prototype.exitPointerQualifier = function(ctx) {
 };
 
 
