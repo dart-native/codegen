@@ -452,16 +452,8 @@ declarationSpecifiers
 		storageClassSpecifier
 		| attributeSpecifier
 		| commonSpecifiers
+		| typeSpecifier
 	)+
-	| (
-		storageClassSpecifier
-		| attributeSpecifier
-		| commonSpecifiers
-	)* typeSpecifier (
-		storageClassSpecifier
-		| attributeSpecifier
-		| commonSpecifiers
-	)*
     ;
 
 pointerQualifier
@@ -495,9 +487,7 @@ fieldDeclaration: (
 	) (macro | attributeSpecifier)* ';';
 
 specifierQualifierList
-    : commonSpecifiers+
-	| commonSpecifiers* typeSpecifier commonSpecifiers*
-    ;
+: ( commonSpecifiers | typeSpecifier)+;
 
 ibOutletQualifier
     : IB_OUTLET_COLLECTION LP identifier RP
@@ -533,12 +523,6 @@ typePrefix
     | INLINE
     | NS_INLINE
     | KINDOF
-	| NS_RETURNS_RETAINED
-	| NS_RETURNS_NOT_RETAINED
-	| NS_RETURNS_INNER_POINTER
-	| CF_RETURNS_RETAINED
-	| CF_RETURNS_NOT_RETAINED
-	| CF_CONSUMED
     ;
 
 typeQualifier
@@ -935,7 +919,6 @@ identifier
     | UNUSED
 
     | NS_INLINE
-    | NS_RETURNS_RETAINED
     | NS_ENUM
     | NS_OPTIONS
 
