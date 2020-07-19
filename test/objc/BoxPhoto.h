@@ -25,7 +25,7 @@ typedef enum aaaa : NSUInteger {
 API_UNAVAILABLE(ios)
 typedef NS_OPTIONS(NSInteger, BoxPermissions) 
 {
-    BoxPermissionUnknown = 0 API_AVAILABLE(ios(13.0)) API_UNAVAILABLE(tvos), 
+    BoxPermissionUnknown API_AVAILABLE(ios(13.0)) API_UNAVAILABLE(tvos) = 0, 
     BoxPermissionDelete = 1, 
     BoxPermissionDownload = 2,  
     BoxPermissionInvite = 4, 
@@ -35,10 +35,17 @@ typedef NS_OPTIONS(NSInteger, BoxPermissions)
     BoxPermissionUpload = 64
 } API_UNAVAILABLE(tvos);
 
+NS_ENUM(NSUInteger) {
+    MyEnumValueA API_AVAILABLE(ios(13.0)) API_UNAVAILABLE(tvos) = 0,
+    MyEnumValueB,
+    MyEnumValueC,
+};
+
 API_AVAILABLE(ios(6.0))
 @interface BoxPhoto : ProviderFilePhoto
 {
 }
+@property(readonly) const void *bytes NS_RETURNS_INNER_POINTER;
 - (instancetype)initWithDictionary:(NSDictionary *)photo index:(NSInteger)index box:(BoxSession *)box NS_SWIFT_NOTHROW NS_DESIGNATED_INITIALIZER API_AVAILABLE(macos(10.11.1), ios(9.0), watchos(2.0), tvos(9.0)) API_DEPRECATED("Use -foo instead.", macos(10.0,10.11), ios(2.0,9.0), watchos(2.0,2.0), tvos(9.0,9.0)) API_UNAVAILABLE(ios, watchos, tvos);
 -(instancetype)initUserInfoWithDictionary:(NSDictionary*)photo box:(BoxSession*)box ;
 -(NSString*)stringValue:(NSDictionary*)photo name:(NSString*)name;

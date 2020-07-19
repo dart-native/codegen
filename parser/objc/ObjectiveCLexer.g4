@@ -149,6 +149,9 @@ NULL_RESETTABLE:          'null_resettable';
 NS_INLINE:                'NS_INLINE';
 NS_ENUM:                  'NS_ENUM';
 NS_OPTIONS:               'NS_OPTIONS';
+NS_CLOSED_ENUM:           'NS_CLOSED_ENUM';
+NS_TYPED_EXTENSIBLE_ENUM: 'NS_TYPED_EXTENSIBLE_ENUM';
+NS_ERROR_ENUM:            'NS_ERROR_ENUM';
 
 // Property attributes
 
@@ -177,6 +180,19 @@ EXTERN_SUFFIX:            [_A-Z]+ '_EXTERN'                   -> channel(IGNORED
 IOS_SUFFIX:               [_A-Z]+ '_IOS(' ~')'+ ')'           -> channel(IGNORED_MACROS);
 MAC_SUFFIX:               [_A-Z]+ '_MAC(' ~')'+ ')'           -> channel(IGNORED_MACROS);
 TVOS_PROHIBITED:          '__TVOS_PROHIBITED'                 -> channel(IGNORED_MACROS);
+NS_NOESCAPE:              'NS_NOESCAPE'                       -> channel(IGNORED_MACROS);
+EXPORT_SUFFIX:            [_A-Z]+ '_EXPORT'                   -> channel(IGNORED_MACROS);
+NS_RETURNS_RETAINED:
+	'NS_RETURNS_RETAINED' -> channel(IGNORED_MACROS);
+NS_RETURNS_NOT_RETAINED:
+	'NS_RETURNS_NOT_RETAINED' -> channel(IGNORED_MACROS);
+NS_RETURNS_INNER_POINTER:
+	'NS_RETURNS_INNER_POINTER' -> channel(IGNORED_MACROS);
+CF_RETURNS_RETAINED:
+	'CF_RETURNS_RETAINED' -> channel(IGNORED_MACROS);
+CF_RETURNS_NOT_RETAINED:
+	'CF_RETURNS_NOT_RETAINED' -> channel(IGNORED_MACROS);
+CF_CONSUMED: 'CF_CONSUMED' -> channel(IGNORED_MACROS);
 
 // Identifier
 
@@ -219,7 +235,7 @@ MUL:                      '*';
 DIV:                      '/';
 BITAND:                   '&';
 BITOR:                    '|';
-BITXOR:                    '^';
+BITXOR:                   '^';
 MOD:                      '%';
 
 // Assignments
@@ -305,6 +321,15 @@ DIRECTIVE_LT:                  '<'              -> channel(DIRECTIVE_CHANNEL);
 DIRECTIVE_GT:                  '>'              -> channel(DIRECTIVE_CHANNEL);
 DIRECTIVE_LE:                  '<='             -> channel(DIRECTIVE_CHANNEL);
 DIRECTIVE_GE:                  '>='             -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_ADD:                 '+'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_SUB:                 '-'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_MUL:                 '*'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_DIV:                 '/'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_BITAND:              '&'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_BITOR:               '|'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_BITXOR:              '^'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_MOD:                 '%'              -> channel(DIRECTIVE_CHANNEL);
+DIRECTIVE_DOT:                 '.'              -> channel(DIRECTIVE_CHANNEL);
 
 DIRECTIVE_WS:                  [ \t]+                           -> channel(HIDDEN), type(WS);
 DIRECTIVE_STRING:              StringStart                      -> channel(DEFAULT_TOKEN_CHANNEL), mode(STRING_MODE);

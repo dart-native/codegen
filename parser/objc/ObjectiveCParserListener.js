@@ -110,6 +110,15 @@ ObjectiveCParserListener.prototype.exitProtocolDeclarationList = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ObjectiveCParser#classDeclaration.
+ObjectiveCParserListener.prototype.enterClassDeclaration = function(ctx) {
+};
+
+// Exit a parse tree produced by ObjectiveCParser#classDeclaration.
+ObjectiveCParserListener.prototype.exitClassDeclaration = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ObjectiveCParser#classDeclarationList.
 ObjectiveCParserListener.prototype.enterClassDeclarationList = function(ctx) {
 };
@@ -578,6 +587,15 @@ ObjectiveCParserListener.prototype.exitFunctionSignature = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ObjectiveCParser#functionPointer.
+ObjectiveCParserListener.prototype.enterFunctionPointer = function(ctx) {
+};
+
+// Exit a parse tree produced by ObjectiveCParser#functionPointer.
+ObjectiveCParserListener.prototype.exitFunctionPointer = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ObjectiveCParser#attribute.
 ObjectiveCParserListener.prototype.enterAttribute = function(ctx) {
 };
@@ -695,12 +713,30 @@ ObjectiveCParserListener.prototype.exitTypeDeclarator = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ObjectiveCParser#commonSpecifiers.
+ObjectiveCParserListener.prototype.enterCommonSpecifiers = function(ctx) {
+};
+
+// Exit a parse tree produced by ObjectiveCParser#commonSpecifiers.
+ObjectiveCParserListener.prototype.exitCommonSpecifiers = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ObjectiveCParser#declarationSpecifiers.
 ObjectiveCParserListener.prototype.enterDeclarationSpecifiers = function(ctx) {
 };
 
 // Exit a parse tree produced by ObjectiveCParser#declarationSpecifiers.
 ObjectiveCParserListener.prototype.exitDeclarationSpecifiers = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ObjectiveCParser#pointerQualifier.
+ObjectiveCParserListener.prototype.enterPointerQualifier = function(ctx) {
+};
+
+// Exit a parse tree produced by ObjectiveCParser#pointerQualifier.
+ObjectiveCParserListener.prototype.exitPointerQualifier = function(ctx) {
 };
 
 
