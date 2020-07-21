@@ -2,7 +2,7 @@
 const { program } = require('commander')
 const main = require('../lib/main').main
 
-program.version('1.0.4')
+program.version('1.0.5')
 
 program
     .arguments('<input>', 'Iutput directory')
