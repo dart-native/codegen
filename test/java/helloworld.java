@@ -44,4 +44,8 @@ public class RuntimeStub {
     return true;
   }
 
+  public String getString(String s) {
+    return "test success";
+  }
+
 }
