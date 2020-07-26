@@ -1,8 +1,6 @@
-var DNJavaConverter = require('./lib/java/DNJavaConverter').DNJavaConverter
+const main = require('./lib/main').main
 
-new DNJavaConverter("./test/java/helloworld.java", callback)
+let dataPath = "test/java/helloworld.java"
+let option = {output: 'test/dart'}
 
-function callback(tree, path, error) {
-    console.log('tree:\n' + tree + '\npath:\n' + path + '\nerror:\n' + error)
-}
-
+main(dataPath, option, true)

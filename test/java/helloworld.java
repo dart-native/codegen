@@ -33,4 +33,15 @@ public class RuntimeStub {
   public boolean getBool(boolean b) {
     return false;
   }
+
+  public int add(int a, int b) {
+    return a + b;
+  }
+
+  public void log(String tag, String message) {}
+
+  public boolean complexCall(String s, int i, char c, double d, float f, byte b, short sh, long l, boolean bool) {
+    return true;
+  }
+
 }
