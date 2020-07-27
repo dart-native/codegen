@@ -16,7 +16,9 @@ Codegen is a part of DartNative. It's the cyan part(DartNative Codegen) in the p
 
 ![](https://github.com/yulingtianxia/Blog-Hexo-Source/blob/master/source/resources/DartObjC/DartNative%20Future.png?raw=true)
 
-It's still under development.
+It's still under development. Here's how it works:
+
+![](images/theory.png)
 
 ## Installation
 
@@ -32,11 +34,16 @@ Usage: codegen [options] <input>
 Generate dart code from native API.
 
 Options:
-  -V, --version              output the version number
-  -l, --language <language>  [objc, java, auto(default)]
-  -o, --output <output>      Output directory
-  -p, --package <package>    Generate a shareable Flutter project containing modular Dart code.
-  -h, --help                 display help for command
+  -V, --version                 output the version number
+  -l, --language <language>     [objc, java, auto(default)] (default: "auto")
+  -o, --output <output>         Output directory
+  -t, --template <template>     Generate a shareable Flutter project containing
+                                modular Dart code.
+                                Specify the type of project to create:
+                                [package, plugin]
+  --project-name <projectName>  The project name for this new Flutter project.
+                                This must be a valid dart package name.
+  -h, --help                    display help for command
 ```
 
 ## License
