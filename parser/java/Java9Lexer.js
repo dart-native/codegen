@@ -1030,7 +1030,7 @@ Java9Lexer.prototype.JavaLetter_sempred = function(localctx, predIndex) {
 		case 0:
 			return Character.isJavaIdentifierStart(_input.LA(-1));
 		case 1:
-			return Character.isJavaIdentifierStart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)));
+			return Character.isJavaIdentifierStart(Character.toCodePoint(_input.LA(-2), _input.LA(-1)));
 		default:
 			throw "No predicate with index:" + predIndex;
 	}
@@ -1041,7 +1041,7 @@ Java9Lexer.prototype.JavaLetterOrDigit_sempred = function(localctx, predIndex) {
 		case 2:
 			return Character.isJavaIdentifierPart(_input.LA(-1));
 		case 3:
-			return Character.isJavaIdentifierPart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)));
+			return Character.isJavaIdentifierPart(Character.toCodePoint(_input.LA(-2), _input.LA(-1)));
 		default:
 			throw "No predicate with index:" + predIndex;
 	}
