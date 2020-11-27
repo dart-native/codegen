@@ -1,6 +1,6 @@
 // Generated from Java9.g4 by ANTLR 4.8
 // jshint ignore: start
-var antlr4 = require('antlr4');
+var antlr4 = require('antlr4/index');
 var Java9Listener = require('./Java9Listener').Java9Listener;
 var grammarFileName = "Java9.g4";
 
