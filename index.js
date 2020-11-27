@@ -3,7 +3,7 @@ const main = require('./lib/main').main
 let dataPath = "test/objc/RuntimeStub.h"
 let option = {
     output: 'test/dart',
-    template: 'package',
+    template: 'plugin',
     projectName: 'testPlugin'
 }
 
