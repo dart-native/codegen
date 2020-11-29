@@ -22,8 +22,14 @@ It's still under development. Here's how it works:
 
 ## Installation
 
-```
+``` bash
 $ npm install -g @dartnative/codegen
+```
+
+## Requirement
+
+``` json
+"node": ">=14"
 ```
 
 ## Usage

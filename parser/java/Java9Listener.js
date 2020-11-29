@@ -1,2220 +1,2214 @@
-// Generated from Java9.g4 by ANTLR 4.8
+// Generated from Java9.g4 by ANTLR 4.9
 // jshint ignore: start
-var antlr4 = require('antlr4/index');
+import antlr4 from 'antlr4';
 
 // This class defines a complete listener for a parse tree produced by Java9Parser.
-function Java9Listener() {
-	antlr4.tree.ParseTreeListener.call(this);
-	return this;
+export default class Java9Listener extends antlr4.tree.ParseTreeListener {
+
+	// Enter a parse tree produced by Java9Parser#literal.
+	enterLiteral(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#literal.
+	exitLiteral(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primitiveType.
+	enterPrimitiveType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primitiveType.
+	exitPrimitiveType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#numericType.
+	enterNumericType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#numericType.
+	exitNumericType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#integralType.
+	enterIntegralType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#integralType.
+	exitIntegralType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#floatingPointType.
+	enterFloatingPointType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#floatingPointType.
+	exitFloatingPointType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#referenceType.
+	enterReferenceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#referenceType.
+	exitReferenceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classOrInterfaceType.
+	enterClassOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classOrInterfaceType.
+	exitClassOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classType.
+	enterClassType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classType.
+	exitClassType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classType_lf_classOrInterfaceType.
+	enterClassType_lf_classOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classType_lf_classOrInterfaceType.
+	exitClassType_lf_classOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classType_lfno_classOrInterfaceType.
+	enterClassType_lfno_classOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classType_lfno_classOrInterfaceType.
+	exitClassType_lfno_classOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceType.
+	enterInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceType.
+	exitInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceType_lf_classOrInterfaceType.
+	enterInterfaceType_lf_classOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceType_lf_classOrInterfaceType.
+	exitInterfaceType_lf_classOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceType_lfno_classOrInterfaceType.
+	enterInterfaceType_lfno_classOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceType_lfno_classOrInterfaceType.
+	exitInterfaceType_lfno_classOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeVariable.
+	enterTypeVariable(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeVariable.
+	exitTypeVariable(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#arrayType.
+	enterArrayType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#arrayType.
+	exitArrayType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#dims.
+	enterDims(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#dims.
+	exitDims(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeParameter.
+	enterTypeParameter(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeParameter.
+	exitTypeParameter(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeParameterModifier.
+	enterTypeParameterModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeParameterModifier.
+	exitTypeParameterModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeBound.
+	enterTypeBound(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeBound.
+	exitTypeBound(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#additionalBound.
+	enterAdditionalBound(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#additionalBound.
+	exitAdditionalBound(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeArguments.
+	enterTypeArguments(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeArguments.
+	exitTypeArguments(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeArgumentList.
+	enterTypeArgumentList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeArgumentList.
+	exitTypeArgumentList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeArgument.
+	enterTypeArgument(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeArgument.
+	exitTypeArgument(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#wildcard.
+	enterWildcard(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#wildcard.
+	exitWildcard(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#wildcardBounds.
+	enterWildcardBounds(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#wildcardBounds.
+	exitWildcardBounds(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#moduleName.
+	enterModuleName(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#moduleName.
+	exitModuleName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#packageName.
+	enterPackageName(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#packageName.
+	exitPackageName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeName.
+	enterTypeName(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeName.
+	exitTypeName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#packageOrTypeName.
+	enterPackageOrTypeName(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#packageOrTypeName.
+	exitPackageOrTypeName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#expressionName.
+	enterExpressionName(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#expressionName.
+	exitExpressionName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodName.
+	enterMethodName(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodName.
+	exitMethodName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#ambiguousName.
+	enterAmbiguousName(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#ambiguousName.
+	exitAmbiguousName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#compilationUnit.
+	enterCompilationUnit(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#compilationUnit.
+	exitCompilationUnit(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#ordinaryCompilation.
+	enterOrdinaryCompilation(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#ordinaryCompilation.
+	exitOrdinaryCompilation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#modularCompilation.
+	enterModularCompilation(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#modularCompilation.
+	exitModularCompilation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#packageDeclaration.
+	enterPackageDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#packageDeclaration.
+	exitPackageDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#packageModifier.
+	enterPackageModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#packageModifier.
+	exitPackageModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#importDeclaration.
+	enterImportDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#importDeclaration.
+	exitImportDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#singleTypeImportDeclaration.
+	enterSingleTypeImportDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#singleTypeImportDeclaration.
+	exitSingleTypeImportDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeImportOnDemandDeclaration.
+	enterTypeImportOnDemandDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeImportOnDemandDeclaration.
+	exitTypeImportOnDemandDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#singleStaticImportDeclaration.
+	enterSingleStaticImportDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#singleStaticImportDeclaration.
+	exitSingleStaticImportDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#staticImportOnDemandDeclaration.
+	enterStaticImportOnDemandDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#staticImportOnDemandDeclaration.
+	exitStaticImportOnDemandDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeDeclaration.
+	enterTypeDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeDeclaration.
+	exitTypeDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#moduleDeclaration.
+	enterModuleDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#moduleDeclaration.
+	exitModuleDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#moduleDirective.
+	enterModuleDirective(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#moduleDirective.
+	exitModuleDirective(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#requiresModifier.
+	enterRequiresModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#requiresModifier.
+	exitRequiresModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classDeclaration.
+	enterClassDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classDeclaration.
+	exitClassDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#normalClassDeclaration.
+	enterNormalClassDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#normalClassDeclaration.
+	exitNormalClassDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classModifier.
+	enterClassModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classModifier.
+	exitClassModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeParameters.
+	enterTypeParameters(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeParameters.
+	exitTypeParameters(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeParameterList.
+	enterTypeParameterList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeParameterList.
+	exitTypeParameterList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#superclass.
+	enterSuperclass(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#superclass.
+	exitSuperclass(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#superinterfaces.
+	enterSuperinterfaces(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#superinterfaces.
+	exitSuperinterfaces(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceTypeList.
+	enterInterfaceTypeList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceTypeList.
+	exitInterfaceTypeList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classBody.
+	enterClassBody(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classBody.
+	exitClassBody(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classBodyDeclaration.
+	enterClassBodyDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classBodyDeclaration.
+	exitClassBodyDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classMemberDeclaration.
+	enterClassMemberDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classMemberDeclaration.
+	exitClassMemberDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#fieldDeclaration.
+	enterFieldDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#fieldDeclaration.
+	exitFieldDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#fieldModifier.
+	enterFieldModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#fieldModifier.
+	exitFieldModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#variableDeclaratorList.
+	enterVariableDeclaratorList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#variableDeclaratorList.
+	exitVariableDeclaratorList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#variableDeclarator.
+	enterVariableDeclarator(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#variableDeclarator.
+	exitVariableDeclarator(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#variableDeclaratorId.
+	enterVariableDeclaratorId(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#variableDeclaratorId.
+	exitVariableDeclaratorId(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#variableInitializer.
+	enterVariableInitializer(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#variableInitializer.
+	exitVariableInitializer(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannType.
+	enterUnannType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannType.
+	exitUnannType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannPrimitiveType.
+	enterUnannPrimitiveType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannPrimitiveType.
+	exitUnannPrimitiveType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannReferenceType.
+	enterUnannReferenceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannReferenceType.
+	exitUnannReferenceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannClassOrInterfaceType.
+	enterUnannClassOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannClassOrInterfaceType.
+	exitUnannClassOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannClassType.
+	enterUnannClassType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannClassType.
+	exitUnannClassType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannClassType_lf_unannClassOrInterfaceType.
+	enterUnannClassType_lf_unannClassOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannClassType_lf_unannClassOrInterfaceType.
+	exitUnannClassType_lf_unannClassOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannClassType_lfno_unannClassOrInterfaceType.
+	enterUnannClassType_lfno_unannClassOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannClassType_lfno_unannClassOrInterfaceType.
+	exitUnannClassType_lfno_unannClassOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannInterfaceType.
+	enterUnannInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannInterfaceType.
+	exitUnannInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannInterfaceType_lf_unannClassOrInterfaceType.
+	enterUnannInterfaceType_lf_unannClassOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannInterfaceType_lf_unannClassOrInterfaceType.
+	exitUnannInterfaceType_lf_unannClassOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannInterfaceType_lfno_unannClassOrInterfaceType.
+	enterUnannInterfaceType_lfno_unannClassOrInterfaceType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannInterfaceType_lfno_unannClassOrInterfaceType.
+	exitUnannInterfaceType_lfno_unannClassOrInterfaceType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannTypeVariable.
+	enterUnannTypeVariable(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannTypeVariable.
+	exitUnannTypeVariable(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unannArrayType.
+	enterUnannArrayType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unannArrayType.
+	exitUnannArrayType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodDeclaration.
+	enterMethodDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodDeclaration.
+	exitMethodDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodModifier.
+	enterMethodModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodModifier.
+	exitMethodModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodHeader.
+	enterMethodHeader(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodHeader.
+	exitMethodHeader(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#result.
+	enterResult(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#result.
+	exitResult(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodDeclarator.
+	enterMethodDeclarator(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodDeclarator.
+	exitMethodDeclarator(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#formalParameterList.
+	enterFormalParameterList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#formalParameterList.
+	exitFormalParameterList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#formalParameters.
+	enterFormalParameters(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#formalParameters.
+	exitFormalParameters(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#formalParameter.
+	enterFormalParameter(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#formalParameter.
+	exitFormalParameter(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#variableModifier.
+	enterVariableModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#variableModifier.
+	exitVariableModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#lastFormalParameter.
+	enterLastFormalParameter(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#lastFormalParameter.
+	exitLastFormalParameter(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#receiverParameter.
+	enterReceiverParameter(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#receiverParameter.
+	exitReceiverParameter(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#throws_.
+	enterThrows_(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#throws_.
+	exitThrows_(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#exceptionTypeList.
+	enterExceptionTypeList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#exceptionTypeList.
+	exitExceptionTypeList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#exceptionType.
+	enterExceptionType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#exceptionType.
+	exitExceptionType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodBody.
+	enterMethodBody(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodBody.
+	exitMethodBody(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#instanceInitializer.
+	enterInstanceInitializer(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#instanceInitializer.
+	exitInstanceInitializer(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#staticInitializer.
+	enterStaticInitializer(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#staticInitializer.
+	exitStaticInitializer(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#constructorDeclaration.
+	enterConstructorDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#constructorDeclaration.
+	exitConstructorDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#constructorModifier.
+	enterConstructorModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#constructorModifier.
+	exitConstructorModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#constructorDeclarator.
+	enterConstructorDeclarator(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#constructorDeclarator.
+	exitConstructorDeclarator(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#simpleTypeName.
+	enterSimpleTypeName(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#simpleTypeName.
+	exitSimpleTypeName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#constructorBody.
+	enterConstructorBody(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#constructorBody.
+	exitConstructorBody(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#explicitConstructorInvocation.
+	enterExplicitConstructorInvocation(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#explicitConstructorInvocation.
+	exitExplicitConstructorInvocation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#enumDeclaration.
+	enterEnumDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#enumDeclaration.
+	exitEnumDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#enumBody.
+	enterEnumBody(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#enumBody.
+	exitEnumBody(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#enumConstantList.
+	enterEnumConstantList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#enumConstantList.
+	exitEnumConstantList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#enumConstant.
+	enterEnumConstant(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#enumConstant.
+	exitEnumConstant(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#enumConstantModifier.
+	enterEnumConstantModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#enumConstantModifier.
+	exitEnumConstantModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#enumBodyDeclarations.
+	enterEnumBodyDeclarations(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#enumBodyDeclarations.
+	exitEnumBodyDeclarations(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceDeclaration.
+	enterInterfaceDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceDeclaration.
+	exitInterfaceDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#normalInterfaceDeclaration.
+	enterNormalInterfaceDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#normalInterfaceDeclaration.
+	exitNormalInterfaceDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceModifier.
+	enterInterfaceModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceModifier.
+	exitInterfaceModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#extendsInterfaces.
+	enterExtendsInterfaces(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#extendsInterfaces.
+	exitExtendsInterfaces(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceBody.
+	enterInterfaceBody(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceBody.
+	exitInterfaceBody(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceMemberDeclaration.
+	enterInterfaceMemberDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceMemberDeclaration.
+	exitInterfaceMemberDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#constantDeclaration.
+	enterConstantDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#constantDeclaration.
+	exitConstantDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#constantModifier.
+	enterConstantModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#constantModifier.
+	exitConstantModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceMethodDeclaration.
+	enterInterfaceMethodDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceMethodDeclaration.
+	exitInterfaceMethodDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#interfaceMethodModifier.
+	enterInterfaceMethodModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#interfaceMethodModifier.
+	exitInterfaceMethodModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#annotationTypeDeclaration.
+	enterAnnotationTypeDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#annotationTypeDeclaration.
+	exitAnnotationTypeDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#annotationTypeBody.
+	enterAnnotationTypeBody(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#annotationTypeBody.
+	exitAnnotationTypeBody(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#annotationTypeMemberDeclaration.
+	enterAnnotationTypeMemberDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#annotationTypeMemberDeclaration.
+	exitAnnotationTypeMemberDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#annotationTypeElementDeclaration.
+	enterAnnotationTypeElementDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#annotationTypeElementDeclaration.
+	exitAnnotationTypeElementDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#annotationTypeElementModifier.
+	enterAnnotationTypeElementModifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#annotationTypeElementModifier.
+	exitAnnotationTypeElementModifier(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#defaultValue.
+	enterDefaultValue(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#defaultValue.
+	exitDefaultValue(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#annotation.
+	enterAnnotation(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#annotation.
+	exitAnnotation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#normalAnnotation.
+	enterNormalAnnotation(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#normalAnnotation.
+	exitNormalAnnotation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#elementValuePairList.
+	enterElementValuePairList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#elementValuePairList.
+	exitElementValuePairList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#elementValuePair.
+	enterElementValuePair(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#elementValuePair.
+	exitElementValuePair(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#elementValue.
+	enterElementValue(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#elementValue.
+	exitElementValue(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#elementValueArrayInitializer.
+	enterElementValueArrayInitializer(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#elementValueArrayInitializer.
+	exitElementValueArrayInitializer(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#elementValueList.
+	enterElementValueList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#elementValueList.
+	exitElementValueList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#markerAnnotation.
+	enterMarkerAnnotation(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#markerAnnotation.
+	exitMarkerAnnotation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#singleElementAnnotation.
+	enterSingleElementAnnotation(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#singleElementAnnotation.
+	exitSingleElementAnnotation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#arrayInitializer.
+	enterArrayInitializer(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#arrayInitializer.
+	exitArrayInitializer(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#variableInitializerList.
+	enterVariableInitializerList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#variableInitializerList.
+	exitVariableInitializerList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#block.
+	enterBlock(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#block.
+	exitBlock(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#blockStatements.
+	enterBlockStatements(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#blockStatements.
+	exitBlockStatements(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#blockStatement.
+	enterBlockStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#blockStatement.
+	exitBlockStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#localVariableDeclarationStatement.
+	enterLocalVariableDeclarationStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#localVariableDeclarationStatement.
+	exitLocalVariableDeclarationStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#localVariableDeclaration.
+	enterLocalVariableDeclaration(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#localVariableDeclaration.
+	exitLocalVariableDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#statement.
+	enterStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#statement.
+	exitStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#statementNoShortIf.
+	enterStatementNoShortIf(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#statementNoShortIf.
+	exitStatementNoShortIf(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#statementWithoutTrailingSubstatement.
+	enterStatementWithoutTrailingSubstatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#statementWithoutTrailingSubstatement.
+	exitStatementWithoutTrailingSubstatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#emptyStatement.
+	enterEmptyStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#emptyStatement.
+	exitEmptyStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#labeledStatement.
+	enterLabeledStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#labeledStatement.
+	exitLabeledStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#labeledStatementNoShortIf.
+	enterLabeledStatementNoShortIf(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#labeledStatementNoShortIf.
+	exitLabeledStatementNoShortIf(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#expressionStatement.
+	enterExpressionStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#expressionStatement.
+	exitExpressionStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#statementExpression.
+	enterStatementExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#statementExpression.
+	exitStatementExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#ifThenStatement.
+	enterIfThenStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#ifThenStatement.
+	exitIfThenStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#ifThenElseStatement.
+	enterIfThenElseStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#ifThenElseStatement.
+	exitIfThenElseStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#ifThenElseStatementNoShortIf.
+	enterIfThenElseStatementNoShortIf(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#ifThenElseStatementNoShortIf.
+	exitIfThenElseStatementNoShortIf(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#assertStatement.
+	enterAssertStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#assertStatement.
+	exitAssertStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#switchStatement.
+	enterSwitchStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#switchStatement.
+	exitSwitchStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#switchBlock.
+	enterSwitchBlock(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#switchBlock.
+	exitSwitchBlock(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#switchBlockStatementGroup.
+	enterSwitchBlockStatementGroup(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#switchBlockStatementGroup.
+	exitSwitchBlockStatementGroup(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#switchLabels.
+	enterSwitchLabels(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#switchLabels.
+	exitSwitchLabels(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#switchLabel.
+	enterSwitchLabel(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#switchLabel.
+	exitSwitchLabel(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#enumConstantName.
+	enterEnumConstantName(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#enumConstantName.
+	exitEnumConstantName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#whileStatement.
+	enterWhileStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#whileStatement.
+	exitWhileStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#whileStatementNoShortIf.
+	enterWhileStatementNoShortIf(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#whileStatementNoShortIf.
+	exitWhileStatementNoShortIf(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#doStatement.
+	enterDoStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#doStatement.
+	exitDoStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#forStatement.
+	enterForStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#forStatement.
+	exitForStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#forStatementNoShortIf.
+	enterForStatementNoShortIf(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#forStatementNoShortIf.
+	exitForStatementNoShortIf(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#basicForStatement.
+	enterBasicForStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#basicForStatement.
+	exitBasicForStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#basicForStatementNoShortIf.
+	enterBasicForStatementNoShortIf(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#basicForStatementNoShortIf.
+	exitBasicForStatementNoShortIf(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#forInit.
+	enterForInit(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#forInit.
+	exitForInit(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#forUpdate.
+	enterForUpdate(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#forUpdate.
+	exitForUpdate(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#statementExpressionList.
+	enterStatementExpressionList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#statementExpressionList.
+	exitStatementExpressionList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#enhancedForStatement.
+	enterEnhancedForStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#enhancedForStatement.
+	exitEnhancedForStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#enhancedForStatementNoShortIf.
+	enterEnhancedForStatementNoShortIf(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#enhancedForStatementNoShortIf.
+	exitEnhancedForStatementNoShortIf(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#breakStatement.
+	enterBreakStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#breakStatement.
+	exitBreakStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#continueStatement.
+	enterContinueStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#continueStatement.
+	exitContinueStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#returnStatement.
+	enterReturnStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#returnStatement.
+	exitReturnStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#throwStatement.
+	enterThrowStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#throwStatement.
+	exitThrowStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#synchronizedStatement.
+	enterSynchronizedStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#synchronizedStatement.
+	exitSynchronizedStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#tryStatement.
+	enterTryStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#tryStatement.
+	exitTryStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#catches.
+	enterCatches(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#catches.
+	exitCatches(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#catchClause.
+	enterCatchClause(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#catchClause.
+	exitCatchClause(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#catchFormalParameter.
+	enterCatchFormalParameter(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#catchFormalParameter.
+	exitCatchFormalParameter(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#catchType.
+	enterCatchType(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#catchType.
+	exitCatchType(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#finally_.
+	enterFinally_(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#finally_.
+	exitFinally_(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#tryWithResourcesStatement.
+	enterTryWithResourcesStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#tryWithResourcesStatement.
+	exitTryWithResourcesStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#resourceSpecification.
+	enterResourceSpecification(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#resourceSpecification.
+	exitResourceSpecification(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#resourceList.
+	enterResourceList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#resourceList.
+	exitResourceList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#resource.
+	enterResource(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#resource.
+	exitResource(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#variableAccess.
+	enterVariableAccess(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#variableAccess.
+	exitVariableAccess(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primary.
+	enterPrimary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primary.
+	exitPrimary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primaryNoNewArray.
+	enterPrimaryNoNewArray(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primaryNoNewArray.
+	exitPrimaryNoNewArray(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lf_arrayAccess.
+	enterPrimaryNoNewArray_lf_arrayAccess(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lf_arrayAccess.
+	exitPrimaryNoNewArray_lf_arrayAccess(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lfno_arrayAccess.
+	enterPrimaryNoNewArray_lfno_arrayAccess(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lfno_arrayAccess.
+	exitPrimaryNoNewArray_lfno_arrayAccess(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary.
+	enterPrimaryNoNewArray_lf_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary.
+	exitPrimaryNoNewArray_lf_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary.
+	enterPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary.
+	exitPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary.
+	enterPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary.
+	exitPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary.
+	enterPrimaryNoNewArray_lfno_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary.
+	exitPrimaryNoNewArray_lfno_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary.
+	enterPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary.
+	exitPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary.
+	enterPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary.
+	exitPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classLiteral.
+	enterClassLiteral(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classLiteral.
+	exitClassLiteral(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classInstanceCreationExpression.
+	enterClassInstanceCreationExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classInstanceCreationExpression.
+	exitClassInstanceCreationExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classInstanceCreationExpression_lf_primary.
+	enterClassInstanceCreationExpression_lf_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classInstanceCreationExpression_lf_primary.
+	exitClassInstanceCreationExpression_lf_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#classInstanceCreationExpression_lfno_primary.
+	enterClassInstanceCreationExpression_lfno_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#classInstanceCreationExpression_lfno_primary.
+	exitClassInstanceCreationExpression_lfno_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#typeArgumentsOrDiamond.
+	enterTypeArgumentsOrDiamond(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#typeArgumentsOrDiamond.
+	exitTypeArgumentsOrDiamond(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#fieldAccess.
+	enterFieldAccess(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#fieldAccess.
+	exitFieldAccess(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#fieldAccess_lf_primary.
+	enterFieldAccess_lf_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#fieldAccess_lf_primary.
+	exitFieldAccess_lf_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#fieldAccess_lfno_primary.
+	enterFieldAccess_lfno_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#fieldAccess_lfno_primary.
+	exitFieldAccess_lfno_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#arrayAccess.
+	enterArrayAccess(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#arrayAccess.
+	exitArrayAccess(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#arrayAccess_lf_primary.
+	enterArrayAccess_lf_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#arrayAccess_lf_primary.
+	exitArrayAccess_lf_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#arrayAccess_lfno_primary.
+	enterArrayAccess_lfno_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#arrayAccess_lfno_primary.
+	exitArrayAccess_lfno_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodInvocation.
+	enterMethodInvocation(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodInvocation.
+	exitMethodInvocation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodInvocation_lf_primary.
+	enterMethodInvocation_lf_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodInvocation_lf_primary.
+	exitMethodInvocation_lf_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodInvocation_lfno_primary.
+	enterMethodInvocation_lfno_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodInvocation_lfno_primary.
+	exitMethodInvocation_lfno_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#argumentList.
+	enterArgumentList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#argumentList.
+	exitArgumentList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodReference.
+	enterMethodReference(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodReference.
+	exitMethodReference(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodReference_lf_primary.
+	enterMethodReference_lf_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodReference_lf_primary.
+	exitMethodReference_lf_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#methodReference_lfno_primary.
+	enterMethodReference_lfno_primary(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#methodReference_lfno_primary.
+	exitMethodReference_lfno_primary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#arrayCreationExpression.
+	enterArrayCreationExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#arrayCreationExpression.
+	exitArrayCreationExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#dimExprs.
+	enterDimExprs(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#dimExprs.
+	exitDimExprs(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#dimExpr.
+	enterDimExpr(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#dimExpr.
+	exitDimExpr(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#constantExpression.
+	enterConstantExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#constantExpression.
+	exitConstantExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#expression.
+	enterExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#expression.
+	exitExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#lambdaExpression.
+	enterLambdaExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#lambdaExpression.
+	exitLambdaExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#lambdaParameters.
+	enterLambdaParameters(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#lambdaParameters.
+	exitLambdaParameters(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#inferredFormalParameterList.
+	enterInferredFormalParameterList(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#inferredFormalParameterList.
+	exitInferredFormalParameterList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#lambdaBody.
+	enterLambdaBody(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#lambdaBody.
+	exitLambdaBody(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#assignmentExpression.
+	enterAssignmentExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#assignmentExpression.
+	exitAssignmentExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#assignment.
+	enterAssignment(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#assignment.
+	exitAssignment(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#leftHandSide.
+	enterLeftHandSide(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#leftHandSide.
+	exitLeftHandSide(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#assignmentOperator.
+	enterAssignmentOperator(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#assignmentOperator.
+	exitAssignmentOperator(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#conditionalExpression.
+	enterConditionalExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#conditionalExpression.
+	exitConditionalExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#conditionalOrExpression.
+	enterConditionalOrExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#conditionalOrExpression.
+	exitConditionalOrExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#conditionalAndExpression.
+	enterConditionalAndExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#conditionalAndExpression.
+	exitConditionalAndExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#inclusiveOrExpression.
+	enterInclusiveOrExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#inclusiveOrExpression.
+	exitInclusiveOrExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#exclusiveOrExpression.
+	enterExclusiveOrExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#exclusiveOrExpression.
+	exitExclusiveOrExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#andExpression.
+	enterAndExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#andExpression.
+	exitAndExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#equalityExpression.
+	enterEqualityExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#equalityExpression.
+	exitEqualityExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#relationalExpression.
+	enterRelationalExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#relationalExpression.
+	exitRelationalExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#shiftExpression.
+	enterShiftExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#shiftExpression.
+	exitShiftExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#additiveExpression.
+	enterAdditiveExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#additiveExpression.
+	exitAdditiveExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#multiplicativeExpression.
+	enterMultiplicativeExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#multiplicativeExpression.
+	exitMultiplicativeExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unaryExpression.
+	enterUnaryExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unaryExpression.
+	exitUnaryExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#preIncrementExpression.
+	enterPreIncrementExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#preIncrementExpression.
+	exitPreIncrementExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#preDecrementExpression.
+	enterPreDecrementExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#preDecrementExpression.
+	exitPreDecrementExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#unaryExpressionNotPlusMinus.
+	enterUnaryExpressionNotPlusMinus(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#unaryExpressionNotPlusMinus.
+	exitUnaryExpressionNotPlusMinus(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#postfixExpression.
+	enterPostfixExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#postfixExpression.
+	exitPostfixExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#postIncrementExpression.
+	enterPostIncrementExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#postIncrementExpression.
+	exitPostIncrementExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#postIncrementExpression_lf_postfixExpression.
+	enterPostIncrementExpression_lf_postfixExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#postIncrementExpression_lf_postfixExpression.
+	exitPostIncrementExpression_lf_postfixExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#postDecrementExpression.
+	enterPostDecrementExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#postDecrementExpression.
+	exitPostDecrementExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#postDecrementExpression_lf_postfixExpression.
+	enterPostDecrementExpression_lf_postfixExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#postDecrementExpression_lf_postfixExpression.
+	exitPostDecrementExpression_lf_postfixExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#castExpression.
+	enterCastExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#castExpression.
+	exitCastExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by Java9Parser#identifier.
+	enterIdentifier(ctx) {
+	}
+
+	// Exit a parse tree produced by Java9Parser#identifier.
+	exitIdentifier(ctx) {
+	}
+
+
+
 }
-
-Java9Listener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
-Java9Listener.prototype.constructor = Java9Listener;
-
-// Enter a parse tree produced by Java9Parser#literal.
-Java9Listener.prototype.enterLiteral = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#literal.
-Java9Listener.prototype.exitLiteral = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primitiveType.
-Java9Listener.prototype.enterPrimitiveType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primitiveType.
-Java9Listener.prototype.exitPrimitiveType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#numericType.
-Java9Listener.prototype.enterNumericType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#numericType.
-Java9Listener.prototype.exitNumericType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#integralType.
-Java9Listener.prototype.enterIntegralType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#integralType.
-Java9Listener.prototype.exitIntegralType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#floatingPointType.
-Java9Listener.prototype.enterFloatingPointType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#floatingPointType.
-Java9Listener.prototype.exitFloatingPointType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#referenceType.
-Java9Listener.prototype.enterReferenceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#referenceType.
-Java9Listener.prototype.exitReferenceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classOrInterfaceType.
-Java9Listener.prototype.enterClassOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classOrInterfaceType.
-Java9Listener.prototype.exitClassOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classType.
-Java9Listener.prototype.enterClassType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classType.
-Java9Listener.prototype.exitClassType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classType_lf_classOrInterfaceType.
-Java9Listener.prototype.enterClassType_lf_classOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classType_lf_classOrInterfaceType.
-Java9Listener.prototype.exitClassType_lf_classOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classType_lfno_classOrInterfaceType.
-Java9Listener.prototype.enterClassType_lfno_classOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classType_lfno_classOrInterfaceType.
-Java9Listener.prototype.exitClassType_lfno_classOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceType.
-Java9Listener.prototype.enterInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceType.
-Java9Listener.prototype.exitInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceType_lf_classOrInterfaceType.
-Java9Listener.prototype.enterInterfaceType_lf_classOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceType_lf_classOrInterfaceType.
-Java9Listener.prototype.exitInterfaceType_lf_classOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceType_lfno_classOrInterfaceType.
-Java9Listener.prototype.enterInterfaceType_lfno_classOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceType_lfno_classOrInterfaceType.
-Java9Listener.prototype.exitInterfaceType_lfno_classOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeVariable.
-Java9Listener.prototype.enterTypeVariable = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeVariable.
-Java9Listener.prototype.exitTypeVariable = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#arrayType.
-Java9Listener.prototype.enterArrayType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#arrayType.
-Java9Listener.prototype.exitArrayType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#dims.
-Java9Listener.prototype.enterDims = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#dims.
-Java9Listener.prototype.exitDims = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeParameter.
-Java9Listener.prototype.enterTypeParameter = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeParameter.
-Java9Listener.prototype.exitTypeParameter = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeParameterModifier.
-Java9Listener.prototype.enterTypeParameterModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeParameterModifier.
-Java9Listener.prototype.exitTypeParameterModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeBound.
-Java9Listener.prototype.enterTypeBound = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeBound.
-Java9Listener.prototype.exitTypeBound = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#additionalBound.
-Java9Listener.prototype.enterAdditionalBound = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#additionalBound.
-Java9Listener.prototype.exitAdditionalBound = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeArguments.
-Java9Listener.prototype.enterTypeArguments = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeArguments.
-Java9Listener.prototype.exitTypeArguments = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeArgumentList.
-Java9Listener.prototype.enterTypeArgumentList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeArgumentList.
-Java9Listener.prototype.exitTypeArgumentList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeArgument.
-Java9Listener.prototype.enterTypeArgument = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeArgument.
-Java9Listener.prototype.exitTypeArgument = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#wildcard.
-Java9Listener.prototype.enterWildcard = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#wildcard.
-Java9Listener.prototype.exitWildcard = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#wildcardBounds.
-Java9Listener.prototype.enterWildcardBounds = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#wildcardBounds.
-Java9Listener.prototype.exitWildcardBounds = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#moduleName.
-Java9Listener.prototype.enterModuleName = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#moduleName.
-Java9Listener.prototype.exitModuleName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#packageName.
-Java9Listener.prototype.enterPackageName = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#packageName.
-Java9Listener.prototype.exitPackageName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeName.
-Java9Listener.prototype.enterTypeName = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeName.
-Java9Listener.prototype.exitTypeName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#packageOrTypeName.
-Java9Listener.prototype.enterPackageOrTypeName = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#packageOrTypeName.
-Java9Listener.prototype.exitPackageOrTypeName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#expressionName.
-Java9Listener.prototype.enterExpressionName = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#expressionName.
-Java9Listener.prototype.exitExpressionName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodName.
-Java9Listener.prototype.enterMethodName = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodName.
-Java9Listener.prototype.exitMethodName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#ambiguousName.
-Java9Listener.prototype.enterAmbiguousName = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#ambiguousName.
-Java9Listener.prototype.exitAmbiguousName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#compilationUnit.
-Java9Listener.prototype.enterCompilationUnit = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#compilationUnit.
-Java9Listener.prototype.exitCompilationUnit = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#ordinaryCompilation.
-Java9Listener.prototype.enterOrdinaryCompilation = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#ordinaryCompilation.
-Java9Listener.prototype.exitOrdinaryCompilation = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#modularCompilation.
-Java9Listener.prototype.enterModularCompilation = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#modularCompilation.
-Java9Listener.prototype.exitModularCompilation = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#packageDeclaration.
-Java9Listener.prototype.enterPackageDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#packageDeclaration.
-Java9Listener.prototype.exitPackageDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#packageModifier.
-Java9Listener.prototype.enterPackageModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#packageModifier.
-Java9Listener.prototype.exitPackageModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#importDeclaration.
-Java9Listener.prototype.enterImportDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#importDeclaration.
-Java9Listener.prototype.exitImportDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#singleTypeImportDeclaration.
-Java9Listener.prototype.enterSingleTypeImportDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#singleTypeImportDeclaration.
-Java9Listener.prototype.exitSingleTypeImportDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeImportOnDemandDeclaration.
-Java9Listener.prototype.enterTypeImportOnDemandDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeImportOnDemandDeclaration.
-Java9Listener.prototype.exitTypeImportOnDemandDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#singleStaticImportDeclaration.
-Java9Listener.prototype.enterSingleStaticImportDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#singleStaticImportDeclaration.
-Java9Listener.prototype.exitSingleStaticImportDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#staticImportOnDemandDeclaration.
-Java9Listener.prototype.enterStaticImportOnDemandDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#staticImportOnDemandDeclaration.
-Java9Listener.prototype.exitStaticImportOnDemandDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeDeclaration.
-Java9Listener.prototype.enterTypeDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeDeclaration.
-Java9Listener.prototype.exitTypeDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#moduleDeclaration.
-Java9Listener.prototype.enterModuleDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#moduleDeclaration.
-Java9Listener.prototype.exitModuleDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#moduleDirective.
-Java9Listener.prototype.enterModuleDirective = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#moduleDirective.
-Java9Listener.prototype.exitModuleDirective = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#requiresModifier.
-Java9Listener.prototype.enterRequiresModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#requiresModifier.
-Java9Listener.prototype.exitRequiresModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classDeclaration.
-Java9Listener.prototype.enterClassDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classDeclaration.
-Java9Listener.prototype.exitClassDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#normalClassDeclaration.
-Java9Listener.prototype.enterNormalClassDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#normalClassDeclaration.
-Java9Listener.prototype.exitNormalClassDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classModifier.
-Java9Listener.prototype.enterClassModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classModifier.
-Java9Listener.prototype.exitClassModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeParameters.
-Java9Listener.prototype.enterTypeParameters = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeParameters.
-Java9Listener.prototype.exitTypeParameters = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeParameterList.
-Java9Listener.prototype.enterTypeParameterList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeParameterList.
-Java9Listener.prototype.exitTypeParameterList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#superclass.
-Java9Listener.prototype.enterSuperclass = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#superclass.
-Java9Listener.prototype.exitSuperclass = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#superinterfaces.
-Java9Listener.prototype.enterSuperinterfaces = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#superinterfaces.
-Java9Listener.prototype.exitSuperinterfaces = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceTypeList.
-Java9Listener.prototype.enterInterfaceTypeList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceTypeList.
-Java9Listener.prototype.exitInterfaceTypeList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classBody.
-Java9Listener.prototype.enterClassBody = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classBody.
-Java9Listener.prototype.exitClassBody = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classBodyDeclaration.
-Java9Listener.prototype.enterClassBodyDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classBodyDeclaration.
-Java9Listener.prototype.exitClassBodyDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classMemberDeclaration.
-Java9Listener.prototype.enterClassMemberDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classMemberDeclaration.
-Java9Listener.prototype.exitClassMemberDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#fieldDeclaration.
-Java9Listener.prototype.enterFieldDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#fieldDeclaration.
-Java9Listener.prototype.exitFieldDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#fieldModifier.
-Java9Listener.prototype.enterFieldModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#fieldModifier.
-Java9Listener.prototype.exitFieldModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#variableDeclaratorList.
-Java9Listener.prototype.enterVariableDeclaratorList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#variableDeclaratorList.
-Java9Listener.prototype.exitVariableDeclaratorList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#variableDeclarator.
-Java9Listener.prototype.enterVariableDeclarator = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#variableDeclarator.
-Java9Listener.prototype.exitVariableDeclarator = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#variableDeclaratorId.
-Java9Listener.prototype.enterVariableDeclaratorId = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#variableDeclaratorId.
-Java9Listener.prototype.exitVariableDeclaratorId = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#variableInitializer.
-Java9Listener.prototype.enterVariableInitializer = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#variableInitializer.
-Java9Listener.prototype.exitVariableInitializer = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannType.
-Java9Listener.prototype.enterUnannType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannType.
-Java9Listener.prototype.exitUnannType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannPrimitiveType.
-Java9Listener.prototype.enterUnannPrimitiveType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannPrimitiveType.
-Java9Listener.prototype.exitUnannPrimitiveType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannReferenceType.
-Java9Listener.prototype.enterUnannReferenceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannReferenceType.
-Java9Listener.prototype.exitUnannReferenceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannClassOrInterfaceType.
-Java9Listener.prototype.enterUnannClassOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannClassOrInterfaceType.
-Java9Listener.prototype.exitUnannClassOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannClassType.
-Java9Listener.prototype.enterUnannClassType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannClassType.
-Java9Listener.prototype.exitUnannClassType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannClassType_lf_unannClassOrInterfaceType.
-Java9Listener.prototype.enterUnannClassType_lf_unannClassOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannClassType_lf_unannClassOrInterfaceType.
-Java9Listener.prototype.exitUnannClassType_lf_unannClassOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannClassType_lfno_unannClassOrInterfaceType.
-Java9Listener.prototype.enterUnannClassType_lfno_unannClassOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannClassType_lfno_unannClassOrInterfaceType.
-Java9Listener.prototype.exitUnannClassType_lfno_unannClassOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannInterfaceType.
-Java9Listener.prototype.enterUnannInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannInterfaceType.
-Java9Listener.prototype.exitUnannInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannInterfaceType_lf_unannClassOrInterfaceType.
-Java9Listener.prototype.enterUnannInterfaceType_lf_unannClassOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannInterfaceType_lf_unannClassOrInterfaceType.
-Java9Listener.prototype.exitUnannInterfaceType_lf_unannClassOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannInterfaceType_lfno_unannClassOrInterfaceType.
-Java9Listener.prototype.enterUnannInterfaceType_lfno_unannClassOrInterfaceType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannInterfaceType_lfno_unannClassOrInterfaceType.
-Java9Listener.prototype.exitUnannInterfaceType_lfno_unannClassOrInterfaceType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannTypeVariable.
-Java9Listener.prototype.enterUnannTypeVariable = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannTypeVariable.
-Java9Listener.prototype.exitUnannTypeVariable = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unannArrayType.
-Java9Listener.prototype.enterUnannArrayType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unannArrayType.
-Java9Listener.prototype.exitUnannArrayType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodDeclaration.
-Java9Listener.prototype.enterMethodDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodDeclaration.
-Java9Listener.prototype.exitMethodDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodModifier.
-Java9Listener.prototype.enterMethodModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodModifier.
-Java9Listener.prototype.exitMethodModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodHeader.
-Java9Listener.prototype.enterMethodHeader = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodHeader.
-Java9Listener.prototype.exitMethodHeader = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#result.
-Java9Listener.prototype.enterResult = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#result.
-Java9Listener.prototype.exitResult = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodDeclarator.
-Java9Listener.prototype.enterMethodDeclarator = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodDeclarator.
-Java9Listener.prototype.exitMethodDeclarator = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#formalParameterList.
-Java9Listener.prototype.enterFormalParameterList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#formalParameterList.
-Java9Listener.prototype.exitFormalParameterList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#formalParameters.
-Java9Listener.prototype.enterFormalParameters = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#formalParameters.
-Java9Listener.prototype.exitFormalParameters = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#formalParameter.
-Java9Listener.prototype.enterFormalParameter = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#formalParameter.
-Java9Listener.prototype.exitFormalParameter = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#variableModifier.
-Java9Listener.prototype.enterVariableModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#variableModifier.
-Java9Listener.prototype.exitVariableModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#lastFormalParameter.
-Java9Listener.prototype.enterLastFormalParameter = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#lastFormalParameter.
-Java9Listener.prototype.exitLastFormalParameter = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#receiverParameter.
-Java9Listener.prototype.enterReceiverParameter = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#receiverParameter.
-Java9Listener.prototype.exitReceiverParameter = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#throws_.
-Java9Listener.prototype.enterThrows_ = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#throws_.
-Java9Listener.prototype.exitThrows_ = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#exceptionTypeList.
-Java9Listener.prototype.enterExceptionTypeList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#exceptionTypeList.
-Java9Listener.prototype.exitExceptionTypeList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#exceptionType.
-Java9Listener.prototype.enterExceptionType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#exceptionType.
-Java9Listener.prototype.exitExceptionType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodBody.
-Java9Listener.prototype.enterMethodBody = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodBody.
-Java9Listener.prototype.exitMethodBody = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#instanceInitializer.
-Java9Listener.prototype.enterInstanceInitializer = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#instanceInitializer.
-Java9Listener.prototype.exitInstanceInitializer = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#staticInitializer.
-Java9Listener.prototype.enterStaticInitializer = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#staticInitializer.
-Java9Listener.prototype.exitStaticInitializer = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#constructorDeclaration.
-Java9Listener.prototype.enterConstructorDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#constructorDeclaration.
-Java9Listener.prototype.exitConstructorDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#constructorModifier.
-Java9Listener.prototype.enterConstructorModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#constructorModifier.
-Java9Listener.prototype.exitConstructorModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#constructorDeclarator.
-Java9Listener.prototype.enterConstructorDeclarator = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#constructorDeclarator.
-Java9Listener.prototype.exitConstructorDeclarator = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#simpleTypeName.
-Java9Listener.prototype.enterSimpleTypeName = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#simpleTypeName.
-Java9Listener.prototype.exitSimpleTypeName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#constructorBody.
-Java9Listener.prototype.enterConstructorBody = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#constructorBody.
-Java9Listener.prototype.exitConstructorBody = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#explicitConstructorInvocation.
-Java9Listener.prototype.enterExplicitConstructorInvocation = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#explicitConstructorInvocation.
-Java9Listener.prototype.exitExplicitConstructorInvocation = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#enumDeclaration.
-Java9Listener.prototype.enterEnumDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#enumDeclaration.
-Java9Listener.prototype.exitEnumDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#enumBody.
-Java9Listener.prototype.enterEnumBody = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#enumBody.
-Java9Listener.prototype.exitEnumBody = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#enumConstantList.
-Java9Listener.prototype.enterEnumConstantList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#enumConstantList.
-Java9Listener.prototype.exitEnumConstantList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#enumConstant.
-Java9Listener.prototype.enterEnumConstant = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#enumConstant.
-Java9Listener.prototype.exitEnumConstant = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#enumConstantModifier.
-Java9Listener.prototype.enterEnumConstantModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#enumConstantModifier.
-Java9Listener.prototype.exitEnumConstantModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#enumBodyDeclarations.
-Java9Listener.prototype.enterEnumBodyDeclarations = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#enumBodyDeclarations.
-Java9Listener.prototype.exitEnumBodyDeclarations = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceDeclaration.
-Java9Listener.prototype.enterInterfaceDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceDeclaration.
-Java9Listener.prototype.exitInterfaceDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#normalInterfaceDeclaration.
-Java9Listener.prototype.enterNormalInterfaceDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#normalInterfaceDeclaration.
-Java9Listener.prototype.exitNormalInterfaceDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceModifier.
-Java9Listener.prototype.enterInterfaceModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceModifier.
-Java9Listener.prototype.exitInterfaceModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#extendsInterfaces.
-Java9Listener.prototype.enterExtendsInterfaces = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#extendsInterfaces.
-Java9Listener.prototype.exitExtendsInterfaces = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceBody.
-Java9Listener.prototype.enterInterfaceBody = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceBody.
-Java9Listener.prototype.exitInterfaceBody = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceMemberDeclaration.
-Java9Listener.prototype.enterInterfaceMemberDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceMemberDeclaration.
-Java9Listener.prototype.exitInterfaceMemberDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#constantDeclaration.
-Java9Listener.prototype.enterConstantDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#constantDeclaration.
-Java9Listener.prototype.exitConstantDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#constantModifier.
-Java9Listener.prototype.enterConstantModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#constantModifier.
-Java9Listener.prototype.exitConstantModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceMethodDeclaration.
-Java9Listener.prototype.enterInterfaceMethodDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceMethodDeclaration.
-Java9Listener.prototype.exitInterfaceMethodDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#interfaceMethodModifier.
-Java9Listener.prototype.enterInterfaceMethodModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#interfaceMethodModifier.
-Java9Listener.prototype.exitInterfaceMethodModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#annotationTypeDeclaration.
-Java9Listener.prototype.enterAnnotationTypeDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#annotationTypeDeclaration.
-Java9Listener.prototype.exitAnnotationTypeDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#annotationTypeBody.
-Java9Listener.prototype.enterAnnotationTypeBody = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#annotationTypeBody.
-Java9Listener.prototype.exitAnnotationTypeBody = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#annotationTypeMemberDeclaration.
-Java9Listener.prototype.enterAnnotationTypeMemberDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#annotationTypeMemberDeclaration.
-Java9Listener.prototype.exitAnnotationTypeMemberDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#annotationTypeElementDeclaration.
-Java9Listener.prototype.enterAnnotationTypeElementDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#annotationTypeElementDeclaration.
-Java9Listener.prototype.exitAnnotationTypeElementDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#annotationTypeElementModifier.
-Java9Listener.prototype.enterAnnotationTypeElementModifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#annotationTypeElementModifier.
-Java9Listener.prototype.exitAnnotationTypeElementModifier = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#defaultValue.
-Java9Listener.prototype.enterDefaultValue = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#defaultValue.
-Java9Listener.prototype.exitDefaultValue = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#annotation.
-Java9Listener.prototype.enterAnnotation = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#annotation.
-Java9Listener.prototype.exitAnnotation = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#normalAnnotation.
-Java9Listener.prototype.enterNormalAnnotation = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#normalAnnotation.
-Java9Listener.prototype.exitNormalAnnotation = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#elementValuePairList.
-Java9Listener.prototype.enterElementValuePairList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#elementValuePairList.
-Java9Listener.prototype.exitElementValuePairList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#elementValuePair.
-Java9Listener.prototype.enterElementValuePair = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#elementValuePair.
-Java9Listener.prototype.exitElementValuePair = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#elementValue.
-Java9Listener.prototype.enterElementValue = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#elementValue.
-Java9Listener.prototype.exitElementValue = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#elementValueArrayInitializer.
-Java9Listener.prototype.enterElementValueArrayInitializer = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#elementValueArrayInitializer.
-Java9Listener.prototype.exitElementValueArrayInitializer = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#elementValueList.
-Java9Listener.prototype.enterElementValueList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#elementValueList.
-Java9Listener.prototype.exitElementValueList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#markerAnnotation.
-Java9Listener.prototype.enterMarkerAnnotation = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#markerAnnotation.
-Java9Listener.prototype.exitMarkerAnnotation = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#singleElementAnnotation.
-Java9Listener.prototype.enterSingleElementAnnotation = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#singleElementAnnotation.
-Java9Listener.prototype.exitSingleElementAnnotation = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#arrayInitializer.
-Java9Listener.prototype.enterArrayInitializer = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#arrayInitializer.
-Java9Listener.prototype.exitArrayInitializer = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#variableInitializerList.
-Java9Listener.prototype.enterVariableInitializerList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#variableInitializerList.
-Java9Listener.prototype.exitVariableInitializerList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#block.
-Java9Listener.prototype.enterBlock = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#block.
-Java9Listener.prototype.exitBlock = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#blockStatements.
-Java9Listener.prototype.enterBlockStatements = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#blockStatements.
-Java9Listener.prototype.exitBlockStatements = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#blockStatement.
-Java9Listener.prototype.enterBlockStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#blockStatement.
-Java9Listener.prototype.exitBlockStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#localVariableDeclarationStatement.
-Java9Listener.prototype.enterLocalVariableDeclarationStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#localVariableDeclarationStatement.
-Java9Listener.prototype.exitLocalVariableDeclarationStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#localVariableDeclaration.
-Java9Listener.prototype.enterLocalVariableDeclaration = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#localVariableDeclaration.
-Java9Listener.prototype.exitLocalVariableDeclaration = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#statement.
-Java9Listener.prototype.enterStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#statement.
-Java9Listener.prototype.exitStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#statementNoShortIf.
-Java9Listener.prototype.enterStatementNoShortIf = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#statementNoShortIf.
-Java9Listener.prototype.exitStatementNoShortIf = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#statementWithoutTrailingSubstatement.
-Java9Listener.prototype.enterStatementWithoutTrailingSubstatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#statementWithoutTrailingSubstatement.
-Java9Listener.prototype.exitStatementWithoutTrailingSubstatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#emptyStatement.
-Java9Listener.prototype.enterEmptyStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#emptyStatement.
-Java9Listener.prototype.exitEmptyStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#labeledStatement.
-Java9Listener.prototype.enterLabeledStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#labeledStatement.
-Java9Listener.prototype.exitLabeledStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#labeledStatementNoShortIf.
-Java9Listener.prototype.enterLabeledStatementNoShortIf = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#labeledStatementNoShortIf.
-Java9Listener.prototype.exitLabeledStatementNoShortIf = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#expressionStatement.
-Java9Listener.prototype.enterExpressionStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#expressionStatement.
-Java9Listener.prototype.exitExpressionStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#statementExpression.
-Java9Listener.prototype.enterStatementExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#statementExpression.
-Java9Listener.prototype.exitStatementExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#ifThenStatement.
-Java9Listener.prototype.enterIfThenStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#ifThenStatement.
-Java9Listener.prototype.exitIfThenStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#ifThenElseStatement.
-Java9Listener.prototype.enterIfThenElseStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#ifThenElseStatement.
-Java9Listener.prototype.exitIfThenElseStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#ifThenElseStatementNoShortIf.
-Java9Listener.prototype.enterIfThenElseStatementNoShortIf = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#ifThenElseStatementNoShortIf.
-Java9Listener.prototype.exitIfThenElseStatementNoShortIf = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#assertStatement.
-Java9Listener.prototype.enterAssertStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#assertStatement.
-Java9Listener.prototype.exitAssertStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#switchStatement.
-Java9Listener.prototype.enterSwitchStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#switchStatement.
-Java9Listener.prototype.exitSwitchStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#switchBlock.
-Java9Listener.prototype.enterSwitchBlock = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#switchBlock.
-Java9Listener.prototype.exitSwitchBlock = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#switchBlockStatementGroup.
-Java9Listener.prototype.enterSwitchBlockStatementGroup = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#switchBlockStatementGroup.
-Java9Listener.prototype.exitSwitchBlockStatementGroup = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#switchLabels.
-Java9Listener.prototype.enterSwitchLabels = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#switchLabels.
-Java9Listener.prototype.exitSwitchLabels = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#switchLabel.
-Java9Listener.prototype.enterSwitchLabel = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#switchLabel.
-Java9Listener.prototype.exitSwitchLabel = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#enumConstantName.
-Java9Listener.prototype.enterEnumConstantName = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#enumConstantName.
-Java9Listener.prototype.exitEnumConstantName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#whileStatement.
-Java9Listener.prototype.enterWhileStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#whileStatement.
-Java9Listener.prototype.exitWhileStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#whileStatementNoShortIf.
-Java9Listener.prototype.enterWhileStatementNoShortIf = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#whileStatementNoShortIf.
-Java9Listener.prototype.exitWhileStatementNoShortIf = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#doStatement.
-Java9Listener.prototype.enterDoStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#doStatement.
-Java9Listener.prototype.exitDoStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#forStatement.
-Java9Listener.prototype.enterForStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#forStatement.
-Java9Listener.prototype.exitForStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#forStatementNoShortIf.
-Java9Listener.prototype.enterForStatementNoShortIf = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#forStatementNoShortIf.
-Java9Listener.prototype.exitForStatementNoShortIf = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#basicForStatement.
-Java9Listener.prototype.enterBasicForStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#basicForStatement.
-Java9Listener.prototype.exitBasicForStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#basicForStatementNoShortIf.
-Java9Listener.prototype.enterBasicForStatementNoShortIf = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#basicForStatementNoShortIf.
-Java9Listener.prototype.exitBasicForStatementNoShortIf = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#forInit.
-Java9Listener.prototype.enterForInit = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#forInit.
-Java9Listener.prototype.exitForInit = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#forUpdate.
-Java9Listener.prototype.enterForUpdate = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#forUpdate.
-Java9Listener.prototype.exitForUpdate = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#statementExpressionList.
-Java9Listener.prototype.enterStatementExpressionList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#statementExpressionList.
-Java9Listener.prototype.exitStatementExpressionList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#enhancedForStatement.
-Java9Listener.prototype.enterEnhancedForStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#enhancedForStatement.
-Java9Listener.prototype.exitEnhancedForStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#enhancedForStatementNoShortIf.
-Java9Listener.prototype.enterEnhancedForStatementNoShortIf = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#enhancedForStatementNoShortIf.
-Java9Listener.prototype.exitEnhancedForStatementNoShortIf = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#breakStatement.
-Java9Listener.prototype.enterBreakStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#breakStatement.
-Java9Listener.prototype.exitBreakStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#continueStatement.
-Java9Listener.prototype.enterContinueStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#continueStatement.
-Java9Listener.prototype.exitContinueStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#returnStatement.
-Java9Listener.prototype.enterReturnStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#returnStatement.
-Java9Listener.prototype.exitReturnStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#throwStatement.
-Java9Listener.prototype.enterThrowStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#throwStatement.
-Java9Listener.prototype.exitThrowStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#synchronizedStatement.
-Java9Listener.prototype.enterSynchronizedStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#synchronizedStatement.
-Java9Listener.prototype.exitSynchronizedStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#tryStatement.
-Java9Listener.prototype.enterTryStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#tryStatement.
-Java9Listener.prototype.exitTryStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#catches.
-Java9Listener.prototype.enterCatches = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#catches.
-Java9Listener.prototype.exitCatches = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#catchClause.
-Java9Listener.prototype.enterCatchClause = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#catchClause.
-Java9Listener.prototype.exitCatchClause = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#catchFormalParameter.
-Java9Listener.prototype.enterCatchFormalParameter = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#catchFormalParameter.
-Java9Listener.prototype.exitCatchFormalParameter = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#catchType.
-Java9Listener.prototype.enterCatchType = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#catchType.
-Java9Listener.prototype.exitCatchType = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#finally_.
-Java9Listener.prototype.enterFinally_ = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#finally_.
-Java9Listener.prototype.exitFinally_ = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#tryWithResourcesStatement.
-Java9Listener.prototype.enterTryWithResourcesStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#tryWithResourcesStatement.
-Java9Listener.prototype.exitTryWithResourcesStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#resourceSpecification.
-Java9Listener.prototype.enterResourceSpecification = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#resourceSpecification.
-Java9Listener.prototype.exitResourceSpecification = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#resourceList.
-Java9Listener.prototype.enterResourceList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#resourceList.
-Java9Listener.prototype.exitResourceList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#resource.
-Java9Listener.prototype.enterResource = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#resource.
-Java9Listener.prototype.exitResource = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#variableAccess.
-Java9Listener.prototype.enterVariableAccess = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#variableAccess.
-Java9Listener.prototype.exitVariableAccess = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primary.
-Java9Listener.prototype.enterPrimary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primary.
-Java9Listener.prototype.exitPrimary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primaryNoNewArray.
-Java9Listener.prototype.enterPrimaryNoNewArray = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primaryNoNewArray.
-Java9Listener.prototype.exitPrimaryNoNewArray = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lf_arrayAccess.
-Java9Listener.prototype.enterPrimaryNoNewArray_lf_arrayAccess = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lf_arrayAccess.
-Java9Listener.prototype.exitPrimaryNoNewArray_lf_arrayAccess = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lfno_arrayAccess.
-Java9Listener.prototype.enterPrimaryNoNewArray_lfno_arrayAccess = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lfno_arrayAccess.
-Java9Listener.prototype.exitPrimaryNoNewArray_lfno_arrayAccess = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary.
-Java9Listener.prototype.enterPrimaryNoNewArray_lf_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary.
-Java9Listener.prototype.exitPrimaryNoNewArray_lf_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary.
-Java9Listener.prototype.enterPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary.
-Java9Listener.prototype.exitPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary.
-Java9Listener.prototype.enterPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary.
-Java9Listener.prototype.exitPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary.
-Java9Listener.prototype.enterPrimaryNoNewArray_lfno_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary.
-Java9Listener.prototype.exitPrimaryNoNewArray_lfno_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary.
-Java9Listener.prototype.enterPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary.
-Java9Listener.prototype.exitPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary.
-Java9Listener.prototype.enterPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary.
-Java9Listener.prototype.exitPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classLiteral.
-Java9Listener.prototype.enterClassLiteral = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classLiteral.
-Java9Listener.prototype.exitClassLiteral = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classInstanceCreationExpression.
-Java9Listener.prototype.enterClassInstanceCreationExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classInstanceCreationExpression.
-Java9Listener.prototype.exitClassInstanceCreationExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classInstanceCreationExpression_lf_primary.
-Java9Listener.prototype.enterClassInstanceCreationExpression_lf_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classInstanceCreationExpression_lf_primary.
-Java9Listener.prototype.exitClassInstanceCreationExpression_lf_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#classInstanceCreationExpression_lfno_primary.
-Java9Listener.prototype.enterClassInstanceCreationExpression_lfno_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#classInstanceCreationExpression_lfno_primary.
-Java9Listener.prototype.exitClassInstanceCreationExpression_lfno_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#typeArgumentsOrDiamond.
-Java9Listener.prototype.enterTypeArgumentsOrDiamond = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#typeArgumentsOrDiamond.
-Java9Listener.prototype.exitTypeArgumentsOrDiamond = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#fieldAccess.
-Java9Listener.prototype.enterFieldAccess = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#fieldAccess.
-Java9Listener.prototype.exitFieldAccess = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#fieldAccess_lf_primary.
-Java9Listener.prototype.enterFieldAccess_lf_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#fieldAccess_lf_primary.
-Java9Listener.prototype.exitFieldAccess_lf_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#fieldAccess_lfno_primary.
-Java9Listener.prototype.enterFieldAccess_lfno_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#fieldAccess_lfno_primary.
-Java9Listener.prototype.exitFieldAccess_lfno_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#arrayAccess.
-Java9Listener.prototype.enterArrayAccess = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#arrayAccess.
-Java9Listener.prototype.exitArrayAccess = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#arrayAccess_lf_primary.
-Java9Listener.prototype.enterArrayAccess_lf_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#arrayAccess_lf_primary.
-Java9Listener.prototype.exitArrayAccess_lf_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#arrayAccess_lfno_primary.
-Java9Listener.prototype.enterArrayAccess_lfno_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#arrayAccess_lfno_primary.
-Java9Listener.prototype.exitArrayAccess_lfno_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodInvocation.
-Java9Listener.prototype.enterMethodInvocation = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodInvocation.
-Java9Listener.prototype.exitMethodInvocation = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodInvocation_lf_primary.
-Java9Listener.prototype.enterMethodInvocation_lf_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodInvocation_lf_primary.
-Java9Listener.prototype.exitMethodInvocation_lf_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodInvocation_lfno_primary.
-Java9Listener.prototype.enterMethodInvocation_lfno_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodInvocation_lfno_primary.
-Java9Listener.prototype.exitMethodInvocation_lfno_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#argumentList.
-Java9Listener.prototype.enterArgumentList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#argumentList.
-Java9Listener.prototype.exitArgumentList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodReference.
-Java9Listener.prototype.enterMethodReference = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodReference.
-Java9Listener.prototype.exitMethodReference = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodReference_lf_primary.
-Java9Listener.prototype.enterMethodReference_lf_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodReference_lf_primary.
-Java9Listener.prototype.exitMethodReference_lf_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#methodReference_lfno_primary.
-Java9Listener.prototype.enterMethodReference_lfno_primary = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#methodReference_lfno_primary.
-Java9Listener.prototype.exitMethodReference_lfno_primary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#arrayCreationExpression.
-Java9Listener.prototype.enterArrayCreationExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#arrayCreationExpression.
-Java9Listener.prototype.exitArrayCreationExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#dimExprs.
-Java9Listener.prototype.enterDimExprs = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#dimExprs.
-Java9Listener.prototype.exitDimExprs = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#dimExpr.
-Java9Listener.prototype.enterDimExpr = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#dimExpr.
-Java9Listener.prototype.exitDimExpr = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#constantExpression.
-Java9Listener.prototype.enterConstantExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#constantExpression.
-Java9Listener.prototype.exitConstantExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#expression.
-Java9Listener.prototype.enterExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#expression.
-Java9Listener.prototype.exitExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#lambdaExpression.
-Java9Listener.prototype.enterLambdaExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#lambdaExpression.
-Java9Listener.prototype.exitLambdaExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#lambdaParameters.
-Java9Listener.prototype.enterLambdaParameters = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#lambdaParameters.
-Java9Listener.prototype.exitLambdaParameters = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#inferredFormalParameterList.
-Java9Listener.prototype.enterInferredFormalParameterList = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#inferredFormalParameterList.
-Java9Listener.prototype.exitInferredFormalParameterList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#lambdaBody.
-Java9Listener.prototype.enterLambdaBody = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#lambdaBody.
-Java9Listener.prototype.exitLambdaBody = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#assignmentExpression.
-Java9Listener.prototype.enterAssignmentExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#assignmentExpression.
-Java9Listener.prototype.exitAssignmentExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#assignment.
-Java9Listener.prototype.enterAssignment = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#assignment.
-Java9Listener.prototype.exitAssignment = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#leftHandSide.
-Java9Listener.prototype.enterLeftHandSide = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#leftHandSide.
-Java9Listener.prototype.exitLeftHandSide = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#assignmentOperator.
-Java9Listener.prototype.enterAssignmentOperator = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#assignmentOperator.
-Java9Listener.prototype.exitAssignmentOperator = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#conditionalExpression.
-Java9Listener.prototype.enterConditionalExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#conditionalExpression.
-Java9Listener.prototype.exitConditionalExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#conditionalOrExpression.
-Java9Listener.prototype.enterConditionalOrExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#conditionalOrExpression.
-Java9Listener.prototype.exitConditionalOrExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#conditionalAndExpression.
-Java9Listener.prototype.enterConditionalAndExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#conditionalAndExpression.
-Java9Listener.prototype.exitConditionalAndExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#inclusiveOrExpression.
-Java9Listener.prototype.enterInclusiveOrExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#inclusiveOrExpression.
-Java9Listener.prototype.exitInclusiveOrExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#exclusiveOrExpression.
-Java9Listener.prototype.enterExclusiveOrExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#exclusiveOrExpression.
-Java9Listener.prototype.exitExclusiveOrExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#andExpression.
-Java9Listener.prototype.enterAndExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#andExpression.
-Java9Listener.prototype.exitAndExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#equalityExpression.
-Java9Listener.prototype.enterEqualityExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#equalityExpression.
-Java9Listener.prototype.exitEqualityExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#relationalExpression.
-Java9Listener.prototype.enterRelationalExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#relationalExpression.
-Java9Listener.prototype.exitRelationalExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#shiftExpression.
-Java9Listener.prototype.enterShiftExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#shiftExpression.
-Java9Listener.prototype.exitShiftExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#additiveExpression.
-Java9Listener.prototype.enterAdditiveExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#additiveExpression.
-Java9Listener.prototype.exitAdditiveExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#multiplicativeExpression.
-Java9Listener.prototype.enterMultiplicativeExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#multiplicativeExpression.
-Java9Listener.prototype.exitMultiplicativeExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unaryExpression.
-Java9Listener.prototype.enterUnaryExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unaryExpression.
-Java9Listener.prototype.exitUnaryExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#preIncrementExpression.
-Java9Listener.prototype.enterPreIncrementExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#preIncrementExpression.
-Java9Listener.prototype.exitPreIncrementExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#preDecrementExpression.
-Java9Listener.prototype.enterPreDecrementExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#preDecrementExpression.
-Java9Listener.prototype.exitPreDecrementExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#unaryExpressionNotPlusMinus.
-Java9Listener.prototype.enterUnaryExpressionNotPlusMinus = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#unaryExpressionNotPlusMinus.
-Java9Listener.prototype.exitUnaryExpressionNotPlusMinus = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#postfixExpression.
-Java9Listener.prototype.enterPostfixExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#postfixExpression.
-Java9Listener.prototype.exitPostfixExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#postIncrementExpression.
-Java9Listener.prototype.enterPostIncrementExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#postIncrementExpression.
-Java9Listener.prototype.exitPostIncrementExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#postIncrementExpression_lf_postfixExpression.
-Java9Listener.prototype.enterPostIncrementExpression_lf_postfixExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#postIncrementExpression_lf_postfixExpression.
-Java9Listener.prototype.exitPostIncrementExpression_lf_postfixExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#postDecrementExpression.
-Java9Listener.prototype.enterPostDecrementExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#postDecrementExpression.
-Java9Listener.prototype.exitPostDecrementExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#postDecrementExpression_lf_postfixExpression.
-Java9Listener.prototype.enterPostDecrementExpression_lf_postfixExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#postDecrementExpression_lf_postfixExpression.
-Java9Listener.prototype.exitPostDecrementExpression_lf_postfixExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#castExpression.
-Java9Listener.prototype.enterCastExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#castExpression.
-Java9Listener.prototype.exitCastExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by Java9Parser#identifier.
-Java9Listener.prototype.enterIdentifier = function(ctx) {
-};
-
-// Exit a parse tree produced by Java9Parser#identifier.
-Java9Listener.prototype.exitIdentifier = function(ctx) {
-};
-
-
-
-exports.Java9Listener = Java9Listener;
