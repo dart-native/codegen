@@ -26,6 +26,12 @@ It's still under development. Here's how it works:
 $ npm install -g @dartnative/codegen
 ```
 
+## Requirement
+
+``` json
+"node": ">=12.16"
+```
+
 ## Usage
 
 ```

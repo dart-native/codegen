@@ -1,10 +1,12 @@
 const main = require('./lib/main').main
 
-let dataPath = "test/objc/RuntimeStub.h"
+let path = 'test/objc/RuntimeStub.h'
+// let path = 'test/java/helloworld.java'
+
 let option = {
     output: 'test/dart',
-    template: 'plugin',
-    projectName: 'testPlugin'
+    // template: 'plugin',
+    // projectName: 'testPlugin'
 }
 
-main(dataPath, option, true)
+main(path, option, true)
