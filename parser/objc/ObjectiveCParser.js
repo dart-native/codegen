@@ -1,6 +1,6 @@
 // Generated from ObjectiveCParser.g4 by ANTLR 4.8
 // jshint ignore: start
-var antlr4 = require('antlr4/index');
+var antlr4 = require('antlr4');
 var ObjectiveCParserListener = require('./ObjectiveCParserListener').ObjectiveCParserListener;
 var grammarFileName = "ObjectiveCParser.g4";
 
