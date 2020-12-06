@@ -115,7 +115,8 @@ dist
 .pnp.*
 
 # output dart
-*.dart
+./*.dart
+!./dart_native_codegen/*.dart
 
 # Flutter/Dart/Pub related
 **/doc/api/
