@@ -1,0 +1,13 @@
+name: dart_native_codegen
+description: Generator for dart_native bindings. Codegen can transform native SDK to Flutter plugin.
+version: 0.0.1
+homepage: https://github.com/dart-native/codegen
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  antlr4: ^4.9.0
+
+dev_dependencies:
+  test: ^1.15.3

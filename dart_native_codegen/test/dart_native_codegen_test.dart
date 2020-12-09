@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_native_codegen/parser/ObjectiveCLexer.dart';
 import 'package:dart_native_codegen/parser/ObjectiveCParser.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart' as path;
 
 import 'package:dart_native_codegen/dart_native_codegen.dart';
@@ -15,16 +14,13 @@ class TreeShapeListener implements ParseTreeListener {
   }
 
   @override
-  void exitEveryRule(ParserRuleContext node) {
-  }
+  void exitEveryRule(ParserRuleContext node) {}
 
   @override
-  void visitErrorNode(ErrorNode node) {
-  }
+  void visitErrorNode(ErrorNode node) {}
 
   @override
-  void visitTerminal(TerminalNode node) {
-  }
+  void visitTerminal(TerminalNode node) {}
 }
 
 void main() async {
