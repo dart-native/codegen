@@ -5,8 +5,6 @@ import 'package:dart_native_codegen/parser/ObjectiveCLexer.dart';
 import 'package:dart_native_codegen/parser/ObjectiveCParser.dart';
 import 'package:path/path.dart' as path;
 
-import 'package:dart_native_codegen/dart_native_codegen.dart';
-
 class TreeShapeListener implements ParseTreeListener {
   @override
   void enterEveryRule(ParserRuleContext ctx) {
