@@ -1,9 +1,8 @@
 import 'dart:io';
 
 import 'package:antlr4/antlr4.dart';
-import 'package:dart_native_codegen/parser/ObjectiveCLexer.dart';
-import 'package:dart_native_codegen/parser/ObjectiveCParser.dart';
-import 'package:path/path.dart' as path;
+import 'package:dart_native_codegen/parser/objc/ObjectiveCLexer.dart';
+import 'package:dart_native_codegen/parser/objc/ObjectiveCParser.dart';
 
 class TreeShapeListener implements ParseTreeListener {
   @override
@@ -23,7 +22,7 @@ class TreeShapeListener implements ParseTreeListener {
 
 void main() async {
   var fileName = "NSURL.h";
-  var pathStr = "${Directory.current.path}/test/$fileName";
+  var pathStr = "${Directory.current.path}/test/objc/$fileName";
   // /Users/chaoso/Documents/workspace/tencent/codegen/dart_native_codegen/dart_native_codegen/test/NSURL.h
   ObjectiveCLexer.checkVersion();
   ObjectiveCParser.checkVersion();

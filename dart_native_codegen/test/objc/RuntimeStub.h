@@ -26,12 +26,9 @@ typedef NSObject * _Nonnull (^BarBlock)(NSObject *a);
 typedef CGAffineTransform (^StretBlock)(CGAffineTransform a);
 typedef char * _Nonnull (^CStringRetBlock)(char *a);
 typedef CGFloat (^CGFloatRetBlock)(CGFloat a);
-typedef char (* testPointerFunction)(int abc);
 
 @interface RuntimeStub : NSObject
-@property (readonly, copy) NSArray<int (^)(int abc)> *executionBlocks;
-@property (nonatomic) NSUInteger (*hashFunction)(const void *item);
-@property (nonatomic, assign) NSInteger abc;
+
 - (BOOL)fooBOOL:(BOOL)b;
 - (int8_t)fooInt8:(int8_t)int8;
 - (int16_t)fooInt16:(int16_t)int16;
