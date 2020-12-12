@@ -1,14 +1,18 @@
 # dart_native_codegen
 
-A new Flutter package project.
+Generate Dart bindings from native code. It's based on [dart_native](https://pub.dev/packages/dart_native).
 
-## Getting Started
+![](images/introduction.png)
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+You can use codegen to convert native SDK into Flutter SDK. Such as Login SDK:
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+![](images/login_sample.png)
+
+Codegen is a part of DartNative. It's the cyan part(DartNative Codegen) in the picture below:
+
+![](https://github.com/yulingtianxia/Blog-Hexo-Source/blob/master/source/resources/DartObjC/DartNative%20Future.png?raw=true)
+
+It's still under development. Here's how it works:
+
+![](images/theory.png)
+
