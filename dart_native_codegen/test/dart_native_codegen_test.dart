@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_native_codegen/parser/objc/ObjectiveCLexer.dart';
 import 'package:dart_native_codegen/parser/objc/ObjectiveCParser.dart';
+import 'package:dart_native_codegen/src/objc/dn_objectC_parser_listener.dart';
+import 'package:path/path.dart' as path;
 
 class TreeShapeListener implements ParseTreeListener {
   @override
@@ -34,5 +36,8 @@ void main() async {
   parser.buildParseTree = true;
   final tree = parser.translationUnit();
   print('ashodjosajd');
-  ParseTreeWalker.DEFAULT.walk(TreeShapeListener(), tree);
+  Callback cb = (dartCode,{error}) {
+    
+  };
+  ParseTreeWalker.DEFAULT.walk(DNObjectiveCParserListener(cb), tree);
 }
