@@ -1,7 +1,7 @@
-name: simple_example
+name: dart_native_codegen_example
 
 environment:
-  sdk: '>=2.8.1 <3.0.0'
+  sdk: '>=2.7.0 <3.0.0'
 
 dev_dependencies:
   dart_native_codegen:

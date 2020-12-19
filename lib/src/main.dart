@@ -1,8 +1,19 @@
 import 'package:args/args.dart';
+import 'package:path/path.dart' as p;
+
+class OptionNames {
+  static const String version = 'version';
+  static const String help = 'help';
+  static const String input = 'input';
+  static const String output = 'output';
+  static const String language = 'language';
+  static const String template = 'template';
+  static const String projectName = 'project-name';
+}
 
 var parser = ArgParser()
   ..addFlag(
-    'version',
+    OptionNames.version,
     abbr: 'v',
     negatable: false,
     help: 'verion.',
@@ -13,7 +24,7 @@ var parser = ArgParser()
     },
   )
   ..addFlag(
-    'help',
+    OptionNames.help,
     abbr: 'h',
     negatable: false,
     help: 'help.',
@@ -24,19 +35,19 @@ var parser = ArgParser()
     },
   )
   ..addOption(
-    'input',
+    OptionNames.input,
     abbr: 'i',
-    defaultsTo: 'current path', // TODO: current path
+    defaultsTo: p.current, // TODO: current path
     help: 'The input directory',
   )
   ..addOption(
-    'output',
+    OptionNames.output,
     abbr: 'o',
-    defaultsTo: 'current path', // TODO: current path
+    defaultsTo: p.current, // TODO: current path
     help: 'The output path.',
   )
   ..addMultiOption(
-    'language',
+    OptionNames.language,
     abbr: 'l',
     allowedHelp: {
       'objc': 'Generate Dart code from Objective-C.',
@@ -46,7 +57,7 @@ var parser = ArgParser()
     help: 'The language to be processed.',
   )
   ..addMultiOption(
-    'template',
+    OptionNames.template,
     abbr: 't',
     allowedHelp: {
       'package':
@@ -57,13 +68,16 @@ var parser = ArgParser()
     help: 'Specify the type of project to create.',
   )
   ..addOption(
-    'project-name',
+    OptionNames.projectName,
     help:
         'The project name for this new Flutter project. This must be a valid dart package name.',
   );
 
 void run(List<String> args) {
   ArgResults results = parser.parse(args);
-  print(results.toString());
   // TODO: use results
+  String input = results[OptionNames.input];
+  if (input != null) {
+    print(input);
+  }
 }
