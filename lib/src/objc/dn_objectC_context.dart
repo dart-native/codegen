@@ -1,3 +1,5 @@
+import 'dart:indexed_db';
+
 import 'package:antlr4/src/tree/src/tree.dart';
 import 'package:dart_native_codegen/parser/objc/ObjectiveCParser.dart';
 
@@ -94,4 +96,98 @@ class DNAvailabilityContext extends DNContext {
     }
     
   }
+}
+
+class DNBlockDefContext extends DNContext {
+  String returnType = '';
+  String defName = null;
+  List args = [];
+  DNBlockDefContext(internal) : super(internal);
+
+  parse() {
+        String argList = '';
+        this.args.asMap().keys.map((index) => {
+            if (index == this.args.length - 1) {
+              argList += args[index].type + ' ' + args[index].name
+            } else {
+              argList += args[index].type + ' ' + args[index].name + ', '
+            }
+        });        
+        var result = 'typedef ';
+        result += this.returnType + ' ' + this.defName + '(' + argList + ');';
+        return result;
+    }
+}
+
+class DNEnumItemContext extends DNContext {
+  String name = '';
+  String type = null;
+  String value = null;
+  List macros =  [];
+  List availability = [];
+
+  DNEnumItemContext(internal) : super(internal) {
+    this.name = internal.name.start.text;
+  }
+  
+  parse() {
+      var result = this.availability.map((a) => a.parse()).join(' ') + '\n';
+      this.value = this.value.toString().replaceAll('UL','');
+      if (this.type.isNotEmpty) {
+          result += 'const ' + this.type + ' ' + this.name + ' = ' +
+              this.type + '(' + this.value + ');\n';
+      } else {
+          result += 'const int ' + this.name + ' = ' + this.value + ';\n';
+      }
+      return result;
+  }
+}
+
+class DNEnumDefContext extends DNContext {
+  String defName = '';
+  String type = null;
+  String value = null;
+  Map enumMap = {};
+  List macros =  [];
+  List availability = [];
+
+  DNEnumDefContext(internal) : super(internal) {  
+    if (internal.name) {
+        this.defName = internal.name.start.text;
+    }
+  }
+
+  parse() {
+      var result = '\n';
+      if (this.defName.isNotEmpty) {
+          var availability = this.availability.map((a) => a.parse()).join(' ') + '\n';
+          var superClass = 'NSEnum';
+          if (this.type == 'NS_OPTIONS') {
+              superClass = 'NSOptions';
+          }
+          result += availability +
+              'class ' + this.defName + ' extends ' + superClass + ' {\n' +
+              '  const ' + this.defName + '(dynamic raw) : super(raw);\n' +
+              '  ' + this.defName + '.fromPointer(Pointer<Void> ptr) : super(ptr.address);\n' +
+              '}\n\n';
+      }
+
+      for (var key in this.enumMap.keys) {
+          result += this.enumMap[key].parse();
+      }
+      return result;
+  }
+}
+
+class DNArgumentContext extends DNContext {
+  String name = null;
+  String type = '';
+  bool isBlock = false;
+  bool isNullable = false;
+  bool isOutParam = false;
+  DNArgumentContext(internal) : super(internal) {  
+    if (internal.name && internal.types) {
+      this.name = internal.name.start.text;
+    }
+  } 
 }
