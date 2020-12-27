@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:args/args.dart';
+import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
 
 class OptionNames {
@@ -9,6 +12,11 @@ class OptionNames {
   static const String language = 'language';
   static const String template = 'template';
   static const String projectName = 'project-name';
+}
+
+class FlutterTemplates {
+  static const String package = 'package';
+  static const String plugin = 'plugin';
 }
 
 var parser = ArgParser()
@@ -56,13 +64,13 @@ var parser = ArgParser()
     defaultsTo: ['objc', 'java'],
     help: 'The language to be processed.',
   )
-  ..addMultiOption(
+  ..addOption(
     OptionNames.template,
     abbr: 't',
     allowedHelp: {
-      'package':
+      FlutterTemplates.package:
           'Generate a shareable Flutter project containing modular Dart code.',
-      'plugin':
+      FlutterTemplates.plugin:
           'Generate a shareable Flutter project containing an API in Dart code with a platform-specific implementation for Android, for iOS code, or for both.',
     },
     help: 'Specify the type of project to create.',
@@ -73,11 +81,60 @@ var parser = ArgParser()
         'The project name for this new Flutter project. This must be a valid dart package name.',
   );
 
+final logger = Logger('Codegen');
+
 void run(List<String> args) {
   ArgResults results = parser.parse(args);
-  // TODO: use results
+
+  if (results[OptionNames.help] || results[OptionNames.version]) {
+    return;
+  }
+
+  Logger.root.level = Level.ALL;
+  Logger.root.onRecord.listen((record) {
+    print('${record.level.name}: ${record.time}: ${record.message}');
+  });
+
+  // get parameters
   String input = results[OptionNames.input];
-  if (input != null) {
-    print(input);
+  String output = results[OptionNames.output];
+  List<String> language = results[OptionNames.language];
+  String template = results[OptionNames.template];
+  String projectName = results[OptionNames.projectName];
+  logger.info(
+      'codegen parameters. input: $input, output: $output, language: $language, template: $template, projectName: $projectName');
+  // create directory for output path.
+  Directory(output).createSync(recursive: true);
+
+  if (template != null && projectName != null) {
+    createFlutter(template, projectName, output);
+  }
+
+  // format generated dart files.
+  formatDart(output);
+}
+
+void createFlutter(String template, String projectName, String output) {
+  // TODO: test output path
+  String command =
+      'flutter create --template=$template --project-name=$projectName';
+  if (template == FlutterTemplates.plugin) {
+    command += ' --platforms=android,ios';
+  }
+  command += ' $output';
+  Process.runSync(command, []).log();
+}
+
+void formatDart(String path) {
+  Process.runSync('flutter format', [path]).log();
+}
+
+extension LogProcessResult on ProcessResult {
+  void log() {
+    if (this.stdout) {
+      logger.info(this.stdout);
+    } else if (this.stderr) {
+      logger.severe(this.stderr);
+    }
   }
 }

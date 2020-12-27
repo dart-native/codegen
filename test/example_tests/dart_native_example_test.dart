@@ -7,12 +7,20 @@ void main() {
   group('DartNative Example E2E Test', () {
     setUpAll(() {
       // Clone DartNative
-      Process.runSync('rm', ['-rf', 'test/temp/dart_native']);
-      const String gitURL = 'https://github.com/dart-native/dart_native.git';
-      ProcessResult result = Process.runSync(
-          'git', ['clone', '-b', 'develop', gitURL, 'test/temp']);
-      print(result.stdout);
-      print(result.stderr);
+      bool exampleExists = Directory('test/temp/dart_native').existsSync();
+      ProcessResult result;
+      if (exampleExists) {
+        // git pull
+        result = Process.runSync('git', ['pull', '-f'],
+            workingDirectory: 'test/temp/dart_native');
+      } else {
+        // git clone
+        const String gitURL = 'https://github.com/dart-native/dart_native.git';
+        result = Process.runSync('git',
+            ['clone', '-b', 'develop', gitURL, 'test/temp/dart_native/']);
+      }
+      print(
+          'clone dart_native. stdout: ${result.stdout}, stderr: ${result.stderr}');
     });
 
     test('Generate bindings from Objective-C code', () {
