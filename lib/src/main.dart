@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
+import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
 
@@ -19,10 +20,20 @@ class FlutterTemplates {
   static const String plugin = 'plugin';
 }
 
+class Languages {
+  static const String java = 'java';
+  static const String objc = 'objc';
+}
+
+const Map<String, String> _extensionForLanguage = {
+  Languages.java: 'java',
+  Languages.objc: 'h'
+};
+
 var parser = ArgParser()
   ..addFlag(
     OptionNames.version,
-    abbr: 'v',
+    abbr: OptionNames.version[0],
     negatable: false,
     help: 'verion.',
     callback: (version) {
@@ -33,7 +44,7 @@ var parser = ArgParser()
   )
   ..addFlag(
     OptionNames.help,
-    abbr: 'h',
+    abbr: OptionNames.help[0],
     negatable: false,
     help: 'help.',
     callback: (help) {
@@ -44,29 +55,29 @@ var parser = ArgParser()
   )
   ..addOption(
     OptionNames.input,
-    abbr: 'i',
-    defaultsTo: p.current, // TODO: current path
+    abbr: OptionNames.input[0],
+    defaultsTo: p.current,
     help: 'The input directory',
   )
   ..addOption(
     OptionNames.output,
-    abbr: 'o',
-    defaultsTo: p.current, // TODO: current path
+    abbr: OptionNames.output[0],
+    defaultsTo: p.current,
     help: 'The output path.',
   )
   ..addMultiOption(
     OptionNames.language,
-    abbr: 'l',
+    abbr: OptionNames.language[0],
     allowedHelp: {
-      'objc': 'Generate Dart code from Objective-C.',
-      'java': 'Generate Dart code from Java.',
+      Languages.objc: 'Generate Dart code from Objective-C.',
+      Languages.java: 'Generate Dart code from Java.',
     },
-    defaultsTo: ['objc', 'java'],
+    defaultsTo: [Languages.objc, Languages.java],
     help: 'The language to be processed.',
   )
   ..addOption(
     OptionNames.template,
-    abbr: 't',
+    abbr: OptionNames.template[0],
     allowedHelp: {
       FlutterTemplates.package:
           'Generate a shareable Flutter project containing modular Dart code.',
@@ -96,22 +107,41 @@ void run(List<String> args) {
   });
 
   // get parameters
-  String input = results[OptionNames.input];
-  String output = results[OptionNames.output];
-  List<String> language = results[OptionNames.language];
-  String template = results[OptionNames.template];
-  String projectName = results[OptionNames.projectName];
+  final String input = results[OptionNames.input];
+  final String output = results[OptionNames.output];
+  final List<String> language = results[OptionNames.language];
+  final String template = results[OptionNames.template];
+  final String projectName = results[OptionNames.projectName];
   logger.info(
       'codegen parameters. input: $input, output: $output, language: $language, template: $template, projectName: $projectName');
   // create directory for output path.
   Directory(output).createSync(recursive: true);
-
+  String workspace = p.join(p.current, output);
   if (template != null && projectName != null) {
-    createFlutter(template, projectName, output);
+    workspace = p.join(workspace, projectName);
+    createFlutter(template, projectName, workspace);
+    workspace = p.join(workspace, 'lib');
   }
 
+  language.map((l) => _extensionForLanguage[l]).forEach((ext) {
+    for (FileSystemEntity file in Glob("**.$ext").listSync()) {
+      // TODO: call converter
+      print(file.path);
+    }
+  });
+
   // format generated dart files.
-  formatDart(output);
+  formatDart(workspace);
+
+  // add dependency
+  if (projectName != null) {
+    String pubspecPath = "$workspace/pubspec.yaml";
+    updatePubspec(pubspecPath);
+  }
+}
+
+void updatePubspec(String path) {
+  // TODO: update pubspec
 }
 
 void createFlutter(String template, String projectName, String output) {
