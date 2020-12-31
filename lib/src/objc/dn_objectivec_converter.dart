@@ -1,11 +1,15 @@
+import 'dart:async';
+
 import 'package:antlr4/antlr4.dart';
-import 'package:dart_native_codegen/src/objc/dn_objectC_parser_listener.dart';
+import 'package:dart_native_codegen/src/common.dart';
+import 'package:dart_native_codegen/src/objc/dn_objectivec_parser_listener.dart';
 import 'package:dart_native_codegen/parser/objc/ObjectiveCLexer.dart';
 import 'package:dart_native_codegen/parser/objc/ObjectiveCParser.dart';
 
-class DNObjectCConverter {
+class DNObjectiveCConverter {
   //convert
-  static Future<void> convert(String content, Callback cb) async {
+  static Future<String> convert(String content) async {
+    Completer<String> completer = Completer();
     try {
       final chars = InputStream.fromString(content);
       final lexer = ObjectiveCLexer(chars);
@@ -14,9 +18,17 @@ class DNObjectCConverter {
       parser.addErrorListener(DiagnosticErrorListener());
       parser.buildParseTree = true;
       final tree = parser.translationUnit();
+      Callback cb = (String content, {String error}) {
+        if (content != null) {
+          completer.complete(content);
+        } else {
+          completer.completeError(error, StackTrace.current);
+        }
+      };
       ParseTreeWalker.DEFAULT.walk(DNObjectiveCParserListener(cb), tree);
     } catch (e) {
-      cb(null, error: e);
+      completer.completeError(e, StackTrace.current);
     }
+    return completer.future;
   }
 }

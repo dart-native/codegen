@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
+import 'package:dart_native_codegen/src/objc/dn_objectivec_converter.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
@@ -25,9 +26,21 @@ class Languages {
   static const String objc = 'objc';
 }
 
+class FileExtensions {
+  static const String java = 'java';
+  static const String header = 'h';
+}
+
 const Map<String, String> _extensionForLanguage = {
-  Languages.java: 'java',
-  Languages.objc: 'h'
+  Languages.java: FileExtensions.java,
+  Languages.objc: FileExtensions.header
+};
+
+typedef Future<String> Convert(String content);
+
+const Map<String, Convert> _convertForLanguage = {
+  Languages.java: null,
+  Languages.objc: DNObjectiveCConverter.convert,
 };
 
 var parser = ArgParser()
@@ -123,10 +136,19 @@ void run(List<String> args) {
     workspace = p.join(workspace, 'lib');
   }
 
-  language.map((l) => _extensionForLanguage[l]).forEach((ext) {
+  language.forEach((String l) {
+    String ext = _extensionForLanguage[l];
     for (FileSystemEntity file in Glob("**.$ext").listSync()) {
-      // TODO: call converter
-      print(file.path);
+      // TODO: wait all result and then
+      Convert convert = _convertForLanguage[l];
+      if (convert != null) {
+        String content = File(file.path).readAsStringSync();
+        convert(content).then((dartCode) {
+          saveDartCode(dartCode, file.path, p.join(workspace, l));
+        }, onError: (error) {
+          print('filePath: ${file.path}\nerror: $error');
+        });
+      }
     }
   });
 
@@ -135,9 +157,17 @@ void run(List<String> args) {
 
   // add dependency
   if (projectName != null) {
-    String pubspecPath = "$workspace/pubspec.yaml";
+    String pubspecPath = '$workspace/pubspec.yaml';
     updatePubspec(pubspecPath);
   }
+}
+
+void saveDartCode(String dartCode, String sourcePath, String workspace) {
+  Directory(workspace).createSync();
+  String fileName =
+      p.setExtension(p.basenameWithoutExtension(sourcePath), 'dart');
+  String dartPath = p.join(workspace, fileName);
+  File(dartPath).writeAsStringSync(dartCode);
 }
 
 void updatePubspec(String path) {
