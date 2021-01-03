@@ -23,8 +23,8 @@ void main() {
           'clone dart_native. stdout: ${result.stdout}, stderr: ${result.stderr}');
     });
 
-    test('Generate bindings from Objective-C code', () {
-      run([
+    test('Generate bindings from Objective-C code', () async {
+      await run([
         '-i',
         'test/temp/dart_native/dart_native/example/ios/Runner/RuntimeStub.h',
         '-o',
@@ -37,8 +37,8 @@ void main() {
       // TODO: Check generated code.
     });
 
-    test('Generate bindings from Java code', () {
-      run([
+    test('Generate bindings from Java code', () async {
+      await run([
         '-i',
         'test/temp/dart_native/dart_native/example/android/app/src/main/java/com/dartnative/dart_native_example/RuntimeStub.java',
         '-o',

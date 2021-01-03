@@ -107,7 +107,7 @@ var parser = ArgParser()
 
 final logger = Logger('Codegen');
 
-void run(List<String> args) {
+Future<void> run(List<String> args) async {
   ArgResults results = parser.parse(args);
 
   if (results[OptionNames.help] || results[OptionNames.version]) {
@@ -136,21 +136,24 @@ void run(List<String> args) {
     workspace = p.join(workspace, 'lib');
   }
 
+  var futures = <Future<void>>[];
   language.forEach((String l) {
     String ext = _extensionForLanguage[l];
-    for (FileSystemEntity file in Glob("**.$ext").listSync()) {
+    for (FileSystemEntity file in Glob('**.$ext').listSync(root: input)) {
       // TODO: wait all result and then
       Convert convert = _convertForLanguage[l];
       if (convert != null) {
         String content = File(file.path).readAsStringSync();
-        convert(content).then((dartCode) {
+        Future<void> future = convert(content).then((dartCode) {
           saveDartCode(dartCode, file.path, p.join(workspace, l));
         }, onError: (error) {
-          print('filePath: ${file.path}\nerror: $error');
+          logger.severe('filePath: ${file.path}\nerror: $error');
         });
+        futures.add(future);
       }
     }
   });
+  await Future.wait(futures);
 
   // format generated dart files.
   formatDart(workspace);
@@ -176,13 +179,13 @@ void updatePubspec(String path) {
 
 void createFlutter(String template, String projectName, String output) {
   // TODO: test output path
-  String command =
-      'flutter create --template=$template --project-name=$projectName';
+  Directory(output).createSync(recursive: true);
+  String command = 'create --template=$template --project-name=$projectName';
   if (template == FlutterTemplates.plugin) {
     command += ' --platforms=android,ios';
   }
   command += ' $output';
-  Process.runSync(command, []).log();
+  Process.runSync('flutter', command.split(' ')).log();
 }
 
 void formatDart(String path) {
@@ -191,9 +194,9 @@ void formatDart(String path) {
 
 extension LogProcessResult on ProcessResult {
   void log() {
-    if (this.stdout) {
+    if (this.stdout != null) {
       logger.info(this.stdout);
-    } else if (this.stderr) {
+    } else if (this.stderr != null) {
       logger.severe(this.stderr);
     }
   }
