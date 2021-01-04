@@ -1,1 +1,1 @@
-typedef void Callback(String dartCode, {String error});
+typedef Callback = void Function(String dartCode, {String error});

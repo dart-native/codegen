@@ -36,7 +36,7 @@ const Map<String, String> _extensionForLanguage = {
   Languages.objc: FileExtensions.header
 };
 
-typedef Future<String> Convert(String content);
+typedef Convert = Future<String> Function(String content);
 
 const Map<String, Convert> _convertForLanguage = {
   Languages.java: null,
@@ -137,10 +137,9 @@ Future<void> run(List<String> args) async {
   }
 
   var futures = <Future<void>>[];
-  language.forEach((String l) {
+  for (var l in language) {
     String ext = _extensionForLanguage[l];
     for (FileSystemEntity file in Glob('**.$ext').listSync(root: input)) {
-      // TODO: wait all result and then
       Convert convert = _convertForLanguage[l];
       if (convert != null) {
         String content = File(file.path).readAsStringSync();
@@ -152,7 +151,8 @@ Future<void> run(List<String> args) async {
         futures.add(future);
       }
     }
-  });
+  }
+
   await Future.wait(futures);
 
   // format generated dart files.
