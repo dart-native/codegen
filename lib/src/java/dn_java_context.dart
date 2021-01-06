@@ -84,25 +84,37 @@ class DNMethodContext extends DNContext {
         methodStatement += (antrlResultNode.text + " ");
       }
 
-      MethodDeclaratorContext antrlDeclaratorNode = antrlHeaderNode.methodDeclarator();
+      MethodDeclaratorContext antrlDeclaratorNode =
+          antrlHeaderNode.methodDeclarator();
       if (antrlDeclaratorNode != null) {
-        methodStatement += antrlDeclaratorNode.text;
-      }
-
-      methodStatement += "(";
-      TypeParametersContext antrlParamNode = antrlHeaderNode.typeParameters();
-      if (antrlParamNode != null) {
-        TypeParameterListContext antrlParamsListNode =
-            antrlParamNode.typeParameterList();
-        if (antrlParamsListNode != null) {
-          List<TypeParameterContext> params =
-              antrlParamsListNode.typeParameters();
-          params.forEach((param) {
-            methodStatement += (param.identifier().text) + " " + param.text + ", ";
+        methodStatement += antrlDeclaratorNode.identifier().text;
+        methodStatement += "(";
+        FormalParameterListContext paramsList =
+            antrlDeclaratorNode.formalParameterList();
+        if (paramsList != null) {
+          paramsList.children.forEach((node) {
+            if (node is FormalParametersContext) {
+              FormalParametersContext frontParams = node;
+              frontParams.formalParameters()?.forEach((param) {
+                methodStatement += param.unannType().text;
+                methodStatement += " ";
+                methodStatement += param.variableDeclaratorId().text;
+                methodStatement += ", ";
+              });
+            } else if (node is LastFormalParameterContext) {
+              LastFormalParameterContext one = node;
+              FormalParameterContext param = one.formalParameter();
+              if (param != null) {
+                methodStatement += param.unannType().text;
+                methodStatement += " ";
+                methodStatement += param.variableDeclaratorId().text;
+              }
+            }
           });
         }
+        methodStatement += ")";
       }
-      methodStatement += ") {};";
+      methodStatement += "{}";
 
       return methodStatement;
     }
