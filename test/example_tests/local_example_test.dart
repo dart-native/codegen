@@ -1,5 +1,6 @@
 import 'package:dart_native_codegen/src/main.dart';
 import 'package:test/test.dart';
+import '../util/check_result.dart';
 
 void main() {
   group('DartNative Example E2E Test', () {
@@ -10,7 +11,7 @@ void main() {
         '-o',
         'test/temp/local_example_test/',
         '--project-name',
-        'oc_package',
+        'objc_package',
         '-t',
         'plugin',
       ]);

@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:dart_native_codegen/src/main.dart';
 import 'package:test/test.dart';
 
+import '../util/check_result.dart';
+
 void main() {
   group('DartNative Example E2E Test', () {
     setUpAll(() {
@@ -28,13 +30,14 @@ void main() {
         '-i',
         'test/temp/dart_native/dart_native/example/ios/Runner/RuntimeStub.h',
         '-o',
-        'test/temp/dart/objc',
+        'test/temp/dart_native_example_test/',
         '--project-name',
-        'my_package',
+        'objc_package',
         '-t',
         'plugin',
       ]);
       // TODO: Check generated code.
+      // compareDartContent(file1, file2)
     });
 
     test('Generate bindings from Java code', () async {
@@ -42,9 +45,9 @@ void main() {
         '-i',
         'test/temp/dart_native/dart_native/example/android/app/src/main/java/com/dartnative/dart_native_example/RuntimeStub.java',
         '-o',
-        'test/temp/dart/java',
+        'test/temp/dart_native_example_test',
         '--project-name',
-        'my_package',
+        'java_package',
         '-t',
         'plugin',
       ]);

@@ -157,7 +157,7 @@ Future<void> run(List<String> args) async {
   await Future.wait(futures);
 
   // format generated dart files.
-  // formatDart(workspace);
+  formatDart(workspace);
 
   // add dependency
   if (projectName != null) {
