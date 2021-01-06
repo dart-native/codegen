@@ -4,12 +4,20 @@ import 'package:dart_native_codegen/parser/java/Java9Listener.dart';
 import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
 
 import '../common.dart';
+import 'dn_java_context.dart';
 
 class DNJavaParserListener extends Java9Listener {
   Callback callback;
+  var rootContext;
+  var currentContext;
 
   DNJavaParserListener(Callback callback) {
     this.callback = callback;
+  }
+
+  buildDart() {
+    var dart = this.rootContext.parse();
+    this.callback(dart);
   }
 
   @override
@@ -211,6 +219,8 @@ class DNJavaParserListener extends Java9Listener {
   @override
   void enterClassLiteral(ClassLiteralContext ctx) {
     // TODO: implement enterClassLiteral
+    this.rootContext = DNRootContext(ctx, false);
+    this.currentContext = this.rootContext;
   }
 
   @override
@@ -1480,6 +1490,7 @@ class DNJavaParserListener extends Java9Listener {
   @override
   void exitClassLiteral(ClassLiteralContext ctx) {
     // TODO: implement exitClassLiteral
+    buildDart();
   }
 
   @override

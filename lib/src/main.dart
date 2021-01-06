@@ -169,7 +169,7 @@ Future<void> run(List<String> args) async {
 void saveDartCode(String dartCode, String sourcePath, String workspace) {
   Directory(workspace).createSync();
   String fileName =
-      p.setExtension(p.basenameWithoutExtension(sourcePath), 'dart');
+      p.setExtension(p.basenameWithoutExtension(sourcePath), '.dart');
   String dartPath = p.join(workspace, fileName);
   File(dartPath).writeAsStringSync(dartCode);
 }
