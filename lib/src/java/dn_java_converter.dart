@@ -17,7 +17,7 @@ class DNJavaConverter {
       final parser = Java9Parser(tokens);
       parser.addErrorListener(DiagnosticErrorListener());
       parser.buildParseTree = true;
-      final tree = parser.classLiteral();
+      final tree = parser.compilationUnit();
       print('get tree node txt: ${tree.text}');
       print('get tree count: ${tree.childCount}');
       tree.children.forEach((child) {

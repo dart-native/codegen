@@ -8,8 +8,8 @@ import 'dn_java_context.dart';
 
 class DNJavaParserListener extends Java9Listener {
   Callback callback;
-  var rootContext;
-  var currentContext;
+  DNContext rootContext;
+  DNContext currentContext;
 
   DNJavaParserListener(Callback callback) {
     this.callback = callback;
@@ -218,9 +218,6 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterClassLiteral(ClassLiteralContext ctx) {
-    // TODO: implement enterClassLiteral
-    this.rootContext = DNRootContext(ctx, false);
-    this.currentContext = this.rootContext;
   }
 
   @override
@@ -257,7 +254,8 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterCompilationUnit(CompilationUnitContext ctx) {
-    // TODO: implement enterCompilationUnit
+    this.rootContext = DNRootContext(ctx, false);
+    this.currentContext = this.rootContext;
   }
 
   @override
@@ -1490,7 +1488,6 @@ class DNJavaParserListener extends Java9Listener {
   @override
   void exitClassLiteral(ClassLiteralContext ctx) {
     // TODO: implement exitClassLiteral
-    buildDart();
   }
 
   @override
@@ -1528,6 +1525,7 @@ class DNJavaParserListener extends Java9Listener {
   @override
   void exitCompilationUnit(CompilationUnitContext ctx) {
     // TODO: implement exitCompilationUnit
+    buildDart();
   }
 
   @override
@@ -1969,7 +1967,9 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void exitMethodDeclaration(MethodDeclarationContext ctx) {
-    // TODO: implement exitMethodDeclaration
+    DNMethodContext methodContext = new DNMethodContext(ctx);
+    currentContext.addChild(methodContext);
+    currentContext = methodContext;
   }
 
   @override
