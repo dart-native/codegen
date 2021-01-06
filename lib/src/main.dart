@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
+import 'package:dart_native_codegen/src/java/dn_java_converter.dart';
 import 'package:dart_native_codegen/src/objc/dn_objectivec_converter.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
@@ -39,7 +40,7 @@ const Map<String, String> _extensionForLanguage = {
 typedef Convert = Future<String> Function(String content);
 
 const Map<String, Convert> _convertForLanguage = {
-  Languages.java: null,
+  Languages.java: DNJavaConverter.convert,
   Languages.objc: DNObjectiveCConverter.convert,
 };
 
