@@ -2,6 +2,10 @@ package com.dartnative.dart_native_example;
 
 public class Entity {
 
+    public int time;
+
+    int pri;
+
     public int getCurrentTime(int a, long b, byte c) {
         return (int) System.currentTimeMillis();
     }

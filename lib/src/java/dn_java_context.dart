@@ -33,16 +33,6 @@ class DNContext extends ListOpNode {
     return super.exit();
   }
 
-  int depth() {
-    DNContext node = this;
-    int depth = 0;
-    while (node != null) {
-      depth++;
-      node = node.parent;
-    }
-    return depth;
-  }
-
   bool hasIndentation() {
     return false;
   }
@@ -170,5 +160,58 @@ class DNMethodContext extends DNContext {
 
   bool hasIndentation() {
     return true;
+  }
+}
+
+class DNFieldContext extends DNContext {
+  DNFieldContext(internal) : super(internal);
+
+  @override
+  String parse() {
+    if (internal is FieldDeclarationContext) {
+      FieldDeclarationContext aFieldContext = internal;
+      bool isPublic = false;
+      aFieldContext.fieldModifiers()?.forEach((aModifierContext) {
+        if (aModifierContext.PUBLIC() != null) {
+          isPublic = true;
+        }
+      });
+      if (!isPublic) {
+        return "";
+      }
+      String type = aFieldContext.unannType().text;
+      String value = aFieldContext
+          ?.variableDeclaratorList()
+          ?.variableDeclarator(0)
+          ?.variableDeclaratorId()
+          ?.identifier()
+          ?.text;
+      if (type != null && value != null) {
+        String blank = calculateIndentation();
+        String statement = blank;
+        statement +=
+            type + ' get${toUpperCaseFirstV(value)}(){\n' + blank + '}\n';
+        statement += blank +
+            'void set${toUpperCaseFirstV(value)}(${type} ${value}){\n${blank}}\n';
+        return statement;
+      }
+    }
+    return "";
+  }
+
+  @override
+  bool hasIndentation() {
+    return true;
+  }
+}
+
+String toUpperCaseFirstV(String value) {
+  if (value == null || value.length == 0) {
+    return "";
+  }
+  if (value.length > 1) {
+    return '${value[0].toUpperCase()}${value.substring(1)}';
+  } else {
+    return value.toUpperCase();
   }
 }

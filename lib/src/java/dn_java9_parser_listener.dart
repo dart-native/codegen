@@ -483,7 +483,8 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterFieldDeclaration(FieldDeclarationContext ctx) {
-    // TODO: implement enterFieldDeclaration
+    DNFieldContext context = new DNFieldContext(ctx);
+    currentContext = context.enter(currentContext);
   }
 
   @override
@@ -1755,7 +1756,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void exitFieldDeclaration(FieldDeclarationContext ctx) {
-    // TODO: implement exitFieldDeclaration
+    currentContext = currentContext.exit();
   }
 
   @override
