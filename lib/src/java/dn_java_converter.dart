@@ -18,12 +18,6 @@ class DNJavaConverter {
       parser.addErrorListener(DiagnosticErrorListener());
       parser.buildParseTree = true;
       final tree = parser.compilationUnit();
-      print('get tree node txt: ${tree.text}');
-      print('get tree count: ${tree.childCount}');
-      tree.children.forEach((child) {
-        print('get chile txt: ${child.toStringTree()} , payload: ${child.payload}');
-      });
-
       Callback cb = (String content, {String error}) {
         if (content != null) {
           completer.complete(content);

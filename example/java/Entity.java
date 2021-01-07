@@ -2,7 +2,15 @@ package com.dartnative.dart_native_example;
 
 public class Entity {
 
-    public int getCurrentTime(int b) {
+    public int getCurrentTime(int a, long b, byte c) {
         return (int) System.currentTimeMillis();
+    }
+
+    public int hi1() {
+        return 1;
+    }
+
+    int hi2() {
+        return 1;
     }
 }

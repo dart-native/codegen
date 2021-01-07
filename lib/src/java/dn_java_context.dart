@@ -1,7 +1,9 @@
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
 
-class DNContext {
+import 'dn_java_list_op_node.dart';
+
+class DNContext extends ListOpNode {
   ParserRuleContext internal;
   DNContext parent;
   List<DNContext> children;
@@ -12,13 +14,49 @@ class DNContext {
     this.children = [];
   }
 
-  void addChild(ctx) {
-    ctx.parent = this;
-    this.children.add(ctx);
-  }
-
   String parse() {
     return '';
+  }
+
+  @override
+  ListOpNode enter(ListOpNode enterWhich) {
+    if (enterWhich is DNContext) {
+      DNContext ctx = enterWhich;
+      this.parent = ctx;
+      ctx.children.add(this);
+    }
+    return super.enter(enterWhich);
+  }
+
+  @override
+  ListOpNode exit() {
+    return super.exit();
+  }
+
+  int depth() {
+    DNContext node = this;
+    int depth = 0;
+    while (node != null) {
+      depth++;
+      node = node.parent;
+    }
+    return depth;
+  }
+
+  bool hasIndentation() {
+    return false;
+  }
+
+  String calculateIndentation() {
+    DNContext node = this;
+    String indentation = '';
+    while (node != null) {
+      if (node.hasIndentation()) {
+        indentation += '  ';
+      }
+      node = node.parent;
+    }
+    return indentation;
   }
 }
 
@@ -41,17 +79,32 @@ class DNRootContext extends DNContext {
       packageSet.add('dart_native');
       packageSet.add('dart_native_gen');
     }
-    // result += this.children.map(ctx => {
-    //     var childResult = ctx.parse()
-    //     // if (!(ctx is DNImportContext)) {
-    //     //     childResult = '\n' + childResult
-    //     // } else {
-    //     packageSet.add(ctx.package)
-    //     // }
-    //     return childResult
-    // }).join('\n');
+    result += '\n';
     result += this.children.map((ctx) => ctx.parse()).join('\n');
     return (result);
+  }
+}
+
+class DNClassContext extends DNContext {
+  DNClassContext(internal) : super(internal);
+
+  @override
+  String parse() {
+    var result = '';
+
+    if (internal is ClassDeclarationContext) {
+      ClassDeclarationContext aClassDeclarationContext = internal;
+      String className = aClassDeclarationContext
+          ?.normalClassDeclaration()
+          ?.identifier()
+          ?.text;
+      if (className != null) {
+        result += ("class " + className + " {\n");
+        result += this.children.map((ctx) => ctx.parse()).join('\n');
+        result += ("}\n");
+      }
+    }
+    return result;
   }
 }
 
@@ -61,63 +114,61 @@ class DNMethodContext extends DNContext {
   @override
   String parse() {
     if (internal is MethodDeclarationContext) {
-      MethodDeclarationContext antrlMethodNode = internal;
-      List<MethodModifierContext> antrlModifiers =
-          antrlMethodNode.methodModifiers();
-      String methodStatement = "";
-      var isPublic = false;
-      antrlModifiers.forEach((m) {
-        if (m.PUBLIC() != null) {
-          isPublic = true;
-          methodStatement += "public ";
-        } else if (m.FINAL() != null) {
-          methodStatement += "final";
-        }
-      });
-      if (!isPublic) {
+      MethodDeclarationContext aMethodNode = internal;
+      if (!checkAssessable(aMethodNode)) {
         return "";
       }
-      // TODO handle static modifier
-      MethodHeaderContext antrlHeaderNode = antrlMethodNode.methodHeader();
-      ResultContext antrlResultNode = antrlHeaderNode.result();
-      if (antrlResultNode != null) {
-        methodStatement += (antrlResultNode.text + " ");
+      String blank = calculateIndentation();
+      String methodStatement = blank;
+      ResultContext aResultNode = aMethodNode.methodHeader()?.result();
+      if (aResultNode != null) {
+        methodStatement += (aResultNode.text + " ");
       }
 
-      MethodDeclaratorContext antrlDeclaratorNode =
-          antrlHeaderNode.methodDeclarator();
-      if (antrlDeclaratorNode != null) {
-        methodStatement += antrlDeclaratorNode.identifier().text;
-        methodStatement += "(";
+      MethodDeclaratorContext aDeclaratorNode =
+          aMethodNode?.methodHeader()?.methodDeclarator();
+      if (aDeclaratorNode != null) {
+        methodStatement += aDeclaratorNode.identifier().text + "(";
         FormalParameterListContext paramsList =
-            antrlDeclaratorNode.formalParameterList();
+            aDeclaratorNode.formalParameterList();
         if (paramsList != null) {
-          paramsList.children.forEach((node) {
-            if (node is FormalParametersContext) {
-              FormalParametersContext frontParams = node;
-              frontParams.formalParameters()?.forEach((param) {
-                methodStatement += param.unannType().text;
-                methodStatement += " ";
-                methodStatement += param.variableDeclaratorId().text;
-                methodStatement += ", ";
-              });
-            } else if (node is LastFormalParameterContext) {
-              LastFormalParameterContext one = node;
-              FormalParameterContext param = one.formalParameter();
-              if (param != null) {
-                methodStatement += param.unannType().text;
-                methodStatement += " ";
-                methodStatement += param.variableDeclaratorId().text;
-              }
-            }
-          });
+          FormalParametersContext frontParams = paramsList?.formalParameters();
+          if (frontParams != null) {
+            frontParams.formalParameters()?.forEach((param) {
+              methodStatement += param.unannType().text;
+              methodStatement += " ";
+              methodStatement += param.variableDeclaratorId().text;
+              methodStatement += ", ";
+            });
+          }
+
+          FormalParameterContext lastParam =
+              paramsList?.lastFormalParameter()?.formalParameter();
+          if (lastParam != null) {
+            methodStatement += lastParam.unannType().text;
+            methodStatement += " ";
+            methodStatement += lastParam.variableDeclaratorId().text;
+          }
         }
         methodStatement += ")";
       }
-      methodStatement += "{}";
-
+      methodStatement += " {\n" + blank + "}";
       return methodStatement;
     }
     return "";
+  }
+
+  bool checkAssessable(MethodDeclarationContext aMethodNode) {
+    var isPublic = false;
+    aMethodNode.methodModifiers()?.forEach((m) {
+      if (m.PUBLIC() != null) {
+        isPublic = true;
+      }
+    });
+    return isPublic;
+  }
+
+  bool hasIndentation() {
+    return true;
   }
 }

@@ -195,7 +195,8 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterClassDeclaration(ClassDeclarationContext ctx) {
-    // TODO: implement enterClassDeclaration
+    DNClassContext context = new DNClassContext(ctx);
+    currentContext = context.enter(currentContext);
   }
 
   @override
@@ -217,8 +218,7 @@ class DNJavaParserListener extends Java9Listener {
   }
 
   @override
-  void enterClassLiteral(ClassLiteralContext ctx) {
-  }
+  void enterClassLiteral(ClassLiteralContext ctx) {}
 
   @override
   void enterClassMemberDeclaration(ClassMemberDeclarationContext ctx) {
@@ -255,7 +255,7 @@ class DNJavaParserListener extends Java9Listener {
   @override
   void enterCompilationUnit(CompilationUnitContext ctx) {
     this.rootContext = DNRootContext(ctx, false);
-    this.currentContext = this.rootContext;
+    this.currentContext = rootContext.enter(currentContext);
   }
 
   @override
@@ -699,6 +699,8 @@ class DNJavaParserListener extends Java9Listener {
   @override
   void enterMethodDeclaration(MethodDeclarationContext ctx) {
     // TODO: implement enterMethodDeclaration
+    DNMethodContext methodContext = new DNMethodContext(ctx);
+    currentContext = methodContext.enter(currentContext);
   }
 
   @override
@@ -1464,7 +1466,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void exitClassDeclaration(ClassDeclarationContext ctx) {
-    // TODO: implement exitClassDeclaration
+    this.currentContext = currentContext.exit();
   }
 
   @override
@@ -1967,9 +1969,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void exitMethodDeclaration(MethodDeclarationContext ctx) {
-    DNMethodContext methodContext = new DNMethodContext(ctx);
-    currentContext.addChild(methodContext);
-    currentContext = methodContext;
+    currentContext = currentContext.exit();
   }
 
   @override
