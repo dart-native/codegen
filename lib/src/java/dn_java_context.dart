@@ -1,17 +1,31 @@
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
 
-import 'dn_java_list_op_node.dart';
+class ListOpNode {
+  ListOpNode pre;
+
+  ListOpNode enter(ListOpNode enterWhich) {
+    pre = enterWhich;
+    return this;
+  }
+
+  ListOpNode exit() {
+    return pre;
+  }
+}
 
 class DNContext extends ListOpNode {
   ParserRuleContext internal;
   DNContext parent;
   List<DNContext> children;
 
+  List<String> unResolvedTypeList;
+
   DNContext(internal) {
     this.internal = internal;
     this.parent = null;
     this.children = [];
+    this.unResolvedTypeList = [];
   }
 
   String parse() {
