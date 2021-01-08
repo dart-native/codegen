@@ -180,19 +180,23 @@ class DNFieldContext extends DNContext {
         return "";
       }
       String type = aFieldContext.unannType().text;
-      String value = aFieldContext
-          ?.variableDeclaratorList()
-          ?.variableDeclarator(0)
-          ?.variableDeclaratorId()
-          ?.identifier()
-          ?.text;
-      if (type != null && value != null) {
+      VariableDeclaratorListContext aDeclaratorListContext =
+          aFieldContext.variableDeclaratorList();
+      if (aDeclaratorListContext != null) {
         String blank = calculateIndentation();
-        String statement = blank;
-        statement +=
-            type + ' get${toUpperCaseFirstV(value)}(){\n' + blank + '}\n';
-        statement += blank +
-            'void set${toUpperCaseFirstV(value)}(${type} ${value}){\n${blank}}\n';
+        String statement = '';
+        aDeclaratorListContext
+            ?.variableDeclarators()
+            ?.forEach((aDeclaratorContext) {
+          String value =
+              aDeclaratorContext.variableDeclaratorId()?.identifier()?.text;
+          if (type != null && value != null) {
+            statement +=
+                '${blank}${type} get${toUpperCaseFirstV(value)}(){\n${blank}}\n';
+            statement +=
+                '${blank}void set${toUpperCaseFirstV(value)}(${type} ${value}){\n${blank}}\n';
+          }
+        });
         return statement;
       }
     }

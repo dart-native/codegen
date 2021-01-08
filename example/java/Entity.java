@@ -2,7 +2,7 @@ package com.dartnative.dart_native_example;
 
 public class Entity {
 
-    public int time;
+    public int time1, time2;
 
     int pri;
 
