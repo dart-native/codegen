@@ -16,3 +16,6 @@ It's still under development. Here's how it works:
 
 ![](images/theory.png)
 
+Test Sample:
+
+* flutter pub run dart_native_codegen -l java -i example/java -o out
