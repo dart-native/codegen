@@ -205,3 +205,213 @@ class DNArgumentContext extends DNContext {
     }
   }
 }
+
+class DNMethodContext extends DNContext {
+    String methodName = null;
+    List names = [];
+    List args = [];
+    String returnType = null;
+    bool callFromPointer = false;
+    bool isClassMethod = false;
+    List macros = [];
+    List availability = [];
+    
+    parse() {
+        if (this.args.length == 0 && this.hasSameMethodDeclaration()) {
+            return '';
+        } else if (this.args.length == 1 && this.hasSameMethodDeclaration()) {
+            return this.parseForOptionalSingleArg();
+        }
+        //fix:Extensions can't declare constructors
+        var isExtensionMethod = this.parent is DNCategoryContext;
+        var isInstanceConstr = (this.returnType == this.parent.name) && !this.isClassMethod && !isExtensionMethod;
+        if (isInstanceConstr) {
+            return this.constructorImpl();
+        } else {
+            var result = '  ' + this.availability.map((a) => a.parse()).join(' ') + '\n';
+            result += '  ' + (this.isClassMethod ? 'static ' : '') + this.convertMutableTypeIfNeed(this.returnType) + ' ' + this.methodDeclaration() + this.methodArgs() + ' {\n';
+            result += this.preHandleMutableArgsIfNeed() + '    ' + this.methodImpl();
+            result += '  }';
+            return result;
+        }
+    }
+
+    preHandleMutableArgsIfNeed() {
+        var result = '';
+        this.args.forEach((value) =>  {
+            var rawType = utils.rawGenericType(value.type);
+            if (DNObjectiveCTypeConverter.SupportMutableTypes.indexOf(rawType) > -1) {
+                var tmpArgName = '_' + value.name;
+                result += '    ' + rawType + ' ' + tmpArgName + ' = ' + rawType + '(' + element.name + ');\n';
+                value.name = tmpArgName; 
+            }
+        });
+
+        return result
+    }
+
+    hasSameMethodDeclaration() {
+        var methods = this.parent.methods;
+        for (var i = 0; i < methods.length; i++) {
+            var method = methods[i];
+            if (this != method && this.methodDeclaration() == method.methodDeclaration() && this.isClassMethod == method.isClassMethod) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    methodDeclaration() {
+        var methodDeclaration = '';
+        this.args.asMap.keys.forEach((index) => {
+          methodDeclaration += index >= 1 ? this.names[index].replace(/^\w/, c => c.toUpperCase()) : this.names[index];
+        });
+        methodDeclaration = methodDeclaration ? methodDeclaration : this.methodName;
+        return methodDeclaration;
+    }
+
+    methodImpl(noArg) {
+        if (!noArg) {
+            noArg = this.args.length == 0;
+        }
+        var callerPrefix = (this.isClassMethod ? ' Class(\'' + this.parent.name + '\').' : ' ');
+        var args = noArg ? '' : ', args: [' + this.args.map(arg => arg.name) + ']';
+        var impl = callerPrefix + 'perform(SEL(\'' + this.ocMethodName() + '\')' + args + ');\n';
+
+        var rawRetType = utils.rawGenericType(this.returnType); //remove <> symbol
+        var isMutableRetType = DNObjectiveCTypeConverter.SupportMutableTypes.indexOf(rawRetType) > -1;
+
+        if (!isMutableRetType && !this.callFromPointer) {
+            return (this.returnType == 'void' ? '' : 'return') + impl;
+        }
+
+        var newImpl = 'Pointer<Void> result =' + impl.replace(');\n', '') + ', decodeRetVal: false);\n';
+        if (this.callFromPointer) {
+            var supportType = DNObjectiveCTypeConverter.DNDartToOCMap[rawRetType];
+            if (supportType) {
+                newImpl += '    return ' + supportType + '.fromPointer(result).raw;\n';
+            } else if (isMutableRetType) {
+                newImpl += '    return ' + rawRetType + '.fromPointer(result).raw;\n'
+            } else {
+                newImpl += '    return ' + rawRetType + '.fromPointer(result);\n';
+            }
+        }
+        return newImpl;
+    }
+
+    constructorImpl() {
+        var result = '';
+        if (this.isSingleInstanceConstr) {
+            // such as NSError(arg x)
+            result += '  ' + this.parent.name + this.methodArgs() + '\n';
+        } else {
+            // such as NSError.initWithxxxx(arg x)
+            result += '  ' + this.parent.name + '.' + this.methodDeclaration() + this.methodArgs() + '\n';
+        }
+        result += '     : super.fromPointer(_' + this.methodDeclaration() + '(' + this.args.map(arg => arg.name) + '));\n';
+        result += '\n';
+        result += '  static Pointer<Void> _' + this.methodDeclaration() + this.methodArgs() + ' {\n';
+        result += this.preHandleMutableArgsIfNeed();
+        result += '    Pointer<Void> target = alloc(Class(\'' + this.parent.name + '\'));\n';
+        result += '    SEL sel = SEL(\'' + this.ocMethodName() + '\');\n';
+        result += '    return msgSend(target, sel, ' + 'args: [' + this.args.map(arg => arg.name) + ']' + ', decodeRetVal: false);\n';
+        result += '  }\n';
+        return result;
+    }
+
+    methodArgs(optional) {
+        //convert as follows: int a, String b, {int c, String d}
+        var argList = optional ? '([' : '(';
+        var nullableArgs = [];
+        this.args.asMap.keys.forEach((index) => {
+          var element = this.args[index];
+          if (element.isNullable) {
+                nullableArgs.push(element);
+            } else {
+                var argType = element.isOutParam ? 'NSObjectRef<' + element.type + '>' : element.type;
+                var arg = element.isBlock ? argType : this.convertMutableTypeIfNeed(argType) + ' ' + element.name;
+                argList += arg + (index == this.args.length - 1 && nullableArgs.length == 0 ? '' : ', ');
+            }
+        });
+
+        if (nullableArgs.length > 0) {
+            argList += '{';
+            nullableArgs.asMap.keys.forEach((index) => {
+                var element = this.args[index];
+                var argType = element.isOutParam ? 'NSObjectRef<' + element.type + '>' : element.type;
+                var arg = element.isBlock ? argType : this.convertMutableTypeIfNeed(argType) + ' ' + element.name;
+                argList += arg + (index == nullableArgs.length - 1 ? '' : ', ');
+            });
+            argList += '}';
+        }
+        argList += optional ? '])' : ')';
+        return argList;
+    }
+
+    parseForOptionalSingleArg() {
+        var optionalArgType = this.args[0].type;
+        var optionalArgName = this.args[0].name;
+        var result = '  ' + (this.isClassMethod ? 'static ' : '') + this.returnType + ' ' + this.methodDeclaration() + '([' + optionalArgType + ' ' + optionalArgName + '])' + ' {\n';
+        result += '    if (' + optionalArgName + ' != null) {\n';
+        result += '         ' + this.methodImpl();
+        result += '    } else { \n';
+        result += '         ' + this.methodImpl(true);
+        result += '    }\n';
+        result += '  }';
+        return result;
+    }
+
+    convertMutableTypeIfNeed(type) {
+        var rawType = utils.rawGenericType(type)
+        var dartType = DNObjectiveCTypeConverter.SupportMutableTypesMap[rawType]
+        var ret = dartType ? type.replace(rawType, dartType) : type
+        return ret
+    }
+
+    ocMethodName() {
+        var funcName = '';
+        nullableArgs.asMap.keys.forEach((index) => {
+           funcName += this.names[index] + (this.args.length >= 1 ? ':' : '');
+        });
+        funcName = funcName ? funcName : this.methodName;
+        return funcName;
+    }
+} 
+
+class DNCategoryContext extends DNContext {
+    String host = null;
+    String name = null;
+    List properties = [];
+    List methods = [];
+    var protocols = [];
+
+    DNCategoryContext(internal) : super(internal) {
+      this.host = internal.className.
+    }
+    constructor(internal) {
+        super(internal)
+        this.host = internal.className.start.text;
+        if (internal.categoryName) {
+            this.name = internal.categoryName.start.text;
+        } else {
+            this.name = 'DartNative';
+        }
+        this.protocols = internal.protocols;
+        this.protocols = protocols ? protocols.forEach((p) => {
+            return p.name.start.text;
+        }) : [];
+    }
+
+    parse() {
+        var result = 'extension ' + this.host + this.name + ' on ' + this.host;
+        result += ' {\n';
+        this.properties.forEach(element => {
+            result += element.parse() + '\n';
+        })
+        this.methods.forEach(element => {
+            result += element.parse() + '\n';
+        })
+        result += '\n}';
+        return result;
+    }
+}
