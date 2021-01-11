@@ -8,7 +8,7 @@ import 'dn_java_context.dart';
 
 class DNJavaParserListener extends Java9Listener {
   Callback callback;
-  DNContext rootContext;
+  DNRootContext rootContext;
   DNContext currentContext;
 
   DNJavaParserListener(Callback callback) {
@@ -560,7 +560,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterImportDeclaration(ImportDeclarationContext ctx) {
-    // TODO: implement enterImportDeclaration
+    rootContext.addImport(ctx);
   }
 
   @override
@@ -810,6 +810,7 @@ class DNJavaParserListener extends Java9Listener {
   @override
   void enterPackageDeclaration(PackageDeclarationContext ctx) {
     // TODO: implement enterPackageDeclaration
+    rootContext.setPackageName(ctx.packageName().text);
   }
 
   @override

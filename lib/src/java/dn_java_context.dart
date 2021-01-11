@@ -66,9 +66,19 @@ class DNContext extends ListOpNode {
 
 class DNRootContext extends DNContext {
   var needExport;
+  String packageName;
+  List<ImportDeclarationContext> importDeclarationContextList = [];
 
   DNRootContext(internal, needExport) : super(internal) {
     this.needExport = needExport;
+  }
+
+  void setPackageName(String packageName) {
+    this.packageName = packageName;
+  }
+
+  void addImport(ImportDeclarationContext import) {
+    importDeclarationContextList.add(import);
   }
 
   parse() {
@@ -84,6 +94,8 @@ class DNRootContext extends DNContext {
       packageSet.add('dart_native_gen');
     }
     result += '\n';
+    result += 'packageName: ${packageName}\n';
+    result += 'import: ${importDeclarationContextList}\n';
     result += this.children.map((ctx) => ctx.parse()).join('\n');
     return (result);
   }
