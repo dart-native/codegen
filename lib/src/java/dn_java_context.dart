@@ -94,8 +94,6 @@ class DNRootContext extends DNContext {
       packageSet.add('dart_native_gen');
     }
     result += '\n';
-    result += 'packageName: ${packageName}\n';
-    result += 'import: ${importDeclarationContextList}\n';
     result += this.children.map((ctx) => ctx.parse()).join('\n');
     return (result);
   }

@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
+
 enum _FileType { SOURCE, JAR, UNKNOWN }
 
 // 文件属性
@@ -7,6 +9,19 @@ class _FileEntity {
   _FileType fileType = _FileType.UNKNOWN;
   String filePath;
   String fileName;
+}
+
+class ImportFileScanner {
+  List<ImportDeclarationContext> importDeclarationContextList = [];
+
+  void setImportMsg(List<ImportDeclarationContext> importDeclarationContextList) {
+    this.importDeclarationContextList = importDeclarationContextList;
+  }
+
+  // scan field from import
+  void scan(String fieldType) {
+
+  }
 }
 
 // import属性

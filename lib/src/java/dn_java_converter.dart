@@ -1,14 +1,18 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_native_codegen/parser/java/Java9Lexer.dart';
 import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
 
 import '../common.dart';
+import 'DartJavaCompiler.dart';
 import 'dn_java9_parser_listener.dart';
 
 class DNJavaConverter {
-  static Future<String> convert(String content) async {
+  static Future<String> convert(JavaFile file) async {
+    file.fileType = FILE_TYPE.source_file;
+    String content = File(file.path).readAsStringSync();
     Completer<String> completer = Completer();
     try {
       final chars = InputStream.fromString(content);
