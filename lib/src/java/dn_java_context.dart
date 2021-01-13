@@ -91,7 +91,7 @@ class DNRootContext extends DNContext {
       CompileContext.getContext().pushFile(javaFile);
       return javaType;
     }
-    // todo basic type ?
+    // DartNative 库每个基础类型都有一个类，因此这里不用做类型转换。比如dart原生没有byte，但是DartNative封装了一个byte类。
     return javaType;
   }
 

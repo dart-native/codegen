@@ -15,7 +15,7 @@ public class DNJavaSample implements IDNJavaSample {
     private int argE;
 
     @Override
-    public int printA(int a, long b, String c) {
+    public int arg(int a, byte b, short c, long d, float e, double f, char g, boolean h, String i) {
         return a;
     }
 
