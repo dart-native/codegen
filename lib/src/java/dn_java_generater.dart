@@ -9,11 +9,12 @@ import '../common.dart';
 import 'DartJavaCompiler.dart';
 import 'dn_java9_parser_listener.dart';
 
-class DNJavaConverter {
-  static Future<String> convert(JavaFile file) async {
+class DNJavaGenerater {
+  /// generate dart code from java code.
+  static Future<GenerateResult> generate(JavaFile file) async {
     file.fileType = FILE_TYPE.source_file;
     String content = File(file.path).readAsStringSync();
-    Completer<String> completer = Completer();
+    Completer<GenerateResult> completer = Completer();
     try {
       final chars = InputStream.fromString(content);
       final lexer = Java9Lexer(chars);
@@ -24,7 +25,8 @@ class DNJavaConverter {
       final tree = parser.compilationUnit();
       Callback cb = (String content, {String error}) {
         if (content != null) {
-          completer.complete(content);
+          final result = GenerateResult(content);
+          completer.complete(result);
         } else {
           completer.completeError(error, StackTrace.current);
         }

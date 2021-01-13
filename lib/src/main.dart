@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
+import 'package:dart_native_codegen/src/common.dart';
 import 'package:dart_native_codegen/src/java/DartJavaCompiler.dart';
-import 'package:dart_native_codegen/src/java/dn_java_converter.dart';
-import 'package:dart_native_codegen/src/objc/dn_objectivec_converter.dart';
+import 'package:dart_native_codegen/src/java/dn_java_generater.dart';
+import 'package:dart_native_codegen/src/objc/dn_objectivec_generater.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
@@ -38,10 +39,11 @@ const Map<String, String> _extensionForLanguage = {
   Languages.objc: FileExtensions.header
 };
 
-typedef Convert = Future<String> Function(String content);
+typedef Generate = Future<GenerateResult> Function(String content);
 
-const Map<String, Convert> _convertForLanguage = {
-  Languages.objc: DNObjectiveCConverter.convert,
+const Map<String, Generate> _convertForLanguage = {
+  // Languages.java: DNJavaConverter.convert,
+  Languages.objc: DNObjectiveCGenerater.generate,
 };
 
 var parser = ArgParser()
@@ -137,29 +139,7 @@ Future<void> run(List<String> args) async {
     workspace = p.join(workspace, 'lib');
   }
 
-  var futures = <Future<void>>[];
-  for (var l in language) {
-    if (l == 'java') {
-      DartJavaCompiler javaCompiler = new DartJavaCompiler();
-      javaCompiler.compile(input, workspace);
-    }else {
-      String ext = _extensionForLanguage[l];
-      for (FileSystemEntity file in Glob('**.$ext').listSync(root: input)) {
-        Convert convert = _convertForLanguage[l];
-        if (convert != null) {
-          String content = File(file.path).readAsStringSync();
-          Future<void> future = convert(content).then((dartCode) {
-            saveDartCode(dartCode, file.path, p.join(workspace, l));
-          }, onError: (error) {
-            logger.severe('filePath: ${file.path}\nerror: $error');
-          });
-          futures.add(future);
-        }
-      }
-    }
-  }
-
-  await Future.wait(futures);
+  processPath(input, workspace, language);
 
   // format generated dart files.
   formatDart(workspace);
@@ -169,6 +149,39 @@ Future<void> run(List<String> args) async {
     String pubspecPath = '$workspace/pubspec.yaml';
     updatePubspec(pubspecPath);
   }
+}
+
+Future<void> processPath(
+    String input, String workspace, List<String> language) async {
+  var futures = <Future<void>>[];
+  for (var l in language) {
+    String ext = _extensionForLanguage[l];
+    List<String> files;
+    if (File(input).existsSync()) {
+      files = [input];
+    } else {
+      files = Glob('**.$ext').listSync(root: input).map((e) => e.path);
+    }
+    for (String file in files) {
+      Generate generate = _convertForLanguage[l];
+      if (generate != null) {
+        String content = File(file).readAsStringSync();
+        try {
+          GenerateResult result = await generate(content);
+          saveDartCode(result.dartCode, file, p.join(workspace, l));
+          if (result.moreFileDependencies?.isNotEmpty ?? false) {
+            for (var f in result.moreFileDependencies) {
+              await processPath(f, workspace, language);
+            }
+          }
+        } catch (e) {
+          logger.severe('filePath: ${file}\nerror: $e');
+        }
+      }
+    }
+  }
+
+  await Future.wait(futures);
 }
 
 void saveDartCode(String dartCode, String sourcePath, String workspace) {

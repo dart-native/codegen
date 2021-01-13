@@ -7,13 +7,15 @@ void main() {
     test('Generate bindings from Objective-C code', () async {
       await run([
         '-i',
-        'example/objc/',
+        'example/objc/foundation.h',
         '-o',
         'test/temp/local_example_test/',
         '--project-name',
         'objc_package',
         '-t',
         'plugin',
+        '-l',
+        'objc',
       ]);
       // TODO: Check generated code.
     });

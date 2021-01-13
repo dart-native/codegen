@@ -5,7 +5,7 @@ import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
 
 import 'dn_java_context.dart';
-import 'dn_java_converter.dart';
+import 'dn_java_generater.dart';
 
 final logger = Logger('DartJavaCompiler');
 
@@ -40,8 +40,8 @@ class DartJavaCompiler {
 
   void convertOneFile(JavaFile file, String workspace) async {
     var futures = <Future<void>>[];
-    Future<void> future = DNJavaConverter.convert(file).then((dartCode) {
-      FileUtils.saveDartCode(dartCode, file.path, workspace);
+    Future<void> future = DNJavaGenerater.generate(file).then((result) {
+      FileUtils.saveDartCode(result.dartCode, file.path, workspace);
     }, onError: (error) {
       logger.severe('filePath: ${file.path}\nerror: $error');
     });
