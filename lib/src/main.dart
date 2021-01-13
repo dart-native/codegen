@@ -195,7 +195,7 @@ void createFlutter(String template, String projectName, String output) {
 }
 
 void formatDart(String path) {
-  Process.runSync('flutter format', [path]).log();
+  Process.runSync('flutter', ['format', path]).log();
 }
 
 extension LogProcessResult on ProcessResult {

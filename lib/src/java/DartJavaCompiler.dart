@@ -1,11 +1,10 @@
 import 'dart:io';
 
-import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
 import 'package:dart_native_codegen/src/common/FileUtils.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
-import 'package:path/path.dart';
 
+import 'dn_java_context.dart';
 import 'dn_java_converter.dart';
 
 final logger = Logger('DartJavaCompiler');
@@ -35,7 +34,7 @@ class DartJavaCompiler {
       unResolveFiles.forEach((file) {
         convertOneFile(file, workspace);
       });
-      unResolveFiles = CompileContext.getContext().popUnResolve();;
+      unResolveFiles = CompileContext.getContext().popUnResolve();
     }
   }
 
@@ -55,7 +54,7 @@ class CompileContext {
   static CompileContext _instance = new CompileContext();
 
   List<JavaFile> _allFiles = [];
-  DNCompilationUnitContext _currentCompileContext;
+  DNRootContext _currentRootContext;
 
   static CompileContext getContext() {
     return _instance;
@@ -87,113 +86,13 @@ class CompileContext {
     });
   }
 
-  void setCurrentCompilationInfo(DNCompilationUnitContext info) {
-    this._currentCompileContext = info;
+  void setCurrentCompileRootContext(DNRootContext context) {
+    this._currentRootContext = context;
   }
 
   // java type -> dart type
   String convertType2Dart(String javaFieldType) {
-    print("convertType2Dart: " + javaFieldType);
-    return _currentCompileContext.convertType(javaFieldType);
-  }
-}
-
-class DNCompilationUnitContext {
-  JavaFile javaFile;
-  String packageName;
-  List<ImportDeclarationContext> imports = [];
-
-  // data from imports, record class name and javafile
-  Map<String, JavaFile> _importFileMapWithName = {};
-  bool _isInit = false;
-
-  void addImport(ImportDeclarationContext import) {
-    imports.add(import);
-  }
-
-  String convertType(String fieldType) {
-    if (!_isInit) {
-      _init();
-    }
-    print("start convertType: " + fieldType);
-    _importFileMapWithName.forEach((a, b) {
-      print("_importFileMapWithName: " + a + ", " + b.toString());
-    });
-    if (_importFileMapWithName.containsKey(fieldType)) {
-      // class type
-      CompileContext.getContext().pushFile(_importFileMapWithName[fieldType]);
-      return fieldType;
-    }
-    // todo basic type ?
-    return fieldType;
-  }
-
-  void _initWithOneFile(File file) {
-    String javaFileName = basenameWithoutExtension(file.path);
-    if (javaFileName == null) {
-      return;
-    }
-    JavaFile javaFile = new JavaFile();
-    javaFile.path = file.path;
-    if (!file.existsSync()) {
-      javaFile.fileType = FILE_TYPE.aar;
-      javaFile.resolve = true;
-    } else {
-      javaFile.fileType = FILE_TYPE.source_file;
-    }
-    _importFileMapWithName[javaFileName] = javaFile;
-  }
-
-  void _init() {
-    imports.forEach((import) {
-      String importStatement =
-          import.singleTypeImportDeclaration()?.typeName()?.text;
-      print("importStatement: " + importStatement);
-      String javaPath = javaFile.path;
-      // win ?
-      String fileSep = "/";
-
-      String packagePathId = packageName.replaceAll(".", fileSep);
-      int packagePathIndex = javaPath.indexOf(packagePathId);
-      if (packagePathIndex < 0) {
-        print("cannot find package path: ${packageName}");
-        return;
-      }
-
-      String rootFilePath = javaPath.substring(0, packagePathIndex);
-      String destFilePath =
-          rootFilePath + importStatement.replaceAll(".", fileSep);
-      if (destFilePath.endsWith(";")) {
-        destFilePath = destFilePath.substring(0, destFilePath.length - 1);
-      }
-
-      print("init statement: " + destFilePath);
-
-      bool isDir = destFilePath.endsWith("*");
-      if (isDir) {
-        destFilePath = destFilePath.replaceAll('${fileSep}*', fileSep);
-      } else {
-        destFilePath = destFilePath + ".java";
-      }
-
-      // new java file
-      if (isDir) {
-        Directory dir = new Directory(destFilePath);
-        if (!dir.existsSync()) {
-          return;
-        }
-        List<FileSystemEntity> dirSubFiles = dir.listSync();
-        dirSubFiles.forEach((file) {
-          if (file is File) {
-            _initWithOneFile(file);
-          }
-        });
-      }
-
-      File destFile = new File(destFilePath);
-      _initWithOneFile(destFile);
-    });
-    _isInit = true;
+    return _currentRootContext.convertType2Dart(javaFieldType);
   }
 }
 

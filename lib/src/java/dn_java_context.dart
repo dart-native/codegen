@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
 import 'package:dart_native_codegen/src/java/DartJavaCompiler.dart';
+import 'package:path/path.dart';
 
 class ListOpNode {
   ListOpNode pre;
@@ -44,61 +47,147 @@ class DNContext extends ListOpNode {
   ListOpNode exit() {
     return super.exit();
   }
-
-  bool hasIndentation() {
-    return false;
-  }
-
-  String calculateIndentation() {
-    DNContext node = this;
-    String indentation = '';
-    while (node != null) {
-      if (node.hasIndentation()) {
-        indentation += '  ';
-      }
-      node = node.parent;
-    }
-    return indentation;
-  }
 }
 
 class DNRootContext extends DNContext {
   String packageName;
-  List<ImportDeclarationContext> importDeclarationContextList = [];
+  JavaFile javaFile;
 
-  DNCompilationUnitContext _compilationUnitContext;
+  // 只有接口/属性里面import的class才会被生成代码
+  List<ImportDeclarationContext> _rawImportList = [];
+  List<String> _realImportStatement = [];
+
+  // data from imports, record class name and javafile
+  Map<String, JavaFile> _importFileMapWithName = {};
+  bool _isInitImports = false;
 
   DNRootContext(internal, JavaFile javaFile) : super(internal) {
-    javaFile.resolve = true;
-    CompileContext.getContext().pushFile(javaFile);
-    _compilationUnitContext = new DNCompilationUnitContext();
-    _compilationUnitContext.javaFile = javaFile;
-    CompileContext.getContext().setCurrentCompilationInfo(_compilationUnitContext);
+    this.javaFile = javaFile;
+    this.javaFile.resolve = true;
+    CompileContext.getContext().pushFile(this.javaFile);
+    CompileContext.getContext().setCurrentCompileRootContext(this);
   }
 
   void setPackageName(String packageName) {
     this.packageName = packageName;
-    _compilationUnitContext.packageName = packageName;
   }
 
   void addImport(ImportDeclarationContext import) {
-    importDeclarationContextList.add(import);
-    _compilationUnitContext.addImport(import);
+    _rawImportList.add(import);
+  }
+
+  String convertType2Dart(String javaType) {
+    if (!_isInitImports) {
+      _initImports();
+    }
+    if (_importFileMapWithName.containsKey(javaType)) {
+      // class type
+      JavaFile javaFile = _importFileMapWithName[javaType];
+      String fileName = basenameWithoutExtension(javaFile.path);
+      String statement = "import '${fileName}.dart';";
+      if (!_realImportStatement.contains(statement)) {
+        _realImportStatement.add(statement);
+      }
+      CompileContext.getContext().pushFile(javaFile);
+      return javaType;
+    }
+    // todo basic type ?
+    return javaType;
+  }
+
+  void _initImportWithOneFile(File file) {
+    String javaFileName = basenameWithoutExtension(file.path);
+    if (javaFileName == null) {
+      return;
+    }
+    JavaFile javaFile = new JavaFile();
+    javaFile.path = file.path;
+    if (!file.existsSync()) {
+      javaFile.fileType = FILE_TYPE.aar;
+      javaFile.resolve = true;
+    } else {
+      javaFile.fileType = FILE_TYPE.source_file;
+    }
+    _importFileMapWithName[javaFileName] = javaFile;
+  }
+
+  void _initImports() {
+    _rawImportList.forEach((import) {
+      String importStatement =
+          import.singleTypeImportDeclaration()?.typeName()?.text;
+      String javaPath = javaFile.path;
+      // win ?
+      String fileSep = "/";
+
+      String packagePathId = packageName.replaceAll(".", fileSep);
+      int packagePathIndex = javaPath.indexOf(packagePathId);
+      if (packagePathIndex < 0) {
+        print("cannot find package path: ${packageName}");
+        return;
+      }
+
+      String rootFilePath = javaPath.substring(0, packagePathIndex);
+      String destFilePath =
+          rootFilePath + importStatement.replaceAll(".", fileSep);
+      if (destFilePath.endsWith(";")) {
+        destFilePath = destFilePath.substring(0, destFilePath.length - 1);
+      }
+
+      bool isDir = destFilePath.endsWith("*");
+      if (isDir) {
+        destFilePath = destFilePath.replaceAll('${fileSep}*', fileSep);
+      } else {
+        destFilePath = destFilePath + ".java";
+      }
+
+      // new java file
+      if (isDir) {
+        Directory dir = new Directory(destFilePath);
+        if (!dir.existsSync()) {
+          return;
+        }
+        List<FileSystemEntity> dirSubFiles = dir.listSync();
+        dirSubFiles.forEach((file) {
+          if (file is File) {
+            _initImportWithOneFile(file);
+          }
+        });
+      }
+
+      File destFile = new File(destFilePath);
+      _initImportWithOneFile(destFile);
+    });
+    _isInitImports = true;
   }
 
   parse() {
+    String header = _parseHeader();
+    String body = _parseBody();
+    // import 要在body后，因为parseBody内会触发对import的计算
+    String import = _parseImport();
+    return ('${header}\n${import}\n${body}');
+  }
+
+  String _parseHeader() {
     var result = '';
     result +=
         '// Generated by @dartnative/codegen:\n// https://www.npmjs.com/package/@dartnative/codegen\n\n';
-    var packageSet = new Set();
     result += "import 'dart:ffi';\n\n";
     result += "import 'package:dart_native/dart_native.dart';\n";
-    result += "import 'package:dart_native_gen/dart_native_gen.dart';\n";
-    packageSet.add('dart_native');
-    packageSet.add('dart_native_gen');
-    result += '\n';
-    result += this.children.map((ctx) => ctx.parse()).join('\n');
-    return (result);
+    result += "import 'package:dart_native_gen/dart_native_gen.dart';";
+    return result;
+  }
+
+  String _parseImport() {
+    String importStatement = '';
+    _realImportStatement.forEach((s) {
+      importStatement += '${s}\n';
+    });
+    return importStatement;
+  }
+
+  String _parseBody() {
+    return this.children.map((ctx) => ctx.parse()).join('\n');
   }
 }
 
@@ -135,8 +224,7 @@ class DNMethodContext extends DNContext {
       if (!checkAssessable(aMethodNode)) {
         return "";
       }
-      String blank = calculateIndentation();
-      String methodStatement = blank;
+      String methodStatement = '';
       ResultContext aResultNode = aMethodNode.methodHeader()?.result();
       if (aResultNode != null) {
         methodStatement += (aResultNode.text + " ");
@@ -152,7 +240,8 @@ class DNMethodContext extends DNContext {
           FormalParametersContext frontParams = paramsList?.formalParameters();
           if (frontParams != null) {
             frontParams.formalParameters()?.forEach((param) {
-              methodStatement += CompileContext.getContext().convertType2Dart(param.unannType().text);
+              methodStatement += CompileContext.getContext()
+                  .convertType2Dart(param.unannType().text);
               methodStatement += " ";
               methodStatement += param.variableDeclaratorId().text;
               methodStatement += ", ";
@@ -162,14 +251,15 @@ class DNMethodContext extends DNContext {
           FormalParameterContext lastParam =
               paramsList?.lastFormalParameter()?.formalParameter();
           if (lastParam != null) {
-            methodStatement += CompileContext.getContext().convertType2Dart(lastParam.unannType().text);
+            methodStatement += CompileContext.getContext()
+                .convertType2Dart(lastParam.unannType().text);
             methodStatement += " ";
             methodStatement += lastParam.variableDeclaratorId().text;
           }
         }
         methodStatement += ")";
       }
-      methodStatement += " {\n" + blank + "}";
+      methodStatement += "{}";
       return methodStatement;
     }
     return "";
@@ -183,10 +273,6 @@ class DNMethodContext extends DNContext {
       }
     });
     return isPublic;
-  }
-
-  bool hasIndentation() {
-    return true;
   }
 }
 
@@ -206,11 +292,11 @@ class DNFieldContext extends DNContext {
       if (!isPublic) {
         return "";
       }
-      String type = CompileContext.getContext().convertType2Dart(aFieldContext.unannType().text);
+      String type = CompileContext.getContext()
+          .convertType2Dart(aFieldContext.unannType().text);
       VariableDeclaratorListContext aDeclaratorListContext =
           aFieldContext.variableDeclaratorList();
       if (aDeclaratorListContext != null) {
-        String blank = calculateIndentation();
         String statement = '';
         aDeclaratorListContext
             ?.variableDeclarators()
@@ -218,21 +304,15 @@ class DNFieldContext extends DNContext {
           String value =
               aDeclaratorContext.variableDeclaratorId()?.identifier()?.text;
           if (type != null && value != null) {
+            statement += '${type} get${toUpperCaseFirstV(value)}(){}';
             statement +=
-                '${blank}${type} get${toUpperCaseFirstV(value)}(){\n${blank}}\n';
-            statement +=
-                '${blank}void set${toUpperCaseFirstV(value)}(${type} ${value}){\n${blank}}\n';
+                'void set${toUpperCaseFirstV(value)}(${type} ${value}){}';
           }
         });
         return statement;
       }
     }
     return "";
-  }
-
-  @override
-  bool hasIndentation() {
-    return true;
   }
 }
 
