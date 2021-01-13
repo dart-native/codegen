@@ -1,9 +1,9 @@
-import 'package:dart_native_codegen/parser/objc/ObjectiveCParser.dart';
-import 'package:antlr4/src/tree/src/tree.dart';
-import 'package:antlr4/src/parser_rule_context.dart';
-import 'package:dart_native_codegen/parser/objc/ObjectiveCParserListener.dart';
-import 'package:dart_native_codegen/src/common.dart';
-import 'package:dart_native_codegen/src/objc/dn_objectivec_context.dart';
+import 'package:antlr4/antlr4.dart';
+
+import '../../parser/objc/ObjectiveCParser.dart';
+import '../../parser/objc/ObjectiveCParserListener.dart';
+import '../common.dart';
+import 'dn_objectivec_context.dart';
 
 class DNObjectiveCParserListener extends ObjectiveCParserListener {
   Callback callback;
