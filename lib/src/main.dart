@@ -139,7 +139,7 @@ Future<void> run(List<String> args) async {
     workspace = p.join(workspace, 'lib');
   }
 
-  processPath(input, workspace, language);
+  await processPath(input, workspace, language);
 
   // format generated dart files.
   formatDart(workspace);
@@ -153,26 +153,23 @@ Future<void> run(List<String> args) async {
 
 Future<void> processPath(
     String input, String workspace, List<String> language) async {
-  var futures = <Future<void>>[];
   for (var l in language) {
     String ext = _extensionForLanguage[l];
     List<String> files;
     if (File(input).existsSync()) {
       files = [input];
     } else {
-      files = Glob('**.$ext').listSync(root: input).map((e) => e.path);
+      files = Glob('**.$ext').listSync(root: input).map((e) => e.path).toList();
     }
     for (String file in files) {
       Generate generate = _convertForLanguage[l];
       if (generate != null) {
         String content = File(file).readAsStringSync();
         try {
-          GenerateResult result = await generate(content);
+          var result = await generate(content);
           saveDartCode(result.dartCode, file, p.join(workspace, l));
-          if (result.moreFileDependencies?.isNotEmpty ?? false) {
-            for (var f in result.moreFileDependencies) {
-              await processPath(f, workspace, language);
-            }
+          for (var f in result.moreFileDependencies) {
+            await processPath(f, workspace, language);
           }
         } catch (e) {
           logger.severe('filePath: ${file}\nerror: $e');
@@ -180,8 +177,6 @@ Future<void> processPath(
       }
     }
   }
-
-  await Future.wait(futures);
 }
 
 void saveDartCode(String dartCode, String sourcePath, String workspace) {

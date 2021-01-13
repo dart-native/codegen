@@ -7,7 +7,7 @@ void main() {
     test('Generate bindings from Objective-C code', () async {
       await run([
         '-i',
-        'example/objc/foundation.h',
+        'example/objc/RuntimeStub.h',
         '-o',
         'test/temp/local_example_test/',
         '--project-name',

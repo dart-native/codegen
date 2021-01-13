@@ -20,9 +20,7 @@ class DNObjectiveCGenerater {
       final tree = parser.translationUnit();
       Callback cb = (String content, {String error}) {
         if (content != null) {
-          // TODO:
-          final result = GenerateResult(content,
-              moreFileDependencies: ['example/objc/BoxPhoto.h']);
+          final result = GenerateResult(content);
           completer.complete(result);
         } else {
           completer.completeError(error, StackTrace.current);
@@ -35,3 +33,5 @@ class DNObjectiveCGenerater {
     return completer.future;
   }
 }
+
+int _count = 0;

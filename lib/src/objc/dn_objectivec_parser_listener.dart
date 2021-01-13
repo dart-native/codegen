@@ -8,11 +8,9 @@ import 'package:dart_native_codegen/src/objc/dn_objectivec_context.dart';
 class DNObjectiveCParserListener extends ObjectiveCParserListener {
   Callback callback;
   bool needExport;
-  var rootContext;
-  var currentContext;
-  DNObjectiveCParserListener(Callback callback) {
-    this.callback = callback;
-  }
+  DNRootContext rootContext;
+  DNContext currentContext;
+  DNObjectiveCParserListener(this.callback);
   @override
   void enterAbstractDeclarator(AbstractDeclaratorContext ctx) {
     // TODO: implement enterAbstractDeclarator
@@ -693,19 +691,19 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
   @override
   void enterTranslationUnit(TranslationUnitContext ctx) {
     //check if it is an export file
-    this.needExport = true;
+    needExport = true;
     for (var i = 0; i < ctx.children.length; i++) {
       if (ctx.children[i] is TopLevelDeclarationContext) {
         var subChildren = ctx.children[i];
         if (subChildren.childCount > 0 &&
             !(subChildren.getChild(0) is ImportDeclarationContext)) {
-          this.needExport = false;
+          needExport = false;
           break;
         }
       }
     }
-    this.rootContext = DNRootContext(ctx, this.needExport);
-    this.currentContext = this.rootContext;
+    rootContext = DNRootContext(ctx, needExport);
+    currentContext = rootContext;
   }
 
   @override
@@ -1459,6 +1457,8 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
   @override
   void exitTranslationUnit(TranslationUnitContext ctx) {
     // TODO: implement exitTranslationUnit
+    var result = rootContext.parse();
+    callback(result);
   }
 
   @override
