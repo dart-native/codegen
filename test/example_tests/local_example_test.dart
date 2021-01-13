@@ -21,13 +21,15 @@ void main() {
     test('Generate bindings from Java code', () async {
       await run([
         '-i',
-        'example/java/',
+        'example/java/com/dartnative/dart_native_example/DNJavaSample.java',
         '-o',
         'test/temp/local_example_test/',
         '--project-name',
         'java_package',
         '-t',
         'plugin',
+        '-l',
+        'java',
       ]);
       // TODO: Check generated code.
     });

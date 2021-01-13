@@ -10,4 +10,8 @@ class FileUtils {
     String dartPath = p.join(workspace, fileName);
     File(dartPath).writeAsStringSync(dartCode);
   }
+
+  static isFile(String path) {
+    return new File(path).existsSync();
+  }
 }

@@ -2,16 +2,19 @@ import 'package:antlr4/src/parser_rule_context.dart';
 import 'package:antlr4/src/tree/src/tree.dart';
 import 'package:dart_native_codegen/parser/java/Java9Listener.dart';
 import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
+import 'package:dart_native_codegen/src/java/DartJavaCompiler.dart';
 
 import '../common.dart';
 import 'dn_java_context.dart';
 
 class DNJavaParserListener extends Java9Listener {
+  JavaFile javaFile;
   Callback callback;
   DNRootContext rootContext;
   DNContext currentContext;
 
-  DNJavaParserListener(Callback callback) {
+  DNJavaParserListener(JavaFile javaFile, Callback callback) {
+    this.javaFile = javaFile;
     this.callback = callback;
   }
 
@@ -254,7 +257,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterCompilationUnit(CompilationUnitContext ctx) {
-    this.rootContext = DNRootContext(ctx, false);
+    this.rootContext = DNRootContext(ctx, javaFile);
     this.currentContext = rootContext.enter(currentContext);
   }
 

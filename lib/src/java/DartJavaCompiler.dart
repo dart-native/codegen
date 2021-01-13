@@ -4,6 +4,7 @@ import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
 import 'package:dart_native_codegen/src/common/FileUtils.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
+import 'package:path/path.dart';
 
 import 'dn_java_converter.dart';
 
@@ -11,13 +12,22 @@ final logger = Logger('DartJavaCompiler');
 
 class DartJavaCompiler {
   void compile(String inputPath, String workspace) {
-    for (FileSystemEntity file in Glob('**.java').listSync(root: inputPath)) {
+    if (FileUtils.isFile(inputPath)) {
       JavaFile javaFile = new JavaFile();
-      javaFile.path = file.path;
+      javaFile.path = inputPath;
       javaFile.fileType = FILE_TYPE.source_file;
       javaFile.resolve = true;
       CompileContext.getContext().pushFile(javaFile);
       convertOneFile(javaFile, workspace);
+    } else {
+      for (FileSystemEntity file in Glob('**.java').listSync(root: inputPath)) {
+        JavaFile javaFile = new JavaFile();
+        javaFile.path = file.path;
+        javaFile.fileType = FILE_TYPE.source_file;
+        javaFile.resolve = true;
+        CompileContext.getContext().pushFile(javaFile);
+        convertOneFile(javaFile, workspace);
+      }
     }
     // loop
     List<JavaFile> unResolveFiles = CompileContext.getContext().popUnResolve();
@@ -25,6 +35,7 @@ class DartJavaCompiler {
       unResolveFiles.forEach((file) {
         convertOneFile(file, workspace);
       });
+      unResolveFiles = CompileContext.getContext().popUnResolve();;
     }
   }
 
@@ -44,7 +55,7 @@ class CompileContext {
   static CompileContext _instance = new CompileContext();
 
   List<JavaFile> _allFiles = [];
-  CompilationContext _currentCompileContext;
+  DNCompilationUnitContext _currentCompileContext;
 
   static CompileContext getContext() {
     return _instance;
@@ -56,9 +67,11 @@ class CompileContext {
     while (ite.moveNext()) {
       if (ite.current != null && !ite.current.resolve) {
         unResolve.add(ite.current);
-        _allFiles.remove(ite.current);
       }
     }
+    unResolve.forEach((file) {
+      _allFiles.remove(file);
+    });
     return unResolve;
   }
 
@@ -70,76 +83,117 @@ class CompileContext {
 
   void pushFiles(List<JavaFile> fList) {
     fList.forEach((file) {
-      if (!_allFiles.contains(file)) {
-        _allFiles.add(file);
-      }
+      pushFile(file);
     });
   }
 
-  void setCurrentCompilationInfo(CompilationContext info) {
+  void setCurrentCompilationInfo(DNCompilationUnitContext info) {
     this._currentCompileContext = info;
   }
 
   // java type -> dart type
-  String convertType(String javaFieldType) {
-    return '';
+  String convertType2Dart(String javaFieldType) {
+    print("convertType2Dart: " + javaFieldType);
+    return _currentCompileContext.convertType(javaFieldType);
   }
 }
 
-class CompilationContext {
+class DNCompilationUnitContext {
   JavaFile javaFile;
   String packageName;
-  String className;
   List<ImportDeclarationContext> imports = [];
+
   // data from imports, record class name and javafile
-  Map<String, JavaFile> _importData = {};
+  Map<String, JavaFile> _importFileMapWithName = {};
   bool _isInit = false;
+
+  void addImport(ImportDeclarationContext import) {
+    imports.add(import);
+  }
 
   String convertType(String fieldType) {
     if (!_isInit) {
       _init();
     }
-    if (_importData.containsKey(fieldType)) {
+    print("start convertType: " + fieldType);
+    _importFileMapWithName.forEach((a, b) {
+      print("_importFileMapWithName: " + a + ", " + b.toString());
+    });
+    if (_importFileMapWithName.containsKey(fieldType)) {
       // class type
-      CompileContext.getContext().pushFile(_importData[fieldType]);
+      CompileContext.getContext().pushFile(_importFileMapWithName[fieldType]);
       return fieldType;
     }
     // todo basic type ?
     return fieldType;
   }
 
+  void _initWithOneFile(File file) {
+    String javaFileName = basenameWithoutExtension(file.path);
+    if (javaFileName == null) {
+      return;
+    }
+    JavaFile javaFile = new JavaFile();
+    javaFile.path = file.path;
+    if (!file.existsSync()) {
+      javaFile.fileType = FILE_TYPE.aar;
+      javaFile.resolve = true;
+    } else {
+      javaFile.fileType = FILE_TYPE.source_file;
+    }
+    _importFileMapWithName[javaFileName] = javaFile;
+  }
+
   void _init() {
     imports.forEach((import) {
-      String importStatement = import.text;
+      String importStatement =
+          import.singleTypeImportDeclaration()?.typeName()?.text;
+      print("importStatement: " + importStatement);
       String javaPath = javaFile.path;
       // win ?
       String fileSep = "/";
-      String rootFilePath =
-      javaPath.replaceAll(packageName.replaceAll(".", fileSep), "");
-      String destFilePath =
-          rootFilePath + fileSep + importStatement.replaceAll(".", fileSep);
 
-      if (destFilePath.endsWith("*")) {
+      String packagePathId = packageName.replaceAll(".", fileSep);
+      int packagePathIndex = javaPath.indexOf(packagePathId);
+      if (packagePathIndex < 0) {
+        print("cannot find package path: ${packageName}");
+        return;
+      }
+
+      String rootFilePath = javaPath.substring(0, packagePathIndex);
+      String destFilePath =
+          rootFilePath + importStatement.replaceAll(".", fileSep);
+      if (destFilePath.endsWith(";")) {
+        destFilePath = destFilePath.substring(0, destFilePath.length - 1);
+      }
+
+      print("init statement: " + destFilePath);
+
+      bool isDir = destFilePath.endsWith("*");
+      if (isDir) {
         destFilePath = destFilePath.replaceAll('${fileSep}*', fileSep);
       } else {
-        // kotlin ?
         destFilePath = destFilePath + ".java";
       }
 
       // new java file
-      File destFile = new File(destFilePath);
-      bool exist = destFile.existsSync();
-      if (!exist) {
-        fileType = _FileType.JAR;
-      } else {
-        fileType = _FileType.SOURCE;
-        filePath = destFilePath;
-        fileName = destFilePath.split(fileSep).last;
-        // dir ? file ?
+      if (isDir) {
+        Directory dir = new Directory(destFilePath);
+        if (!dir.existsSync()) {
+          return;
+        }
+        List<FileSystemEntity> dirSubFiles = dir.listSync();
+        dirSubFiles.forEach((file) {
+          if (file is File) {
+            _initWithOneFile(file);
+          }
+        });
       }
+
+      File destFile = new File(destFilePath);
+      _initWithOneFile(destFile);
     });
-
-
+    _isInit = true;
   }
 }
 
@@ -157,5 +211,10 @@ class JavaFile {
       return path == other.path;
     }
     return false;
+  }
+
+  @override
+  String toString() {
+    return 'path: ${path}, fileType: ${fileType}, resolve: ${resolve}';
   }
 }

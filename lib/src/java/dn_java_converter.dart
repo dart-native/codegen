@@ -29,7 +29,7 @@ class DNJavaConverter {
           completer.completeError(error, StackTrace.current);
         }
       };
-      ParseTreeWalker.DEFAULT.walk(DNJavaParserListener(cb), tree);
+      ParseTreeWalker.DEFAULT.walk(DNJavaParserListener(file, cb), tree);
     } catch (e) {
       completer.completeError(e, StackTrace.current);
     }

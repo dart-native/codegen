@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
+import 'package:dart_native_codegen/src/java/DartJavaCompiler.dart';
 import 'package:dart_native_codegen/src/java/dn_java_converter.dart';
 import 'package:dart_native_codegen/src/objc/dn_objectivec_converter.dart';
 import 'package:glob/glob.dart';
@@ -40,7 +41,6 @@ const Map<String, String> _extensionForLanguage = {
 typedef Convert = Future<String> Function(String content);
 
 const Map<String, Convert> _convertForLanguage = {
-  Languages.java: DNJavaConverter.convert,
   Languages.objc: DNObjectiveCConverter.convert,
 };
 
@@ -139,17 +139,22 @@ Future<void> run(List<String> args) async {
 
   var futures = <Future<void>>[];
   for (var l in language) {
-    String ext = _extensionForLanguage[l];
-    for (FileSystemEntity file in Glob('**.$ext').listSync(root: input)) {
-      Convert convert = _convertForLanguage[l];
-      if (convert != null) {
-        String content = File(file.path).readAsStringSync();
-        Future<void> future = convert(content).then((dartCode) {
-          saveDartCode(dartCode, file.path, p.join(workspace, l));
-        }, onError: (error) {
-          logger.severe('filePath: ${file.path}\nerror: $error');
-        });
-        futures.add(future);
+    if (l == 'java') {
+      DartJavaCompiler javaCompiler = new DartJavaCompiler();
+      javaCompiler.compile(input, workspace);
+    }else {
+      String ext = _extensionForLanguage[l];
+      for (FileSystemEntity file in Glob('**.$ext').listSync(root: input)) {
+        Convert convert = _convertForLanguage[l];
+        if (convert != null) {
+          String content = File(file.path).readAsStringSync();
+          Future<void> future = convert(content).then((dartCode) {
+            saveDartCode(dartCode, file.path, p.join(workspace, l));
+          }, onError: (error) {
+            logger.severe('filePath: ${file.path}\nerror: $error');
+          });
+          futures.add(future);
+        }
       }
     }
   }
