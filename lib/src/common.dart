@@ -1,5 +1,14 @@
 typedef Callback = void Function(String dartCode, {String error});
 
+class GenerateRequest {
+  /// Input file path.
+  final String filePath;
+
+  /// Input file content.
+  final String fileContent;
+  GenerateRequest(this.filePath, this.fileContent);
+}
+
 class GenerateResult {
   /// Dart code generated from native code.
   final String dartCode;

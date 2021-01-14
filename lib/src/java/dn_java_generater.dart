@@ -11,12 +11,11 @@ import 'dn_java9_parser_listener.dart';
 
 class DNJavaGenerater {
   /// generate dart code from java code.
-  static Future<GenerateResult> generate(JavaFile file) async {
-    file.fileType = FILE_TYPE.source_file;
-    String content = File(file.path).readAsStringSync();
+  static Future<GenerateResult> generate(GenerateRequest request) async {
+    // file.fileType = FILE_TYPE.source_file;
     Completer<GenerateResult> completer = Completer();
     try {
-      final chars = InputStream.fromString(content);
+      final chars = InputStream.fromString(request.fileContent);
       final lexer = Java9Lexer(chars);
       final tokens = CommonTokenStream(lexer);
       final parser = Java9Parser(tokens);
@@ -31,7 +30,8 @@ class DNJavaGenerater {
           completer.completeError(error, StackTrace.current);
         }
       };
-      ParseTreeWalker.DEFAULT.walk(DNJavaParserListener(file, cb), tree);
+      // TODO:
+      // ParseTreeWalker.DEFAULT.walk(DNJavaParserListener(file, cb), tree);
     } catch (e) {
       completer.completeError(e, StackTrace.current);
     }

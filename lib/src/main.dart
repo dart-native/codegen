@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'package:dart_native_codegen/src/common.dart';
-import 'package:dart_native_codegen/src/java/DartJavaCompiler.dart';
 import 'package:dart_native_codegen/src/java/dn_java_generater.dart';
 import 'package:dart_native_codegen/src/objc/dn_objectivec_generater.dart';
 import 'package:glob/glob.dart';
@@ -39,10 +38,10 @@ const Map<String, String> _extensionForLanguage = {
   Languages.objc: FileExtensions.header
 };
 
-typedef Generate = Future<GenerateResult> Function(String content);
+typedef Generate = Future<GenerateResult> Function(GenerateRequest content);
 
 const Map<String, Generate> _convertForLanguage = {
-  // Languages.java: DNJavaConverter.convert,
+  Languages.java: DNJavaGenerater.generate,
   Languages.objc: DNObjectiveCGenerater.generate,
 };
 
@@ -166,7 +165,8 @@ Future<void> processPath(
       if (generate != null) {
         String content = File(file).readAsStringSync();
         try {
-          var result = await generate(content);
+          var request = GenerateRequest(file, content);
+          var result = await generate(request);
           saveDartCode(result.dartCode, file, p.join(workspace, l));
           for (var f in result.moreFileDependencies) {
             await processPath(f, workspace, language);

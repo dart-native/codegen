@@ -40,7 +40,9 @@ class DartJavaCompiler {
 
   void convertOneFile(JavaFile file, String workspace) async {
     var futures = <Future<void>>[];
-    Future<void> future = DNJavaGenerater.generate(file).then((result) {
+    // TODO:
+    Future<void> future =
+        DNJavaGenerater.generate(null /*file*/).then((result) {
       FileUtils.saveDartCode(result.dartCode, file.path, workspace);
     }, onError: (error) {
       logger.severe('filePath: ${file.path}\nerror: $error');
