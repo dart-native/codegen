@@ -8,10 +8,10 @@ import 'package:dart_native_codegen/parser/objc/ObjectiveCParser.dart';
 
 class DNObjectiveCGenerater {
   /// generate dart code from objective-c code.
-  static Future<GenerateResult> generate(String content) async {
+  static Future<GenerateResult> generate(GenerateRequest request) async {
     Completer<GenerateResult> completer = Completer();
     try {
-      final chars = InputStream.fromString(content);
+      final chars = InputStream.fromString(request.fileContent);
       final lexer = ObjectiveCLexer(chars);
       final tokens = CommonTokenStream(lexer);
       final parser = ObjectiveCParser(tokens);
