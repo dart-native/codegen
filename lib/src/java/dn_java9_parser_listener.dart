@@ -2,10 +2,10 @@ import 'package:antlr4/src/parser_rule_context.dart';
 import 'package:antlr4/src/tree/src/tree.dart';
 import 'package:dart_native_codegen/parser/java/Java9Listener.dart';
 import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
-import 'package:dart_native_codegen/src/java/DartJavaCompiler.dart';
 
 import '../common.dart';
 import 'dn_java_context.dart';
+import 'dn_java_generater.dart';
 
 class DNJavaParserListener extends Java9Listener {
   JavaFile javaFile;

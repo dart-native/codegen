@@ -2,6 +2,7 @@ package com.dartnative.dart_native_example;
 
 import com.dartnative.another_package.Node;
 import java.util.List;
+import com.dartnative.dart_native_example.IDNJavaSample;
 
 // all extends Object!
 public class DNJavaSample implements IDNJavaSample {
@@ -13,6 +14,8 @@ public class DNJavaSample implements IDNJavaSample {
     protected int argD;
 
     private int argE;
+
+    public IDNJavaSample wrapper;
 
     @Override
     public int arg(int a, byte b, short c, long d, float e, double f, char g, boolean h, String i) {

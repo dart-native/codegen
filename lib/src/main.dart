@@ -167,7 +167,7 @@ Future<void> processPath(
         try {
           var request = GenerateRequest(file, content);
           var result = await generate(request);
-          saveDartCode(result.dartCode, file, p.join(workspace, l));
+          saveDartCode(result.dartCode, input, file, p.join(workspace, l));
           for (var f in result.moreFileDependencies) {
             await processPath(f, workspace, language);
           }
@@ -179,11 +179,15 @@ Future<void> processPath(
   }
 }
 
-void saveDartCode(String dartCode, String sourcePath, String workspace) {
+void saveDartCode(String dartCode, String sourceRootPath, String sourcePath,
+    String workspace) {
   Directory(workspace).createSync();
   String fileName =
       p.setExtension(p.basenameWithoutExtension(sourcePath), '.dart');
-  String dartPath = p.join(workspace, fileName);
+  String dirPath = p.join(
+      workspace, p.dirname(p.relative(sourcePath, from: sourceRootPath)));
+  Directory(dirPath).createSync(recursive: true);
+  String dartPath = p.join(dirPath, fileName);
   File(dartPath).writeAsStringSync(dartCode);
 }
 

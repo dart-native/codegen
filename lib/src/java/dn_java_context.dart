@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
-import 'package:dart_native_codegen/src/java/DartJavaCompiler.dart';
 import 'package:path/path.dart';
+
+import 'dn_java_generater.dart';
 
 class ListOpNode {
   ListOpNode pre;
@@ -81,23 +82,24 @@ class DNRootContext extends DNContext {
       _initImports();
     }
     if (_importFileMapWithName.containsKey(javaType)) {
-      // class type
-      JavaFile javaFile = _importFileMapWithName[javaType];
-      String fileName = basenameWithoutExtension(javaFile.path);
-      String statement = "import '${fileName}.dart';";
+      JavaFile importJavaFile = _importFileMapWithName[javaType];
+      // mark 不加dirname会以具体的file做单位，比如 (/A/A.java, /B/B.java) 会生成 ../../B/B.java，实际上应该 ../B/B.java
+      String relativePath =
+          relative(importJavaFile.path, from: dirname(this.javaFile.path));
+      relativePath = relativePath.replaceAll(".java", ".dart");
+      String statement = "import '${normalize(relativePath)}';";
       if (!_realImportStatement.contains(statement)) {
         _realImportStatement.add(statement);
       }
-      CompileContext.getContext().pushFile(javaFile);
+      CompileContext.getContext().pushFile(importJavaFile);
       return javaType;
     }
-    // DartNative 库每个基础类型都有一个类，因此这里不用做类型转换。比如dart原生没有byte，但是DartNative封装了一个byte类。
     return javaType;
   }
 
   void _initImportWithOneFile(File file) {
-    String javaFileName = basenameWithoutExtension(file.path);
-    if (javaFileName == null) {
+    String javaFileNameNoExt = basenameWithoutExtension(file.path);
+    if (javaFileNameNoExt == null) {
       return;
     }
     JavaFile javaFile = new JavaFile();
@@ -108,25 +110,25 @@ class DNRootContext extends DNContext {
     } else {
       javaFile.fileType = FILE_TYPE.source_file;
     }
-    _importFileMapWithName[javaFileName] = javaFile;
+    _importFileMapWithName[javaFileNameNoExt] = javaFile;
   }
 
   void _initImports() {
     _rawImportList.forEach((import) {
       String importStatement =
           import.singleTypeImportDeclaration()?.typeName()?.text;
-      String javaPath = javaFile.path;
+      String myJavaFilePath = javaFile.path;
       // win ?
       String fileSep = "/";
 
-      String packagePathId = packageName.replaceAll(".", fileSep);
-      int packagePathIndex = javaPath.indexOf(packagePathId);
-      if (packagePathIndex < 0) {
+      String myPackagePath = packageName.replaceAll(".", fileSep);
+      int myPackagePathIndex = myJavaFilePath.indexOf(myPackagePath);
+      if (myPackagePathIndex < 0) {
         print("cannot find package path: ${packageName}");
         return;
       }
 
-      String rootFilePath = javaPath.substring(0, packagePathIndex);
+      String rootFilePath = myJavaFilePath.substring(0, myPackagePathIndex);
       String destFilePath =
           rootFilePath + importStatement.replaceAll(".", fileSep);
       if (destFilePath.endsWith(";")) {
