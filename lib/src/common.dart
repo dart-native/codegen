@@ -1,3 +1,5 @@
+import 'package:logging/logging.dart';
+
 typedef Callback = void Function(String dartCode, {String error});
 
 class GenerateRequest {
@@ -17,3 +19,5 @@ class GenerateResult {
   final List<String> moreFileDependencies;
   GenerateResult(this.dartCode, {this.moreFileDependencies});
 }
+
+final logger = Logger('Codegen');

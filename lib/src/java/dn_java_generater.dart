@@ -38,7 +38,7 @@ class DNJavaGenerater {
           final result =
               GenerateResult(content, moreFileDependencies: moreFile);
 
-          print(
+          logger.info(
               "generate finish: ${request.filePath}, dependencies: ${result.moreFileDependencies.toString()}");
           completer.complete(result);
         } else {

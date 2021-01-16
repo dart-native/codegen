@@ -9,33 +9,43 @@ import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
 
 class OptionNames {
-  static const String version = 'version';
-  static const String help = 'help';
-  static const String input = 'input';
-  static const String output = 'output';
-  static const String language = 'language';
-  static const String template = 'template';
-  static const String projectName = 'project-name';
+  static const version = 'version';
+  static const help = 'help';
+  static const input = 'input';
+  static const output = 'output';
+  static const language = 'language';
+  static const template = 'template';
+  static const projectName = 'project-name';
 }
 
 class FlutterTemplates {
-  static const String package = 'package';
-  static const String plugin = 'plugin';
+  static const package = 'package';
+  static const plugin = 'plugin';
 }
 
 class Languages {
-  static const String java = 'java';
-  static const String objc = 'objc';
+  static const java = 'java';
+  static const objc = 'objc';
+}
+
+class Platforms {
+  static const ios = 'ios';
+  static const android = 'android';
 }
 
 class FileExtensions {
-  static const String java = 'java';
-  static const String header = 'h';
+  static const java = 'java';
+  static const header = 'h';
 }
 
 const Map<String, String> _extensionForLanguage = {
   Languages.java: FileExtensions.java,
   Languages.objc: FileExtensions.header
+};
+
+const Map<String, String> _platformForLanguage = {
+  Languages.java: Platforms.android,
+  Languages.objc: Platforms.ios
 };
 
 typedef Generate = Future<GenerateResult> Function(GenerateRequest content);
@@ -53,7 +63,7 @@ var parser = ArgParser()
     help: 'verion.',
     callback: (version) {
       if (version) {
-        print('0.0.1');
+        logger.info('0.0.1');
       }
     },
   )
@@ -64,7 +74,7 @@ var parser = ArgParser()
     help: 'help.',
     callback: (help) {
       if (help) {
-        print(parser.usage);
+        logger.info(parser.usage);
       }
     },
   )
@@ -106,8 +116,6 @@ var parser = ArgParser()
     help:
         'The project name for this new Flutter project. This must be a valid dart package name.',
   );
-
-final logger = Logger('Codegen');
 
 Future<void> run(List<String> args) async {
   ArgResults results = parser.parse(args);
@@ -167,7 +175,9 @@ Future<void> processPath(
         try {
           var request = GenerateRequest(file, content);
           var result = await generate(request);
-          saveDartCode(result.dartCode, input, file, p.join(workspace, l));
+          var platform = _platformForLanguage[l];
+          saveDartCode(
+              result.dartCode, input, file, p.join(workspace, platform));
           for (var f in result.moreFileDependencies) {
             await processPath(f, workspace, language);
           }
@@ -196,7 +206,6 @@ void updatePubspec(String path) {
 }
 
 void createFlutter(String template, String projectName, String output) {
-  // TODO: test output path
   Directory(output).createSync(recursive: true);
   String command = 'create --template=$template --project-name=$projectName';
   if (template == FlutterTemplates.plugin) {
