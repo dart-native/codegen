@@ -11,6 +11,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.directive].
   /// [ctx] the parse tree
   void enterPreprocessorImport(PreprocessorImportContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorImport]
   /// labeled alternative in [ObjectiveCPreprocessorParser.directive].
   /// [ctx] the parse tree
@@ -20,6 +21,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.directive].
   /// [ctx] the parse tree
   void enterPreprocessorConditional(PreprocessorConditionalContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorConditional]
   /// labeled alternative in [ObjectiveCPreprocessorParser.directive].
   /// [ctx] the parse tree
@@ -29,6 +31,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.directive].
   /// [ctx] the parse tree
   void enterPreprocessorDef(PreprocessorDefContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorDef]
   /// labeled alternative in [ObjectiveCPreprocessorParser.directive].
   /// [ctx] the parse tree
@@ -38,6 +41,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.directive].
   /// [ctx] the parse tree
   void enterPreprocessorPragma(PreprocessorPragmaContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorPragma]
   /// labeled alternative in [ObjectiveCPreprocessorParser.directive].
   /// [ctx] the parse tree
@@ -47,6 +51,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.directive].
   /// [ctx] the parse tree
   void enterPreprocessorError(PreprocessorErrorContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorError]
   /// labeled alternative in [ObjectiveCPreprocessorParser.directive].
   /// [ctx] the parse tree
@@ -56,6 +61,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.directive].
   /// [ctx] the parse tree
   void enterPreprocessorWarning(PreprocessorWarningContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorWarning]
   /// labeled alternative in [ObjectiveCPreprocessorParser.directive].
   /// [ctx] the parse tree
@@ -65,6 +71,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.directive].
   /// [ctx] the parse tree
   void enterPreprocessorDefine(PreprocessorDefineContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorDefine]
   /// labeled alternative in [ObjectiveCPreprocessorParser.directive].
   /// [ctx] the parse tree
@@ -73,6 +80,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// Enter a parse tree produced by [ObjectiveCPreprocessorParser.directiveText].
   /// [ctx] the parse tree
   void enterDirectiveText(DirectiveTextContext ctx);
+
   /// Exit a parse tree produced by [ObjectiveCPreprocessorParser.directiveText].
   /// [ctx] the parse tree
   void exitDirectiveText(DirectiveTextContext ctx);
@@ -81,6 +89,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.preprocessorExpression].
   /// [ctx] the parse tree
   void enterPreprocessorParenthesis(PreprocessorParenthesisContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorParenthesis]
   /// labeled alternative in [ObjectiveCPreprocessorParser.preprocessorExpression].
   /// [ctx] the parse tree
@@ -90,6 +99,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.preprocessorExpression].
   /// [ctx] the parse tree
   void enterPreprocessorNot(PreprocessorNotContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorNot]
   /// labeled alternative in [ObjectiveCPreprocessorParser.preprocessorExpression].
   /// [ctx] the parse tree
@@ -99,6 +109,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.preprocessorExpression].
   /// [ctx] the parse tree
   void enterPreprocessorBinary(PreprocessorBinaryContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorBinary]
   /// labeled alternative in [ObjectiveCPreprocessorParser.preprocessorExpression].
   /// [ctx] the parse tree
@@ -108,6 +119,7 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// labeled alternative in [file.parserName>.preprocessorExpression].
   /// [ctx] the parse tree
   void enterPreprocessorConstant(PreprocessorConstantContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorConstant]
   /// labeled alternative in [ObjectiveCPreprocessorParser.preprocessorExpression].
   /// [ctx] the parse tree
@@ -116,16 +128,20 @@ abstract class ObjectiveCPreprocessorParserListener extends ParseTreeListener {
   /// Enter a parse tree produced by the [preprocessorConditionalSymbol]
   /// labeled alternative in [file.parserName>.preprocessorExpression].
   /// [ctx] the parse tree
-  void enterPreprocessorConditionalSymbol(PreprocessorConditionalSymbolContext ctx);
+  void enterPreprocessorConditionalSymbol(
+      PreprocessorConditionalSymbolContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorConditionalSymbol]
   /// labeled alternative in [ObjectiveCPreprocessorParser.preprocessorExpression].
   /// [ctx] the parse tree
-  void exitPreprocessorConditionalSymbol(PreprocessorConditionalSymbolContext ctx);
+  void exitPreprocessorConditionalSymbol(
+      PreprocessorConditionalSymbolContext ctx);
 
   /// Enter a parse tree produced by the [preprocessorDefined]
   /// labeled alternative in [file.parserName>.preprocessorExpression].
   /// [ctx] the parse tree
   void enterPreprocessorDefined(PreprocessorDefinedContext ctx);
+
   /// Exit a parse tree produced by the [preprocessorDefined]
   /// labeled alternative in [ObjectiveCPreprocessorParser.preprocessorExpression].
   /// [ctx] the parse tree

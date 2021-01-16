@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_native_codegen/parser/java/Java9Lexer.dart';
 import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
+import 'package:path/path.dart' as p;
 
 import '../common.dart';
 import 'dn_java9_parser_listener.dart';
@@ -32,7 +33,9 @@ class DNJavaGenerater {
           List<JavaFile> unResolveFiles =
               CompileContext.getContext().popUnResolve();
           unResolveFiles.forEach((file) {
-            moreFile.add(file.path);
+            var relativePath =
+                p.relative(file.path, from: p.dirname(request.filePath));
+            moreFile.add(relativePath);
           });
 
           final result =

@@ -5,11 +5,11 @@ import 'package:antlr4/antlr4.dart';
 import 'ObjectiveCPreprocessorParser.dart';
 import 'ObjectiveCPreprocessorParserListener.dart';
 
-
 /// This class provides an empty implementation of [ObjectiveCPreprocessorParserListener],
 /// which can be extended to create a listener which only needs to handle
 /// a subset of the available methods.
-class ObjectiveCPreprocessorParserBaseListener implements ObjectiveCPreprocessorParserListener {
+class ObjectiveCPreprocessorParserBaseListener
+    implements ObjectiveCPreprocessorParserListener {
   /// The default implementation does nothing.
   @override
   void enterPreprocessorImport(PreprocessorImportContext ctx) {}
@@ -108,11 +108,13 @@ class ObjectiveCPreprocessorParserBaseListener implements ObjectiveCPreprocessor
 
   /// The default implementation does nothing.
   @override
-  void enterPreprocessorConditionalSymbol(PreprocessorConditionalSymbolContext ctx) {}
+  void enterPreprocessorConditionalSymbol(
+      PreprocessorConditionalSymbolContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPreprocessorConditionalSymbol(PreprocessorConditionalSymbolContext ctx) {}
+  void exitPreprocessorConditionalSymbol(
+      PreprocessorConditionalSymbolContext ctx) {}
 
   /// The default implementation does nothing.
   @override

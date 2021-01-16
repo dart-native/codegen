@@ -146,7 +146,7 @@ Future<void> run(List<String> args) async {
     workspace = p.join(workspace, 'lib');
   }
 
-  await processPath(input, workspace, language);
+  await processFile(input, workspace, language);
 
   // format generated dart files.
   formatDart(workspace);
@@ -158,14 +158,20 @@ Future<void> run(List<String> args) async {
   }
 }
 
-Future<void> processPath(
-    String input, String workspace, List<String> language) async {
+Future<void> processFile(String input, String workspace, List<String> language,
+    {String inputRoot}) async {
   for (var l in language) {
     String ext = _extensionForLanguage[l];
-    List<String> files;
+    List<String> files = [];
     if (File(input).existsSync()) {
+      if (inputRoot == null) {
+        inputRoot = p.dirname(input);
+      }
       files = [input];
-    } else {
+    } else if (Directory(input).existsSync()) {
+      if (inputRoot == null) {
+        inputRoot = input;
+      }
       files = Glob('**.$ext').listSync(root: input).map((e) => e.path).toList();
     }
     for (String file in files) {
@@ -173,13 +179,16 @@ Future<void> processPath(
       if (generate != null) {
         String content = File(file).readAsStringSync();
         try {
-          var request = GenerateRequest(file, content);
+          var request = GenerateRequest(inputRoot, file, content);
           var result = await generate(request);
           var platform = _platformForLanguage[l];
           saveDartCode(
-              result.dartCode, input, file, p.join(workspace, platform));
+              result.dartCode, inputRoot, file, p.join(workspace, platform));
           for (var f in result.moreFileDependencies) {
-            await processPath(f, workspace, language);
+            if (p.isRelative(f)) {
+              f = p.normalize(p.join(p.dirname(file), f));
+            }
+            await processFile(f, workspace, language, inputRoot: inputRoot);
           }
         } catch (e) {
           logger.severe('filePath: ${file}\nerror: $e');
@@ -191,7 +200,6 @@ Future<void> processPath(
 
 void saveDartCode(String dartCode, String sourceRootPath, String sourcePath,
     String workspace) {
-  Directory(workspace).createSync();
   String fileName =
       p.setExtension(p.basenameWithoutExtension(sourcePath), '.dart');
   String dirPath = p.join(
