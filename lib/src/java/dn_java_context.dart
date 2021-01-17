@@ -245,28 +245,30 @@ class DNInterfaceMethodDeclaration extends DNMethodContext {
 
   @override
   String parse() {
+    print("mmmmmmmmmmmmmmmmmm3");
     if (internal is InterfaceMethodDeclarationContext) {
       InterfaceMethodDeclarationContext aMethodNode = internal;
       String methodStatement = '';
       MethodHeaderContext headerContext = aMethodNode.methodHeader();
-      addHeader(headerContext, methodStatement);
-      addBody(methodStatement);
+      methodStatement += getHeader(headerContext);
+      methodStatement += getBody();
+      print("mmmmmmmmmmmmmmmmmm2 ${methodStatement}");
       return methodStatement;
     }
     return "";
   }
 
   @override
-  void addBody(String methodStatement) {
-    methodStatement += ";";
-    print("addBody1 ${methodStatement}");
+  String getBody() {
+    return ";";
   }
 }
 
 class DNMethodContext extends DNContext {
   DNMethodContext(internal) : super(internal);
 
-  void addHeader(MethodHeaderContext aHeaderContext, String statement) {
+  String getHeader(MethodHeaderContext aHeaderContext) {
+    String statement = '';
     MethodDeclaratorContext aDeclaratorNode = aHeaderContext.methodDeclarator();
     ResultContext aResultNode = aHeaderContext?.result();
     if (aResultNode != null) {
@@ -297,11 +299,13 @@ class DNMethodContext extends DNContext {
           statement += lastParam.variableDeclaratorId().text;
         }
       }
+      statement += ')';
     }
+    return statement;
   }
 
-  void addBody(String statement) {
-    statement += "{}";
+  String getBody() {
+    return "{}";
   }
 
   bool checkAssessable(MethodDeclarationContext aMethodNode) {
@@ -323,8 +327,8 @@ class DNMethodContext extends DNContext {
       }
       String methodStatement = '';
       MethodHeaderContext headerContext = aMethodNode.methodHeader();
-      addHeader(headerContext, methodStatement);
-      addBody(methodStatement);
+      methodStatement += getHeader(headerContext);
+      methodStatement += getBody();
 
       return methodStatement;
     }

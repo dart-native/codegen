@@ -1878,7 +1878,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void exitInterfaceMethodDeclaration(InterfaceMethodDeclarationContext ctx) {
-    currentContext.exit();
+    currentContext = currentContext.exit();
   }
 
   @override
