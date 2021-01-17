@@ -87,6 +87,7 @@ class DNAvailabilityContext extends DNContext {
     if (internal is MacroContext) {
       MacroContext macroContext = internal;
       this.name = macroContext.start.text;
+      // ignore: unused_local_variable
       Iterable<ParseTree> children =
           macroContext.messages.map((cxt) => cxt.children[0]);
 

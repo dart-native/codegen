@@ -33,5 +33,3 @@ class DNObjectiveCGenerater {
     return completer.future;
   }
 }
-
-int _count = 0;
