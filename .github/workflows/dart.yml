@@ -51,7 +51,7 @@ jobs:
       - name: Install dependencies
         run: dart pub get
       - name: Run tests
-        run: dart test --no-pub test/
+        run: dart test test/
       - name: Collect coverage
         run: ./tool/coverage.sh
       - name: Upload coverage

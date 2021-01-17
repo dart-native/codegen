@@ -15,6 +15,7 @@ void main() {
         dir.deleteSync(recursive: true);
       }
     });
+
     test('Generate bindings from Objective-C code', () async {
       const projectName = 'objc_plugin';
       await run([

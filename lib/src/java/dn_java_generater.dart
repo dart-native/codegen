@@ -38,11 +38,10 @@ class DNJavaGenerater {
             moreFile.add(relativePath);
           });
 
-          final result =
-              GenerateResult(content, moreFileDependencies: moreFile);
+          final result = GenerateResult(content, fileDependencies: moreFile);
 
           logger.info(
-              "generate finish: ${request.filePath}, dependencies: ${result.moreFileDependencies.toString()}");
+              "generate finish: ${request.filePath}, dependencies: ${result.fileDependencies.toString()}");
           completer.complete(result);
         } else {
           completer.completeError(error, StackTrace.current);

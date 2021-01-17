@@ -7,6 +7,7 @@ import 'package:dart_native_codegen/src/objc/dn_objectivec_generater.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
+import 'package:pubspec/pubspec.dart';
 
 class OptionNames {
   static const version = 'version';
@@ -140,27 +141,36 @@ Future<void> run(List<String> args) async {
   // create directory for output path.
   Directory(output).createSync(recursive: true);
   String workspace = p.join(p.current, output);
-  if (template != null && projectName != null) {
+  bool generatePackage = template != null && projectName != null;
+  if (generatePackage) {
     workspace = p.join(workspace, projectName);
     createFlutter(template, projectName, workspace);
     workspace = p.join(workspace, 'lib');
   }
 
-  await processFile(input, workspace, language);
+  // process native files and return packages depended.
+  var packageDependencies = await processInput(input, workspace, language);
 
   // format generated dart files.
   formatDart(workspace);
 
-  // add dependency
-  if (projectName != null) {
-    String pubspecPath = '$workspace/pubspec.yaml';
-    updatePubspec(pubspecPath);
+  // add packages dependency
+  if (generatePackage) {
+    // back to parent.
+    workspace = p.dirname(workspace);
+    await updatePackageDependencies(packageDependencies, Directory(workspace));
   }
 }
 
-Future<void> processFile(String input, String workspace, List<String> language,
+/// Generate dart code from [input] file/directory.
+///
+/// Input code may depend on other files. This function would process files in
+/// relative path recursively. Packages depended by input code will be returned.
+Future<Set<String>> processInput(
+    String input, String savePath, List<String> languages,
     {String inputRoot}) async {
-  for (var l in language) {
+  Set<String> packageDependencies = Set();
+  for (var l in languages) {
     String ext = _extensionForLanguage[l];
     List<String> files = [];
     if (File(input).existsSync()) {
@@ -181,14 +191,17 @@ Future<void> processFile(String input, String workspace, List<String> language,
         try {
           var request = GenerateRequest(inputRoot, file, content);
           var result = await generate(request);
+          packageDependencies.addAll(result.packageDependencies ?? []);
           var platform = _platformForLanguage[l];
           saveDartCode(
-              result.dartCode, inputRoot, file, p.join(workspace, platform));
-          for (var f in result.moreFileDependencies) {
+              result.dartCode, inputRoot, file, p.join(savePath, platform));
+          for (var f in result.fileDependencies) {
             if (p.isRelative(f)) {
               f = p.normalize(p.join(p.dirname(file), f));
             }
-            await processFile(f, workspace, language, inputRoot: inputRoot);
+            var packages = await processInput(f, savePath, languages,
+                inputRoot: inputRoot);
+            packageDependencies.addAll(packages ?? []);
           }
         } catch (e) {
           logger.severe('filePath: ${file}\nerror: $e');
@@ -196,6 +209,7 @@ Future<void> processFile(String input, String workspace, List<String> language,
       }
     }
   }
+  return packageDependencies;
 }
 
 void saveDartCode(String dartCode, String sourceRootPath, String sourcePath,
@@ -209,8 +223,14 @@ void saveDartCode(String dartCode, String sourceRootPath, String sourcePath,
   File(dartPath).writeAsStringSync(dartCode);
 }
 
-void updatePubspec(String path) {
-  // TODO: update pubspec
+Future<void> updatePackageDependencies(
+    Set<String> packages, Directory workspace) async {
+  var pubspec = await PubSpec.load(workspace);
+  var dependencies = pubspec.dependencies;
+  for (var p in packages) {
+    dependencies[p] = DependencyReference.fromJson('any');
+  }
+  await pubspec.copy(dependencies: dependencies).save(workspace);
 }
 
 void createFlutter(String template, String projectName, String output) {
