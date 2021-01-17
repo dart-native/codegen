@@ -217,55 +217,91 @@ class DNClassContext extends DNContext {
   }
 }
 
-class DNMethodContext extends DNContext {
-  DNMethodContext(internal) : super(internal);
+class DNInterfaceContext extends DNContext {
+  DNInterfaceContext(internal) : super(internal);
 
   @override
   String parse() {
-    if (internal is MethodDeclarationContext) {
-      MethodDeclarationContext aMethodNode = internal;
-      if (!checkAssessable(aMethodNode)) {
-        return "";
+    var result = '';
+
+    if (internal is InterfaceDeclarationContext) {
+      InterfaceDeclarationContext aInterfaceDeclarationContext = internal;
+      String className = aInterfaceDeclarationContext
+          ?.normalInterfaceDeclaration()
+          ?.identifier()
+          ?.text;
+      if (className != null) {
+        result += ("abstract class " + className + " {\n");
+        result += this.children.map((ctx) => ctx.parse()).join('\n');
+        result += ("}\n");
       }
+    }
+    return result;
+  }
+}
+
+class DNInterfaceMethodDeclaration extends DNMethodContext {
+  DNInterfaceMethodDeclaration(internal) : super(internal);
+
+  @override
+  String parse() {
+    if (internal is InterfaceMethodDeclarationContext) {
+      InterfaceMethodDeclarationContext aMethodNode = internal;
       String methodStatement = '';
-      ResultContext aResultNode = aMethodNode.methodHeader()?.result();
-      if (aResultNode != null) {
-        methodStatement += (aResultNode.text + " ");
-      }
-
-      MethodDeclaratorContext aDeclaratorNode =
-          aMethodNode?.methodHeader()?.methodDeclarator();
-      if (aDeclaratorNode != null) {
-        methodStatement += aDeclaratorNode.identifier().text + "(";
-        FormalParameterListContext paramsList =
-            aDeclaratorNode.formalParameterList();
-        if (paramsList != null) {
-          FormalParametersContext frontParams = paramsList?.formalParameters();
-          if (frontParams != null) {
-            frontParams.formalParameters()?.forEach((param) {
-              methodStatement += CompileContext.getContext()
-                  .convertType2Dart(param.unannType().text);
-              methodStatement += " ";
-              methodStatement += param.variableDeclaratorId().text;
-              methodStatement += ", ";
-            });
-          }
-
-          FormalParameterContext lastParam =
-              paramsList?.lastFormalParameter()?.formalParameter();
-          if (lastParam != null) {
-            methodStatement += CompileContext.getContext()
-                .convertType2Dart(lastParam.unannType().text);
-            methodStatement += " ";
-            methodStatement += lastParam.variableDeclaratorId().text;
-          }
-        }
-        methodStatement += ")";
-      }
-      methodStatement += "{}";
+      MethodHeaderContext headerContext = aMethodNode.methodHeader();
+      addHeader(headerContext, methodStatement);
+      addBody(methodStatement);
       return methodStatement;
     }
     return "";
+  }
+
+  @override
+  void addBody(String methodStatement) {
+    methodStatement += ";";
+    print("addBody1 ${methodStatement}");
+  }
+}
+
+class DNMethodContext extends DNContext {
+  DNMethodContext(internal) : super(internal);
+
+  void addHeader(MethodHeaderContext aHeaderContext, String statement) {
+    MethodDeclaratorContext aDeclaratorNode = aHeaderContext.methodDeclarator();
+    ResultContext aResultNode = aHeaderContext?.result();
+    if (aResultNode != null) {
+      statement += (aResultNode.text + " ");
+    }
+    if (aDeclaratorNode != null) {
+      statement += aDeclaratorNode.identifier().text + "(";
+      FormalParameterListContext paramsList =
+          aDeclaratorNode.formalParameterList();
+      if (paramsList != null) {
+        FormalParametersContext frontParams = paramsList?.formalParameters();
+        if (frontParams != null) {
+          frontParams.formalParameters()?.forEach((param) {
+            statement += CompileContext.getContext()
+                .convertType2Dart(param.unannType().text);
+            statement += " ";
+            statement += param.variableDeclaratorId().text;
+            statement += ", ";
+          });
+        }
+
+        FormalParameterContext lastParam =
+            paramsList?.lastFormalParameter()?.formalParameter();
+        if (lastParam != null) {
+          statement += CompileContext.getContext()
+              .convertType2Dart(lastParam.unannType().text);
+          statement += " ";
+          statement += lastParam.variableDeclaratorId().text;
+        }
+      }
+    }
+  }
+
+  void addBody(String statement) {
+    statement += "{}";
   }
 
   bool checkAssessable(MethodDeclarationContext aMethodNode) {
@@ -276,6 +312,23 @@ class DNMethodContext extends DNContext {
       }
     });
     return isPublic;
+  }
+
+  @override
+  String parse() {
+    if (internal is MethodDeclarationContext) {
+      MethodDeclarationContext aMethodNode = internal;
+      if (!checkAssessable(aMethodNode)) {
+        return "";
+      }
+      String methodStatement = '';
+      MethodHeaderContext headerContext = aMethodNode.methodHeader();
+      addHeader(headerContext, methodStatement);
+      addBody(methodStatement);
+
+      return methodStatement;
+    }
+    return "";
   }
 }
 

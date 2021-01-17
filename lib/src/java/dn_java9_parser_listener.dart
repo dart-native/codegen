@@ -594,7 +594,8 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterInterfaceDeclaration(InterfaceDeclarationContext ctx) {
-    // TODO: implement enterInterfaceDeclaration
+    DNInterfaceContext context = new DNInterfaceContext(ctx);
+    currentContext = context.enter(currentContext);
   }
 
   @override
@@ -604,7 +605,8 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterInterfaceMethodDeclaration(InterfaceMethodDeclarationContext ctx) {
-    // TODO: implement enterInterfaceMethodDeclaration
+    DNInterfaceMethodDeclaration context = new DNInterfaceMethodDeclaration(ctx);
+    currentContext = context.enter(currentContext);
   }
 
   @override
@@ -1866,7 +1868,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void exitInterfaceDeclaration(InterfaceDeclarationContext ctx) {
-    // TODO: implement exitInterfaceDeclaration
+    currentContext.exit();
   }
 
   @override
@@ -1876,7 +1878,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void exitInterfaceMethodDeclaration(InterfaceMethodDeclarationContext ctx) {
-    // TODO: implement exitInterfaceMethodDeclaration
+    currentContext.exit();
   }
 
   @override
