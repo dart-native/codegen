@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:antlr4/antlr4.dart';
 import 'package:dart_native_codegen/common/utils.dart';
 
@@ -26,7 +28,7 @@ class DNContext extends BaseContext {
 abstract class BaseContext {
   String name = null;
   var internal = null;
-  List methods = null;
+  List<DNMethodContext> methods = null;
   String type = null;
   bool isNullable = false;
 }
@@ -467,6 +469,229 @@ class DNMethodContext extends DNContext {
   }
 }
 
+class DNMethodDeclarationContext extends DNMethodContext {
+  DNMethodDeclarationContext(internal) : super(internal);
+
+  parse() {
+    // We have to ignore static methods due to this issue: https://github.com/dart-lang/language/issues/356
+    if (this.isClassMethod ||
+        (this.args.length == 0 && this.hasSameMethodDeclaration())) {
+      return '';
+    }
+
+    var result =
+        '  ' + this.availability.map((a) => a.parse()).join(' ') + '\n';
+    result += '  ' + this.returnType + ' ' + this.methodDeclaration();
+
+    if (this.args.length == 1 && this.hasSameMethodDeclaration()) {
+      result += this.methodArgs(optional: true) + ';';
+    }
+    result += this.methodArgs() + ';';
+    return result;
+  }
+}
+
+class DNPropertyContext extends DNContext {
+  bool isClassProperty = false;
+  bool isReadOnly = false;
+  bool isDartPointerType = false;
+  List<String> macros = [];
+  List<DNAvailabilityContext> availability = [];
+
+  DNPropertyContext(internal) : super(internal);
+
+  parse() {
+    if (this.name.isNotEmpty) {
+      return '';
+    }
+    if (this.type.isNotEmpty) {
+      this.type = 'dynamic';
+    }
+    var annotation =
+        '  ' + this.availability.map((a) => a.parse()).join(' ') + '\n';
+    var isClassPrefix =
+        (this.isClassProperty ? ' Class(\'' + this.parent.name + '\').' : ' ');
+
+    var get = annotation +
+        '  ' +
+        this.type +
+        ' get ' +
+        this.name +
+        ' {\n' +
+        this.handleGetter(isClassPrefix) +
+        '\n}';
+    var set = '';
+    if (!this.isReadOnly) {
+      set = annotation +
+          '  ' +
+          'set ' +
+          this.name +
+          '(' +
+          this.type +
+          ' ' +
+          this.name +
+          ')' +
+          ' =>' +
+          isClassPrefix +
+          'perform(SEL(\'set' +
+          this
+              .name
+              .replaceAllMapped('/^\w/', (c) => c.toString().toUpperCase()) +
+          ':\'), args: [' +
+          this.name +
+          ']);';
+    }
+    return get + '\n' + set;
+  }
+
+  handleGetter(isClassPrefix) {
+    var impl = isClassPrefix + 'perform(SEL(\'' + this.name + '\')' + ');\n';
+    var rawRetType = rawGenericType(this.type); //remove <> symbol
+    var isMutableRetType =
+        DNObjectiveCTypeConverter.supportMutableTypes.indexOf(rawRetType) > -1;
+
+    if (!isMutableRetType && !this.isDartPointerType) {
+      return (this.type == 'void' ? '' : 'return') + impl;
+    }
+
+    var newImpl = 'Pointer<Void> result =' +
+        impl.replace(');\n', '') +
+        ', decodeRetVal: false);\n';
+    if (this.isDartPointerType) {
+      var supportType = DNObjectiveCTypeConverter.dartToOCMap[rawRetType];
+      if (supportType.isNotEmpty) {
+        newImpl += '    return ' + supportType + '.fromPointer(result).raw;\n';
+      } else if (isMutableRetType) {
+        newImpl += '    return ' + rawRetType + '.fromPointer(result).raw;\n';
+      } else {
+        newImpl += '    return ' + rawRetType + '.fromPointer(result);\n';
+      }
+    }
+    return newImpl;
+  }
+}
+
+class DNProtocolContext extends DNContext {
+  List<DNPropertyContext> properties = null;
+  // List<DNMethodContext> methods = null;
+  List<ProtocolNameContext> protocols = null;
+  List<String> macros = null;
+  List<DNAvailabilityContext> availability = null;
+
+  DNProtocolContext(internal) : super(internal) {
+    this.properties = [];
+    this.methods = [];
+    if (internal is ProtocolDeclarationContext) {
+      var protocol = internal.protocols;
+      this.protocols =
+          protocol != null ? protocol.list.map((p) => p.name.start.text) : [];
+    }
+    this.macros = [];
+    this.availability = [];
+  }
+
+  addRegister() {
+    var result = '  register' + this.name + '() {\n';
+    this.methods.forEach((element) => {
+          result += '    registerProtocolCallback(this, ' +
+              element.methodDeclaration() +
+              ', \'' +
+              element.ocMethodName() +
+              '\', ' +
+              this.name +
+              ');\n'
+        });
+    result += '  }\n';
+    return result;
+  }
+
+  parse() {
+    var result = this.availability.map((a) => a.parse()).join(' ') + '\n';
+    result += 'abstract class ' + this.name;
+    if (this.protocols.isNotEmpty && this.protocols.length > 0) {
+      result += ' implements ' + this.protocols.join(',');
+    }
+    result += ' {\n';
+    result += this.addRegister();
+    this.properties.forEach((element) => {result += element.parse() + '\n'});
+    this.methods.forEach((element) => {result += element.parse()});
+    result += '\n}';
+    return result;
+  }
+}
+
+class DNClassContext extends DNContext {
+  String superClass = null;
+  List<DNPropertyContext> properties = null;
+  List<ProtocolNameContext> protocols = null;
+  List<String> macros = null;
+  List<DNAvailabilityContext> availability = null;
+
+  DNClassContext(internal) : super(internal) {
+    if (internal is ClassInterfaceContext) {
+      this.name = internal.className.start.text;
+    }
+
+    this.properties = [];
+    this.methods = [];
+    if (internal is ClassInterfaceContext) {
+      var protocol = internal.protocols;
+      this.protocols =
+          protocol != null ? protocol.list.map((p) => p.name.start.text) : [];
+    }
+    this.macros = [];
+    this.availability = [];
+  }
+
+  parse() {
+    this.preMarkConstructMethods();
+    var result = this.availability.map((a) => a.parse()).join(' ') + '\n';
+    result += '@native\nclass ' + this.name;
+    if (this.superClass.isNotEmpty) {
+      result += ' extends ' + this.superClass;
+    }
+    if (this.protocols.isNotEmpty && this.protocols.length > 0) {
+      result += ' with ' + this.protocols.join(',');
+    }
+    result += ' {\n';
+    result += '  ' +
+        this.name +
+        '([Class isa]) : super(isa ?? Class(\'' +
+        this.name +
+        '\'));\n';
+    result += '  ' +
+        this.name +
+        '.fromPointer(Pointer<Void> ptr) : super.fromPointer(ptr);\n';
+    this.properties.forEach((element) =>
+        {result += element.parse() != null ? element.parse() + '\n' : ''});
+    this.methods.forEach((element) =>
+        {result += element.parse() != null ? element.parse() + '\n' : ''});
+    result += '\n}';
+    return result;
+  }
+
+  // mark the method if the class has only one instance construction
+  preMarkConstructMethods() {
+    DNMethodContext markMethod;
+    var hasOneInstanceConstr = false;
+    for (var i = 0; i < this.methods.length; i++) {
+      DNMethodContext method = this.methods[i];
+      var isInstanceConstr =
+          (method.returnType == this.name) && !method.isClassMethod;
+      if (isInstanceConstr) {
+        if (hasOneInstanceConstr) {
+          markMethod.isSingleInstanceConstr = false;
+          break;
+        } else {
+          hasOneInstanceConstr = true;
+          method.isSingleInstanceConstr = true;
+          markMethod = method;
+        }
+      }
+    }
+  }
+}
+
 class DNCategoryContext extends DNContext {
   String host = null;
   String name = null;
@@ -482,6 +707,7 @@ class DNCategoryContext extends DNContext {
         this.name = 'DartNative';
       }
       this.protocols = internal.protocols.list;
+      //TODO:element
       // this.protocols = protocols != null && protocols.length > 0 ? protocols.forEach((element) {
       //   return element.name.start.text;
       // });
@@ -512,6 +738,64 @@ class DNCategoryContext extends DNContext {
       result += element.parse() + '\n';
     });
     result += '\n}';
+    return result;
+  }
+}
+
+class DNImportContext extends DNContext {
+  bool needExport = false;
+  String package = null;
+  String header = null;
+
+  DNImportContext(internal, needExport) : super(internal) {
+    if (internal is ImportDeclarationContext) {
+      this.needExport = needExport;
+      var frameworkCtx = internal.frameworkName;
+      var headerCtx = internal.headerName;
+      if (frameworkCtx != null) {
+        this.package = frameworkCtx.start.text;
+      }
+      if (headerCtx != null) {
+        this.header = headerCtx.start.text;
+      }
+
+      if (frameworkCtx == null && headerCtx == null) {
+        if (internal.children.length == 2 && internal.children[1] != null) {
+          ParserRuleContext parseRuleContext = internal.children[1];
+          TerminalNodeImpl terminalNodeImpl = parseRuleContext.children[1];
+          var content = terminalNodeImpl.symbol.text;
+          var components = content.split('/');
+          if (components.length == 2) {
+            this.package = components[0];
+            this.header = components[1];
+          } else {
+            this.header = content;
+          }
+        }
+      }
+    }
+  }
+
+  parse() {
+    var packageName = null;
+    var result = this.needExport ? 'export \'' : 'import \'';
+    if (this.package.isNotEmpty) {
+      packageName = this.package.toLowerCase();
+      result += (this.needExport ? '' : 'package:') + packageName + '/';
+      // TODO: delete me when foundation and uikit done.
+      if (!this.needExport) {
+        result =
+            '// You can uncomment this line when this package is ready.\n// ' +
+                result;
+      }
+    }
+    if (this.header.isNotEmpty) {
+      //TODO:replace
+      result += this.header.toLowerCase().replaceAll(".h", '') + '.dart\';';
+    } else if (packageName) {
+      result += packageName + '.dart\';';
+    }
+
     return result;
   }
 }
