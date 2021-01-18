@@ -5,7 +5,6 @@ import 'package:antlr4/antlr4.dart';
 import 'Java9Parser.dart';
 import 'Java9Listener.dart';
 
-
 /// This class provides an empty implementation of [Java9Listener],
 /// which can be extended to create a listener which only needs to handle
 /// a subset of the available methods.
@@ -76,19 +75,23 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterClassType_lf_classOrInterfaceType(ClassType_lf_classOrInterfaceTypeContext ctx) {}
+  void enterClassType_lf_classOrInterfaceType(
+      ClassType_lf_classOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitClassType_lf_classOrInterfaceType(ClassType_lf_classOrInterfaceTypeContext ctx) {}
+  void exitClassType_lf_classOrInterfaceType(
+      ClassType_lf_classOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterClassType_lfno_classOrInterfaceType(ClassType_lfno_classOrInterfaceTypeContext ctx) {}
+  void enterClassType_lfno_classOrInterfaceType(
+      ClassType_lfno_classOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitClassType_lfno_classOrInterfaceType(ClassType_lfno_classOrInterfaceTypeContext ctx) {}
+  void exitClassType_lfno_classOrInterfaceType(
+      ClassType_lfno_classOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -100,19 +103,23 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterInterfaceType_lf_classOrInterfaceType(InterfaceType_lf_classOrInterfaceTypeContext ctx) {}
+  void enterInterfaceType_lf_classOrInterfaceType(
+      InterfaceType_lf_classOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitInterfaceType_lf_classOrInterfaceType(InterfaceType_lf_classOrInterfaceTypeContext ctx) {}
+  void exitInterfaceType_lf_classOrInterfaceType(
+      InterfaceType_lf_classOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterInterfaceType_lfno_classOrInterfaceType(InterfaceType_lfno_classOrInterfaceTypeContext ctx) {}
+  void enterInterfaceType_lfno_classOrInterfaceType(
+      InterfaceType_lfno_classOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitInterfaceType_lfno_classOrInterfaceType(InterfaceType_lfno_classOrInterfaceTypeContext ctx) {}
+  void exitInterfaceType_lfno_classOrInterfaceType(
+      InterfaceType_lfno_classOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -316,35 +323,43 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterSingleTypeImportDeclaration(SingleTypeImportDeclarationContext ctx) {}
+  void enterSingleTypeImportDeclaration(
+      SingleTypeImportDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitSingleTypeImportDeclaration(SingleTypeImportDeclarationContext ctx) {}
+  void exitSingleTypeImportDeclaration(
+      SingleTypeImportDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterTypeImportOnDemandDeclaration(TypeImportOnDemandDeclarationContext ctx) {}
+  void enterTypeImportOnDemandDeclaration(
+      TypeImportOnDemandDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitTypeImportOnDemandDeclaration(TypeImportOnDemandDeclarationContext ctx) {}
+  void exitTypeImportOnDemandDeclaration(
+      TypeImportOnDemandDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterSingleStaticImportDeclaration(SingleStaticImportDeclarationContext ctx) {}
+  void enterSingleStaticImportDeclaration(
+      SingleStaticImportDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitSingleStaticImportDeclaration(SingleStaticImportDeclarationContext ctx) {}
+  void exitSingleStaticImportDeclaration(
+      SingleStaticImportDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterStaticImportOnDemandDeclaration(StaticImportOnDemandDeclarationContext ctx) {}
+  void enterStaticImportOnDemandDeclaration(
+      StaticImportOnDemandDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitStaticImportOnDemandDeclaration(StaticImportOnDemandDeclarationContext ctx) {}
+  void exitStaticImportOnDemandDeclaration(
+      StaticImportOnDemandDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -556,19 +571,23 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterUnannClassType_lf_unannClassOrInterfaceType(UnannClassType_lf_unannClassOrInterfaceTypeContext ctx) {}
+  void enterUnannClassType_lf_unannClassOrInterfaceType(
+      UnannClassType_lf_unannClassOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitUnannClassType_lf_unannClassOrInterfaceType(UnannClassType_lf_unannClassOrInterfaceTypeContext ctx) {}
+  void exitUnannClassType_lf_unannClassOrInterfaceType(
+      UnannClassType_lf_unannClassOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterUnannClassType_lfno_unannClassOrInterfaceType(UnannClassType_lfno_unannClassOrInterfaceTypeContext ctx) {}
+  void enterUnannClassType_lfno_unannClassOrInterfaceType(
+      UnannClassType_lfno_unannClassOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitUnannClassType_lfno_unannClassOrInterfaceType(UnannClassType_lfno_unannClassOrInterfaceTypeContext ctx) {}
+  void exitUnannClassType_lfno_unannClassOrInterfaceType(
+      UnannClassType_lfno_unannClassOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -580,19 +599,23 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterUnannInterfaceType_lf_unannClassOrInterfaceType(UnannInterfaceType_lf_unannClassOrInterfaceTypeContext ctx) {}
+  void enterUnannInterfaceType_lf_unannClassOrInterfaceType(
+      UnannInterfaceType_lf_unannClassOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitUnannInterfaceType_lf_unannClassOrInterfaceType(UnannInterfaceType_lf_unannClassOrInterfaceTypeContext ctx) {}
+  void exitUnannInterfaceType_lf_unannClassOrInterfaceType(
+      UnannInterfaceType_lf_unannClassOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterUnannInterfaceType_lfno_unannClassOrInterfaceType(UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext ctx) {}
+  void enterUnannInterfaceType_lfno_unannClassOrInterfaceType(
+      UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitUnannInterfaceType_lfno_unannClassOrInterfaceType(UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext ctx) {}
+  void exitUnannInterfaceType_lfno_unannClassOrInterfaceType(
+      UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -788,11 +811,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterExplicitConstructorInvocation(ExplicitConstructorInvocationContext ctx) {}
+  void enterExplicitConstructorInvocation(
+      ExplicitConstructorInvocationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitExplicitConstructorInvocation(ExplicitConstructorInvocationContext ctx) {}
+  void exitExplicitConstructorInvocation(
+      ExplicitConstructorInvocationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -940,27 +965,33 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterAnnotationTypeMemberDeclaration(AnnotationTypeMemberDeclarationContext ctx) {}
+  void enterAnnotationTypeMemberDeclaration(
+      AnnotationTypeMemberDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitAnnotationTypeMemberDeclaration(AnnotationTypeMemberDeclarationContext ctx) {}
+  void exitAnnotationTypeMemberDeclaration(
+      AnnotationTypeMemberDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterAnnotationTypeElementDeclaration(AnnotationTypeElementDeclarationContext ctx) {}
+  void enterAnnotationTypeElementDeclaration(
+      AnnotationTypeElementDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitAnnotationTypeElementDeclaration(AnnotationTypeElementDeclarationContext ctx) {}
+  void exitAnnotationTypeElementDeclaration(
+      AnnotationTypeElementDeclarationContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterAnnotationTypeElementModifier(AnnotationTypeElementModifierContext ctx) {}
+  void enterAnnotationTypeElementModifier(
+      AnnotationTypeElementModifierContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitAnnotationTypeElementModifier(AnnotationTypeElementModifierContext ctx) {}
+  void exitAnnotationTypeElementModifier(
+      AnnotationTypeElementModifierContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1012,11 +1043,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterElementValueArrayInitializer(ElementValueArrayInitializerContext ctx) {}
+  void enterElementValueArrayInitializer(
+      ElementValueArrayInitializerContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitElementValueArrayInitializer(ElementValueArrayInitializerContext ctx) {}
+  void exitElementValueArrayInitializer(
+      ElementValueArrayInitializerContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1084,11 +1117,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterLocalVariableDeclarationStatement(LocalVariableDeclarationStatementContext ctx) {}
+  void enterLocalVariableDeclarationStatement(
+      LocalVariableDeclarationStatementContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitLocalVariableDeclarationStatement(LocalVariableDeclarationStatementContext ctx) {}
+  void exitLocalVariableDeclarationStatement(
+      LocalVariableDeclarationStatementContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1116,11 +1151,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterStatementWithoutTrailingSubstatement(StatementWithoutTrailingSubstatementContext ctx) {}
+  void enterStatementWithoutTrailingSubstatement(
+      StatementWithoutTrailingSubstatementContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitStatementWithoutTrailingSubstatement(StatementWithoutTrailingSubstatementContext ctx) {}
+  void exitStatementWithoutTrailingSubstatement(
+      StatementWithoutTrailingSubstatementContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1180,11 +1217,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterIfThenElseStatementNoShortIf(IfThenElseStatementNoShortIfContext ctx) {}
+  void enterIfThenElseStatementNoShortIf(
+      IfThenElseStatementNoShortIfContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitIfThenElseStatementNoShortIf(IfThenElseStatementNoShortIfContext ctx) {}
+  void exitIfThenElseStatementNoShortIf(
+      IfThenElseStatementNoShortIfContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1332,11 +1371,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterEnhancedForStatementNoShortIf(EnhancedForStatementNoShortIfContext ctx) {}
+  void enterEnhancedForStatementNoShortIf(
+      EnhancedForStatementNoShortIfContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitEnhancedForStatementNoShortIf(EnhancedForStatementNoShortIfContext ctx) {}
+  void exitEnhancedForStatementNoShortIf(
+      EnhancedForStatementNoShortIfContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1484,67 +1525,85 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterPrimaryNoNewArray_lf_arrayAccess(PrimaryNoNewArray_lf_arrayAccessContext ctx) {}
+  void enterPrimaryNoNewArray_lf_arrayAccess(
+      PrimaryNoNewArray_lf_arrayAccessContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPrimaryNoNewArray_lf_arrayAccess(PrimaryNoNewArray_lf_arrayAccessContext ctx) {}
+  void exitPrimaryNoNewArray_lf_arrayAccess(
+      PrimaryNoNewArray_lf_arrayAccessContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterPrimaryNoNewArray_lfno_arrayAccess(PrimaryNoNewArray_lfno_arrayAccessContext ctx) {}
+  void enterPrimaryNoNewArray_lfno_arrayAccess(
+      PrimaryNoNewArray_lfno_arrayAccessContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPrimaryNoNewArray_lfno_arrayAccess(PrimaryNoNewArray_lfno_arrayAccessContext ctx) {}
+  void exitPrimaryNoNewArray_lfno_arrayAccess(
+      PrimaryNoNewArray_lfno_arrayAccessContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterPrimaryNoNewArray_lf_primary(PrimaryNoNewArray_lf_primaryContext ctx) {}
+  void enterPrimaryNoNewArray_lf_primary(
+      PrimaryNoNewArray_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPrimaryNoNewArray_lf_primary(PrimaryNoNewArray_lf_primaryContext ctx) {}
+  void exitPrimaryNoNewArray_lf_primary(
+      PrimaryNoNewArray_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext ctx) {}
+  void enterPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(
+      PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext ctx) {}
+  void exitPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(
+      PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext ctx) {}
+  void enterPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(
+      PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext ctx) {}
+  void exitPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(
+      PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterPrimaryNoNewArray_lfno_primary(PrimaryNoNewArray_lfno_primaryContext ctx) {}
+  void enterPrimaryNoNewArray_lfno_primary(
+      PrimaryNoNewArray_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPrimaryNoNewArray_lfno_primary(PrimaryNoNewArray_lfno_primaryContext ctx) {}
+  void exitPrimaryNoNewArray_lfno_primary(
+      PrimaryNoNewArray_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext ctx) {}
+  void enterPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(
+      PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext ctx) {}
+  void exitPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(
+      PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext ctx) {}
+  void enterPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(
+      PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext
+          ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext ctx) {}
+  void exitPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(
+      PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext
+          ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1556,27 +1615,33 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterClassInstanceCreationExpression(ClassInstanceCreationExpressionContext ctx) {}
+  void enterClassInstanceCreationExpression(
+      ClassInstanceCreationExpressionContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitClassInstanceCreationExpression(ClassInstanceCreationExpressionContext ctx) {}
+  void exitClassInstanceCreationExpression(
+      ClassInstanceCreationExpressionContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterClassInstanceCreationExpression_lf_primary(ClassInstanceCreationExpression_lf_primaryContext ctx) {}
+  void enterClassInstanceCreationExpression_lf_primary(
+      ClassInstanceCreationExpression_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitClassInstanceCreationExpression_lf_primary(ClassInstanceCreationExpression_lf_primaryContext ctx) {}
+  void exitClassInstanceCreationExpression_lf_primary(
+      ClassInstanceCreationExpression_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterClassInstanceCreationExpression_lfno_primary(ClassInstanceCreationExpression_lfno_primaryContext ctx) {}
+  void enterClassInstanceCreationExpression_lfno_primary(
+      ClassInstanceCreationExpression_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitClassInstanceCreationExpression_lfno_primary(ClassInstanceCreationExpression_lfno_primaryContext ctx) {}
+  void exitClassInstanceCreationExpression_lfno_primary(
+      ClassInstanceCreationExpression_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1644,19 +1709,23 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterMethodInvocation_lf_primary(MethodInvocation_lf_primaryContext ctx) {}
+  void enterMethodInvocation_lf_primary(
+      MethodInvocation_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitMethodInvocation_lf_primary(MethodInvocation_lf_primaryContext ctx) {}
+  void exitMethodInvocation_lf_primary(
+      MethodInvocation_lf_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void enterMethodInvocation_lfno_primary(MethodInvocation_lfno_primaryContext ctx) {}
+  void enterMethodInvocation_lfno_primary(
+      MethodInvocation_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitMethodInvocation_lfno_primary(MethodInvocation_lfno_primaryContext ctx) {}
+  void exitMethodInvocation_lfno_primary(
+      MethodInvocation_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1684,11 +1753,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterMethodReference_lfno_primary(MethodReference_lfno_primaryContext ctx) {}
+  void enterMethodReference_lfno_primary(
+      MethodReference_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitMethodReference_lfno_primary(MethodReference_lfno_primaryContext ctx) {}
+  void exitMethodReference_lfno_primary(
+      MethodReference_lfno_primaryContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1748,11 +1819,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterInferredFormalParameterList(InferredFormalParameterListContext ctx) {}
+  void enterInferredFormalParameterList(
+      InferredFormalParameterListContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitInferredFormalParameterList(InferredFormalParameterListContext ctx) {}
+  void exitInferredFormalParameterList(
+      InferredFormalParameterListContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1908,11 +1981,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterUnaryExpressionNotPlusMinus(UnaryExpressionNotPlusMinusContext ctx) {}
+  void enterUnaryExpressionNotPlusMinus(
+      UnaryExpressionNotPlusMinusContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitUnaryExpressionNotPlusMinus(UnaryExpressionNotPlusMinusContext ctx) {}
+  void exitUnaryExpressionNotPlusMinus(
+      UnaryExpressionNotPlusMinusContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1932,11 +2007,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterPostIncrementExpression_lf_postfixExpression(PostIncrementExpression_lf_postfixExpressionContext ctx) {}
+  void enterPostIncrementExpression_lf_postfixExpression(
+      PostIncrementExpression_lf_postfixExpressionContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPostIncrementExpression_lf_postfixExpression(PostIncrementExpression_lf_postfixExpressionContext ctx) {}
+  void exitPostIncrementExpression_lf_postfixExpression(
+      PostIncrementExpression_lf_postfixExpressionContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -1948,11 +2025,13 @@ class Java9BaseListener implements Java9Listener {
 
   /// The default implementation does nothing.
   @override
-  void enterPostDecrementExpression_lf_postfixExpression(PostDecrementExpression_lf_postfixExpressionContext ctx) {}
+  void enterPostDecrementExpression_lf_postfixExpression(
+      PostDecrementExpression_lf_postfixExpressionContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitPostDecrementExpression_lf_postfixExpression(PostDecrementExpression_lf_postfixExpressionContext ctx) {}
+  void exitPostDecrementExpression_lf_postfixExpression(
+      PostDecrementExpression_lf_postfixExpressionContext ctx) {}
 
   /// The default implementation does nothing.
   @override

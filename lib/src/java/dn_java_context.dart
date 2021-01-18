@@ -1,5 +1,11 @@
+import 'dart:io';
+
 import 'package:antlr4/antlr4.dart';
-import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
+import 'package:path/path.dart';
+
+import '../common.dart';
+import '../../parser/java/Java9Parser.dart';
+import 'dn_java_generater.dart';
 
 class ListOpNode {
   ListOpNode pre;
@@ -19,13 +25,10 @@ class DNContext extends ListOpNode {
   DNContext parent;
   List<DNContext> children;
 
-  List<String> unResolvedTypeList;
-
   DNContext(internal) {
     this.internal = internal;
     this.parent = null;
     this.children = [];
-    this.unResolvedTypeList = [];
   }
 
   String parse() {
@@ -46,31 +49,25 @@ class DNContext extends ListOpNode {
   ListOpNode exit() {
     return super.exit();
   }
-
-  bool hasIndentation() {
-    return false;
-  }
-
-  String calculateIndentation() {
-    DNContext node = this;
-    String indentation = '';
-    while (node != null) {
-      if (node.hasIndentation()) {
-        indentation += '  ';
-      }
-      node = node.parent;
-    }
-    return indentation;
-  }
 }
 
 class DNRootContext extends DNContext {
-  var needExport;
   String packageName;
-  List<ImportDeclarationContext> importDeclarationContextList = [];
+  JavaFile javaFile;
 
-  DNRootContext(internal, needExport) : super(internal) {
-    this.needExport = needExport;
+  // 只有接口/属性里面import的class才会被生成代码
+  List<ImportDeclarationContext> _rawImportList = [];
+  List<String> _realImportStatement = [];
+
+  // data from imports, record class name and javafile
+  Map<String, JavaFile> _importFileMapWithName = {};
+  bool _isInitImports = false;
+
+  DNRootContext(internal, JavaFile javaFile) : super(internal) {
+    this.javaFile = javaFile;
+    this.javaFile.resolve = true;
+    CompileContext.getContext().pushFile(this.javaFile);
+    CompileContext.getContext().setCurrentCompileRootContext(this);
   }
 
   void setPackageName(String packageName) {
@@ -78,26 +75,122 @@ class DNRootContext extends DNContext {
   }
 
   void addImport(ImportDeclarationContext import) {
-    importDeclarationContextList.add(import);
+    _rawImportList.add(import);
+  }
+
+  String convertType2Dart(String javaType) {
+    if (!_isInitImports) {
+      _initImports();
+    }
+    if (_importFileMapWithName.containsKey(javaType)) {
+      JavaFile importJavaFile = _importFileMapWithName[javaType];
+      // mark 不加dirname会以具体的file做单位，比如 (/A/A.java, /B/B.java) 会生成 ../../B/B.java，实际上应该 ../B/B.java
+      String relativePath =
+          relative(importJavaFile.path, from: dirname(this.javaFile.path));
+      relativePath = relativePath.replaceAll(".java", ".dart");
+      String statement = "import '${normalize(relativePath)}';";
+      if (!_realImportStatement.contains(statement)) {
+        _realImportStatement.add(statement);
+      }
+      CompileContext.getContext().pushFile(importJavaFile);
+      return javaType;
+    }
+    return javaType;
+  }
+
+  void _initImportWithOneFile(File file) {
+    String javaFileNameNoExt = basenameWithoutExtension(file.path);
+    if (javaFileNameNoExt == null) {
+      return;
+    }
+    JavaFile javaFile = new JavaFile();
+    javaFile.path = file.path;
+    if (!file.existsSync()) {
+      javaFile.fileType = FILE_TYPE.aar;
+      javaFile.resolve = true;
+    } else {
+      javaFile.fileType = FILE_TYPE.source_file;
+    }
+    _importFileMapWithName[javaFileNameNoExt] = javaFile;
+  }
+
+  void _initImports() {
+    _rawImportList.forEach((import) {
+      String importStatement =
+          import.singleTypeImportDeclaration()?.typeName()?.text;
+      String myJavaFilePath = javaFile.path;
+      // win ?
+      String fileSep = "/";
+
+      String myPackagePath = packageName.replaceAll(".", fileSep);
+      int myPackagePathIndex = myJavaFilePath.indexOf(myPackagePath);
+      if (myPackagePathIndex < 0) {
+        logger.severe("cannot find package path: ${packageName}");
+        return;
+      }
+
+      String rootFilePath = myJavaFilePath.substring(0, myPackagePathIndex);
+      String destFilePath =
+          rootFilePath + importStatement.replaceAll(".", fileSep);
+      if (destFilePath.endsWith(";")) {
+        destFilePath = destFilePath.substring(0, destFilePath.length - 1);
+      }
+
+      bool isDir = destFilePath.endsWith("*");
+      if (isDir) {
+        destFilePath = destFilePath.replaceAll('${fileSep}*', fileSep);
+      } else {
+        destFilePath = destFilePath + ".java";
+      }
+
+      // new java file
+      if (isDir) {
+        Directory dir = new Directory(destFilePath);
+        if (!dir.existsSync()) {
+          return;
+        }
+        List<FileSystemEntity> dirSubFiles = dir.listSync();
+        dirSubFiles.forEach((file) {
+          if (file is File) {
+            _initImportWithOneFile(file);
+          }
+        });
+      }
+
+      File destFile = new File(destFilePath);
+      _initImportWithOneFile(destFile);
+    });
+    _isInitImports = true;
   }
 
   parse() {
+    String header = _parseHeader();
+    String body = _parseBody();
+    // import 要在body后，因为parseBody内会触发对import的计算
+    String import = _parseImport();
+    return ('${header}\n${import}\n${body}');
+  }
+
+  String _parseHeader() {
     var result = '';
     result +=
-        '// Generated by @dartnative/codegen:\n// https://www.npmjs.com/package/@dartnative/codegen\n\n';
-    var packageSet = new Set();
-    if (!this.needExport) {
-      result += "import 'dart:ffi';\n\n";
-      result += "import 'package:dart_native/dart_native.dart';\n";
-      result += "import 'package:dart_native_gen/dart_native_gen.dart';\n";
-      packageSet.add('dart_native');
-      packageSet.add('dart_native_gen');
-    }
-    result += '\n';
-    result += 'packageName: ${packageName}\n';
-    result += 'import: ${importDeclarationContextList}\n';
-    result += this.children.map((ctx) => ctx.parse()).join('\n');
-    return (result);
+        '// Generated by dart_native_codegen.\n// https://pub.dev/packages/dart_native_codegen\n\n';
+    result += "import 'dart:ffi';\n\n";
+    result += "import 'package:dart_native/dart_native.dart';\n";
+    result += "import 'package:dart_native_gen/dart_native_gen.dart';";
+    return result;
+  }
+
+  String _parseImport() {
+    String importStatement = '';
+    _realImportStatement.forEach((s) {
+      importStatement += '${s}\n';
+    });
+    return importStatement;
+  }
+
+  String _parseBody() {
+    return this.children.map((ctx) => ctx.parse()).join('\n');
   }
 }
 
@@ -124,54 +217,95 @@ class DNClassContext extends DNContext {
   }
 }
 
-class DNMethodContext extends DNContext {
-  DNMethodContext(internal) : super(internal);
+class DNInterfaceContext extends DNContext {
+  DNInterfaceContext(internal) : super(internal);
 
   @override
   String parse() {
-    if (internal is MethodDeclarationContext) {
-      MethodDeclarationContext aMethodNode = internal;
-      if (!checkAssessable(aMethodNode)) {
-        return "";
-      }
-      String blank = calculateIndentation();
-      String methodStatement = blank;
-      ResultContext aResultNode = aMethodNode.methodHeader()?.result();
-      if (aResultNode != null) {
-        methodStatement += (aResultNode.text + " ");
-      }
+    var result = '';
 
-      MethodDeclaratorContext aDeclaratorNode =
-          aMethodNode?.methodHeader()?.methodDeclarator();
-      if (aDeclaratorNode != null) {
-        methodStatement += aDeclaratorNode.identifier().text + "(";
-        FormalParameterListContext paramsList =
-            aDeclaratorNode.formalParameterList();
-        if (paramsList != null) {
-          FormalParametersContext frontParams = paramsList?.formalParameters();
-          if (frontParams != null) {
-            frontParams.formalParameters()?.forEach((param) {
-              methodStatement += param.unannType().text;
-              methodStatement += " ";
-              methodStatement += param.variableDeclaratorId().text;
-              methodStatement += ", ";
-            });
-          }
-
-          FormalParameterContext lastParam =
-              paramsList?.lastFormalParameter()?.formalParameter();
-          if (lastParam != null) {
-            methodStatement += lastParam.unannType().text;
-            methodStatement += " ";
-            methodStatement += lastParam.variableDeclaratorId().text;
-          }
-        }
-        methodStatement += ")";
+    if (internal is InterfaceDeclarationContext) {
+      InterfaceDeclarationContext aInterfaceDeclarationContext = internal;
+      String className = aInterfaceDeclarationContext
+          ?.normalInterfaceDeclaration()
+          ?.identifier()
+          ?.text;
+      if (className != null) {
+        result += ("abstract class " + className + " {\n");
+        result += this.children.map((ctx) => ctx.parse()).join('\n');
+        result += ("}\n");
       }
-      methodStatement += " {\n" + blank + "}";
+    }
+    return result;
+  }
+}
+
+class DNInterfaceMethodDeclaration extends DNMethodContext {
+  DNInterfaceMethodDeclaration(internal) : super(internal);
+
+  @override
+  String parse() {
+    print("mmmmmmmmmmmmmmmmmm3");
+    if (internal is InterfaceMethodDeclarationContext) {
+      InterfaceMethodDeclarationContext aMethodNode = internal;
+      String methodStatement = '';
+      MethodHeaderContext headerContext = aMethodNode.methodHeader();
+      methodStatement += getHeader(headerContext);
+      methodStatement += getBody();
+      print("mmmmmmmmmmmmmmmmmm2 ${methodStatement}");
       return methodStatement;
     }
     return "";
+  }
+
+  @override
+  String getBody() {
+    return ";";
+  }
+}
+
+class DNMethodContext extends DNContext {
+  DNMethodContext(internal) : super(internal);
+
+  String getHeader(MethodHeaderContext aHeaderContext) {
+    String statement = '';
+    MethodDeclaratorContext aDeclaratorNode = aHeaderContext.methodDeclarator();
+    ResultContext aResultNode = aHeaderContext?.result();
+    if (aResultNode != null) {
+      statement += (aResultNode.text + " ");
+    }
+    if (aDeclaratorNode != null) {
+      statement += aDeclaratorNode.identifier().text + "(";
+      FormalParameterListContext paramsList =
+          aDeclaratorNode.formalParameterList();
+      if (paramsList != null) {
+        FormalParametersContext frontParams = paramsList?.formalParameters();
+        if (frontParams != null) {
+          frontParams.formalParameters()?.forEach((param) {
+            statement += CompileContext.getContext()
+                .convertType2Dart(param.unannType().text);
+            statement += " ";
+            statement += param.variableDeclaratorId().text;
+            statement += ", ";
+          });
+        }
+
+        FormalParameterContext lastParam =
+            paramsList?.lastFormalParameter()?.formalParameter();
+        if (lastParam != null) {
+          statement += CompileContext.getContext()
+              .convertType2Dart(lastParam.unannType().text);
+          statement += " ";
+          statement += lastParam.variableDeclaratorId().text;
+        }
+      }
+      statement += ')';
+    }
+    return statement;
+  }
+
+  String getBody() {
+    return "{}";
   }
 
   bool checkAssessable(MethodDeclarationContext aMethodNode) {
@@ -184,8 +318,21 @@ class DNMethodContext extends DNContext {
     return isPublic;
   }
 
-  bool hasIndentation() {
-    return true;
+  @override
+  String parse() {
+    if (internal is MethodDeclarationContext) {
+      MethodDeclarationContext aMethodNode = internal;
+      if (!checkAssessable(aMethodNode)) {
+        return "";
+      }
+      String methodStatement = '';
+      MethodHeaderContext headerContext = aMethodNode.methodHeader();
+      methodStatement += getHeader(headerContext);
+      methodStatement += getBody();
+
+      return methodStatement;
+    }
+    return "";
   }
 }
 
@@ -205,11 +352,11 @@ class DNFieldContext extends DNContext {
       if (!isPublic) {
         return "";
       }
-      String type = aFieldContext.unannType().text;
+      String type = CompileContext.getContext()
+          .convertType2Dart(aFieldContext.unannType().text);
       VariableDeclaratorListContext aDeclaratorListContext =
           aFieldContext.variableDeclaratorList();
       if (aDeclaratorListContext != null) {
-        String blank = calculateIndentation();
         String statement = '';
         aDeclaratorListContext
             ?.variableDeclarators()
@@ -217,21 +364,15 @@ class DNFieldContext extends DNContext {
           String value =
               aDeclaratorContext.variableDeclaratorId()?.identifier()?.text;
           if (type != null && value != null) {
+            statement += '${type} get${toUpperCaseFirstV(value)}(){}';
             statement +=
-                '${blank}${type} get${toUpperCaseFirstV(value)}(){\n${blank}}\n';
-            statement +=
-                '${blank}void set${toUpperCaseFirstV(value)}(${type} ${value}){\n${blank}}\n';
+                'void set${toUpperCaseFirstV(value)}(${type} ${value}){}';
           }
         });
         return statement;
       }
     }
     return "";
-  }
-
-  @override
-  bool hasIndentation() {
-    return true;
   }
 }
 

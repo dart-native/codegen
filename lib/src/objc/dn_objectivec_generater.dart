@@ -6,12 +6,12 @@ import 'package:dart_native_codegen/src/objc/dn_objectivec_parser_listener.dart'
 import 'package:dart_native_codegen/parser/objc/ObjectiveCLexer.dart';
 import 'package:dart_native_codegen/parser/objc/ObjectiveCParser.dart';
 
-class DNObjectiveCConverter {
-  //convert
-  static Future<String> convert(String content) async {
-    Completer<String> completer = Completer();
+class DNObjectiveCGenerater {
+  /// generate dart code from objective-c code.
+  static Future<GenerateResult> generate(GenerateRequest request) async {
+    Completer<GenerateResult> completer = Completer();
     try {
-      final chars = InputStream.fromString(content);
+      final chars = InputStream.fromString(request.fileContent);
       final lexer = ObjectiveCLexer(chars);
       final tokens = CommonTokenStream(lexer);
       final parser = ObjectiveCParser(tokens);
@@ -20,7 +20,8 @@ class DNObjectiveCConverter {
       final tree = parser.translationUnit();
       Callback cb = (String content, {String error}) {
         if (content != null) {
-          completer.complete(content);
+          final result = GenerateResult(content);
+          completer.complete(result);
         } else {
           completer.completeError(error, StackTrace.current);
         }

@@ -1,28 +1,29 @@
 import 'dart:core';
 
 class DNObjectiveCTypeConverter {
-  static final DNObjectiveCTypeConverter _instance = DNObjectiveCTypeConverter._internal();
+  static final DNObjectiveCTypeConverter _instance =
+      DNObjectiveCTypeConverter._internal();
   DNObjectiveCTypeConverter._internal();
   factory DNObjectiveCTypeConverter() => _instance;
   static DNObjectiveCTypeConverter get shared => _instance;
 
   convert(String objcType, [bool isTypeInBlock = false]) {
-        String result = objcType;
-        //basic type not need to remove * symbol
-        if (!basicType.contains(result)) {
-            result.replaceAll(RegExp(r"/\s+\*+/g"), '');
-        }
-        var convertRet;
-        if (isTypeInBlock) {
-            convertRet = blockTypeToDartMap[result];
-        } else {
-            convertRet = builtinTypeToDartMap[result];
-        }        
-        return convertRet ? convertRet : result;
+    String result = objcType;
+    //basic type not need to remove * symbol
+    if (!basicType.contains(result)) {
+      result.replaceAll(RegExp(r"/\s+\*+/g"), '');
+    }
+    var convertRet;
+    if (isTypeInBlock) {
+      convertRet = blockTypeToDartMap[result];
+    } else {
+      convertRet = builtinTypeToDartMap[result];
+    }
+    return convertRet ? convertRet : result;
   }
 
   //Not yet confirmed what type need to convert
-  static final Map<String,String> builtinTypeToDartMap = {
+  static final Map<String, String> builtinTypeToDartMap = {
     //   objc type            ||        dart type
     'int8_t': 'int',
     'int16_t': 'int',
@@ -47,7 +48,7 @@ class DNObjectiveCTypeConverter {
     'NSSet': 'Set',
   };
 
-  static final Map<String,String> blockTypeToDartMap = {
+  static final Map<String, String> blockTypeToDartMap = {
     //   objc type            ||        dart type
     '_Bool': 'BOOL',
     'void *': 'Pointer<Void>',
@@ -83,7 +84,7 @@ class DNObjectiveCTypeConverter {
     'long',
     'unsigned long',
     'long long',
-    'unsigned long long',   
+    'unsigned long long',
     'NSInteger',
     'NSUInteger',
     'size_t',
@@ -96,31 +97,26 @@ class DNObjectiveCTypeConverter {
   ];
 
   //ignore mutable type
-  static final Map<String,String> dartToOCMap = {
-      //  dart type            ||        objc type
-      'String': 'NSString',
-      'List': 'NSArray',
-      'Map': 'NSDictionary',
-      'Set': 'NSSet',
+  static final Map<String, String> dartToOCMap = {
+    //  dart type            ||        objc type
+    'String': 'NSString',
+    'List': 'NSArray',
+    'Map': 'NSDictionary',
+    'Set': 'NSSet',
   };
 
   // dart-native support mutable types
   static final List<String> supportMutableTypes = [
-      'NSMutableString',
-      'NSMutableArray',
-      'NSMutableSet',
-      'NSMutableDictionary'
+    'NSMutableString',
+    'NSMutableArray',
+    'NSMutableSet',
+    'NSMutableDictionary'
   ];
 
-  static final Map<String,String> supportMutableTypesMap = {
-      'NSMutableString': 'String',
-      'NSMutableArray': 'List',
-      'NSMutableSet': 'Set',
-      'NSMutableDictionary': 'Map'
+  static final Map<String, String> supportMutableTypesMap = {
+    'NSMutableString': 'String',
+    'NSMutableArray': 'List',
+    'NSMutableSet': 'Set',
+    'NSMutableDictionary': 'Map'
   };
-
-
 }
-
-
-

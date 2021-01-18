@@ -1,35 +1,42 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:dart_native_codegen/src/java/dn_java_converter.dart';
-import 'package:dart_native_codegen/src/objc/dn_objectivec_converter.dart';
+import 'package:dart_native_codegen/src/common.dart';
+import 'package:dart_native_codegen/src/java/dn_java_generater.dart';
+import 'package:dart_native_codegen/src/objc/dn_objectivec_generater.dart';
 import 'package:glob/glob.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
+import 'package:pubspec/pubspec.dart';
 
 class OptionNames {
-  static const String version = 'version';
-  static const String help = 'help';
-  static const String input = 'input';
-  static const String output = 'output';
-  static const String language = 'language';
-  static const String template = 'template';
-  static const String projectName = 'project-name';
+  static const version = 'version';
+  static const help = 'help';
+  static const input = 'input';
+  static const output = 'output';
+  static const language = 'language';
+  static const template = 'template';
+  static const projectName = 'project-name';
 }
 
 class FlutterTemplates {
-  static const String package = 'package';
-  static const String plugin = 'plugin';
+  static const package = 'package';
+  static const plugin = 'plugin';
 }
 
 class Languages {
-  static const String java = 'java';
-  static const String objc = 'objc';
+  static const java = 'java';
+  static const objc = 'objc';
+}
+
+class Platforms {
+  static const ios = 'ios';
+  static const android = 'android';
 }
 
 class FileExtensions {
-  static const String java = 'java';
-  static const String header = 'h';
+  static const java = 'java';
+  static const header = 'h';
 }
 
 const Map<String, String> _extensionForLanguage = {
@@ -37,11 +44,16 @@ const Map<String, String> _extensionForLanguage = {
   Languages.objc: FileExtensions.header
 };
 
-typedef Convert = Future<String> Function(String content);
+const Map<String, String> _platformForLanguage = {
+  Languages.java: Platforms.android,
+  Languages.objc: Platforms.ios
+};
 
-const Map<String, Convert> _convertForLanguage = {
-  Languages.java: DNJavaConverter.convert,
-  Languages.objc: DNObjectiveCConverter.convert,
+typedef Generate = Future<GenerateResult> Function(GenerateRequest content);
+
+const Map<String, Generate> _convertForLanguage = {
+  Languages.java: DNJavaGenerater.generate,
+  Languages.objc: DNObjectiveCGenerater.generate,
 };
 
 var parser = ArgParser()
@@ -52,7 +64,7 @@ var parser = ArgParser()
     help: 'verion.',
     callback: (version) {
       if (version) {
-        print('0.0.1');
+        logger.info('0.0.1');
       }
     },
   )
@@ -63,7 +75,7 @@ var parser = ArgParser()
     help: 'help.',
     callback: (help) {
       if (help) {
-        print(parser.usage);
+        logger.info(parser.usage);
       }
     },
   )
@@ -106,8 +118,6 @@ var parser = ArgParser()
         'The project name for this new Flutter project. This must be a valid dart package name.',
   );
 
-final logger = Logger('Codegen');
-
 Future<void> run(List<String> args) async {
   ArgResults results = parser.parse(args);
 
@@ -131,55 +141,99 @@ Future<void> run(List<String> args) async {
   // create directory for output path.
   Directory(output).createSync(recursive: true);
   String workspace = p.join(p.current, output);
-  if (template != null && projectName != null) {
+  bool generatePackage = template != null && projectName != null;
+  if (generatePackage) {
     workspace = p.join(workspace, projectName);
     createFlutter(template, projectName, workspace);
     workspace = p.join(workspace, 'lib');
   }
 
-  var futures = <Future<void>>[];
-  for (var l in language) {
-    String ext = _extensionForLanguage[l];
-    for (FileSystemEntity file in Glob('**.$ext').listSync(root: input)) {
-      Convert convert = _convertForLanguage[l];
-      if (convert != null) {
-        String content = File(file.path).readAsStringSync();
-        Future<void> future = convert(content).then((dartCode) {
-          saveDartCode(dartCode, file.path, p.join(workspace, l));
-        }, onError: (error) {
-          logger.severe('filePath: ${file.path}\nerror: $error');
-        });
-        futures.add(future);
-      }
-    }
-  }
-
-  await Future.wait(futures);
+  // process native files and return packages depended.
+  var packageDependencies = await processInput(input, workspace, language);
 
   // format generated dart files.
   formatDart(workspace);
 
-  // add dependency
-  if (projectName != null) {
-    String pubspecPath = '$workspace/pubspec.yaml';
-    updatePubspec(pubspecPath);
+  // add packages dependency
+  if (generatePackage) {
+    // back to parent.
+    workspace = p.dirname(workspace);
+    await updatePackageDependencies(packageDependencies, Directory(workspace));
   }
 }
 
-void saveDartCode(String dartCode, String sourcePath, String workspace) {
-  Directory(workspace).createSync();
+/// Generate dart code from [input] file/directory.
+///
+/// Input code may depend on other files. This function would process files in
+/// relative path recursively. Packages depended by input code will be returned.
+Future<Set<String>> processInput(
+    String input, String savePath, List<String> languages,
+    {String inputRoot}) async {
+  Set<String> packageDependencies = Set();
+  for (var l in languages) {
+    String ext = _extensionForLanguage[l];
+    List<String> files = [];
+    if (File(input).existsSync()) {
+      if (inputRoot == null) {
+        inputRoot = p.dirname(input);
+      }
+      files = [input];
+    } else if (Directory(input).existsSync()) {
+      if (inputRoot == null) {
+        inputRoot = input;
+      }
+      files = Glob('**.$ext').listSync(root: input).map((e) => e.path).toList();
+    }
+    for (String file in files) {
+      Generate generate = _convertForLanguage[l];
+      if (generate != null) {
+        String content = File(file).readAsStringSync();
+        try {
+          var request = GenerateRequest(inputRoot, file, content);
+          var result = await generate(request);
+          packageDependencies.addAll(result.packageDependencies ?? []);
+          var platform = _platformForLanguage[l];
+          saveDartCode(
+              result.dartCode, inputRoot, file, p.join(savePath, platform));
+          for (var f in result.fileDependencies) {
+            if (p.isRelative(f)) {
+              f = p.normalize(p.join(p.dirname(file), f));
+            }
+            var packages = await processInput(f, savePath, languages,
+                inputRoot: inputRoot);
+            packageDependencies.addAll(packages ?? []);
+          }
+        } catch (e) {
+          logger.severe('filePath: ${file}\nerror: $e');
+        }
+      }
+    }
+  }
+  return packageDependencies;
+}
+
+void saveDartCode(String dartCode, String sourceRootPath, String sourcePath,
+    String workspace) {
   String fileName =
       p.setExtension(p.basenameWithoutExtension(sourcePath), '.dart');
-  String dartPath = p.join(workspace, fileName);
+  String dirPath = p.join(
+      workspace, p.dirname(p.relative(sourcePath, from: sourceRootPath)));
+  Directory(dirPath).createSync(recursive: true);
+  String dartPath = p.join(dirPath, fileName);
   File(dartPath).writeAsStringSync(dartCode);
 }
 
-void updatePubspec(String path) {
-  // TODO: update pubspec
+Future<void> updatePackageDependencies(
+    Set<String> packages, Directory workspace) async {
+  var pubspec = await PubSpec.load(workspace);
+  var dependencies = pubspec.dependencies;
+  for (var p in packages) {
+    dependencies[p] = DependencyReference.fromJson('any');
+  }
+  await pubspec.copy(dependencies: dependencies).save(workspace);
 }
 
 void createFlutter(String template, String projectName, String output) {
-  // TODO: test output path
   Directory(output).createSync(recursive: true);
   String command = 'create --template=$template --project-name=$projectName';
   if (template == FlutterTemplates.plugin) {
@@ -190,7 +244,7 @@ void createFlutter(String template, String projectName, String output) {
 }
 
 void formatDart(String path) {
-  Process.runSync('flutter format', [path]).log();
+  Process.runSync('flutter', ['format', path]).log();
 }
 
 extension LogProcessResult on ProcessResult {

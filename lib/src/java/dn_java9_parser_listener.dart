@@ -5,13 +5,16 @@ import 'package:dart_native_codegen/parser/java/Java9Parser.dart';
 
 import '../common.dart';
 import 'dn_java_context.dart';
+import 'dn_java_generater.dart';
 
 class DNJavaParserListener extends Java9Listener {
+  JavaFile javaFile;
   Callback callback;
   DNRootContext rootContext;
   DNContext currentContext;
 
-  DNJavaParserListener(Callback callback) {
+  DNJavaParserListener(JavaFile javaFile, Callback callback) {
+    this.javaFile = javaFile;
     this.callback = callback;
   }
 
@@ -254,7 +257,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterCompilationUnit(CompilationUnitContext ctx) {
-    this.rootContext = DNRootContext(ctx, false);
+    this.rootContext = DNRootContext(ctx, javaFile);
     this.currentContext = rootContext.enter(currentContext);
   }
 
@@ -591,7 +594,8 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterInterfaceDeclaration(InterfaceDeclarationContext ctx) {
-    // TODO: implement enterInterfaceDeclaration
+    DNInterfaceContext context = new DNInterfaceContext(ctx);
+    currentContext = context.enter(currentContext);
   }
 
   @override
@@ -601,7 +605,8 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void enterInterfaceMethodDeclaration(InterfaceMethodDeclarationContext ctx) {
-    // TODO: implement enterInterfaceMethodDeclaration
+    DNInterfaceMethodDeclaration context = new DNInterfaceMethodDeclaration(ctx);
+    currentContext = context.enter(currentContext);
   }
 
   @override
@@ -1863,7 +1868,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void exitInterfaceDeclaration(InterfaceDeclarationContext ctx) {
-    // TODO: implement exitInterfaceDeclaration
+    currentContext.exit();
   }
 
   @override
@@ -1873,7 +1878,7 @@ class DNJavaParserListener extends Java9Listener {
 
   @override
   void exitInterfaceMethodDeclaration(InterfaceMethodDeclarationContext ctx) {
-    // TODO: implement exitInterfaceMethodDeclaration
+    currentContext = currentContext.exit();
   }
 
   @override

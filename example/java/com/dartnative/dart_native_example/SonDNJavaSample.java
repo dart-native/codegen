@@ -1,6 +1,6 @@
 package com.dartnative.dart_native_example;
 
-public class SubDNJavaSample extends DNJavaSample {
+public class SonDNJavaSample extends DNJavaSample {
 
     public int mySubDNJavaSampleArg;
 }

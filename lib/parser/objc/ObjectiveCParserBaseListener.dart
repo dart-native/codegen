@@ -5,7 +5,6 @@ import 'package:antlr4/antlr4.dart';
 import 'ObjectiveCParser.dart';
 import 'ObjectiveCParserListener.dart';
 
-
 /// This class provides an empty implementation of [ObjectiveCParserListener],
 /// which can be extended to create a listener which only needs to handle
 /// a subset of the available methods.
@@ -212,11 +211,13 @@ class ObjectiveCParserBaseListener implements ObjectiveCParserListener {
 
   /// The default implementation does nothing.
   @override
-  void enterImplementationDefinitionList(ImplementationDefinitionListContext ctx) {}
+  void enterImplementationDefinitionList(
+      ImplementationDefinitionListContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitImplementationDefinitionList(ImplementationDefinitionListContext ctx) {}
+  void exitImplementationDefinitionList(
+      ImplementationDefinitionListContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -364,11 +365,13 @@ class ObjectiveCParserBaseListener implements ObjectiveCParserListener {
 
   /// The default implementation does nothing.
   @override
-  void enterTypeVariableDeclaratorOrName(TypeVariableDeclaratorOrNameContext ctx) {}
+  void enterTypeVariableDeclaratorOrName(
+      TypeVariableDeclaratorOrNameContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitTypeVariableDeclaratorOrName(TypeVariableDeclaratorOrNameContext ctx) {}
+  void exitTypeVariableDeclaratorOrName(
+      TypeVariableDeclaratorOrNameContext ctx) {}
 
   /// The default implementation does nothing.
   @override
@@ -572,11 +575,13 @@ class ObjectiveCParserBaseListener implements ObjectiveCParserListener {
 
   /// The default implementation does nothing.
   @override
-  void enterAttributeParameterAssignment(AttributeParameterAssignmentContext ctx) {}
+  void enterAttributeParameterAssignment(
+      AttributeParameterAssignmentContext ctx) {}
 
   /// The default implementation does nothing.
   @override
-  void exitAttributeParameterAssignment(AttributeParameterAssignmentContext ctx) {}
+  void exitAttributeParameterAssignment(
+      AttributeParameterAssignmentContext ctx) {}
 
   /// The default implementation does nothing.
   @override
