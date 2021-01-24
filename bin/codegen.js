@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-const { program } = require('commander')
-const main = require('../lib/main').main
+import { program } from 'commander'
+import { main } from '../lib/main.js'
 
-program.version('1.1.5')
+program.version('1.2.0')
 
 program
     .arguments('<input>', 'Iutput directory')

@@ -1,141 +1,135 @@
-// Generated from ObjectiveCPreprocessorParser.g4 by ANTLR 4.8
+// Generated from ObjectiveCPreprocessorParser.g4 by ANTLR 4.9
 // jshint ignore: start
-var antlr4 = require('antlr4');
+import antlr4 from 'antlr4';
 
 // This class defines a complete listener for a parse tree produced by ObjectiveCPreprocessorParser.
-function ObjectiveCPreprocessorParserListener() {
-	antlr4.tree.ParseTreeListener.call(this);
-	return this;
+export default class ObjectiveCPreprocessorParserListener extends antlr4.tree.ParseTreeListener {
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorImport.
+	enterPreprocessorImport(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorImport.
+	exitPreprocessorImport(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConditional.
+	enterPreprocessorConditional(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConditional.
+	exitPreprocessorConditional(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDef.
+	enterPreprocessorDef(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDef.
+	exitPreprocessorDef(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorPragma.
+	enterPreprocessorPragma(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorPragma.
+	exitPreprocessorPragma(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorError.
+	enterPreprocessorError(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorError.
+	exitPreprocessorError(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorWarning.
+	enterPreprocessorWarning(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorWarning.
+	exitPreprocessorWarning(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDefine.
+	enterPreprocessorDefine(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDefine.
+	exitPreprocessorDefine(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#directiveText.
+	enterDirectiveText(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#directiveText.
+	exitDirectiveText(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorParenthesis.
+	enterPreprocessorParenthesis(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorParenthesis.
+	exitPreprocessorParenthesis(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorNot.
+	enterPreprocessorNot(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorNot.
+	exitPreprocessorNot(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorBinary.
+	enterPreprocessorBinary(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorBinary.
+	exitPreprocessorBinary(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConstant.
+	enterPreprocessorConstant(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConstant.
+	exitPreprocessorConstant(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConditionalSymbol.
+	enterPreprocessorConditionalSymbol(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConditionalSymbol.
+	exitPreprocessorConditionalSymbol(ctx) {
+	}
+
+
+	// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDefined.
+	enterPreprocessorDefined(ctx) {
+	}
+
+	// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDefined.
+	exitPreprocessorDefined(ctx) {
+	}
+
+
+
 }
-
-ObjectiveCPreprocessorParserListener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
-ObjectiveCPreprocessorParserListener.prototype.constructor = ObjectiveCPreprocessorParserListener;
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorImport.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorImport = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorImport.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorImport = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConditional.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorConditional = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConditional.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorConditional = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDef.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorDef = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDef.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorDef = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorPragma.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorPragma = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorPragma.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorPragma = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorError.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorError = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorError.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorError = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorWarning.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorWarning = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorWarning.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorWarning = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDefine.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorDefine = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDefine.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorDefine = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#directiveText.
-ObjectiveCPreprocessorParserListener.prototype.enterDirectiveText = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#directiveText.
-ObjectiveCPreprocessorParserListener.prototype.exitDirectiveText = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorParenthesis.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorParenthesis = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorParenthesis.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorParenthesis = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorNot.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorNot = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorNot.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorNot = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorBinary.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorBinary = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorBinary.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorBinary = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConstant.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorConstant = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConstant.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorConstant = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConditionalSymbol.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorConditionalSymbol = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorConditionalSymbol.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorConditionalSymbol = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDefined.
-ObjectiveCPreprocessorParserListener.prototype.enterPreprocessorDefined = function(ctx) {
-};
-
-// Exit a parse tree produced by ObjectiveCPreprocessorParser#preprocessorDefined.
-ObjectiveCPreprocessorParserListener.prototype.exitPreprocessorDefined = function(ctx) {
-};
-
-
-
-exports.ObjectiveCPreprocessorParserListener = ObjectiveCPreprocessorParserListener;

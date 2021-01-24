@@ -1,13 +1,13 @@
-// Generated from Java9.g4 by ANTLR 4.8
+// Generated from Java9.g4 by ANTLR 4.9
 // jshint ignore: start
-var antlr4 = require('antlr4');
+import antlr4 from 'antlr4';
 
 
 
-var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0002x\u04a8\b\u0001\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004",
-    "\u0004\t\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t",
-    "\u0007\u0004\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004",
+const serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786",
+    "\u5964\u0002x\u04a8\b\u0001\u0004\u0002\t\u0002\u0004\u0003\t\u0003",
+    "\u0004\u0004\t\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007",
+    "\t\u0007\u0004\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004",
     "\f\t\f\u0004\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0004\u0010",
     "\t\u0010\u0004\u0011\t\u0011\u0004\u0012\t\u0012\u0004\u0013\t\u0013",
     "\u0004\u0014\t\u0014\u0004\u0015\t\u0015\u0004\u0016\t\u0016\u0004\u0017",
@@ -757,24 +757,108 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u047e\u0486\u048b\u0495\u04a3\u0004\b\u0002\u0002\u0002\u0003\u0002"].join("");
 
 
-var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
+const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
-var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new antlr4.dfa.DFA(ds, index); });
+const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
 
-function Java9Lexer(input) {
-	antlr4.Lexer.call(this, input);
-    this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.PredictionContextCache());
-    return this;
+export default class Java9Lexer extends antlr4.Lexer {
+
+    static grammarFileName = "Java9.g4";
+    static channelNames = [ "DEFAULT_TOKEN_CHANNEL", "HIDDEN" ];
+	static modeNames = [ "DEFAULT_MODE" ];
+	static literalNames = [ null, "'open'", "'module'", "'requires'", "'exports'", 
+                         "'to'", "'opens'", "'uses'", "'provides'", "'with'", 
+                         "'transitive'", "'abstract'", "'assert'", "'boolean'", 
+                         "'break'", "'byte'", "'case'", "'catch'", "'char'", 
+                         "'class'", "'const'", "'continue'", "'default'", 
+                         "'do'", "'double'", "'else'", "'enum'", "'extends'", 
+                         "'final'", "'finally'", "'float'", "'for'", "'if'", 
+                         "'goto'", "'implements'", "'import'", "'instanceof'", 
+                         "'int'", "'interface'", "'long'", "'native'", "'new'", 
+                         "'package'", "'private'", "'protected'", "'public'", 
+                         "'return'", "'short'", "'static'", "'strictfp'", 
+                         "'super'", "'switch'", "'synchronized'", "'this'", 
+                         "'throw'", "'throws'", "'transient'", "'try'", 
+                         "'void'", "'volatile'", "'while'", "'_'", null, 
+                         null, null, null, null, "'null'", "'('", "')'", 
+                         "'{'", "'}'", "'['", "']'", "';'", "','", "'.'", 
+                         "'...'", "'@'", "'::'", "'='", "'>'", "'<'", "'!'", 
+                         "'~'", "'?'", "':'", "'->'", "'=='", "'<='", "'>='", 
+                         "'!='", "'&&'", "'||'", "'++'", "'--'", "'+'", 
+                         "'-'", "'*'", "'/'", "'&'", "'|'", "'^'", "'%'", 
+                         "'+='", "'-='", "'*='", "'/='", "'&='", "'|='", 
+                         "'^='", "'%='", "'<<='", "'>>='", "'>>>='" ];
+	static symbolicNames = [ null, null, null, null, null, null, null, null, 
+                          null, null, null, "ABSTRACT", "ASSERT", "BOOLEAN", 
+                          "BREAK", "BYTE", "CASE", "CATCH", "CHAR", "CLASS", 
+                          "CONST", "CONTINUE", "DEFAULT", "DO", "DOUBLE", 
+                          "ELSE", "ENUM", "EXTENDS", "FINAL", "FINALLY", 
+                          "FLOAT", "FOR", "IF", "GOTO", "IMPLEMENTS", "IMPORT", 
+                          "INSTANCEOF", "INT", "INTERFACE", "LONG", "NATIVE", 
+                          "NEW", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", 
+                          "RETURN", "SHORT", "STATIC", "STRICTFP", "SUPER", 
+                          "SWITCH", "SYNCHRONIZED", "THIS", "THROW", "THROWS", 
+                          "TRANSIENT", "TRY", "VOID", "VOLATILE", "WHILE", 
+                          "UNDER_SCORE", "IntegerLiteral", "FloatingPointLiteral", 
+                          "BooleanLiteral", "CharacterLiteral", "StringLiteral", 
+                          "NullLiteral", "LPAREN", "RPAREN", "LBRACE", "RBRACE", 
+                          "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", "ELLIPSIS", 
+                          "AT", "COLONCOLON", "ASSIGN", "GT", "LT", "BANG", 
+                          "TILDE", "QUESTION", "COLON", "ARROW", "EQUAL", 
+                          "LE", "GE", "NOTEQUAL", "AND", "OR", "INC", "DEC", 
+                          "ADD", "SUB", "MUL", "DIV", "BITAND", "BITOR", 
+                          "CARET", "MOD", "ADD_ASSIGN", "SUB_ASSIGN", "MUL_ASSIGN", 
+                          "DIV_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", 
+                          "MOD_ASSIGN", "LSHIFT_ASSIGN", "RSHIFT_ASSIGN", 
+                          "URSHIFT_ASSIGN", "Identifier", "WS", "COMMENT", 
+                          "LINE_COMMENT" ];
+	static ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", 
+                      "T__7", "T__8", "T__9", "ABSTRACT", "ASSERT", "BOOLEAN", 
+                      "BREAK", "BYTE", "CASE", "CATCH", "CHAR", "CLASS", 
+                      "CONST", "CONTINUE", "DEFAULT", "DO", "DOUBLE", "ELSE", 
+                      "ENUM", "EXTENDS", "FINAL", "FINALLY", "FLOAT", "FOR", 
+                      "IF", "GOTO", "IMPLEMENTS", "IMPORT", "INSTANCEOF", 
+                      "INT", "INTERFACE", "LONG", "NATIVE", "NEW", "PACKAGE", 
+                      "PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "SHORT", 
+                      "STATIC", "STRICTFP", "SUPER", "SWITCH", "SYNCHRONIZED", 
+                      "THIS", "THROW", "THROWS", "TRANSIENT", "TRY", "VOID", 
+                      "VOLATILE", "WHILE", "UNDER_SCORE", "IntegerLiteral", 
+                      "DecimalIntegerLiteral", "HexIntegerLiteral", "OctalIntegerLiteral", 
+                      "BinaryIntegerLiteral", "IntegerTypeSuffix", "DecimalNumeral", 
+                      "Digits", "Digit", "NonZeroDigit", "DigitsAndUnderscores", 
+                      "DigitOrUnderscore", "Underscores", "HexNumeral", 
+                      "HexDigits", "HexDigit", "HexDigitsAndUnderscores", 
+                      "HexDigitOrUnderscore", "OctalNumeral", "OctalDigits", 
+                      "OctalDigit", "OctalDigitsAndUnderscores", "OctalDigitOrUnderscore", 
+                      "BinaryNumeral", "BinaryDigits", "BinaryDigit", "BinaryDigitsAndUnderscores", 
+                      "BinaryDigitOrUnderscore", "FloatingPointLiteral", 
+                      "DecimalFloatingPointLiteral", "ExponentPart", "ExponentIndicator", 
+                      "SignedInteger", "Sign", "FloatTypeSuffix", "HexadecimalFloatingPointLiteral", 
+                      "HexSignificand", "BinaryExponent", "BinaryExponentIndicator", 
+                      "BooleanLiteral", "CharacterLiteral", "SingleCharacter", 
+                      "StringLiteral", "StringCharacters", "StringCharacter", 
+                      "EscapeSequence", "OctalEscape", "ZeroToThree", "UnicodeEscape", 
+                      "NullLiteral", "LPAREN", "RPAREN", "LBRACE", "RBRACE", 
+                      "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", "ELLIPSIS", 
+                      "AT", "COLONCOLON", "ASSIGN", "GT", "LT", "BANG", 
+                      "TILDE", "QUESTION", "COLON", "ARROW", "EQUAL", "LE", 
+                      "GE", "NOTEQUAL", "AND", "OR", "INC", "DEC", "ADD", 
+                      "SUB", "MUL", "DIV", "BITAND", "BITOR", "CARET", "MOD", 
+                      "ADD_ASSIGN", "SUB_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", 
+                      "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", "MOD_ASSIGN", 
+                      "LSHIFT_ASSIGN", "RSHIFT_ASSIGN", "URSHIFT_ASSIGN", 
+                      "Identifier", "JavaLetter", "JavaLetterOrDigit", "WS", 
+                      "COMMENT", "LINE_COMMENT" ];
+
+    constructor(input) {
+        super(input)
+        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.PredictionContextCache());
+    }
+
+    get atn() {
+        return atn;
+    }
 }
-
-Java9Lexer.prototype = Object.create(antlr4.Lexer.prototype);
-Java9Lexer.prototype.constructor = Java9Lexer;
-
-Object.defineProperty(Java9Lexer.prototype, "atn", {
-        get : function() {
-                return atn;
-        }
-});
 
 Java9Lexer.EOF = antlr4.Token.EOF;
 Java9Lexer.T__0 = 1;
@@ -896,124 +980,6 @@ Java9Lexer.WS = 116;
 Java9Lexer.COMMENT = 117;
 Java9Lexer.LINE_COMMENT = 118;
 
-Java9Lexer.prototype.channelNames = [ "DEFAULT_TOKEN_CHANNEL", "HIDDEN" ];
-
-Java9Lexer.prototype.modeNames = [ "DEFAULT_MODE" ];
-
-Java9Lexer.prototype.literalNames = [ null, "'open'", "'module'", "'requires'", 
-                                      "'exports'", "'to'", "'opens'", "'uses'", 
-                                      "'provides'", "'with'", "'transitive'", 
-                                      "'abstract'", "'assert'", "'boolean'", 
-                                      "'break'", "'byte'", "'case'", "'catch'", 
-                                      "'char'", "'class'", "'const'", "'continue'", 
-                                      "'default'", "'do'", "'double'", "'else'", 
-                                      "'enum'", "'extends'", "'final'", 
-                                      "'finally'", "'float'", "'for'", "'if'", 
-                                      "'goto'", "'implements'", "'import'", 
-                                      "'instanceof'", "'int'", "'interface'", 
-                                      "'long'", "'native'", "'new'", "'package'", 
-                                      "'private'", "'protected'", "'public'", 
-                                      "'return'", "'short'", "'static'", 
-                                      "'strictfp'", "'super'", "'switch'", 
-                                      "'synchronized'", "'this'", "'throw'", 
-                                      "'throws'", "'transient'", "'try'", 
-                                      "'void'", "'volatile'", "'while'", 
-                                      "'_'", null, null, null, null, null, 
-                                      "'null'", "'('", "')'", "'{'", "'}'", 
-                                      "'['", "']'", "';'", "','", "'.'", 
-                                      "'...'", "'@'", "'::'", "'='", "'>'", 
-                                      "'<'", "'!'", "'~'", "'?'", "':'", 
-                                      "'->'", "'=='", "'<='", "'>='", "'!='", 
-                                      "'&&'", "'||'", "'++'", "'--'", "'+'", 
-                                      "'-'", "'*'", "'/'", "'&'", "'|'", 
-                                      "'^'", "'%'", "'+='", "'-='", "'*='", 
-                                      "'/='", "'&='", "'|='", "'^='", "'%='", 
-                                      "'<<='", "'>>='", "'>>>='" ];
-
-Java9Lexer.prototype.symbolicNames = [ null, null, null, null, null, null, 
-                                       null, null, null, null, null, "ABSTRACT", 
-                                       "ASSERT", "BOOLEAN", "BREAK", "BYTE", 
-                                       "CASE", "CATCH", "CHAR", "CLASS", 
-                                       "CONST", "CONTINUE", "DEFAULT", "DO", 
-                                       "DOUBLE", "ELSE", "ENUM", "EXTENDS", 
-                                       "FINAL", "FINALLY", "FLOAT", "FOR", 
-                                       "IF", "GOTO", "IMPLEMENTS", "IMPORT", 
-                                       "INSTANCEOF", "INT", "INTERFACE", 
-                                       "LONG", "NATIVE", "NEW", "PACKAGE", 
-                                       "PRIVATE", "PROTECTED", "PUBLIC", 
-                                       "RETURN", "SHORT", "STATIC", "STRICTFP", 
-                                       "SUPER", "SWITCH", "SYNCHRONIZED", 
-                                       "THIS", "THROW", "THROWS", "TRANSIENT", 
-                                       "TRY", "VOID", "VOLATILE", "WHILE", 
-                                       "UNDER_SCORE", "IntegerLiteral", 
-                                       "FloatingPointLiteral", "BooleanLiteral", 
-                                       "CharacterLiteral", "StringLiteral", 
-                                       "NullLiteral", "LPAREN", "RPAREN", 
-                                       "LBRACE", "RBRACE", "LBRACK", "RBRACK", 
-                                       "SEMI", "COMMA", "DOT", "ELLIPSIS", 
-                                       "AT", "COLONCOLON", "ASSIGN", "GT", 
-                                       "LT", "BANG", "TILDE", "QUESTION", 
-                                       "COLON", "ARROW", "EQUAL", "LE", 
-                                       "GE", "NOTEQUAL", "AND", "OR", "INC", 
-                                       "DEC", "ADD", "SUB", "MUL", "DIV", 
-                                       "BITAND", "BITOR", "CARET", "MOD", 
-                                       "ADD_ASSIGN", "SUB_ASSIGN", "MUL_ASSIGN", 
-                                       "DIV_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", 
-                                       "XOR_ASSIGN", "MOD_ASSIGN", "LSHIFT_ASSIGN", 
-                                       "RSHIFT_ASSIGN", "URSHIFT_ASSIGN", 
-                                       "Identifier", "WS", "COMMENT", "LINE_COMMENT" ];
-
-Java9Lexer.prototype.ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", 
-                                   "T__5", "T__6", "T__7", "T__8", "T__9", 
-                                   "ABSTRACT", "ASSERT", "BOOLEAN", "BREAK", 
-                                   "BYTE", "CASE", "CATCH", "CHAR", "CLASS", 
-                                   "CONST", "CONTINUE", "DEFAULT", "DO", 
-                                   "DOUBLE", "ELSE", "ENUM", "EXTENDS", 
-                                   "FINAL", "FINALLY", "FLOAT", "FOR", "IF", 
-                                   "GOTO", "IMPLEMENTS", "IMPORT", "INSTANCEOF", 
-                                   "INT", "INTERFACE", "LONG", "NATIVE", 
-                                   "NEW", "PACKAGE", "PRIVATE", "PROTECTED", 
-                                   "PUBLIC", "RETURN", "SHORT", "STATIC", 
-                                   "STRICTFP", "SUPER", "SWITCH", "SYNCHRONIZED", 
-                                   "THIS", "THROW", "THROWS", "TRANSIENT", 
-                                   "TRY", "VOID", "VOLATILE", "WHILE", "UNDER_SCORE", 
-                                   "IntegerLiteral", "DecimalIntegerLiteral", 
-                                   "HexIntegerLiteral", "OctalIntegerLiteral", 
-                                   "BinaryIntegerLiteral", "IntegerTypeSuffix", 
-                                   "DecimalNumeral", "Digits", "Digit", 
-                                   "NonZeroDigit", "DigitsAndUnderscores", 
-                                   "DigitOrUnderscore", "Underscores", "HexNumeral", 
-                                   "HexDigits", "HexDigit", "HexDigitsAndUnderscores", 
-                                   "HexDigitOrUnderscore", "OctalNumeral", 
-                                   "OctalDigits", "OctalDigit", "OctalDigitsAndUnderscores", 
-                                   "OctalDigitOrUnderscore", "BinaryNumeral", 
-                                   "BinaryDigits", "BinaryDigit", "BinaryDigitsAndUnderscores", 
-                                   "BinaryDigitOrUnderscore", "FloatingPointLiteral", 
-                                   "DecimalFloatingPointLiteral", "ExponentPart", 
-                                   "ExponentIndicator", "SignedInteger", 
-                                   "Sign", "FloatTypeSuffix", "HexadecimalFloatingPointLiteral", 
-                                   "HexSignificand", "BinaryExponent", "BinaryExponentIndicator", 
-                                   "BooleanLiteral", "CharacterLiteral", 
-                                   "SingleCharacter", "StringLiteral", "StringCharacters", 
-                                   "StringCharacter", "EscapeSequence", 
-                                   "OctalEscape", "ZeroToThree", "UnicodeEscape", 
-                                   "NullLiteral", "LPAREN", "RPAREN", "LBRACE", 
-                                   "RBRACE", "LBRACK", "RBRACK", "SEMI", 
-                                   "COMMA", "DOT", "ELLIPSIS", "AT", "COLONCOLON", 
-                                   "ASSIGN", "GT", "LT", "BANG", "TILDE", 
-                                   "QUESTION", "COLON", "ARROW", "EQUAL", 
-                                   "LE", "GE", "NOTEQUAL", "AND", "OR", 
-                                   "INC", "DEC", "ADD", "SUB", "MUL", "DIV", 
-                                   "BITAND", "BITOR", "CARET", "MOD", "ADD_ASSIGN", 
-                                   "SUB_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", 
-                                   "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", 
-                                   "MOD_ASSIGN", "LSHIFT_ASSIGN", "RSHIFT_ASSIGN", 
-                                   "URSHIFT_ASSIGN", "Identifier", "JavaLetter", 
-                                   "JavaLetterOrDigit", "WS", "COMMENT", 
-                                   "LINE_COMMENT" ];
-
-Java9Lexer.prototype.grammarFileName = "Java9.g4";
-
 Java9Lexer.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 	switch (ruleIndex) {
 		case 159:
@@ -1049,5 +1015,4 @@ Java9Lexer.prototype.JavaLetterOrDigit_sempred = function(localctx, predIndex) {
 
 
 
-exports.Java9Lexer = Java9Lexer;
 
