@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 12.16
+  - 14.15
 
 install:
   - git clone https://github.com/flutter/flutter.git -b stable --depth 1
