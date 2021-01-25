@@ -49,8 +49,7 @@ void main() {
       final commonPath = p.join('lib', 'ios', 'runtimestub.dart');
       bool result = compareDartContent(p.join(exampleRootPath, commonPath),
           p.join(workspace, projectName, commonPath));
-      // FIXME: by yulingtianxia
-      expect(true, true);
+      expect(result, true);
     });
 
     test('Generate bindings from Java code', () async {
@@ -81,8 +80,7 @@ void main() {
       final commonPath = p.join('lib', 'android', 'runtimestub.dart');
       bool result = compareDartContent(p.join(exampleRootPath, commonPath),
           p.join(workspace, projectName, commonPath));
-      // FIXME: by yulingtianxia
-      expect(true, true);
+      expect(result, true);
     });
   });
 }

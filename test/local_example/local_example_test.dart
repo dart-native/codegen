@@ -34,8 +34,7 @@ void main() {
       bool result = compareDartContent(
           p.join('test', 'local_example', 'expect', 'ios', 'runtimestub.dart'),
           p.join(workspace, projectName, 'lib', 'ios', 'runtimestub.dart'));
-      // FIXME: by yulingtianxia
-      expect(true, true);
+      expect(result, true);
     });
 
     test('Generate bindings from Java code', () async {
@@ -65,8 +64,7 @@ void main() {
               'DNJavaSample.dart'),
           p.join(
               workspace, projectName, 'lib', 'android', 'DNJavaSample.dart'));
-      // FIXME: by yulingtianxia
-      expect(true, true);
+      expect(result, true);
     });
   });
 }
