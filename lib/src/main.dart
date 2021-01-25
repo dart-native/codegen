@@ -239,7 +239,7 @@ void createFlutter(String template, String projectName, String output) {
   if (template == FlutterTemplates.plugin) {
     command += ' --platforms=android,ios';
   }
-  command += ' \"$output\"';
+  command += ' $output';
   Process.runSync('flutter', command.split(' ')).log();
 }
 
