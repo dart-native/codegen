@@ -1,3 +1,5 @@
+@Timeout.factor(1.5)
+
 import 'dart:io';
 
 import 'package:dart_native_codegen/src/common.dart';

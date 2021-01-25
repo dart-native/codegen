@@ -3,7 +3,7 @@ name: Dart CI
 on:
   # Run on PRs and pushes to the default branch.
   push:
-    branches: [master, feature/antlr4.9_dart, feature/dart_ci_cov] # TODO: remove feature branch.
+    branches: [master, feature/antlr4.9_dart] # TODO: remove feature branch.
   pull_request:
     branches: [master]
   schedule:
@@ -42,13 +42,13 @@ jobs:
     strategy:
       matrix:
         sdk: [stable]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v1.4.0
         with:
           channel: ${{ matrix.sdk }}
-          flutter-version: '1.22.4'
+          flutter-version: '1.22.6'
       - name: Install dependencies
         run: dart pub get
       - name: Run tests
