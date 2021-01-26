@@ -7,8 +7,8 @@ import 'package:path/path.dart' as p;
 import '../util/check_result.dart';
 
 void main() {
-  const workspace = '.temp/local_example_test/';
-  group('DartNative Example E2E Test', () {
+  final workspace = p.join('.temp', 'local_example_test');
+  group('Local Example E2E Test', () {
     setUpAll(() {
       var dir = Directory(workspace);
       if (dir.existsSync()) {
@@ -20,7 +20,7 @@ void main() {
       const projectName = 'objc_plugin';
       await run([
         '-i',
-        'example/objc/RuntimeStub.h',
+        p.join('example', 'objc', 'RuntimeStub.h'),
         '-o',
         workspace,
         '--project-name',
@@ -32,8 +32,8 @@ void main() {
       ]);
 
       bool result = compareDartContent(
-          'test/local_example/expect/ios/runtimestub.dart',
-          p.join(workspace, projectName, 'lib/ios/runtimestub.dart'));
+          p.join('test', 'local_example', 'expect', 'ios', 'runtimestub.dart'),
+          p.join(workspace, projectName, 'lib', 'ios', 'runtimestub.dart'));
       expect(result, true);
     });
 
@@ -41,7 +41,14 @@ void main() {
       const projectName = 'java_plugin';
       await run([
         '-i',
-        'example/java/com/dartnative/dart_native_example/DNJavaSample.java',
+        p.joinAll([
+          'example',
+          'java',
+          'com',
+          'dartnative',
+          'dart_native_example',
+          'DNJavaSample.java'
+        ]),
         '-o',
         workspace,
         '--project-name',
@@ -53,8 +60,10 @@ void main() {
       ]);
 
       bool result = compareDartContent(
-          'test/local_example/expect/android/DNJavaSample.dart',
-          p.join(workspace, projectName, 'lib/android/DNJavaSample.dart'));
+          p.join('test', 'local_example', 'expect', 'android',
+              'DNJavaSample.dart'),
+          p.join(
+              workspace, projectName, 'lib', 'android', 'DNJavaSample.dart'));
       expect(result, true);
     });
   });

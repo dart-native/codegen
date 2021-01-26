@@ -195,7 +195,7 @@ Future<Set<String>> processInput(
           var platform = _platformForLanguage[l];
           saveDartCode(
               result.dartCode, inputRoot, file, p.join(savePath, platform));
-          for (var f in result.fileDependencies) {
+          for (var f in result.fileDependencies ?? []) {
             if (p.isRelative(f)) {
               f = p.normalize(p.join(p.dirname(file), f));
             }

@@ -23,4 +23,4 @@ It's still under development. Here's how it works:
 
 Test Sample:
 
-* flutter pub run dart_native_codegen -l java -i example/java -o out
+* flutter pub run dart_native_codegen -i example -o out
