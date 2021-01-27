@@ -125,7 +125,12 @@ class DNBlockDefContext extends DNContext {
             {argList += args[index].type + ' ' + args[index].name + ', '}
         });
     var result = 'typedef ';
-    result += this.returnType + ' ' + this.defName + '(' + argList + ');';
+    result += this.returnType +
+        ' ' +
+        (this.defName == null ? '' : this.defName) +
+        '(' +
+        argList +
+        ');';
     return result;
   }
 }
@@ -582,9 +587,10 @@ class DNProtocolContext extends DNContext {
     this.properties = [];
     this.methods = [];
     if (internal is ProtocolDeclarationContext) {
-      var protocol = internal.protocols;
+      this.name = internal.name.start.text;
+      var protocols = internal.protocols;
       this.protocols =
-          protocol != null ? protocol.list.map((p) => p.name.start.text) : [];
+          protocols != null ? protocols.list.map((p) => p.name.start.text) : [];
     }
     this.macros = [];
     this.availability = [];
@@ -630,14 +636,17 @@ class DNClassContext extends DNContext {
   DNClassContext(internal) : super(internal) {
     if (internal is ClassInterfaceContext) {
       this.name = internal.className.start.text;
+      if (internal.superclassName != null) {
+        this.superClass = internal.superclassName.start.text;
+      }
     }
 
     this.properties = [];
     this.methods = [];
     if (internal is ClassInterfaceContext) {
-      var protocol = internal.protocols;
+      var protocols = internal.protocols;
       this.protocols =
-          protocol != null ? protocol.list.map((p) => p.name.start.text) : [];
+          protocols != null ? protocols.list.map((p) => p.name.start.text) : [];
     }
     this.macros = [];
     this.availability = [];
@@ -699,7 +708,7 @@ class DNCategoryContext extends DNContext {
   List protocols = null;
 
   DNCategoryContext(internal) : super(internal) {
-    this.host = internal.runtimeType.start.text;
+    // this.host = internal.runtimeType.start.text;
     if (internal is CategoryInterfaceContext) {
       if (internal.categoryName != null) {
         this.name = internal.categoryName.start.text;

@@ -154,12 +154,20 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void enterClassInterface(ClassInterfaceContext ctx) {
-    // TODO: implement enterClassInterface
+    var classInterface = new DNClassContext(ctx);
+    this.currentContext.addChild(classInterface);
+    this.currentContext = classInterface;
   }
 
   @override
   void enterClassMethodDeclaration(ClassMethodDeclarationContext ctx) {
-    // TODO: implement enterClassMethodDeclaration
+    var isProtocolCtx = this.currentContext is DNProtocolContext;
+    var method = isProtocolCtx
+        ? new DNMethodDeclarationContext(ctx)
+        : new DNMethodContext(ctx);
+    method.isClassMethod = true;
+    this.currentContext.addChild(method);
+    this.currentContext = method;
   }
 
   @override
@@ -560,7 +568,9 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void enterProtocolDeclaration(ProtocolDeclarationContext ctx) {
-    // TODO: implement enterProtocolDeclaration
+    var protocol = new DNProtocolContext(ctx);
+    this.currentContext.addChild(protocol);
+    this.currentContext = protocol;
   }
 
   @override
@@ -759,7 +769,9 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void enterTypedefDeclaration(TypedefDeclarationContext ctx) {
-    // TODO: implement enterTypedefDeclaration
+    var blockDef = new DNBlockDefContext(ctx);
+    this.currentContext.addChild(blockDef);
+    this.currentContext = blockDef;
   }
 
   @override
@@ -935,7 +947,7 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void exitClassInterface(ClassInterfaceContext ctx) {
-    // TODO: implement exitClassInterface
+    this.currentContext = this.currentContext.parent;
   }
 
   @override
@@ -945,7 +957,9 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void exitClassMethodDefinition(ClassMethodDefinitionContext ctx) {
-    // TODO: implement exitClassMethodDefinition
+    var method = this.currentContext;
+    this.currentContext = this.currentContext.parent;
+    this.currentContext.methods.add(method);
   }
 
   @override
@@ -1326,7 +1340,7 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void exitProtocolDeclaration(ProtocolDeclarationContext ctx) {
-    // TODO: implement exitProtocolDeclaration
+    this.currentContext = this.currentContext.parent;
   }
 
   @override
@@ -1515,6 +1529,7 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
   @override
   void exitTypedefDeclaration(TypedefDeclarationContext ctx) {
     // TODO: implement exitTypedefDeclaration
+    this.currentContext = this.currentContext.parent;
   }
 
   @override
