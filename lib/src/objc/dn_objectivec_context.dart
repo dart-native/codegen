@@ -51,15 +51,6 @@ class DNRootContext extends DNContext {
       packageSet.add('dart_native');
       packageSet.add('dart_native_gen');
     }
-    // result += this.children.map(ctx => {
-    //     var childResult = ctx.parse()
-    //     // if (!(ctx is DNImportContext)) {
-    //     //     childResult = '\n' + childResult
-    //     // } else {
-    //     packageSet.add(ctx.package)
-    //     // }
-    //     return childResult
-    // }).join('\n');
     result += this.children.map((ctx) => ctx.parse()).join('\n');
     return (result);
   }
@@ -218,7 +209,7 @@ class DNArgumentContext extends DNContext {
   bool isNullable = false;
   bool isOutParam = false;
   DNArgumentContext(internal) : super(internal) {
-    if (internal.name && internal.types) {
+    if (internal.name != null && internal.types != null) {
       this.name = internal.name.start.text;
     }
   }
@@ -344,7 +335,7 @@ class DNMethodContext extends DNContext {
         ', decodeRetVal: false);\n';
     if (this.callFromPointer) {
       String supportType = DNObjectiveCTypeConverter.dartToOCMap[rawRetType];
-      if (supportType.isNotEmpty) {
+      if (supportType != null) {
         newImpl += '    return ' + supportType + '.fromPointer(result).raw;\n';
       } else if (isMutableRetType) {
         newImpl += '    return ' + rawRetType + '.fromPointer(result).raw;\n';
@@ -459,7 +450,7 @@ class DNMethodContext extends DNContext {
   convertMutableTypeIfNeed(type) {
     var rawType = rawGenericType(type);
     bool dartType =
-        DNObjectiveCTypeConverter.supportMutableTypesMap[rawType].isNotEmpty;
+        DNObjectiveCTypeConverter.supportMutableTypesMap[rawType] != null;
     var ret = dartType ? type.replace(rawType, dartType) : type;
     return ret;
   }

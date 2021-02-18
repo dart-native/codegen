@@ -19,7 +19,7 @@ class DNObjectiveCTypeConverter {
     } else {
       convertRet = builtinTypeToDartMap[result];
     }
-    return convertRet ? convertRet : result;
+    return convertRet != null ? convertRet : result;
   }
 
   //Not yet confirmed what type need to convert

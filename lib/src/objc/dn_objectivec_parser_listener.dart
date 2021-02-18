@@ -1,4 +1,5 @@
 import 'package:antlr4/antlr4.dart';
+import 'package:dart_native_codegen/src/objc/dn_objectivec_type_converter.dart';
 
 import '../../parser/objc/ObjectiveCParser.dart';
 import '../../parser/objc/ObjectiveCParserListener.dart';
@@ -389,6 +390,12 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
   @override
   void enterInstanceMethodDeclaration(InstanceMethodDeclarationContext ctx) {
     // TODO: implement enterInstanceMethodDeclaration
+    var isProtocolCtx = this.currentContext is DNProtocolContext;
+    var method = isProtocolCtx
+        ? new DNMethodDeclarationContext(ctx)
+        : new DNMethodContext(ctx);
+    this.currentContext.addChild(method);
+    this.currentContext = method;
   }
 
   @override
@@ -428,7 +435,15 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void enterKeywordDeclarator(KeywordDeclaratorContext ctx) {
-    // TODO: implement enterKeywordDeclarator
+    if (this.currentContext is DNMethodContext) {
+      DNMethodContext methodContext = this.currentContext;
+      if (ctx.sel != null) {
+        methodContext.names.add(ctx.sel.start.text);
+      }
+      var argument = new DNArgumentContext(ctx);
+      methodContext.addChild(argument);
+      this.currentContext = argument;
+    }
   }
 
   @override
@@ -748,7 +763,68 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void enterTypeSpecifier(TypeSpecifierContext ctx) {
-    // TODO: implement enterTypeSpecifier
+    var pointer = null;
+    if (ctx.children.length > 1) {
+      pointer = ctx.children[1];
+    }
+
+    var type = ctx.start.text;
+    if (pointer != null) {
+      type += ' *';
+    }
+
+    var isPointer2Pointer = (pointer != null) && (pointer.nextPointer != null);
+
+    if (this.currentContext is DNMethodContext) {
+      DNMethodContext methodContext = this.currentContext;
+      var returnType = type;
+      if (returnType == 'instancetype') {
+        returnType = methodContext.parent.name;
+      }
+      methodContext.returnType =
+          DNObjectiveCTypeConverter().convert(returnType);
+      // FIXME: pointer to struct
+      /// Both CString and NSString can be converted to Dart String.
+      /// But converting CString to Dart String is under auto encoding,
+      /// which doesn't need call `fromPointer`.
+      var isDartPointerType = !DNObjectiveCTypeConverter
+              .basicAutoConvertReturnTypes
+              .contains(methodContext.returnType) &&
+          (!DNObjectiveCTypeConverter.basicType.contains(returnType) ||
+              (pointer != null && returnType != 'char *'));
+      methodContext.callFromPointer = isDartPointerType;
+    } else if (this.currentContext is DNArgumentContext) {
+      DNArgumentContext argumentContext = this.currentContext;
+      if (!argumentContext.isBlock) {
+        var isArgInBlock = this.currentContext.parent is DNBlockDefContext;
+        argumentContext.type =
+            DNObjectiveCTypeConverter().convert(type, isArgInBlock);
+      } else {
+        // var convertedType = DNObjectiveCTypeConverter().convert(type, true);
+        // if (!argumentContext.blockRetType) {
+        //     argumentContext.blockRetType = convertedType
+        // } else {
+        //     argumentContext.blockArgTypes.push(convertedType)
+        // }
+      }
+      // case：(NSError ** )error
+      argumentContext.isOutParam = isPointer2Pointer;
+    } else if (this.currentContext is DNBlockDefContext) {
+      // this.currentContext.returnType = TC.convert(type, true)
+    } else if (this.currentContext is DNPropertyContext) {
+      // if (!this.currentContext.type) {  //avoid repeatly setValue
+      //     if (type == 'instancetype') {
+      //         type = this.currentContext.parent.name
+      //     }
+      //     this.currentContext.type = TC.convert(type)
+      // }
+      // // FIXME: pointer to struct
+      // /// Both CString and NSString can be converted to Dart String.
+      // /// But converting CString to Dart String is under auto encoding,
+      // /// which doesn't need call `fromPointer`.
+      // this.currentContext.isDartPointerType = !DNObjectiveCTypeConverter.basicAutoConvertReturnTypes.includes(this.currentContext.type) &&
+      //     (!DNObjectiveCTypeConverter.ObjcBasicType.includes(type) || (pointer != null && type != 'char *'));
+    }
   }
 
   @override
@@ -1175,7 +1251,9 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void exitInstanceMethodDeclaration(InstanceMethodDeclarationContext ctx) {
-    // TODO: implement exitInstanceMethodDeclaration
+    var method = this.currentContext;
+    this.currentContext = this.currentContext.parent;
+    this.currentContext.methods.add(method);
   }
 
   @override
@@ -1215,7 +1293,14 @@ class DNObjectiveCParserListener extends ObjectiveCParserListener {
 
   @override
   void exitKeywordDeclarator(KeywordDeclaratorContext ctx) {
-    // TODO: implement exitKeywordDeclarator
+    if (this.currentContext is DNArgumentContext) {
+      var argument = this.currentContext;
+      this.currentContext = this.currentContext.parent;
+      if (this.currentContext is DNMethodContext) {
+        DNMethodContext methodContext = this.currentContext;
+        methodContext.args.add(argument);
+      }
+    }
   }
 
   @override
