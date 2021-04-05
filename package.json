@@ -1,6 +1,6 @@
 {
   "name": "@dartnative/codegen",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "module",
   "description": "Code generator for dart_native.",
   "main": "index.js",
