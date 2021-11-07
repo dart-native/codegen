@@ -1,4 +1,4 @@
-import { readFileSync } from "fs"
+import { readFileSync } from 'fs'
 import { program } from 'commander'
 
 function compareDartFiles(f1, f2) {
