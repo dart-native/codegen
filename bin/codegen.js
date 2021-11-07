@@ -2,7 +2,7 @@
 import { program } from 'commander'
 import { main } from '../lib/main.js'
 
-program.version('1.2.2')
+program.version('2.0.0')
 
 program
     .arguments('<input>', 'Iutput directory')

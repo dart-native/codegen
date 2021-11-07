@@ -9,10 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_OPTIONS(NSUInteger, TestOptions) {
-    TestOptionsNone = 0,
-    TestOptionsOne = 1 << 0,
-    TestOptionsTwo = 1 << 1,
+typedef NS_OPTIONS(NSUInteger, ItemIndex) { ItemIndexNone = 0,
+                                              ItemIndexOne = 1 << 0,
+                                              ItemIndexTwo = 1 << 1,
 };
 
 @protocol SampleDelegate
@@ -22,9 +21,10 @@ typedef NS_OPTIONS(NSUInteger, TestOptions) {
 
 @end
 
-typedef NSObject * _Nonnull (^BarBlock)(NSObject *a);
+typedef NSObject *_Nonnull (^BarBlock)(NSObject *a);
 typedef CGAffineTransform (^StretBlock)(CGAffineTransform a);
-typedef char * _Nonnull (^CStringRetBlock)(char *a);
+typedef char *_Nonnull (^CStringRetBlock)(char *a);
+typedef NSDictionary *_Nonnull (^NSDictionaryRetBlock)(NSDictionary *a);
 typedef CGFloat (^CGFloatRetBlock)(CGFloat a);
 
 @interface RuntimeStub : NSObject
@@ -56,6 +56,7 @@ typedef CGFloat (^CGFloatRetBlock)(CGFloat a);
 - (NSDirectionalEdgeInsets)fooNSDirectionalEdgeInsets:(NSDirectionalEdgeInsets)insets
     API_AVAILABLE(ios(11.0));
 - (CGAffineTransform)fooCGAffineTransform:(CGAffineTransform)transform;
+- (CATransform3D)fooCATransform3D:(CATransform3D)transform3D;
 - (NSArray *)fooNSArray:(NSArray *)array;
 - (NSMutableArray *)fooNSMutableArray:(NSMutableArray *)array;
 - (NSDictionary *)fooNSDictionary:(NSDictionary *)dict;
@@ -64,14 +65,15 @@ typedef CGFloat (^CGFloatRetBlock)(CGFloat a);
 - (NSMutableSet *)fooNSMutableSet:(NSMutableSet *)set;
 - (void)fooBlock:(BarBlock)block;
 - (void)fooStretBlock:(StretBlock)block;
+- (void)fooCompletion:(void (^)(void))block;
 - (void)fooCStringBlock:(CStringRetBlock)block;
-- (void)fooCompletion:(void(^)(void))block;
+- (void)fooNSDictionaryBlock:(NSDictionaryRetBlock)block;
 - (void)fooDelegate:(id<SampleDelegate>)delegate;
 - (void)fooStructDelegate:(id<SampleDelegate>)delegate;
 - (NSString *)fooNSString:(NSString *)str;
 - (NSMutableString *)fooNSMutableString:(NSMutableString *)str;
-- (void)fooWithError:(out NSError **)error;
-- (TestOptions)fooWithOptions:(TestOptions)options;
+- (BOOL)fooWithError:(out NSError **)error;
+- (ItemIndex)fooWithOptions:(ItemIndex)options;
 
 @end
 
