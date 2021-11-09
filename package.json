@@ -1,6 +1,6 @@
 {
   "name": "@dartnative/codegen",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "description": "Code generator for dart_native.",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "test": "test"
   },
   "scripts": {
-    "pretest": "git clone -b develop https://github.com/dart-native/dart_native.git",
+    "pretest": "git clone -b feature/flutter2 https://github.com/dart-native/dart_native.git",
     "test": "codegen dart_native/dart_native/example/ios/Runner/RuntimeStub.h -o test/dart/ --project-name my_package -t plugin",
     "posttest": "node test/test.js dart_native/dart_native/example/lib/ios/runtimestub.dart test/dart/my_package/lib/objc/runtimestub.dart"
   },
