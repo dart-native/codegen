@@ -1,4 +1,4 @@
-// Generated from ObjectiveCParser.g4 by ANTLR 4.9
+// Generated from ObjectiveCParser.g4 by ANTLR 4.9.3
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ObjectiveCParserListener from './ObjectiveCParserListener.js';
@@ -2356,7 +2356,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 				case ObjectiveCParser.OPTIONAL:
-				case ObjectiveCParser.REQUIRED: {
+				case ObjectiveCParser.REQUIRED:
 					this.enterOuterAlt(localctx, 1);
 					this.state = 451;
 					localctx.modifier = this._input.LT(1);
@@ -2370,7 +2370,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 					}
 					this.state = 455;
 					this._errHandler.sync(this);
-					let _alt = this._interp.adaptivePredict(this._input, 27, this._ctx)
+					var _alt = this._interp.adaptivePredict(this._input, 27, this._ctx)
 					while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 						if (_alt === 1) {
 							this.state = 452;
@@ -2382,7 +2382,6 @@ export default class ObjectiveCParser extends antlr4.Parser {
 					}
 
 					break;
-				}
 				case ObjectiveCParser.AUTO:
 				case ObjectiveCParser.CHAR:
 				case ObjectiveCParser.CONST:
@@ -2461,11 +2460,11 @@ export default class ObjectiveCParser extends antlr4.Parser {
 				case ObjectiveCParser.IB_DESIGNABLE:
 				case ObjectiveCParser.IDENTIFIER:
 				case ObjectiveCParser.ADD:
-				case ObjectiveCParser.SUB: {
+				case ObjectiveCParser.SUB:
 					this.enterOuterAlt(localctx, 2);
 					this.state = 459;
 					this._errHandler.sync(this);
-					let _alt = 1;
+					var _alt = 1;
 					do {
 						switch (_alt) {
 							case 1:
@@ -2480,7 +2479,6 @@ export default class ObjectiveCParser extends antlr4.Parser {
 						_alt = this._interp.adaptivePredict(this._input, 28, this._ctx);
 					} while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER);
 					break;
-				}
 				default:
 					throw new antlr4.error.NoViableAltException(this);
 			}
@@ -3036,13 +3034,13 @@ export default class ObjectiveCParser extends antlr4.Parser {
 				case ObjectiveCParser.PACKAGE:
 				case ObjectiveCParser.PRIVATE:
 				case ObjectiveCParser.PROTECTED:
-				case ObjectiveCParser.PUBLIC: {
+				case ObjectiveCParser.PUBLIC:
 					this.enterOuterAlt(localctx, 1);
 					this.state = 563;
 					this.accessModifier();
 					this.state = 567;
 					this._errHandler.sync(this);
-					let _alt = this._interp.adaptivePredict(this._input, 42, this._ctx)
+					var _alt = this._interp.adaptivePredict(this._input, 42, this._ctx)
 					while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 						if (_alt === 1) {
 							this.state = 564;
@@ -3054,7 +3052,6 @@ export default class ObjectiveCParser extends antlr4.Parser {
 					}
 
 					break;
-				}
 				case ObjectiveCParser.AUTO:
 				case ObjectiveCParser.CHAR:
 				case ObjectiveCParser.CONST:
@@ -3130,11 +3127,11 @@ export default class ObjectiveCParser extends antlr4.Parser {
 				case ObjectiveCParser.IB_INSPECTABLE:
 				case ObjectiveCParser.IB_DESIGNABLE:
 				case ObjectiveCParser.IDENTIFIER:
-				case ObjectiveCParser.LP: {
+				case ObjectiveCParser.LP:
 					this.enterOuterAlt(localctx, 2);
 					this.state = 571;
 					this._errHandler.sync(this);
-					let _alt = 1;
+					var _alt = 1;
 					do {
 						switch (_alt) {
 							case 1:
@@ -3149,7 +3146,6 @@ export default class ObjectiveCParser extends antlr4.Parser {
 						_alt = this._interp.adaptivePredict(this._input, 43, this._ctx);
 					} while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER);
 					break;
-				}
 				default:
 					throw new antlr4.error.NoViableAltException(this);
 			}
@@ -3207,7 +3203,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.enterOuterAlt(localctx, 1);
 			this.state = 584;
 			this._errHandler.sync(this);
-			let _alt = 1;
+			var _alt = 1;
 			do {
 				switch (_alt) {
 					case 1:
@@ -3596,7 +3592,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 					this.enterOuterAlt(localctx, 2);
 					this.state = 636;
 					this._errHandler.sync(this);
-					let _alt = 1;
+					var _alt = 1;
 					do {
 						switch (_alt) {
 							case 1:
@@ -4034,7 +4030,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.enterOuterAlt(localctx, 1);
 			this.state = 725;
 			this._errHandler.sync(this);
-			let _alt = this._interp.adaptivePredict(this._input, 71, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 71, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					this.state = 722;
@@ -4081,7 +4077,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 				this.dictionaryPair();
 				this.state = 737;
 				this._errHandler.sync(this);
-				let _alt = this._interp.adaptivePredict(this._input, 72, this._ctx)
+				var _alt = this._interp.adaptivePredict(this._input, 72, this._ctx)
 				while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 					if (_alt === 1) {
 						this.state = 733;
@@ -5758,7 +5754,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.enterOuterAlt(localctx, 1);
 			this.state = 1021;
 			this._errHandler.sync(this);
-			let _alt = this._interp.adaptivePredict(this._input, 121, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 121, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					this.state = 1019;
@@ -6259,7 +6255,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.enterOuterAlt(localctx, 1);
 			this.state = 1100;
 			this._errHandler.sync(this);
-			let _alt = 1;
+			var _alt = 1;
 			do {
 				switch (_alt) {
 					case 1:
@@ -6341,7 +6337,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.enterOuterAlt(localctx, 1);
 			this.state = 1108;
 			this._errHandler.sync(this);
-			let _alt = 1;
+			var _alt = 1;
 			do {
 				switch (_alt) {
 					case 1:
@@ -6401,7 +6397,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.enterOuterAlt(localctx, 1);
 			this.state = 1115;
 			this._errHandler.sync(this);
-			let _alt = 1;
+			var _alt = 1;
 			do {
 				switch (_alt) {
 					case 1:
@@ -6567,7 +6563,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.declarator();
 			this.state = 1146;
 			this._errHandler.sync(this);
-			let _alt = this._interp.adaptivePredict(this._input, 145, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 145, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					this.state = 1144;
@@ -6844,7 +6840,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.enterOuterAlt(localctx, 1);
 			this.state = 1185;
 			this._errHandler.sync(this);
-			let _alt = 1;
+			var _alt = 1;
 			do {
 				switch (_alt) {
 					case 1:
@@ -7148,7 +7144,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 				case 1:
 					this.state = 1214;
 					this._errHandler.sync(this);
-					let _alt = 1;
+					var _alt = 1;
 					do {
 						switch (_alt) {
 							case 1:
@@ -7510,7 +7506,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			localctx.list.push(localctx._enumerator);
 			this.state = 1289;
 			this._errHandler.sync(this);
-			let _alt = this._interp.adaptivePredict(this._input, 169, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 169, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					this.state = 1285;
@@ -8148,7 +8144,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 				this.expression(0);
 				this.state = 1411;
 				this._errHandler.sync(this);
-				let _alt = this._interp.adaptivePredict(this._input, 193, this._ctx)
+				var _alt = this._interp.adaptivePredict(this._input, 193, this._ctx)
 				while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 					if (_alt === 1) {
 						this.state = 1406;
@@ -8201,7 +8197,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.initializer();
 			this.state = 1426;
 			this._errHandler.sync(this);
-			let _alt = this._interp.adaptivePredict(this._input, 196, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 196, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					this.state = 1422;
@@ -8444,7 +8440,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.parameterDeclaration();
 			this.state = 1482;
 			this._errHandler.sync(this);
-			let _alt = this._interp.adaptivePredict(this._input, 209, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 209, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					this.state = 1478;
@@ -9438,7 +9434,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.expression(0);
 			this.state = 1678;
 			this._errHandler.sync(this);
-			let _alt = this._interp.adaptivePredict(this._input, 242, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 242, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					this.state = 1674;
@@ -9510,7 +9506,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this._ctx.stop = this._input.LT(-1);
 			this.state = 1737;
 			this._errHandler.sync(this);
-			let _alt = this._interp.adaptivePredict(this._input, 247, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 247, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					if (this._parseListeners !== null) {
@@ -10098,7 +10094,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.primaryExpression();
 			this.state = 1785;
 			this._errHandler.sync(this);
-			let _alt = this._interp.adaptivePredict(this._input, 254, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 254, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					this.state = 1782;
@@ -10112,7 +10108,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this._ctx.stop = this._input.LT(-1);
 			this.state = 1799;
 			this._errHandler.sync(this);
-			_alt = this._interp.adaptivePredict(this._input, 256, this._ctx)
+			var _alt = this._interp.adaptivePredict(this._input, 256, this._ctx)
 			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					if (this._parseListeners !== null) {
@@ -10138,7 +10134,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 					this.identifier();
 					this.state = 1794;
 					this._errHandler.sync(this);
-					let _alt = this._interp.adaptivePredict(this._input, 255, this._ctx)
+					var _alt = this._interp.adaptivePredict(this._input, 255, this._ctx)
 					while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 						if (_alt === 1) {
 							this.state = 1791;
@@ -10649,7 +10645,7 @@ export default class ObjectiveCParser extends antlr4.Parser {
 			this.enterOuterAlt(localctx, 1);
 			this.state = 1889;
 			this._errHandler.sync(this);
-			let _alt = 1;
+			var _alt = 1;
 			do {
 				switch (_alt) {
 					case 1:
@@ -20241,4 +20237,4 @@ ObjectiveCParser.OsVersionContext = OsVersionContext;
 ObjectiveCParser.PrimaryExpressionContext = PrimaryExpressionContext;
 ObjectiveCParser.ConstantContext = ConstantContext;
 ObjectiveCParser.StringLiteralContext = StringLiteralContext;
-ObjectiveCParser.IdentifierContext = IdentifierContext; 
+ObjectiveCParser.IdentifierContext = IdentifierContext;

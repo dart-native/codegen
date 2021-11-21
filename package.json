@@ -31,9 +31,10 @@
   },
   "homepage": "https://github.com/dart-native/codegen#readme",
   "dependencies": {
-    "antlr4": "^4.9.1",
+    "antlr4": "^4.9.3",
     "commander": "^5.1.0",
-    "js-yaml": "^3.14.1"
+    "js-yaml": "^3.14.1",
+    "bitset": "^5.1.1"
   },
   "devDependencies": {}
 }

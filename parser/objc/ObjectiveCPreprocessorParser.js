@@ -1,658 +1,658 @@
-// Generated from ObjectiveCPreprocessorParser.g4 by ANTLR 4.9
+// Generated from ObjectiveCPreprocessorParser.g4 by ANTLR 4.9.3
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import ObjectiveCPreprocessorParserListener from './ObjectiveCPreprocessorParserListener.js';
 
 const serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786",
-    "\u5964\u0003\u00f5a\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
-    "\t\u0004\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
-    "\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
-    "\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
-    "\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
-    "\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
-    "\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
-    "\u0005\u0002,\n\u0002\u0005\u0002.\n\u0002\u0003\u0003\u0006\u00031",
-    "\n\u0003\r\u0003\u000e\u00032\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
-    "\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
-    "\u0004\u0005\u0004?\n\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
-    "\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
-    "\u0004\u0003\u0004\u0005\u0004L\n\u0004\u0005\u0004N\n\u0004\u0003\u0004",
-    "\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004",
-    "\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0007\u0004",
-    "\\\n\u0004\f\u0004\u000e\u0004_\u000b\u0004\u0003\u0004\u0002\u0003",
-    "\u0006\u0005\u0002\u0004\u0006\u0002\u0006\u0003\u0002\u00c8\u00c9\u0003",
-    "\u0002\u00f4\u00f5\u0003\u0002\u00db\u00dc\u0003\u0002\u00df\u00e2\u0002",
-    "w\u0002-\u0003\u0002\u0002\u0002\u00040\u0003\u0002\u0002\u0002\u0006",
-    "M\u0003\u0002\u0002\u0002\b\t\u0007\u00c4\u0002\u0002\t\n\t\u0002\u0002",
-    "\u0002\n.\u0005\u0004\u0003\u0002\u000b\f\u0007\u00c4\u0002\u0002\f",
-    "\r\u0007\u00cd\u0002\u0002\r.\u0005\u0006\u0004\u0002\u000e\u000f\u0007",
-    "\u00c4\u0002\u0002\u000f\u0010\u0007\u00ce\u0002\u0002\u0010.\u0005",
-    "\u0006\u0004\u0002\u0011\u0012\u0007\u00c4\u0002\u0002\u0012.\u0007",
-    "\u00cf\u0002\u0002\u0013\u0014\u0007\u00c4\u0002\u0002\u0014.\u0007",
-    "\u00d3\u0002\u0002\u0015\u0016\u0007\u00c4\u0002\u0002\u0016\u0017\u0007",
-    "\u00d1\u0002\u0002\u0017.\u0007\u00ed\u0002\u0002\u0018\u0019\u0007",
-    "\u00c4\u0002\u0002\u0019\u001a\u0007\u00d2\u0002\u0002\u001a.\u0007",
-    "\u00ed\u0002\u0002\u001b\u001c\u0007\u00c4\u0002\u0002\u001c\u001d\u0007",
-    "\u00d0\u0002\u0002\u001d.\u0007\u00ed\u0002\u0002\u001e\u001f\u0007",
-    "\u00c4\u0002\u0002\u001f \u0007\u00ca\u0002\u0002 .\u0005\u0004\u0003",
-    "\u0002!\"\u0007\u00c4\u0002\u0002\"#\u0007\u00d6\u0002\u0002#.\u0005",
-    "\u0004\u0003\u0002$%\u0007\u00c4\u0002\u0002%&\u0007\u00d7\u0002\u0002",
-    "&.\u0005\u0004\u0003\u0002\'(\u0007\u00c4\u0002\u0002()\u0007\u00cb",
-    "\u0002\u0002)+\u0007\u00ed\u0002\u0002*,\u0005\u0004\u0003\u0002+*\u0003",
-    "\u0002\u0002\u0002+,\u0003\u0002\u0002\u0002,.\u0003\u0002\u0002\u0002",
-    "-\b\u0003\u0002\u0002\u0002-\u000b\u0003\u0002\u0002\u0002-\u000e\u0003",
-    "\u0002\u0002\u0002-\u0011\u0003\u0002\u0002\u0002-\u0013\u0003\u0002",
-    "\u0002\u0002-\u0015\u0003\u0002\u0002\u0002-\u0018\u0003\u0002\u0002",
-    "\u0002-\u001b\u0003\u0002\u0002\u0002-\u001e\u0003\u0002\u0002\u0002",
-    "-!\u0003\u0002\u0002\u0002-$\u0003\u0002\u0002\u0002-\'\u0003\u0002",
-    "\u0002\u0002.\u0003\u0003\u0002\u0002\u0002/1\t\u0003\u0002\u00020/",
-    "\u0003\u0002\u0002\u000212\u0003\u0002\u0002\u000220\u0003\u0002\u0002",
-    "\u000223\u0003\u0002\u0002\u00023\u0005\u0003\u0002\u0002\u000245\b",
-    "\u0004\u0001\u00025N\u0007\u00d4\u0002\u00026N\u0007\u00d5\u0002\u0002",
-    "7N\u0007\u00ee\u0002\u00028N\u0007\u00ec\u0002\u00029>\u0007\u00ed\u0002",
-    "\u0002:;\u0007\u00d9\u0002\u0002;<\u0005\u0006\u0004\u0002<=\u0007\u00da",
-    "\u0002\u0002=?\u0003\u0002\u0002\u0002>:\u0003\u0002\u0002\u0002>?\u0003",
-    "\u0002\u0002\u0002?N\u0003\u0002\u0002\u0002@A\u0007\u00d9\u0002\u0002",
-    "AB\u0005\u0006\u0004\u0002BC\u0007\u00da\u0002\u0002CN\u0003\u0002\u0002",
-    "\u0002DE\u0007\u00d8\u0002\u0002EN\u0005\u0006\u0004\bFK\u0007\u00cc",
-    "\u0002\u0002GL\u0007\u00ed\u0002\u0002HI\u0007\u00d9\u0002\u0002IJ\u0007",
-    "\u00ed\u0002\u0002JL\u0007\u00da\u0002\u0002KG\u0003\u0002\u0002\u0002",
-    "KH\u0003\u0002\u0002\u0002LN\u0003\u0002\u0002\u0002M4\u0003\u0002\u0002",
-    "\u0002M6\u0003\u0002\u0002\u0002M7\u0003\u0002\u0002\u0002M8\u0003\u0002",
-    "\u0002\u0002M9\u0003\u0002\u0002\u0002M@\u0003\u0002\u0002\u0002MD\u0003",
-    "\u0002\u0002\u0002MF\u0003\u0002\u0002\u0002N]\u0003\u0002\u0002\u0002",
-    "OP\f\u0007\u0002\u0002PQ\t\u0004\u0002\u0002Q\\\u0005\u0006\u0004\b",
-    "RS\f\u0006\u0002\u0002ST\u0007\u00dd\u0002\u0002T\\\u0005\u0006\u0004",
-    "\u0007UV\f\u0005\u0002\u0002VW\u0007\u00de\u0002\u0002W\\\u0005\u0006",
-    "\u0004\u0006XY\f\u0004\u0002\u0002YZ\t\u0005\u0002\u0002Z\\\u0005\u0006",
-    "\u0004\u0005[O\u0003\u0002\u0002\u0002[R\u0003\u0002\u0002\u0002[U\u0003",
-    "\u0002\u0002\u0002[X\u0003\u0002\u0002\u0002\\_\u0003\u0002\u0002\u0002",
-    "][\u0003\u0002\u0002\u0002]^\u0003\u0002\u0002\u0002^\u0007\u0003\u0002",
-    "\u0002\u0002_]\u0003\u0002\u0002\u0002\n+-2>KM[]"].join("");
+	"\u5964\u0003\u00f5a\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
+	"\t\u0004\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
+	"\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
+	"\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
+	"\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
+	"\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
+	"\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
+	"\u0005\u0002,\n\u0002\u0005\u0002.\n\u0002\u0003\u0003\u0006\u00031",
+	"\n\u0003\r\u0003\u000e\u00032\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
+	"\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
+	"\u0004\u0005\u0004?\n\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
+	"\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
+	"\u0004\u0003\u0004\u0005\u0004L\n\u0004\u0005\u0004N\n\u0004\u0003\u0004",
+	"\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004",
+	"\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0007\u0004",
+	"\\\n\u0004\f\u0004\u000e\u0004_\u000b\u0004\u0003\u0004\u0002\u0003",
+	"\u0006\u0005\u0002\u0004\u0006\u0002\u0006\u0003\u0002\u00c8\u00c9\u0003",
+	"\u0002\u00f4\u00f5\u0003\u0002\u00db\u00dc\u0003\u0002\u00df\u00e2\u0002",
+	"w\u0002-\u0003\u0002\u0002\u0002\u00040\u0003\u0002\u0002\u0002\u0006",
+	"M\u0003\u0002\u0002\u0002\b\t\u0007\u00c4\u0002\u0002\t\n\t\u0002\u0002",
+	"\u0002\n.\u0005\u0004\u0003\u0002\u000b\f\u0007\u00c4\u0002\u0002\f",
+	"\r\u0007\u00cd\u0002\u0002\r.\u0005\u0006\u0004\u0002\u000e\u000f\u0007",
+	"\u00c4\u0002\u0002\u000f\u0010\u0007\u00ce\u0002\u0002\u0010.\u0005",
+	"\u0006\u0004\u0002\u0011\u0012\u0007\u00c4\u0002\u0002\u0012.\u0007",
+	"\u00cf\u0002\u0002\u0013\u0014\u0007\u00c4\u0002\u0002\u0014.\u0007",
+	"\u00d3\u0002\u0002\u0015\u0016\u0007\u00c4\u0002\u0002\u0016\u0017\u0007",
+	"\u00d1\u0002\u0002\u0017.\u0007\u00ed\u0002\u0002\u0018\u0019\u0007",
+	"\u00c4\u0002\u0002\u0019\u001a\u0007\u00d2\u0002\u0002\u001a.\u0007",
+	"\u00ed\u0002\u0002\u001b\u001c\u0007\u00c4\u0002\u0002\u001c\u001d\u0007",
+	"\u00d0\u0002\u0002\u001d.\u0007\u00ed\u0002\u0002\u001e\u001f\u0007",
+	"\u00c4\u0002\u0002\u001f \u0007\u00ca\u0002\u0002 .\u0005\u0004\u0003",
+	"\u0002!\"\u0007\u00c4\u0002\u0002\"#\u0007\u00d6\u0002\u0002#.\u0005",
+	"\u0004\u0003\u0002$%\u0007\u00c4\u0002\u0002%&\u0007\u00d7\u0002\u0002",
+	"&.\u0005\u0004\u0003\u0002\'(\u0007\u00c4\u0002\u0002()\u0007\u00cb",
+	"\u0002\u0002)+\u0007\u00ed\u0002\u0002*,\u0005\u0004\u0003\u0002+*\u0003",
+	"\u0002\u0002\u0002+,\u0003\u0002\u0002\u0002,.\u0003\u0002\u0002\u0002",
+	"-\b\u0003\u0002\u0002\u0002-\u000b\u0003\u0002\u0002\u0002-\u000e\u0003",
+	"\u0002\u0002\u0002-\u0011\u0003\u0002\u0002\u0002-\u0013\u0003\u0002",
+	"\u0002\u0002-\u0015\u0003\u0002\u0002\u0002-\u0018\u0003\u0002\u0002",
+	"\u0002-\u001b\u0003\u0002\u0002\u0002-\u001e\u0003\u0002\u0002\u0002",
+	"-!\u0003\u0002\u0002\u0002-$\u0003\u0002\u0002\u0002-\'\u0003\u0002",
+	"\u0002\u0002.\u0003\u0003\u0002\u0002\u0002/1\t\u0003\u0002\u00020/",
+	"\u0003\u0002\u0002\u000212\u0003\u0002\u0002\u000220\u0003\u0002\u0002",
+	"\u000223\u0003\u0002\u0002\u00023\u0005\u0003\u0002\u0002\u000245\b",
+	"\u0004\u0001\u00025N\u0007\u00d4\u0002\u00026N\u0007\u00d5\u0002\u0002",
+	"7N\u0007\u00ee\u0002\u00028N\u0007\u00ec\u0002\u00029>\u0007\u00ed\u0002",
+	"\u0002:;\u0007\u00d9\u0002\u0002;<\u0005\u0006\u0004\u0002<=\u0007\u00da",
+	"\u0002\u0002=?\u0003\u0002\u0002\u0002>:\u0003\u0002\u0002\u0002>?\u0003",
+	"\u0002\u0002\u0002?N\u0003\u0002\u0002\u0002@A\u0007\u00d9\u0002\u0002",
+	"AB\u0005\u0006\u0004\u0002BC\u0007\u00da\u0002\u0002CN\u0003\u0002\u0002",
+	"\u0002DE\u0007\u00d8\u0002\u0002EN\u0005\u0006\u0004\bFK\u0007\u00cc",
+	"\u0002\u0002GL\u0007\u00ed\u0002\u0002HI\u0007\u00d9\u0002\u0002IJ\u0007",
+	"\u00ed\u0002\u0002JL\u0007\u00da\u0002\u0002KG\u0003\u0002\u0002\u0002",
+	"KH\u0003\u0002\u0002\u0002LN\u0003\u0002\u0002\u0002M4\u0003\u0002\u0002",
+	"\u0002M6\u0003\u0002\u0002\u0002M7\u0003\u0002\u0002\u0002M8\u0003\u0002",
+	"\u0002\u0002M9\u0003\u0002\u0002\u0002M@\u0003\u0002\u0002\u0002MD\u0003",
+	"\u0002\u0002\u0002MF\u0003\u0002\u0002\u0002N]\u0003\u0002\u0002\u0002",
+	"OP\f\u0007\u0002\u0002PQ\t\u0004\u0002\u0002Q\\\u0005\u0006\u0004\b",
+	"RS\f\u0006\u0002\u0002ST\u0007\u00dd\u0002\u0002T\\\u0005\u0006\u0004",
+	"\u0007UV\f\u0005\u0002\u0002VW\u0007\u00de\u0002\u0002W\\\u0005\u0006",
+	"\u0004\u0006XY\f\u0004\u0002\u0002YZ\t\u0005\u0002\u0002Z\\\u0005\u0006",
+	"\u0004\u0005[O\u0003\u0002\u0002\u0002[R\u0003\u0002\u0002\u0002[U\u0003",
+	"\u0002\u0002\u0002[X\u0003\u0002\u0002\u0002\\_\u0003\u0002\u0002\u0002",
+	"][\u0003\u0002\u0002\u0002]^\u0003\u0002\u0002\u0002^\u0007\u0003\u0002",
+	"\u0002\u0002_]\u0003\u0002\u0002\u0002\n+-2>KM[]"].join("");
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
-const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
+const decisionsToDFA = atn.decisionToState.map((ds, index) => new antlr4.dfa.DFA(ds, index));
 
 const sharedContextCache = new antlr4.PredictionContextCache();
 
 export default class ObjectiveCPreprocessorParser extends antlr4.Parser {
 
-    static grammarFileName = "ObjectiveCPreprocessorParser.g4";
-    static literalNames = [ null, "'auto'", "'break'", "'case'", "'char'", 
-                            "'const'", "'continue'", "'default'", "'do'", 
-                            "'double'", null, "'enum'", "'extern'", "'float'", 
-                            "'for'", "'goto'", null, "'inline'", "'int'", 
-                            "'long'", "'register'", "'restrict'", "'return'", 
-                            "'short'", "'signed'", "'sizeof'", "'static'", 
-                            "'struct'", "'switch'", "'typedef'", "'union'", 
-                            "'unsigned'", "'void'", "'volatile'", "'while'", 
-                            "'_Bool'", "'_Complex'", "'_Imaginery'", "'true'", 
-                            "'false'", "'BOOL'", "'Class'", "'bycopy'", 
-                            "'byref'", "'id'", "'IMP'", "'in'", "'inout'", 
-                            "'nil'", "'NO'", "'NULL'", "'oneway'", "'out'", 
-                            "'Protocol'", "'SEL'", "'self'", "'super'", 
-                            "'YES'", "'@autoreleasepool'", "'@catch'", "'@class'", 
-                            "'@dynamic'", "'@encode'", "'@end'", "'@finally'", 
-                            "'@implementation'", "'@interface'", null, "'@package'", 
-                            "'@protocol'", "'@optional'", "'@private'", 
-                            "'@property'", "'@protected'", "'@public'", 
-                            "'@required'", "'@selector'", "'@synchronized'", 
-                            "'@synthesize'", "'@throw'", "'@try'", "'atomic'", 
-                            "'nonatomic'", "'retain'", "'__attribute__'", 
-                            "'__autoreleasing'", "'__block'", "'__bridge'", 
-                            "'__bridge_retained'", "'__bridge_transfer'", 
-                            "'__covariant'", "'__contravariant'", "'__deprecated'", 
-                            "'__kindof'", "'__strong'", null, "'__unsafe_unretained'", 
-                            "'__unused'", "'__weak'", null, null, null, 
-                            "'null_resettable'", "'NS_INLINE'", "'NS_ENUM'", 
-                            "'NS_OPTIONS'", "'NS_CLOSED_ENUM'", "'NS_TYPED_EXTENSIBLE_ENUM'", 
-                            "'NS_ERROR_ENUM'", "'assign'", "'copy'", "'getter'", 
-                            "'setter'", "'strong'", "'readonly'", "'readwrite'", 
-                            "'weak'", "'unsafe_unretained'", "'IBOutlet'", 
-                            "'IBOutletCollection'", "'IBInspectable'", "'IB_DESIGNABLE'", 
-                            null, null, null, null, null, "'__TVOS_PROHIBITED'", 
-                            "'NS_NOESCAPE'", null, "'NS_RETURNS_RETAINED'", 
-                            "'NS_RETURNS_NOT_RETAINED'", "'NS_RETURNS_INNER_POINTER'", 
-                            "'CF_RETURNS_RETAINED'", "'CF_RETURNS_NOT_RETAINED'", 
-                            "'CF_CONSUMED'", null, null, null, "'{'", "'}'", 
-                            "'['", "']'", "';'", "','", null, "'->'", "'@'", 
-                            "'='", null, null, null, "'~'", "'?'", "':'", 
-                            null, null, null, null, null, null, "'++'", 
-                            "'--'", null, null, null, null, null, null, 
-                            null, null, "'+='", "'-='", "'*='", "'/='", 
-                            "'&='", "'|='", "'^='", "'%='", "'<<='", "'>>='", 
-                            "'...'", null, null, null, null, null, null, 
-                            null, null, null, null, null, "'\\'", null, 
-                            null, null, null, null, null, null, null, "'defined'", 
-                            null, "'elif'", null, "'undef'", "'ifdef'", 
-                            "'ifndef'", "'endif'" ];
-    static symbolicNames = [ null, "AUTO", "BREAK", "CASE", "CHAR", "CONST", 
-                             "CONTINUE", "DEFAULT", "DO", "DOUBLE", "ELSE", 
-                             "ENUM", "EXTERN", "FLOAT", "FOR", "GOTO", "IF", 
-                             "INLINE", "INT", "LONG", "REGISTER", "RESTRICT", 
-                             "RETURN", "SHORT", "SIGNED", "SIZEOF", "STATIC", 
-                             "STRUCT", "SWITCH", "TYPEDEF", "UNION", "UNSIGNED", 
-                             "VOID", "VOLATILE", "WHILE", "BOOL_", "COMPLEX", 
-                             "IMAGINERY", "TRUE", "FALSE", "BOOL", "Class", 
-                             "BYCOPY", "BYREF", "ID", "IMP", "IN", "INOUT", 
-                             "NIL", "NO", "NULL", "ONEWAY", "OUT", "PROTOCOL_", 
-                             "SEL", "SELF", "SUPER", "YES", "AUTORELEASEPOOL", 
-                             "CATCH", "CLASS", "DYNAMIC", "ENCODE", "END", 
-                             "FINALLY", "IMPLEMENTATION", "INTERFACE", "IMPORT", 
-                             "PACKAGE", "PROTOCOL", "OPTIONAL", "PRIVATE", 
-                             "PROPERTY", "PROTECTED", "PUBLIC", "REQUIRED", 
-                             "SELECTOR", "SYNCHRONIZED", "SYNTHESIZE", "THROW", 
-                             "TRY", "ATOMIC", "NONATOMIC", "RETAIN", "ATTRIBUTE", 
-                             "AUTORELEASING_QUALIFIER", "BLOCK", "BRIDGE", 
-                             "BRIDGE_RETAINED", "BRIDGE_TRANSFER", "COVARIANT", 
-                             "CONTRAVARIANT", "DEPRECATED", "KINDOF", "STRONG_QUALIFIER", 
-                             "TYPEOF", "UNSAFE_UNRETAINED_QUALIFIER", "UNUSED", 
-                             "WEAK_QUALIFIER", "NULL_UNSPECIFIED", "NULLABLE", 
-                             "NONNULL", "NULL_RESETTABLE", "NS_INLINE", 
-                             "NS_ENUM", "NS_OPTIONS", "NS_CLOSED_ENUM", 
-                             "NS_TYPED_EXTENSIBLE_ENUM", "NS_ERROR_ENUM", 
-                             "ASSIGN", "COPY", "GETTER", "SETTER", "STRONG", 
-                             "READONLY", "READWRITE", "WEAK", "UNSAFE_UNRETAINED", 
-                             "IB_OUTLET", "IB_OUTLET_COLLECTION", "IB_INSPECTABLE", 
-                             "IB_DESIGNABLE", "NS_ASSUME_NONNULL_BEGIN", 
-                             "NS_ASSUME_NONNULL_END", "EXTERN_SUFFIX", "IOS_SUFFIX", 
-                             "MAC_SUFFIX", "TVOS_PROHIBITED", "NS_NOESCAPE", 
-                             "EXPORT_SUFFIX", "NS_RETURNS_RETAINED", "NS_RETURNS_NOT_RETAINED", 
-                             "NS_RETURNS_INNER_POINTER", "CF_RETURNS_RETAINED", 
-                             "CF_RETURNS_NOT_RETAINED", "CF_CONSUMED", "IDENTIFIER", 
-                             "LP", "RP", "LBRACE", "RBRACE", "LBRACK", "RBRACK", 
-                             "SEMI", "COMMA", "DOT", "STRUCTACCESS", "AT", 
-                             "ASSIGNMENT", "GT", "LT", "BANG", "TILDE", 
-                             "QUESTION", "COLON", "EQUAL", "LE", "GE", "NOTEQUAL", 
-                             "AND", "OR", "INC", "DEC", "ADD", "SUB", "MUL", 
-                             "DIV", "BITAND", "BITOR", "BITXOR", "MOD", 
-                             "ADD_ASSIGN", "SUB_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", 
-                             "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", "MOD_ASSIGN", 
-                             "LSHIFT_ASSIGN", "RSHIFT_ASSIGN", "ELIPSIS", 
-                             "CHARACTER_LITERAL", "STRING_START", "HEX_LITERAL", 
-                             "OCTAL_LITERAL", "BINARY_LITERAL", "DECIMAL_LITERAL", 
-                             "FLOATING_POINT_LITERAL", "VERSION_SEMATIC", 
-                             "WS", "MULTI_COMMENT", "SINGLE_COMMENT", "BACKSLASH", 
-                             "SHARP", "STRING_NEWLINE", "STRING_END", "STRING_VALUE", 
-                             "DIRECTIVE_IMPORT", "DIRECTIVE_INCLUDE", "DIRECTIVE_PRAGMA", 
-                             "DIRECTIVE_DEFINE", "DIRECTIVE_DEFINED", "DIRECTIVE_IF", 
-                             "DIRECTIVE_ELIF", "DIRECTIVE_ELSE", "DIRECTIVE_UNDEF", 
-                             "DIRECTIVE_IFDEF", "DIRECTIVE_IFNDEF", "DIRECTIVE_ENDIF", 
-                             "DIRECTIVE_TRUE", "DIRECTIVE_FALSE", "DIRECTIVE_ERROR", 
-                             "DIRECTIVE_WARNING", "DIRECTIVE_BANG", "DIRECTIVE_LP", 
-                             "DIRECTIVE_RP", "DIRECTIVE_EQUAL", "DIRECTIVE_NOTEQUAL", 
-                             "DIRECTIVE_AND", "DIRECTIVE_OR", "DIRECTIVE_LT", 
-                             "DIRECTIVE_GT", "DIRECTIVE_LE", "DIRECTIVE_GE", 
-                             "DIRECTIVE_ADD", "DIRECTIVE_SUB", "DIRECTIVE_MUL", 
-                             "DIRECTIVE_DIV", "DIRECTIVE_BITAND", "DIRECTIVE_BITOR", 
-                             "DIRECTIVE_BITXOR", "DIRECTIVE_MOD", "DIRECTIVE_DOT", 
-                             "DIRECTIVE_STRING", "DIRECTIVE_ID", "DIRECTIVE_DECIMAL_LITERAL", 
-                             "DIRECTIVE_FLOAT", "DIRECTIVE_NEWLINE", "DIRECTIVE_MULTI_COMMENT", 
-                             "DIRECTIVE_SINGLE_COMMENT", "DIRECTIVE_BACKSLASH_NEWLINE", 
-                             "DIRECTIVE_TEXT_NEWLINE", "DIRECTIVE_TEXT" ];
-    static ruleNames = [ "directive", "directiveText", "preprocessorExpression" ];
+	static grammarFileName = "ObjectiveCPreprocessorParser.g4";
+	static literalNames = [null, "'auto'", "'break'", "'case'", "'char'",
+		"'const'", "'continue'", "'default'", "'do'",
+		"'double'", null, "'enum'", "'extern'", "'float'",
+		"'for'", "'goto'", null, "'inline'", "'int'",
+		"'long'", "'register'", "'restrict'", "'return'",
+		"'short'", "'signed'", "'sizeof'", "'static'",
+		"'struct'", "'switch'", "'typedef'", "'union'",
+		"'unsigned'", "'void'", "'volatile'", "'while'",
+		"'_Bool'", "'_Complex'", "'_Imaginery'", "'true'",
+		"'false'", "'BOOL'", "'Class'", "'bycopy'",
+		"'byref'", "'id'", "'IMP'", "'in'", "'inout'",
+		"'nil'", "'NO'", "'NULL'", "'oneway'", "'out'",
+		"'Protocol'", "'SEL'", "'self'", "'super'",
+		"'YES'", "'@autoreleasepool'", "'@catch'", "'@class'",
+		"'@dynamic'", "'@encode'", "'@end'", "'@finally'",
+		"'@implementation'", "'@interface'", null, "'@package'",
+		"'@protocol'", "'@optional'", "'@private'",
+		"'@property'", "'@protected'", "'@public'",
+		"'@required'", "'@selector'", "'@synchronized'",
+		"'@synthesize'", "'@throw'", "'@try'", "'atomic'",
+		"'nonatomic'", "'retain'", "'__attribute__'",
+		"'__autoreleasing'", "'__block'", "'__bridge'",
+		"'__bridge_retained'", "'__bridge_transfer'",
+		"'__covariant'", "'__contravariant'", "'__deprecated'",
+		"'__kindof'", "'__strong'", null, "'__unsafe_unretained'",
+		"'__unused'", "'__weak'", null, null, null,
+		"'null_resettable'", "'NS_INLINE'", "'NS_ENUM'",
+		"'NS_OPTIONS'", "'NS_CLOSED_ENUM'", "'NS_TYPED_EXTENSIBLE_ENUM'",
+		"'NS_ERROR_ENUM'", "'assign'", "'copy'", "'getter'",
+		"'setter'", "'strong'", "'readonly'", "'readwrite'",
+		"'weak'", "'unsafe_unretained'", "'IBOutlet'",
+		"'IBOutletCollection'", "'IBInspectable'", "'IB_DESIGNABLE'",
+		null, null, null, null, null, "'__TVOS_PROHIBITED'",
+		"'NS_NOESCAPE'", null, "'NS_RETURNS_RETAINED'",
+		"'NS_RETURNS_NOT_RETAINED'", "'NS_RETURNS_INNER_POINTER'",
+		"'CF_RETURNS_RETAINED'", "'CF_RETURNS_NOT_RETAINED'",
+		"'CF_CONSUMED'", null, null, null, "'{'", "'}'",
+		"'['", "']'", "';'", "','", null, "'->'", "'@'",
+		"'='", null, null, null, "'~'", "'?'", "':'",
+		null, null, null, null, null, null, "'++'",
+		"'--'", null, null, null, null, null, null,
+		null, null, "'+='", "'-='", "'*='", "'/='",
+		"'&='", "'|='", "'^='", "'%='", "'<<='", "'>>='",
+		"'...'", null, null, null, null, null, null,
+		null, null, null, null, null, "'\\'", null,
+		null, null, null, null, null, null, null, "'defined'",
+		null, "'elif'", null, "'undef'", "'ifdef'",
+		"'ifndef'", "'endif'"];
+	static symbolicNames = [null, "AUTO", "BREAK", "CASE", "CHAR", "CONST",
+		"CONTINUE", "DEFAULT", "DO", "DOUBLE", "ELSE",
+		"ENUM", "EXTERN", "FLOAT", "FOR", "GOTO", "IF",
+		"INLINE", "INT", "LONG", "REGISTER", "RESTRICT",
+		"RETURN", "SHORT", "SIGNED", "SIZEOF", "STATIC",
+		"STRUCT", "SWITCH", "TYPEDEF", "UNION", "UNSIGNED",
+		"VOID", "VOLATILE", "WHILE", "BOOL_", "COMPLEX",
+		"IMAGINERY", "TRUE", "FALSE", "BOOL", "Class",
+		"BYCOPY", "BYREF", "ID", "IMP", "IN", "INOUT",
+		"NIL", "NO", "NULL", "ONEWAY", "OUT", "PROTOCOL_",
+		"SEL", "SELF", "SUPER", "YES", "AUTORELEASEPOOL",
+		"CATCH", "CLASS", "DYNAMIC", "ENCODE", "END",
+		"FINALLY", "IMPLEMENTATION", "INTERFACE", "IMPORT",
+		"PACKAGE", "PROTOCOL", "OPTIONAL", "PRIVATE",
+		"PROPERTY", "PROTECTED", "PUBLIC", "REQUIRED",
+		"SELECTOR", "SYNCHRONIZED", "SYNTHESIZE", "THROW",
+		"TRY", "ATOMIC", "NONATOMIC", "RETAIN", "ATTRIBUTE",
+		"AUTORELEASING_QUALIFIER", "BLOCK", "BRIDGE",
+		"BRIDGE_RETAINED", "BRIDGE_TRANSFER", "COVARIANT",
+		"CONTRAVARIANT", "DEPRECATED", "KINDOF", "STRONG_QUALIFIER",
+		"TYPEOF", "UNSAFE_UNRETAINED_QUALIFIER", "UNUSED",
+		"WEAK_QUALIFIER", "NULL_UNSPECIFIED", "NULLABLE",
+		"NONNULL", "NULL_RESETTABLE", "NS_INLINE",
+		"NS_ENUM", "NS_OPTIONS", "NS_CLOSED_ENUM",
+		"NS_TYPED_EXTENSIBLE_ENUM", "NS_ERROR_ENUM",
+		"ASSIGN", "COPY", "GETTER", "SETTER", "STRONG",
+		"READONLY", "READWRITE", "WEAK", "UNSAFE_UNRETAINED",
+		"IB_OUTLET", "IB_OUTLET_COLLECTION", "IB_INSPECTABLE",
+		"IB_DESIGNABLE", "NS_ASSUME_NONNULL_BEGIN",
+		"NS_ASSUME_NONNULL_END", "EXTERN_SUFFIX", "IOS_SUFFIX",
+		"MAC_SUFFIX", "TVOS_PROHIBITED", "NS_NOESCAPE",
+		"EXPORT_SUFFIX", "NS_RETURNS_RETAINED", "NS_RETURNS_NOT_RETAINED",
+		"NS_RETURNS_INNER_POINTER", "CF_RETURNS_RETAINED",
+		"CF_RETURNS_NOT_RETAINED", "CF_CONSUMED", "IDENTIFIER",
+		"LP", "RP", "LBRACE", "RBRACE", "LBRACK", "RBRACK",
+		"SEMI", "COMMA", "DOT", "STRUCTACCESS", "AT",
+		"ASSIGNMENT", "GT", "LT", "BANG", "TILDE",
+		"QUESTION", "COLON", "EQUAL", "LE", "GE", "NOTEQUAL",
+		"AND", "OR", "INC", "DEC", "ADD", "SUB", "MUL",
+		"DIV", "BITAND", "BITOR", "BITXOR", "MOD",
+		"ADD_ASSIGN", "SUB_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN",
+		"AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", "MOD_ASSIGN",
+		"LSHIFT_ASSIGN", "RSHIFT_ASSIGN", "ELIPSIS",
+		"CHARACTER_LITERAL", "STRING_START", "HEX_LITERAL",
+		"OCTAL_LITERAL", "BINARY_LITERAL", "DECIMAL_LITERAL",
+		"FLOATING_POINT_LITERAL", "VERSION_SEMATIC",
+		"WS", "MULTI_COMMENT", "SINGLE_COMMENT", "BACKSLASH",
+		"SHARP", "STRING_NEWLINE", "STRING_END", "STRING_VALUE",
+		"DIRECTIVE_IMPORT", "DIRECTIVE_INCLUDE", "DIRECTIVE_PRAGMA",
+		"DIRECTIVE_DEFINE", "DIRECTIVE_DEFINED", "DIRECTIVE_IF",
+		"DIRECTIVE_ELIF", "DIRECTIVE_ELSE", "DIRECTIVE_UNDEF",
+		"DIRECTIVE_IFDEF", "DIRECTIVE_IFNDEF", "DIRECTIVE_ENDIF",
+		"DIRECTIVE_TRUE", "DIRECTIVE_FALSE", "DIRECTIVE_ERROR",
+		"DIRECTIVE_WARNING", "DIRECTIVE_BANG", "DIRECTIVE_LP",
+		"DIRECTIVE_RP", "DIRECTIVE_EQUAL", "DIRECTIVE_NOTEQUAL",
+		"DIRECTIVE_AND", "DIRECTIVE_OR", "DIRECTIVE_LT",
+		"DIRECTIVE_GT", "DIRECTIVE_LE", "DIRECTIVE_GE",
+		"DIRECTIVE_ADD", "DIRECTIVE_SUB", "DIRECTIVE_MUL",
+		"DIRECTIVE_DIV", "DIRECTIVE_BITAND", "DIRECTIVE_BITOR",
+		"DIRECTIVE_BITXOR", "DIRECTIVE_MOD", "DIRECTIVE_DOT",
+		"DIRECTIVE_STRING", "DIRECTIVE_ID", "DIRECTIVE_DECIMAL_LITERAL",
+		"DIRECTIVE_FLOAT", "DIRECTIVE_NEWLINE", "DIRECTIVE_MULTI_COMMENT",
+		"DIRECTIVE_SINGLE_COMMENT", "DIRECTIVE_BACKSLASH_NEWLINE",
+		"DIRECTIVE_TEXT_NEWLINE", "DIRECTIVE_TEXT"];
+	static ruleNames = ["directive", "directiveText", "preprocessorExpression"];
 
-    constructor(input) {
-        super(input);
-        this._interp = new antlr4.atn.ParserATNSimulator(this, atn, decisionsToDFA, sharedContextCache);
-        this.ruleNames = ObjectiveCPreprocessorParser.ruleNames;
-        this.literalNames = ObjectiveCPreprocessorParser.literalNames;
-        this.symbolicNames = ObjectiveCPreprocessorParser.symbolicNames;
-    }
+	constructor(input) {
+		super(input);
+		this._interp = new antlr4.atn.ParserATNSimulator(this, atn, decisionsToDFA, sharedContextCache);
+		this.ruleNames = ObjectiveCPreprocessorParser.ruleNames;
+		this.literalNames = ObjectiveCPreprocessorParser.literalNames;
+		this.symbolicNames = ObjectiveCPreprocessorParser.symbolicNames;
+	}
 
-    get atn() {
-        return atn;
-    }
+	get atn() {
+		return atn;
+	}
 
-    sempred(localctx, ruleIndex, predIndex) {
-    	switch(ruleIndex) {
-    	case 2:
-    	    		return this.preprocessorExpression_sempred(localctx, predIndex);
-        default:
-            throw "No predicate with index:" + ruleIndex;
-       }
-    }
+	sempred(localctx, ruleIndex, predIndex) {
+		switch (ruleIndex) {
+			case 2:
+				return this.preprocessorExpression_sempred(localctx, predIndex);
+			default:
+				throw "No predicate with index:" + ruleIndex;
+		}
+	}
 
-    preprocessorExpression_sempred(localctx, predIndex) {
-    	switch(predIndex) {
-    		case 0:
-    			return this.precpred(this._ctx, 5);
-    		case 1:
-    			return this.precpred(this._ctx, 4);
-    		case 2:
-    			return this.precpred(this._ctx, 3);
-    		case 3:
-    			return this.precpred(this._ctx, 2);
-    		default:
-    			throw "No predicate with index:" + predIndex;
-    	}
-    };
+	preprocessorExpression_sempred(localctx, predIndex) {
+		switch (predIndex) {
+			case 0:
+				return this.precpred(this._ctx, 5);
+			case 1:
+				return this.precpred(this._ctx, 4);
+			case 2:
+				return this.precpred(this._ctx, 3);
+			case 3:
+				return this.precpred(this._ctx, 2);
+			default:
+				throw "No predicate with index:" + predIndex;
+		}
+	};
 
 
 
 
 	directive() {
-	    let localctx = new DirectiveContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 0, ObjectiveCPreprocessorParser.RULE_directive);
-	    var _la = 0; // Token type
-	    try {
-	        this.state = 43;
-	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
-	        switch(la_) {
-	        case 1:
-	            localctx = new PreprocessorImportContext(this, localctx);
-	            this.enterOuterAlt(localctx, 1);
-	            this.state = 6;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 7;
-	            _la = this._input.LA(1);
-	            if(!(_la===ObjectiveCPreprocessorParser.DIRECTIVE_IMPORT || _la===ObjectiveCPreprocessorParser.DIRECTIVE_INCLUDE)) {
-	            this._errHandler.recoverInline(this);
-	            }
-	            else {
-	            	this._errHandler.reportMatch(this);
-	                this.consume();
-	            }
-	            this.state = 8;
-	            this.directiveText();
-	            break;
+		let localctx = new DirectiveContext(this, this._ctx, this.state);
+		this.enterRule(localctx, 0, ObjectiveCPreprocessorParser.RULE_directive);
+		var _la = 0; // Token type
+		try {
+			this.state = 43;
+			this._errHandler.sync(this);
+			var la_ = this._interp.adaptivePredict(this._input, 1, this._ctx);
+			switch (la_) {
+				case 1:
+					localctx = new PreprocessorImportContext(this, localctx);
+					this.enterOuterAlt(localctx, 1);
+					this.state = 6;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 7;
+					_la = this._input.LA(1);
+					if (!(_la === ObjectiveCPreprocessorParser.DIRECTIVE_IMPORT || _la === ObjectiveCPreprocessorParser.DIRECTIVE_INCLUDE)) {
+						this._errHandler.recoverInline(this);
+					}
+					else {
+						this._errHandler.reportMatch(this);
+						this.consume();
+					}
+					this.state = 8;
+					this.directiveText();
+					break;
 
-	        case 2:
-	            localctx = new PreprocessorConditionalContext(this, localctx);
-	            this.enterOuterAlt(localctx, 2);
-	            this.state = 9;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 10;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_IF);
-	            this.state = 11;
-	            this.preprocessorExpression(0);
-	            break;
+				case 2:
+					localctx = new PreprocessorConditionalContext(this, localctx);
+					this.enterOuterAlt(localctx, 2);
+					this.state = 9;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 10;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_IF);
+					this.state = 11;
+					this.preprocessorExpression(0);
+					break;
 
-	        case 3:
-	            localctx = new PreprocessorConditionalContext(this, localctx);
-	            this.enterOuterAlt(localctx, 3);
-	            this.state = 12;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 13;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ELIF);
-	            this.state = 14;
-	            this.preprocessorExpression(0);
-	            break;
+				case 3:
+					localctx = new PreprocessorConditionalContext(this, localctx);
+					this.enterOuterAlt(localctx, 3);
+					this.state = 12;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 13;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ELIF);
+					this.state = 14;
+					this.preprocessorExpression(0);
+					break;
 
-	        case 4:
-	            localctx = new PreprocessorConditionalContext(this, localctx);
-	            this.enterOuterAlt(localctx, 4);
-	            this.state = 15;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 16;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ELSE);
-	            break;
+				case 4:
+					localctx = new PreprocessorConditionalContext(this, localctx);
+					this.enterOuterAlt(localctx, 4);
+					this.state = 15;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 16;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ELSE);
+					break;
 
-	        case 5:
-	            localctx = new PreprocessorConditionalContext(this, localctx);
-	            this.enterOuterAlt(localctx, 5);
-	            this.state = 17;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 18;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ENDIF);
-	            break;
+				case 5:
+					localctx = new PreprocessorConditionalContext(this, localctx);
+					this.enterOuterAlt(localctx, 5);
+					this.state = 17;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 18;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ENDIF);
+					break;
 
-	        case 6:
-	            localctx = new PreprocessorDefContext(this, localctx);
-	            this.enterOuterAlt(localctx, 6);
-	            this.state = 19;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 20;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_IFDEF);
-	            this.state = 21;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
-	            break;
+				case 6:
+					localctx = new PreprocessorDefContext(this, localctx);
+					this.enterOuterAlt(localctx, 6);
+					this.state = 19;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 20;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_IFDEF);
+					this.state = 21;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
+					break;
 
-	        case 7:
-	            localctx = new PreprocessorDefContext(this, localctx);
-	            this.enterOuterAlt(localctx, 7);
-	            this.state = 22;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 23;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_IFNDEF);
-	            this.state = 24;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
-	            break;
+				case 7:
+					localctx = new PreprocessorDefContext(this, localctx);
+					this.enterOuterAlt(localctx, 7);
+					this.state = 22;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 23;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_IFNDEF);
+					this.state = 24;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
+					break;
 
-	        case 8:
-	            localctx = new PreprocessorDefContext(this, localctx);
-	            this.enterOuterAlt(localctx, 8);
-	            this.state = 25;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 26;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_UNDEF);
-	            this.state = 27;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
-	            break;
+				case 8:
+					localctx = new PreprocessorDefContext(this, localctx);
+					this.enterOuterAlt(localctx, 8);
+					this.state = 25;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 26;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_UNDEF);
+					this.state = 27;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
+					break;
 
-	        case 9:
-	            localctx = new PreprocessorPragmaContext(this, localctx);
-	            this.enterOuterAlt(localctx, 9);
-	            this.state = 28;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 29;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_PRAGMA);
-	            this.state = 30;
-	            this.directiveText();
-	            break;
+				case 9:
+					localctx = new PreprocessorPragmaContext(this, localctx);
+					this.enterOuterAlt(localctx, 9);
+					this.state = 28;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 29;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_PRAGMA);
+					this.state = 30;
+					this.directiveText();
+					break;
 
-	        case 10:
-	            localctx = new PreprocessorErrorContext(this, localctx);
-	            this.enterOuterAlt(localctx, 10);
-	            this.state = 31;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 32;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ERROR);
-	            this.state = 33;
-	            this.directiveText();
-	            break;
+				case 10:
+					localctx = new PreprocessorErrorContext(this, localctx);
+					this.enterOuterAlt(localctx, 10);
+					this.state = 31;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 32;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ERROR);
+					this.state = 33;
+					this.directiveText();
+					break;
 
-	        case 11:
-	            localctx = new PreprocessorWarningContext(this, localctx);
-	            this.enterOuterAlt(localctx, 11);
-	            this.state = 34;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 35;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_WARNING);
-	            this.state = 36;
-	            this.directiveText();
-	            break;
+				case 11:
+					localctx = new PreprocessorWarningContext(this, localctx);
+					this.enterOuterAlt(localctx, 11);
+					this.state = 34;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 35;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_WARNING);
+					this.state = 36;
+					this.directiveText();
+					break;
 
-	        case 12:
-	            localctx = new PreprocessorDefineContext(this, localctx);
-	            this.enterOuterAlt(localctx, 12);
-	            this.state = 37;
-	            this.match(ObjectiveCPreprocessorParser.SHARP);
-	            this.state = 38;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_DEFINE);
-	            this.state = 39;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
-	            this.state = 41;
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	            if(_la===ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE || _la===ObjectiveCPreprocessorParser.DIRECTIVE_TEXT) {
-	                this.state = 40;
-	                this.directiveText();
-	            }
+				case 12:
+					localctx = new PreprocessorDefineContext(this, localctx);
+					this.enterOuterAlt(localctx, 12);
+					this.state = 37;
+					this.match(ObjectiveCPreprocessorParser.SHARP);
+					this.state = 38;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_DEFINE);
+					this.state = 39;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
+					this.state = 41;
+					this._errHandler.sync(this);
+					_la = this._input.LA(1);
+					if (_la === ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE || _la === ObjectiveCPreprocessorParser.DIRECTIVE_TEXT) {
+						this.state = 40;
+						this.directiveText();
+					}
 
-	            break;
+					break;
 
-	        }
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
+			}
+		} catch (re) {
+			if (re instanceof antlr4.error.RecognitionException) {
+				localctx.exception = re;
+				this._errHandler.reportError(this, re);
+				this._errHandler.recover(this, re);
+			} else {
+				throw re;
+			}
+		} finally {
+			this.exitRule();
+		}
+		return localctx;
 	}
 
 
 
 	directiveText() {
-	    let localctx = new DirectiveTextContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 2, ObjectiveCPreprocessorParser.RULE_directiveText);
-	    var _la = 0; // Token type
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 46; 
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        do {
-	            this.state = 45;
-	            _la = this._input.LA(1);
-	            if(!(_la===ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE || _la===ObjectiveCPreprocessorParser.DIRECTIVE_TEXT)) {
-	            this._errHandler.recoverInline(this);
-	            }
-	            else {
-	            	this._errHandler.reportMatch(this);
-	                this.consume();
-	            }
-	            this.state = 48; 
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	        } while(_la===ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE || _la===ObjectiveCPreprocessorParser.DIRECTIVE_TEXT);
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
+		let localctx = new DirectiveTextContext(this, this._ctx, this.state);
+		this.enterRule(localctx, 2, ObjectiveCPreprocessorParser.RULE_directiveText);
+		var _la = 0; // Token type
+		try {
+			this.enterOuterAlt(localctx, 1);
+			this.state = 46;
+			this._errHandler.sync(this);
+			_la = this._input.LA(1);
+			do {
+				this.state = 45;
+				_la = this._input.LA(1);
+				if (!(_la === ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE || _la === ObjectiveCPreprocessorParser.DIRECTIVE_TEXT)) {
+					this._errHandler.recoverInline(this);
+				}
+				else {
+					this._errHandler.reportMatch(this);
+					this.consume();
+				}
+				this.state = 48;
+				this._errHandler.sync(this);
+				_la = this._input.LA(1);
+			} while (_la === ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE || _la === ObjectiveCPreprocessorParser.DIRECTIVE_TEXT);
+		} catch (re) {
+			if (re instanceof antlr4.error.RecognitionException) {
+				localctx.exception = re;
+				this._errHandler.reportError(this, re);
+				this._errHandler.recover(this, re);
+			} else {
+				throw re;
+			}
+		} finally {
+			this.exitRule();
+		}
+		return localctx;
 	}
 
 
 	preprocessorExpression(_p) {
-		if(_p===undefined) {
-		    _p = 0;
+		if (_p === undefined) {
+			_p = 0;
 		}
-	    const _parentctx = this._ctx;
-	    const _parentState = this.state;
-	    let localctx = new PreprocessorExpressionContext(this, this._ctx, _parentState);
-	    let _prevctx = localctx;
-	    const _startState = 4;
-	    this.enterRecursionRule(localctx, 4, ObjectiveCPreprocessorParser.RULE_preprocessorExpression, _p);
-	    var _la = 0; // Token type
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 75;
-	        this._errHandler.sync(this);
-	        switch(this._input.LA(1)) {
-	        case ObjectiveCPreprocessorParser.DIRECTIVE_TRUE:
-	            localctx = new PreprocessorConstantContext(this, localctx);
-	            this._ctx = localctx;
-	            _prevctx = localctx;
+		const _parentctx = this._ctx;
+		const _parentState = this.state;
+		let localctx = new PreprocessorExpressionContext(this, this._ctx, _parentState);
+		let _prevctx = localctx;
+		const _startState = 4;
+		this.enterRecursionRule(localctx, 4, ObjectiveCPreprocessorParser.RULE_preprocessorExpression, _p);
+		var _la = 0; // Token type
+		try {
+			this.enterOuterAlt(localctx, 1);
+			this.state = 75;
+			this._errHandler.sync(this);
+			switch (this._input.LA(1)) {
+				case ObjectiveCPreprocessorParser.DIRECTIVE_TRUE:
+					localctx = new PreprocessorConstantContext(this, localctx);
+					this._ctx = localctx;
+					_prevctx = localctx;
 
-	            this.state = 51;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_TRUE);
-	            break;
-	        case ObjectiveCPreprocessorParser.DIRECTIVE_FALSE:
-	            localctx = new PreprocessorConstantContext(this, localctx);
-	            this._ctx = localctx;
-	            _prevctx = localctx;
-	            this.state = 52;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_FALSE);
-	            break;
-	        case ObjectiveCPreprocessorParser.DIRECTIVE_DECIMAL_LITERAL:
-	            localctx = new PreprocessorConstantContext(this, localctx);
-	            this._ctx = localctx;
-	            _prevctx = localctx;
-	            this.state = 53;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_DECIMAL_LITERAL);
-	            break;
-	        case ObjectiveCPreprocessorParser.DIRECTIVE_STRING:
-	            localctx = new PreprocessorConstantContext(this, localctx);
-	            this._ctx = localctx;
-	            _prevctx = localctx;
-	            this.state = 54;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_STRING);
-	            break;
-	        case ObjectiveCPreprocessorParser.DIRECTIVE_ID:
-	            localctx = new PreprocessorConditionalSymbolContext(this, localctx);
-	            this._ctx = localctx;
-	            _prevctx = localctx;
-	            this.state = 55;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
-	            this.state = 60;
-	            this._errHandler.sync(this);
-	            var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
-	            if(la_===1) {
-	                this.state = 56;
-	                this.match(ObjectiveCPreprocessorParser.DIRECTIVE_LP);
-	                this.state = 57;
-	                this.preprocessorExpression(0);
-	                this.state = 58;
-	                this.match(ObjectiveCPreprocessorParser.DIRECTIVE_RP);
+					this.state = 51;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_TRUE);
+					break;
+				case ObjectiveCPreprocessorParser.DIRECTIVE_FALSE:
+					localctx = new PreprocessorConstantContext(this, localctx);
+					this._ctx = localctx;
+					_prevctx = localctx;
+					this.state = 52;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_FALSE);
+					break;
+				case ObjectiveCPreprocessorParser.DIRECTIVE_DECIMAL_LITERAL:
+					localctx = new PreprocessorConstantContext(this, localctx);
+					this._ctx = localctx;
+					_prevctx = localctx;
+					this.state = 53;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_DECIMAL_LITERAL);
+					break;
+				case ObjectiveCPreprocessorParser.DIRECTIVE_STRING:
+					localctx = new PreprocessorConstantContext(this, localctx);
+					this._ctx = localctx;
+					_prevctx = localctx;
+					this.state = 54;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_STRING);
+					break;
+				case ObjectiveCPreprocessorParser.DIRECTIVE_ID:
+					localctx = new PreprocessorConditionalSymbolContext(this, localctx);
+					this._ctx = localctx;
+					_prevctx = localctx;
+					this.state = 55;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
+					this.state = 60;
+					this._errHandler.sync(this);
+					var la_ = this._interp.adaptivePredict(this._input, 3, this._ctx);
+					if (la_ === 1) {
+						this.state = 56;
+						this.match(ObjectiveCPreprocessorParser.DIRECTIVE_LP);
+						this.state = 57;
+						this.preprocessorExpression(0);
+						this.state = 58;
+						this.match(ObjectiveCPreprocessorParser.DIRECTIVE_RP);
 
-	            }
-	            break;
-	        case ObjectiveCPreprocessorParser.DIRECTIVE_LP:
-	            localctx = new PreprocessorParenthesisContext(this, localctx);
-	            this._ctx = localctx;
-	            _prevctx = localctx;
-	            this.state = 62;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_LP);
-	            this.state = 63;
-	            this.preprocessorExpression(0);
-	            this.state = 64;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_RP);
-	            break;
-	        case ObjectiveCPreprocessorParser.DIRECTIVE_BANG:
-	            localctx = new PreprocessorNotContext(this, localctx);
-	            this._ctx = localctx;
-	            _prevctx = localctx;
-	            this.state = 66;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_BANG);
-	            this.state = 67;
-	            this.preprocessorExpression(6);
-	            break;
-	        case ObjectiveCPreprocessorParser.DIRECTIVE_DEFINED:
-	            localctx = new PreprocessorDefinedContext(this, localctx);
-	            this._ctx = localctx;
-	            _prevctx = localctx;
-	            this.state = 68;
-	            this.match(ObjectiveCPreprocessorParser.DIRECTIVE_DEFINED);
-	            this.state = 73;
-	            this._errHandler.sync(this);
-	            switch(this._input.LA(1)) {
-	            case ObjectiveCPreprocessorParser.DIRECTIVE_ID:
-	                this.state = 69;
-	                this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
-	                break;
-	            case ObjectiveCPreprocessorParser.DIRECTIVE_LP:
-	                this.state = 70;
-	                this.match(ObjectiveCPreprocessorParser.DIRECTIVE_LP);
-	                this.state = 71;
-	                this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
-	                this.state = 72;
-	                this.match(ObjectiveCPreprocessorParser.DIRECTIVE_RP);
-	                break;
-	            default:
-	                throw new antlr4.error.NoViableAltException(this);
-	            }
-	            break;
-	        default:
-	            throw new antlr4.error.NoViableAltException(this);
-	        }
-	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 91;
-	        this._errHandler.sync(this);
-	        let _alt = this._interp.adaptivePredict(this._input,7,this._ctx)
-	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
-	            if(_alt===1) {
-	                if(this._parseListeners!==null) {
-	                    this.triggerExitRuleEvent();
-	                }
-	                _prevctx = localctx;
-	                this.state = 89;
-	                this._errHandler.sync(this);
-	                var la_ = this._interp.adaptivePredict(this._input,6,this._ctx);
-	                switch(la_) {
-	                case 1:
-	                    localctx = new PreprocessorBinaryContext(this, new PreprocessorExpressionContext(this, _parentctx, _parentState));
-	                    this.pushNewRecursionContext(localctx, _startState, ObjectiveCPreprocessorParser.RULE_preprocessorExpression);
-	                    this.state = 77;
-	                    if (!( this.precpred(this._ctx, 5))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
-	                    }
-	                    this.state = 78;
-	                    localctx.op = this._input.LT(1);
-	                    _la = this._input.LA(1);
-	                    if(!(_la===ObjectiveCPreprocessorParser.DIRECTIVE_EQUAL || _la===ObjectiveCPreprocessorParser.DIRECTIVE_NOTEQUAL)) {
-	                        localctx.op = this._errHandler.recoverInline(this);
-	                    }
-	                    else {
-	                    	this._errHandler.reportMatch(this);
-	                        this.consume();
-	                    }
-	                    this.state = 79;
-	                    this.preprocessorExpression(6);
-	                    break;
+					}
+					break;
+				case ObjectiveCPreprocessorParser.DIRECTIVE_LP:
+					localctx = new PreprocessorParenthesisContext(this, localctx);
+					this._ctx = localctx;
+					_prevctx = localctx;
+					this.state = 62;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_LP);
+					this.state = 63;
+					this.preprocessorExpression(0);
+					this.state = 64;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_RP);
+					break;
+				case ObjectiveCPreprocessorParser.DIRECTIVE_BANG:
+					localctx = new PreprocessorNotContext(this, localctx);
+					this._ctx = localctx;
+					_prevctx = localctx;
+					this.state = 66;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_BANG);
+					this.state = 67;
+					this.preprocessorExpression(6);
+					break;
+				case ObjectiveCPreprocessorParser.DIRECTIVE_DEFINED:
+					localctx = new PreprocessorDefinedContext(this, localctx);
+					this._ctx = localctx;
+					_prevctx = localctx;
+					this.state = 68;
+					this.match(ObjectiveCPreprocessorParser.DIRECTIVE_DEFINED);
+					this.state = 73;
+					this._errHandler.sync(this);
+					switch (this._input.LA(1)) {
+						case ObjectiveCPreprocessorParser.DIRECTIVE_ID:
+							this.state = 69;
+							this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
+							break;
+						case ObjectiveCPreprocessorParser.DIRECTIVE_LP:
+							this.state = 70;
+							this.match(ObjectiveCPreprocessorParser.DIRECTIVE_LP);
+							this.state = 71;
+							this.match(ObjectiveCPreprocessorParser.DIRECTIVE_ID);
+							this.state = 72;
+							this.match(ObjectiveCPreprocessorParser.DIRECTIVE_RP);
+							break;
+						default:
+							throw new antlr4.error.NoViableAltException(this);
+					}
+					break;
+				default:
+					throw new antlr4.error.NoViableAltException(this);
+			}
+			this._ctx.stop = this._input.LT(-1);
+			this.state = 91;
+			this._errHandler.sync(this);
+			var _alt = this._interp.adaptivePredict(this._input, 7, this._ctx)
+			while (_alt != 2 && _alt != antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+				if (_alt === 1) {
+					if (this._parseListeners !== null) {
+						this.triggerExitRuleEvent();
+					}
+					_prevctx = localctx;
+					this.state = 89;
+					this._errHandler.sync(this);
+					var la_ = this._interp.adaptivePredict(this._input, 6, this._ctx);
+					switch (la_) {
+						case 1:
+							localctx = new PreprocessorBinaryContext(this, new PreprocessorExpressionContext(this, _parentctx, _parentState));
+							this.pushNewRecursionContext(localctx, _startState, ObjectiveCPreprocessorParser.RULE_preprocessorExpression);
+							this.state = 77;
+							if (!(this.precpred(this._ctx, 5))) {
+								throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
+							}
+							this.state = 78;
+							localctx.op = this._input.LT(1);
+							_la = this._input.LA(1);
+							if (!(_la === ObjectiveCPreprocessorParser.DIRECTIVE_EQUAL || _la === ObjectiveCPreprocessorParser.DIRECTIVE_NOTEQUAL)) {
+								localctx.op = this._errHandler.recoverInline(this);
+							}
+							else {
+								this._errHandler.reportMatch(this);
+								this.consume();
+							}
+							this.state = 79;
+							this.preprocessorExpression(6);
+							break;
 
-	                case 2:
-	                    localctx = new PreprocessorBinaryContext(this, new PreprocessorExpressionContext(this, _parentctx, _parentState));
-	                    this.pushNewRecursionContext(localctx, _startState, ObjectiveCPreprocessorParser.RULE_preprocessorExpression);
-	                    this.state = 80;
-	                    if (!( this.precpred(this._ctx, 4))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
-	                    }
-	                    this.state = 81;
-	                    localctx.op = this.match(ObjectiveCPreprocessorParser.DIRECTIVE_AND);
-	                    this.state = 82;
-	                    this.preprocessorExpression(5);
-	                    break;
+						case 2:
+							localctx = new PreprocessorBinaryContext(this, new PreprocessorExpressionContext(this, _parentctx, _parentState));
+							this.pushNewRecursionContext(localctx, _startState, ObjectiveCPreprocessorParser.RULE_preprocessorExpression);
+							this.state = 80;
+							if (!(this.precpred(this._ctx, 4))) {
+								throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
+							}
+							this.state = 81;
+							localctx.op = this.match(ObjectiveCPreprocessorParser.DIRECTIVE_AND);
+							this.state = 82;
+							this.preprocessorExpression(5);
+							break;
 
-	                case 3:
-	                    localctx = new PreprocessorBinaryContext(this, new PreprocessorExpressionContext(this, _parentctx, _parentState));
-	                    this.pushNewRecursionContext(localctx, _startState, ObjectiveCPreprocessorParser.RULE_preprocessorExpression);
-	                    this.state = 83;
-	                    if (!( this.precpred(this._ctx, 3))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
-	                    }
-	                    this.state = 84;
-	                    localctx.op = this.match(ObjectiveCPreprocessorParser.DIRECTIVE_OR);
-	                    this.state = 85;
-	                    this.preprocessorExpression(4);
-	                    break;
+						case 3:
+							localctx = new PreprocessorBinaryContext(this, new PreprocessorExpressionContext(this, _parentctx, _parentState));
+							this.pushNewRecursionContext(localctx, _startState, ObjectiveCPreprocessorParser.RULE_preprocessorExpression);
+							this.state = 83;
+							if (!(this.precpred(this._ctx, 3))) {
+								throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
+							}
+							this.state = 84;
+							localctx.op = this.match(ObjectiveCPreprocessorParser.DIRECTIVE_OR);
+							this.state = 85;
+							this.preprocessorExpression(4);
+							break;
 
-	                case 4:
-	                    localctx = new PreprocessorBinaryContext(this, new PreprocessorExpressionContext(this, _parentctx, _parentState));
-	                    this.pushNewRecursionContext(localctx, _startState, ObjectiveCPreprocessorParser.RULE_preprocessorExpression);
-	                    this.state = 86;
-	                    if (!( this.precpred(this._ctx, 2))) {
-	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
-	                    }
-	                    this.state = 87;
-	                    localctx.op = this._input.LT(1);
-	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 221)) & ~0x1f) == 0 && ((1 << (_la - 221)) & ((1 << (ObjectiveCPreprocessorParser.DIRECTIVE_LT - 221)) | (1 << (ObjectiveCPreprocessorParser.DIRECTIVE_GT - 221)) | (1 << (ObjectiveCPreprocessorParser.DIRECTIVE_LE - 221)) | (1 << (ObjectiveCPreprocessorParser.DIRECTIVE_GE - 221)))) !== 0))) {
-	                        localctx.op = this._errHandler.recoverInline(this);
-	                    }
-	                    else {
-	                    	this._errHandler.reportMatch(this);
-	                        this.consume();
-	                    }
-	                    this.state = 88;
-	                    this.preprocessorExpression(3);
-	                    break;
+						case 4:
+							localctx = new PreprocessorBinaryContext(this, new PreprocessorExpressionContext(this, _parentctx, _parentState));
+							this.pushNewRecursionContext(localctx, _startState, ObjectiveCPreprocessorParser.RULE_preprocessorExpression);
+							this.state = 86;
+							if (!(this.precpred(this._ctx, 2))) {
+								throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
+							}
+							this.state = 87;
+							localctx.op = this._input.LT(1);
+							_la = this._input.LA(1);
+							if (!(((((_la - 221)) & ~0x1f) == 0 && ((1 << (_la - 221)) & ((1 << (ObjectiveCPreprocessorParser.DIRECTIVE_LT - 221)) | (1 << (ObjectiveCPreprocessorParser.DIRECTIVE_GT - 221)) | (1 << (ObjectiveCPreprocessorParser.DIRECTIVE_LE - 221)) | (1 << (ObjectiveCPreprocessorParser.DIRECTIVE_GE - 221)))) !== 0))) {
+								localctx.op = this._errHandler.recoverInline(this);
+							}
+							else {
+								this._errHandler.reportMatch(this);
+								this.consume();
+							}
+							this.state = 88;
+							this.preprocessorExpression(3);
+							break;
 
-	                } 
-	            }
-	            this.state = 93;
-	            this._errHandler.sync(this);
-	            _alt = this._interp.adaptivePredict(this._input,7,this._ctx);
-	        }
+					}
+				}
+				this.state = 93;
+				this._errHandler.sync(this);
+				_alt = this._interp.adaptivePredict(this._input, 7, this._ctx);
+			}
 
-	    } catch( error) {
-	        if(error instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = error;
-		        this._errHandler.reportError(this, error);
-		        this._errHandler.recover(this, error);
-		    } else {
-		    	throw error;
-		    }
-	    } finally {
-	        this.unrollRecursionContexts(_parentctx)
-	    }
-	    return localctx;
+		} catch (error) {
+			if (error instanceof antlr4.error.RecognitionException) {
+				localctx.exception = error;
+				this._errHandler.reportError(this, error);
+				this._errHandler.recover(this, error);
+			} else {
+				throw error;
+			}
+		} finally {
+			this.unrollRecursionContexts(_parentctx)
+		}
+		return localctx;
 	}
 
 
@@ -909,63 +909,63 @@ ObjectiveCPreprocessorParser.RULE_preprocessorExpression = 2;
 
 class DirectiveContext extends antlr4.ParserRuleContext {
 
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = ObjectiveCPreprocessorParser.RULE_directive;
-    }
-
-
-	 
-		copyFrom(ctx) {
-			super.copyFrom(ctx);
+	constructor(parser, parent, invokingState) {
+		if (parent === undefined) {
+			parent = null;
 		}
+		if (invokingState === undefined || invokingState === null) {
+			invokingState = -1;
+		}
+		super(parent, invokingState);
+		this.parser = parser;
+		this.ruleIndex = ObjectiveCPreprocessorParser.RULE_directive;
+	}
+
+
+
+	copyFrom(ctx) {
+		super.copyFrom(ctx);
+	}
 
 }
 
 
 class PreprocessorDefContext extends DirectiveContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	SHARP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
 	};
 
 	DIRECTIVE_IFDEF() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_IFDEF, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_IFDEF, 0);
 	};
 
 	DIRECTIVE_ID() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ID, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ID, 0);
 	};
 
 	DIRECTIVE_IFNDEF() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_IFNDEF, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_IFNDEF, 0);
 	};
 
 	DIRECTIVE_UNDEF() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_UNDEF, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_UNDEF, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorDef(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorDef(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorDef(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorDef(this);
 		}
 	}
 
@@ -976,32 +976,32 @@ ObjectiveCPreprocessorParser.PreprocessorDefContext = PreprocessorDefContext;
 
 class PreprocessorErrorContext extends DirectiveContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	SHARP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
 	};
 
 	DIRECTIVE_ERROR() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ERROR, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ERROR, 0);
 	};
 
 	directiveText() {
-	    return this.getTypedRuleContext(DirectiveTextContext,0);
+		return this.getTypedRuleContext(DirectiveTextContext, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorError(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorError(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorError(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorError(this);
 		}
 	}
 
@@ -1012,44 +1012,44 @@ ObjectiveCPreprocessorParser.PreprocessorErrorContext = PreprocessorErrorContext
 
 class PreprocessorConditionalContext extends DirectiveContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	SHARP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
 	};
 
 	DIRECTIVE_IF() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_IF, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_IF, 0);
 	};
 
 	preprocessorExpression() {
-	    return this.getTypedRuleContext(PreprocessorExpressionContext,0);
+		return this.getTypedRuleContext(PreprocessorExpressionContext, 0);
 	};
 
 	DIRECTIVE_ELIF() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ELIF, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ELIF, 0);
 	};
 
 	DIRECTIVE_ELSE() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ELSE, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ELSE, 0);
 	};
 
 	DIRECTIVE_ENDIF() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ENDIF, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ENDIF, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorConditional(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorConditional(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorConditional(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorConditional(this);
 		}
 	}
 
@@ -1060,36 +1060,36 @@ ObjectiveCPreprocessorParser.PreprocessorConditionalContext = PreprocessorCondit
 
 class PreprocessorImportContext extends DirectiveContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	SHARP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
 	};
 
 	directiveText() {
-	    return this.getTypedRuleContext(DirectiveTextContext,0);
+		return this.getTypedRuleContext(DirectiveTextContext, 0);
 	};
 
 	DIRECTIVE_IMPORT() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_IMPORT, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_IMPORT, 0);
 	};
 
 	DIRECTIVE_INCLUDE() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_INCLUDE, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_INCLUDE, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorImport(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorImport(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorImport(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorImport(this);
 		}
 	}
 
@@ -1100,32 +1100,32 @@ ObjectiveCPreprocessorParser.PreprocessorImportContext = PreprocessorImportConte
 
 class PreprocessorPragmaContext extends DirectiveContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	SHARP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
 	};
 
 	DIRECTIVE_PRAGMA() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_PRAGMA, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_PRAGMA, 0);
 	};
 
 	directiveText() {
-	    return this.getTypedRuleContext(DirectiveTextContext,0);
+		return this.getTypedRuleContext(DirectiveTextContext, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorPragma(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorPragma(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorPragma(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorPragma(this);
 		}
 	}
 
@@ -1136,36 +1136,36 @@ ObjectiveCPreprocessorParser.PreprocessorPragmaContext = PreprocessorPragmaConte
 
 class PreprocessorDefineContext extends DirectiveContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	SHARP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
 	};
 
 	DIRECTIVE_DEFINE() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_DEFINE, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_DEFINE, 0);
 	};
 
 	DIRECTIVE_ID() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ID, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ID, 0);
 	};
 
 	directiveText() {
-	    return this.getTypedRuleContext(DirectiveTextContext,0);
+		return this.getTypedRuleContext(DirectiveTextContext, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorDefine(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorDefine(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorDefine(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorDefine(this);
 		}
 	}
 
@@ -1176,32 +1176,32 @@ ObjectiveCPreprocessorParser.PreprocessorDefineContext = PreprocessorDefineConte
 
 class PreprocessorWarningContext extends DirectiveContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	SHARP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0);
 	};
 
 	DIRECTIVE_WARNING() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_WARNING, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_WARNING, 0);
 	};
 
 	directiveText() {
-	    return this.getTypedRuleContext(DirectiveTextContext,0);
+		return this.getTypedRuleContext(DirectiveTextContext, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorWarning(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorWarning(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorWarning(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorWarning(this);
 		}
 	}
 
@@ -1212,51 +1212,51 @@ ObjectiveCPreprocessorParser.PreprocessorWarningContext = PreprocessorWarningCon
 
 class DirectiveTextContext extends antlr4.ParserRuleContext {
 
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = ObjectiveCPreprocessorParser.RULE_directiveText;
-    }
+	constructor(parser, parent, invokingState) {
+		if (parent === undefined) {
+			parent = null;
+		}
+		if (invokingState === undefined || invokingState === null) {
+			invokingState = -1;
+		}
+		super(parent, invokingState);
+		this.parser = parser;
+		this.ruleIndex = ObjectiveCPreprocessorParser.RULE_directiveText;
+	}
 
-	DIRECTIVE_TEXT = function(i) {
-		if(i===undefined) {
+	DIRECTIVE_TEXT = function (i) {
+		if (i === undefined) {
 			i = null;
 		}
-	    if(i===null) {
-	        return this.getTokens(ObjectiveCPreprocessorParser.DIRECTIVE_TEXT);
-	    } else {
-	        return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_TEXT, i);
-	    }
+		if (i === null) {
+			return this.getTokens(ObjectiveCPreprocessorParser.DIRECTIVE_TEXT);
+		} else {
+			return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_TEXT, i);
+		}
 	};
 
 
-	DIRECTIVE_TEXT_NEWLINE = function(i) {
-		if(i===undefined) {
+	DIRECTIVE_TEXT_NEWLINE = function (i) {
+		if (i === undefined) {
 			i = null;
 		}
-	    if(i===null) {
-	        return this.getTokens(ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE);
-	    } else {
-	        return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE, i);
-	    }
+		if (i === null) {
+			return this.getTokens(ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE);
+		} else {
+			return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_TEXT_NEWLINE, i);
+		}
 	};
 
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterDirectiveText(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterDirectiveText(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitDirectiveText(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitDirectiveText(this);
 		}
 	}
 
@@ -1267,55 +1267,55 @@ class DirectiveTextContext extends antlr4.ParserRuleContext {
 
 class PreprocessorExpressionContext extends antlr4.ParserRuleContext {
 
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = ObjectiveCPreprocessorParser.RULE_preprocessorExpression;
-    }
-
-
-	 
-		copyFrom(ctx) {
-			super.copyFrom(ctx);
+	constructor(parser, parent, invokingState) {
+		if (parent === undefined) {
+			parent = null;
 		}
+		if (invokingState === undefined || invokingState === null) {
+			invokingState = -1;
+		}
+		super(parent, invokingState);
+		this.parser = parser;
+		this.ruleIndex = ObjectiveCPreprocessorParser.RULE_preprocessorExpression;
+	}
+
+
+
+	copyFrom(ctx) {
+		super.copyFrom(ctx);
+	}
 
 }
 
 
 class PreprocessorParenthesisContext extends PreprocessorExpressionContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	DIRECTIVE_LP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LP, 0);
 	};
 
 	preprocessorExpression() {
-	    return this.getTypedRuleContext(PreprocessorExpressionContext,0);
+		return this.getTypedRuleContext(PreprocessorExpressionContext, 0);
 	};
 
 	DIRECTIVE_RP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_RP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_RP, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorParenthesis(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorParenthesis(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorParenthesis(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorParenthesis(this);
 		}
 	}
 
@@ -1326,28 +1326,28 @@ ObjectiveCPreprocessorParser.PreprocessorParenthesisContext = PreprocessorParent
 
 class PreprocessorNotContext extends PreprocessorExpressionContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	DIRECTIVE_BANG() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_BANG, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_BANG, 0);
 	};
 
 	preprocessorExpression() {
-	    return this.getTypedRuleContext(PreprocessorExpressionContext,0);
+		return this.getTypedRuleContext(PreprocessorExpressionContext, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorNot(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorNot(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorNot(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorNot(this);
 		}
 	}
 
@@ -1358,64 +1358,64 @@ ObjectiveCPreprocessorParser.PreprocessorNotContext = PreprocessorNotContext;
 
 class PreprocessorBinaryContext extends PreprocessorExpressionContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        this.op = null; // Token;
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		this.op = null; // Token;
+		super.copyFrom(ctx);
+	}
 
-	preprocessorExpression = function(i) {
-	    if(i===undefined) {
-	        i = null;
-	    }
-	    if(i===null) {
-	        return this.getTypedRuleContexts(PreprocessorExpressionContext);
-	    } else {
-	        return this.getTypedRuleContext(PreprocessorExpressionContext,i);
-	    }
+	preprocessorExpression = function (i) {
+		if (i === undefined) {
+			i = null;
+		}
+		if (i === null) {
+			return this.getTypedRuleContexts(PreprocessorExpressionContext);
+		} else {
+			return this.getTypedRuleContext(PreprocessorExpressionContext, i);
+		}
 	};
 
 	DIRECTIVE_EQUAL() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_EQUAL, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_EQUAL, 0);
 	};
 
 	DIRECTIVE_NOTEQUAL() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_NOTEQUAL, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_NOTEQUAL, 0);
 	};
 
 	DIRECTIVE_AND() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_AND, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_AND, 0);
 	};
 
 	DIRECTIVE_OR() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_OR, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_OR, 0);
 	};
 
 	DIRECTIVE_LT() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LT, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LT, 0);
 	};
 
 	DIRECTIVE_GT() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_GT, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_GT, 0);
 	};
 
 	DIRECTIVE_LE() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LE, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LE, 0);
 	};
 
 	DIRECTIVE_GE() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_GE, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_GE, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorBinary(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorBinary(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorBinary(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorBinary(this);
 		}
 	}
 
@@ -1426,36 +1426,36 @@ ObjectiveCPreprocessorParser.PreprocessorBinaryContext = PreprocessorBinaryConte
 
 class PreprocessorConstantContext extends PreprocessorExpressionContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	DIRECTIVE_TRUE() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_TRUE, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_TRUE, 0);
 	};
 
 	DIRECTIVE_FALSE() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_FALSE, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_FALSE, 0);
 	};
 
 	DIRECTIVE_DECIMAL_LITERAL() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_DECIMAL_LITERAL, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_DECIMAL_LITERAL, 0);
 	};
 
 	DIRECTIVE_STRING() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_STRING, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_STRING, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorConstant(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorConstant(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorConstant(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorConstant(this);
 		}
 	}
 
@@ -1466,36 +1466,36 @@ ObjectiveCPreprocessorParser.PreprocessorConstantContext = PreprocessorConstantC
 
 class PreprocessorConditionalSymbolContext extends PreprocessorExpressionContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	DIRECTIVE_ID() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ID, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ID, 0);
 	};
 
 	DIRECTIVE_LP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LP, 0);
 	};
 
 	preprocessorExpression() {
-	    return this.getTypedRuleContext(PreprocessorExpressionContext,0);
+		return this.getTypedRuleContext(PreprocessorExpressionContext, 0);
 	};
 
 	DIRECTIVE_RP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_RP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_RP, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorConditionalSymbol(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorConditionalSymbol(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorConditionalSymbol(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorConditionalSymbol(this);
 		}
 	}
 
@@ -1506,36 +1506,36 @@ ObjectiveCPreprocessorParser.PreprocessorConditionalSymbolContext = Preprocessor
 
 class PreprocessorDefinedContext extends PreprocessorExpressionContext {
 
-    constructor(parser, ctx) {
-        super(parser);
-        super.copyFrom(ctx);
-    }
+	constructor(parser, ctx) {
+		super(parser);
+		super.copyFrom(ctx);
+	}
 
 	DIRECTIVE_DEFINED() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_DEFINED, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_DEFINED, 0);
 	};
 
 	DIRECTIVE_ID() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ID, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ID, 0);
 	};
 
 	DIRECTIVE_LP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_LP, 0);
 	};
 
 	DIRECTIVE_RP() {
-	    return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_RP, 0);
+		return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_RP, 0);
 	};
 
 	enterRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.enterPreprocessorDefined(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.enterPreprocessorDefined(this);
 		}
 	}
 
 	exitRule(listener) {
-	    if(listener instanceof ObjectiveCPreprocessorParserListener ) {
-	        listener.exitPreprocessorDefined(this);
+		if (listener instanceof ObjectiveCPreprocessorParserListener) {
+			listener.exitPreprocessorDefined(this);
 		}
 	}
 
@@ -1545,6 +1545,6 @@ class PreprocessorDefinedContext extends PreprocessorExpressionContext {
 ObjectiveCPreprocessorParser.PreprocessorDefinedContext = PreprocessorDefinedContext;
 
 
-ObjectiveCPreprocessorParser.DirectiveContext = DirectiveContext; 
-ObjectiveCPreprocessorParser.DirectiveTextContext = DirectiveTextContext; 
-ObjectiveCPreprocessorParser.PreprocessorExpressionContext = PreprocessorExpressionContext; 
+ObjectiveCPreprocessorParser.DirectiveContext = DirectiveContext;
+ObjectiveCPreprocessorParser.DirectiveTextContext = DirectiveTextContext;
+ObjectiveCPreprocessorParser.PreprocessorExpressionContext = PreprocessorExpressionContext;
