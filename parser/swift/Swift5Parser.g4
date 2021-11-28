@@ -1013,7 +1013,9 @@ self_type: SELF_BIG;
 // Type Inheritance Clause
 type_inheritance_clause: COLON type_inheritance_list;
 
-type_inheritance_list: type_identifier (COMMA type_identifier)*;
+type_inheritance_list:
+	type_id_list += type_identifier (
+		COMMA type_id_list += type_identifier)*;
 
 // Identifiers
 identifier:

@@ -14502,7 +14502,8 @@ export default class Swift5Parser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2665;
-	        this.type_identifier();
+	        localctx._type_identifier = this.type_identifier();
+	        localctx.type_id_list.push(localctx._type_identifier);
 	        this.state = 2670;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
@@ -14510,7 +14511,8 @@ export default class Swift5Parser extends antlr4.Parser {
 	            this.state = 2666;
 	            this.match(Swift5Parser.COMMA);
 	            this.state = 2667;
-	            this.type_identifier();
+	            localctx._type_identifier = this.type_identifier();
+	            localctx.type_id_list.push(localctx._type_identifier);
 	            this.state = 2672;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
@@ -30148,6 +30150,8 @@ class Type_inheritance_listContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = Swift5Parser.RULE_type_inheritance_list;
+        this._type_identifier = null; // Type_identifierContext
+        this.type_id_list = []; // of Type_identifierContexts
     }
 
 	type_identifier = function(i) {
