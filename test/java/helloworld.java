@@ -48,4 +48,7 @@ public class RuntimeStub {
     return "test success";
   }
 
+  public HashSet<String> getHash(HashSet<String> bts) {
+    return new HashSet<String>();
+  }
 }
